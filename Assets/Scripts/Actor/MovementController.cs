@@ -171,17 +171,17 @@ public class MovementController : MonoBehaviour {
         }
 
         TimeFromLastEvent = 1f;
-    }
 
-    private void LateUpdate()
-    {
         if (!isGrounded && lastIsGrounded)
         {
             Animer.SetTrigger("Jump");
         }
 
         lastIsGrounded = isGrounded;
+    }
 
+    private void LateUpdate()
+    {
         Animer.SetBool("inAir", (!isGrounded && isFalling));
 
         TimeFromLastEvent += DeltaMultiplier * Time.deltaTime;
