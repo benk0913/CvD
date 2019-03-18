@@ -22,6 +22,9 @@ public class CORE : MonoBehaviour {
     [SerializeField]
     public InputMap Input;
 
+    [SerializeField]
+    public Database Data = new Database();
+
     #endregion
 
     #region Initialize
@@ -73,8 +76,8 @@ public class CORE : MonoBehaviour {
         {
             CurrentUser.Characters.Add(new CharacterInfo(
                 response["characters"][i]["_id"].Value,
-                "whatever",
-                "whateverToo"));
+                response["characters"][i]["name"].Value,
+                Data.GetClass(response["characters"][i]["class"].Value)));
         }
 
         CreateCharacter Character = new CreateCharacter(OnCreatedCharacter);
@@ -94,7 +97,7 @@ public class CORE : MonoBehaviour {
         CurrentCharacter = new CharacterInfo(
                 charID,
                 "whatever",
-                "whateverToo");
+                null);
 
         SocketClient.Instance.ConnectToGame(CurrentCharacter.ID);
     }
@@ -116,7 +119,7 @@ public class CORE : MonoBehaviour {
         CurrentCharacter = new CharacterInfo(
              charData["_id"].Value,
              charData["name"].Value,
-             "whateverToo");
+             Data.GetClass(charData["class"].Value));
 
         CurrentRoom = new SceneInfo();
 

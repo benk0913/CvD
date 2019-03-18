@@ -4,8 +4,7 @@ public class CharacterInfo
 {
     public string ID;
     public string Name;
-    public string Race;
-    public string Class;
+    public CharacterClass Class;
 
     public Vector3 LastPosition;
     
@@ -14,12 +13,11 @@ public class CharacterInfo
     /// </summary>
     public GameObject CInstance;
 
-    public CharacterInfo(string sId, string sName = "Unknown", string sRace = "Unknown", string sClass = "Unknown")
+    public CharacterInfo(string sId, string sName = "Unknown", CharacterClass cClass = null)
     {
         this.ID    = sId;
         this.Name = sName;
-        this.Race  = sRace;
-        this.Class = sClass;
+        this.Class = cClass;
     }
 
 }

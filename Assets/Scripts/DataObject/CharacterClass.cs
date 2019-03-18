@@ -8,4 +8,17 @@ public class CharacterClass : ScriptableObject
     public string DisplayName;
 
     public List<Ability> Abilities = new List<Ability>();
+
+    public Ability GetAbility(string abilityName)
+    {
+        for(int i=0;i<Abilities.Count;i++)
+        {
+            if(Abilities[i].name == abilityName)
+            {
+                return Abilities[i];
+            }
+        }
+
+        return null;
+    }
 }
