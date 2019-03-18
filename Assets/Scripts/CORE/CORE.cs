@@ -18,7 +18,10 @@ public class CORE : MonoBehaviour {
 
     //TODO REMOVE ME LATER! AFTER RANDOM REGISTER IS COMPLETE.
     string tempRandomUsername;
-    
+
+    [SerializeField]
+    public InputMap Input;
+
     #endregion
 
     #region Initialize

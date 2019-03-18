@@ -55,32 +55,23 @@ public class MovementController : MonoBehaviour {
     {
         if (isPlayer)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(InputMap.Map["Walk Left"]))
             {
-                Animer.SetBool("Run", true);
-                Animer.transform.localScale = new Vector3(1f, 1f, 1f);
+                WalkLeft();
 
-                Rigid.position += (Vector2)transform.right * -Speed * Time.deltaTime;
-
-                lastXDir = -Speed;
             }
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(InputMap.Map["Walk Right"]))
             {
-                Animer.SetBool("Run", true);
-                Animer.transform.localScale = new Vector3(-1f, 1f, 1f);
+                WalkRight();
 
-                Rigid.position += (Vector2)transform.right * Speed * Time.deltaTime;
-
-                lastXDir = Speed;
             }
             else
             {
-                Animer.SetBool("Run", false);
+                StandStill();
 
-                lastXDir = 0f;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            if (Input.GetKeyDown(InputMap.Map["Jump"]) && isGrounded)
             {
                 Rigid.AddForce(transform.up * Jump, ForceMode2D.Impulse);
                 Animer.SetTrigger("Jump");
@@ -88,7 +79,7 @@ public class MovementController : MonoBehaviour {
 
             Animer.SetBool("inAir", !isGrounded && isFalling);
 
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(InputMap.Map["Ability1"]))
             {
                 Animer.SetInteger("AttackID", UnityEngine.Random.Range(0, 3));
                 Animer.SetTrigger("Attack");
@@ -99,11 +90,38 @@ public class MovementController : MonoBehaviour {
                 obj.GetComponent<HitBoxScript>().SetInfo();
             }
 
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(InputMap.Map["Ability2"]))
             {
                 Animer.SetTrigger("Hurt");
             }
         }
+    }
+
+    void WalkLeft()
+    {
+        Animer.SetBool("Run", true);
+        Animer.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        Rigid.position += (Vector2)transform.right * -Speed * Time.deltaTime;
+
+        lastXDir = -Speed;
+    }
+
+    void WalkRight()
+    {
+        Animer.SetBool("Run", true);
+        Animer.transform.localScale = new Vector3(-1f, 1f, 1f);
+
+        Rigid.position += (Vector2)transform.right * Speed * Time.deltaTime;
+
+        lastXDir = Speed;
+    }
+
+    void StandStill()
+    {
+        Animer.SetBool("Run", false);
+
+        lastXDir = 0f;
     }
 
     private void FixedUpdate()

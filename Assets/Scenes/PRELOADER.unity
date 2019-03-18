@@ -418,6 +418,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87784593f886bb74ba3a70981accfb34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Input:
+    InitList:
+    - {fileID: 11400000, guid: 45e28f2b9017d9e47ace7c63c4263565, type: 2}
+    - {fileID: 11400000, guid: 8f8f7f740c9d4fd4e91c9f8e02c41030, type: 2}
+    - {fileID: 11400000, guid: 415b1941eebfa5044bd20c4d68993cc8, type: 2}
+    - {fileID: 11400000, guid: 342730fa953763748be828f6268109d1, type: 2}
+    - {fileID: 11400000, guid: ecdf5eddd02c4434aa3b7686d91e87e4, type: 2}
 --- !u!114 &1167732154
 MonoBehaviour:
   m_ObjectHideFlags: 0
