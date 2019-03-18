@@ -10,7 +10,8 @@ public class MovementController : MonoBehaviour {
     [SerializeField] Animator Animer;
     [SerializeField] Rigidbody2D Rigid;
     [SerializeField] float Speed = 1f;
-    [SerializeField] float Jump = 1f;
+    [SerializeField] float JumpPower = 1f;
+    [SerializeField] float MaxVelocity = 10f;
 
     [SerializeField]
     float GroundedThreshold;
@@ -73,8 +74,7 @@ public class MovementController : MonoBehaviour {
 
             if (Input.GetKeyDown(InputMap.Map["Jump"]) && isGrounded)
             {
-                Rigid.AddForce(transform.up * Jump, ForceMode2D.Impulse);
-                Animer.SetTrigger("Jump");
+                Jump();
             }
 
             Animer.SetBool("inAir", !isGrounded && isFalling);
@@ -123,25 +123,51 @@ public class MovementController : MonoBehaviour {
 
         lastXDir = 0f;
     }
+    
+    void Jump()
+    {
+        if(JumpRoutineInstance != null)
+        {
+            StopCoroutine(JumpRoutineInstance);
+        }
+
+        JumpRoutineInstance = StartCoroutine(JumpRoutine());
+    }
+
+    Coroutine JumpRoutineInstance;
+    IEnumerator JumpRoutine()
+    {
+        yield return 0;
+        Rigid.AddForce(transform.up * JumpPower, ForceMode2D.Impulse);
+        Animer.SetTrigger("Jump");
+
+        JumpRoutineInstance = null;
+    }
 
     private void FixedUpdate()
     {
         if (isPlayer)
         {
-            //if (lastSentPos != transform.position)
-            //{
-                SocketClient.Instance.EmitMovement(transform.position, lastXDir, Rigid.velocity.y);
-                lastSentPos = transform.position;
-            //}
+            SocketClient.Instance.EmitMovement(transform.position, lastXDir, Rigid.velocity.y);
+            lastSentPos = transform.position;
+        }
+
+        if (Rigid.velocity.magnitude > MaxVelocity)
+        {
+            Rigid.velocity = Rigid.velocity.normalized * MaxVelocity;
         }
     }
 
     #endregion
 
+    #region Shared
+
     public void Hurt()
     {
         Animer.SetTrigger("Hurt");
     }
+
+    #endregion
 
     #region Server Control
 

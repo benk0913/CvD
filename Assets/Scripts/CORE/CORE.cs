@@ -33,6 +33,12 @@ public class CORE : MonoBehaviour {
 
     private void Start()
     {
+        Initialize();
+    }
+
+    void Initialize()
+    {
+        Input.Initialize();
         AutoLogin();
     }
 
@@ -147,7 +153,7 @@ public class CORE : MonoBehaviour {
         character.LastPosition = new Vector3(0, 0, -3f);
 
 
-        GameObject charObj = Instantiate(ResourcesLoader.Instance.GetObject("Actor"));
+        GameObject charObj = Instantiate(ResourcesLoader.Instance.GetObject("Actor_Test"));
         charObj.GetComponent<MovementController>().isPlayer = (character.ID == CurrentCharacter.ID);
         charObj.transform.position = new Vector3(0, 0, -3f);
 

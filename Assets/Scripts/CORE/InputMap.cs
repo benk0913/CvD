@@ -12,19 +12,16 @@ public class InputMap {
      
     public static Dictionary<string, KeyCode> Map = new Dictionary<string, KeyCode>();
 
-    public InputMap()
+    public void Initialize()
     {
         Map.Clear();
-        Initialize();
-        LoadMap();
-    }
 
-    private void Initialize()
-    {
         for (int i = 0; i < InitList.Count; i++)
         {
             Map.Add(InitList[i].name, InitList[i].KeyCode);
         }
+
+        LoadMap();
     }
 
     public static void LoadMap()
