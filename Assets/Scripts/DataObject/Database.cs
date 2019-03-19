@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Database", menuName = "DataObjects/Database", order = 2)]
 public class Database : ScriptableObject
 {
-    public List<CharacterClass> Classes = new List<CharacterClass>();
+    [SerializeField]
+    public List<CharacterClass> Classes;
 
     public CharacterClass GetClass(string className)
     {

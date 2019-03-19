@@ -22,6 +22,8 @@ public class MovementController : MonoBehaviour {
     [SerializeField]
     CapsuleCollider2D CurrentCollider;
 
+    public CharacterInfo Character;
+
     public bool isPlayer;
 
     float lastXDir;
@@ -56,43 +58,40 @@ public class MovementController : MonoBehaviour {
     {
         if (isPlayer)
         {
-            if (Input.GetKey(InputMap.Map["Walk Left"]))
+            RefreshInput();
+        }
+    }
+
+    void RefreshInput()
+    {
+        if (Input.GetKey(InputMap.Map["Walk Left"]))
+        {
+            WalkLeft();
+
+        }
+        else if (Input.GetKey(InputMap.Map["Walk Right"]))
+        {
+            WalkRight();
+
+        }
+        else
+        {
+            StandStill();
+
+        }
+
+        if (Input.GetKeyDown(InputMap.Map["Jump"]) && isGrounded)
+        {
+            Jump();
+        }
+
+        Animer.SetBool("inAir", !isGrounded && isFalling);
+
+        for(int i=0;i< Character.Class.Abilities.Count;i++)
+        {
+            if (Input.GetKeyDown(InputMap.Map["Ability"+(i+1)]))
             {
-                WalkLeft();
-
-            }
-            else if (Input.GetKey(InputMap.Map["Walk Right"]))
-            {
-                WalkRight();
-
-            }
-            else
-            {
-                StandStill();
-
-            }
-
-            if (Input.GetKeyDown(InputMap.Map["Jump"]) && isGrounded)
-            {
-                Jump();
-            }
-
-            Animer.SetBool("inAir", !isGrounded && isFalling);
-
-            if (Input.GetKeyDown(InputMap.Map["Ability1"]))
-            {
-                Animer.SetInteger("AttackID", UnityEngine.Random.Range(0, 3));
-                Animer.SetTrigger("Attack");
-                SocketClient.Instance.SendPreformedAttack(1f, 0);
-
-                GameObject obj = ResourcesLoader.Instance.GetRecycledObject("HitBox");
-                obj.transform.position = transform.position;
-                obj.GetComponent<HitBoxScript>().SetInfo();
-            }
-
-            if (Input.GetKeyDown(InputMap.Map["Ability2"]))
-            {
-                Animer.SetTrigger("Hurt");
+                ActivateAbility(Character.Class.Abilities[i]);
             }
         }
     }
@@ -144,6 +143,17 @@ public class MovementController : MonoBehaviour {
         JumpRoutineInstance = null;
     }
 
+    void ActivateAbility(Ability ability)
+    {
+        Animer.SetInteger("AbilityID", ability.AnimationID);
+        Animer.SetTrigger("Ability");
+        
+        //SocketClient.Instance.SendPreformedAttack(1f, 0);
+        //GameObject obj = ResourcesLoader.Instance.GetRecycledObject("HitBox");
+        //obj.transform.position = transform.position;
+        //obj.GetComponent<HitBoxScript>().SetInfo();
+    }
+
     private void FixedUpdate()
     {
         if (isPlayer)
@@ -161,6 +171,12 @@ public class MovementController : MonoBehaviour {
     #endregion
 
     #region Shared
+
+    public void SetInfo(CharacterInfo info, bool isplayer)
+    {
+        this.isPlayer = isplayer;
+        this.Character = info;
+    }
 
     public void Hurt()
     {

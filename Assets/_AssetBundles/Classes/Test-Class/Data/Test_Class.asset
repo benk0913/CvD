@@ -18,3 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d0f85ed8415f3e4ab99a7f651a62935, type: 2}
   - {fileID: 11400000, guid: 7d0f85ed8415f3e4ab99a7f651a62935, type: 2}
   - {fileID: 11400000, guid: 7d0f85ed8415f3e4ab99a7f651a62935, type: 2}
+  SpaceAbility: {fileID: 0}
+  ShieftAbility: {fileID: 0}
