@@ -20,10 +20,7 @@ public class CORE : MonoBehaviour {
     string tempRandomUsername;
 
     [SerializeField]
-    public InputMap Input;
-
-    [SerializeField]
-    public Database Data = new Database();
+    public Database Data;
 
     #endregion
 
@@ -41,7 +38,6 @@ public class CORE : MonoBehaviour {
 
     void Initialize()
     {
-        Input.Initialize();
         AutoLogin();
     }
 
@@ -146,7 +142,8 @@ public class CORE : MonoBehaviour {
     {
         CharacterInfo character = new CharacterInfo(
             response["character"]["_id"].Value,
-            response["character"]["name"].Value);
+            response["character"]["name"].Value,
+            Data.GetClass(response["class"].Value));
 
         SpawnCharacter(character);
     }
@@ -157,7 +154,9 @@ public class CORE : MonoBehaviour {
 
 
         GameObject charObj = Instantiate(ResourcesLoader.Instance.GetObject("Actor_Test"));
-        charObj.GetComponent<MovementController>().isPlayer = (character.ID == CurrentCharacter.ID);
+
+        charObj.GetComponent<MovementController>().SetInfo(character ,(character.ID == CurrentCharacter.ID));
+
         charObj.transform.position = new Vector3(0, 0, -3f);
 
         character.CInstance = charObj;

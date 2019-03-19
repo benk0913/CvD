@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-[System.Serializable]
-public class InputMap {
+public class InputMap : MonoBehaviour {
 
     [SerializeField]
     List<InputKeyPair> InitList = new List<InputKeyPair>();
      
     public static Dictionary<string, KeyCode> Map = new Dictionary<string, KeyCode>();
+
+    private void Awake()
+    {
+        Initialize();
+    }
 
     public void Initialize()
     {
@@ -26,16 +30,22 @@ public class InputMap {
 
     public static void LoadMap()
     {
+        string currentKey;
+        int currentValue;
+
         int i = 0;
         while (PlayerPrefs.HasKey("inputMapKey_" + i))
         {
-            if (Map.ContainsKey(PlayerPrefs.GetString("inputMapKey_" + i)))
+            currentKey = PlayerPrefs.GetString("inputMapKey_" + i);
+            currentValue = PlayerPrefs.GetInt("inputMapValue_" + i);
+
+            if (Map.ContainsKey(currentKey))
             {
-                Map[PlayerPrefs.GetString("inputMapKey_" + i)] = (KeyCode)PlayerPrefs.GetInt("inputMapValue_" + i);
+                Map[currentKey] = (KeyCode)currentValue;
             }
             else
             {
-                Map.Add(PlayerPrefs.GetString("inputMapKey_" + i), (KeyCode)PlayerPrefs.GetInt("inputMapValue_" + i));
+                Map.Add(currentKey, (KeyCode)currentValue);
             }
 
             i++;

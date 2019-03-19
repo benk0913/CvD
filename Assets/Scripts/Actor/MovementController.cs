@@ -80,7 +80,7 @@ public class MovementController : MonoBehaviour {
 
         }
 
-        if (Input.GetKeyDown(InputMap.Map["Jump"]) && isGrounded)
+        if (Input.GetKeyDown(InputMap.Map["Space Ability"]) && isGrounded)
         {
             Jump();
         }
@@ -145,8 +145,9 @@ public class MovementController : MonoBehaviour {
 
     void ActivateAbility(Ability ability)
     {
-        Animer.SetInteger("AbilityID", ability.AnimationID);
-        Animer.SetTrigger("Ability");
+        Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
+        //Animer.SetInteger("AbilityID", ability.AnimationsIDs[UnityEngine.Random.Range(0, ability.AnimationsIDs.Count)]);
+        //Animer.SetTrigger("Ability");
         
         //SocketClient.Instance.SendPreformedAttack(1f, 0);
         //GameObject obj = ResourcesLoader.Instance.GetRecycledObject("HitBox");

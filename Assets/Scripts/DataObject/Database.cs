@@ -18,7 +18,7 @@ public class Database : ScriptableObject
             }
         }
 
-        return null;
+        return Classes[0]; //TOOD REPLACE WITH NULL WHEN CLASSES ARE IMPLEMENTED!
     }
 
     public Ability GetAbility(string abilityName)

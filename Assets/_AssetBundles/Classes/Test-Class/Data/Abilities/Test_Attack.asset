@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Slash
   Cooldown: 0.5
-  AnimationID: 1
+  Animations:
+  - SmallCat_OneHand_Attack1
   Perks:
   - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
   - {fileID: 11400000, guid: 567a7f8c6b0c97148bf558c7488452ab, type: 2}

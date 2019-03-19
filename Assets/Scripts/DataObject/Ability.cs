@@ -8,8 +8,8 @@ public class Ability : ScriptableObject
     public string DisplayName;
 
     public float Cooldown = 1f;
-    
-    public int AnimationID = 0;
+
+    public List<string> Animations;
 
     public List<Perk> Perks = new List<Perk>();
 
