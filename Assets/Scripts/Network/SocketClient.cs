@@ -796,7 +796,7 @@ public class SocketClient : MonoBehaviour
 
         BroadcastEvent(data["id"].Value + " Preforms Attack");
 
-        CORE.Instance.PerformAttack(data["id"].Value);
+        CORE.Instance.ActivateAbility(data["id"].Value, data["ability_key"]);
         //ActorInfo actorInfo = Game.Instance.CurrentScene.GetActor(data["id"].Value);
 
         //if (actorInfo != null)
@@ -1559,6 +1559,29 @@ public class SocketClient : MonoBehaviour
         CurrentSocket.Emit("movement", node);
     }
 
+    public void SendUsedAbility(string abilityKey)
+    {
+        JSONNode node = new JSONClass();
+
+        node["ability_key"] = abilityKey;
+
+        CurrentSocket.Emit("used_ability", node);
+    }
+
+    public void SendHitAbility(List<string> targetIDs, string abilityKey)
+    {
+        JSONNode node = new JSONClass();
+
+        node["ability_key"] = abilityKey;
+
+        for (int i = 0; i < targetIDs.Count; i++)
+        {
+            node["target_ids"][i] = targetIDs[i];
+        }
+
+        CurrentSocket.Emit("hit_ability", node);
+    }
+
     public void SendStartedClimbing()
     {
         JSONNode node = new JSONClass();
@@ -1763,15 +1786,6 @@ public class SocketClient : MonoBehaviour
         CurrentSocket.Emit("performed_attack", node);
     }
 
-    public void SendChangedAbility(string ability)
-    {
-        JSONNode node = new JSONClass();
-
-        node["ability"] = ability;
-
-        CurrentSocket.Emit("changed_ability", node);
-    }
-
     public void SendMobsMove()
     {
         JSONNode node = new JSONClass();
@@ -1790,46 +1804,6 @@ public class SocketClient : MonoBehaviour
         node["char_id"] = charId;
 
         CurrentSocket.Emit("mob_init_aggro", node);
-    }
-
-    public void SendUsedPrimaryAbility(List<string> targetIDs, uint attackId)
-    {
-        JSONNode node = new JSONClass();
-
-        for(int i = 0; i < targetIDs.Count; i++)
-        {
-            node["target_ids"][i] = targetIDs[i];
-        }
-
-        node["attack_id"] = attackId.ToString();
-
-        CurrentSocket.Emit("used_ability", node);
-    }
-
-    public void SendStartedSecondaryMode()
-    {
-        JSONNode node = new JSONClass();
-
-        CurrentSocket.Emit("secondary_mode_started", node);
-    }
-
-    public void SendHitSecondaryMode(List<string> targetIDs)
-    {
-        JSONNode node = new JSONClass();
-
-        for(int i = 0; i < targetIDs.Count; i++)
-        {
-            node["target_ids"][i] = targetIDs[i];
-        }
-
-        CurrentSocket.Emit("secondary_mode_hit", node);
-    }
-
-    public void SendEndedSecondaryMode()
-    {
-        JSONNode node = new JSONClass();
-
-        CurrentSocket.Emit("secondary_mode_ended", node);
     }
 
     public void SendItemPositions(List<Vector3> ItemInstances)
@@ -1987,32 +1961,6 @@ public class SocketClient : MonoBehaviour
         CurrentSocket.Emit("choose_perk", node);
     }
 
-    public void SendUsedSpell(string spellKey, uint attackId)
-    {
-        JSONNode node = new JSONClass();
-
-        node["spell_key"] = spellKey;
-        node["attack_id"] = attackId.ToString();
-
-        CurrentSocket.Emit("used_spell", node);
-    }
-
-    public void SendHitSpell(List<string> targetIDs, uint attackId)
-    {
-        JSONNode node = new JSONClass();
-
-        node["attack_id"] = attackId.ToString();
-
-        for (int i = 0; i < targetIDs.Count; i++)
-        {
-            node["target_ids"][i] = targetIDs[i];
-        }
-
-        Debug.Log(node);
-
-        CurrentSocket.Emit("hit_spell", node);
-    }
-
     public void SendNpcTeleport(string npcKey, string roomKey, bool instance = false)
     {
         JSONNode node = new JSONClass();
@@ -2024,26 +1972,6 @@ public class SocketClient : MonoBehaviour
         }
 
         CurrentSocket.Emit("npc_teleport", node);
-    }
-
-    
-    public void SendTookSpellDamage(string spellKey, string mobID)
-    {
-        JSONNode node = new JSONClass();
-
-        node["spell_key"] = spellKey;
-        node["mob_id"] = mobID;
-
-        CurrentSocket.Emit("took_spell_dmg", node);
-    }
-    
-    public void SendSelectMainAbility(string key)
-    {
-        JSONNode node = new JSONClass();
-
-        node["ability"] = key;
-
-        CurrentSocket.Emit("selected_main_ability", node);
     }
 
     public void SendStartedDungeon(string dungeonKey)

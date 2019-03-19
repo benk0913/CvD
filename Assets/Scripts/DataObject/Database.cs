@@ -18,7 +18,7 @@ public class Database : ScriptableObject
             }
         }
 
-        return Classes[0]; //TOOD REPLACE WITH NULL WHEN CLASSES ARE IMPLEMENTED!
+        return Classes[0]; //TOOD REPLACE WITH NULL WHEN CLASSES ARE IMPLEMENTED IN SERVER!
     }
 
     public Ability GetAbility(string abilityName)
@@ -33,6 +33,6 @@ public class Database : ScriptableObject
             }
         }
 
-        return null;
+        return Classes[0].Abilities[0]; //TOOD REPLACE WITH NULL WHEN CLASSES ARE IMPLEMENTED IN SERVER!;
     }
 }

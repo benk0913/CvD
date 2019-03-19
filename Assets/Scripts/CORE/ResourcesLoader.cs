@@ -93,6 +93,11 @@ public class ResourcesLoader : MonoBehaviour {
         return null;
     }
 
+    public GameObject GetRecycledObject(GameObject gObject)
+    {
+        return recycleObject(gObject);
+    }
+
     public AudioClip  GetClip(string gKey)
     {
         if (m_dicLoadedClips.ContainsKey(gKey))
@@ -480,7 +485,64 @@ public class ResourcesLoader : MonoBehaviour {
         return tempObj;
     }
 
-    
+    protected GameObject recycleObject(GameObject gObject)
+    {
+        GameObject tempObj = null;
+
+        if(!m_dicLoadedObjects.ContainsKey(gObject.name))
+        {
+            m_dicLoadedObjects.Add(gObject.name, gObject);
+        }
+
+        List<int> objectIndexesToRemove = new List<int>();
+        for (int i = 0; i < m_listObjectPool.Count; i++)
+        {
+            if (m_listObjectPool[i] == null)
+            {
+                // if an object was destroyed, it will equal to null
+                if (debugMode)
+                {
+                    Debug.Log("Object destroyed " + gObject.name);
+                }
+                objectIndexesToRemove.Add(i);
+            }
+            else if (!m_listObjectPool[i].activeInHierarchy && m_listObjectPool[i].name == gObject.name)
+            {
+                tempObj = m_listObjectPool[i];
+
+                if (debugMode)
+                {
+                    Debug.Log("Recycled " + gObject.name);
+                }
+
+                break;
+            }
+        }
+
+        for (int i = objectIndexesToRemove.Count - 1; i >= 0; i--)
+        {
+            int indexToRemove = objectIndexesToRemove[i];
+            m_listObjectPool.RemoveAt(indexToRemove);
+        }
+
+        if (tempObj == null)
+        {
+            tempObj = (GameObject)Instantiate(m_dicLoadedObjects[gObject.name]);
+
+            if (debugMode)
+            {
+                Debug.Log("Created a new " + gObject);
+            }
+        }
+
+        tempObj.name = gObject.name;
+        tempObj.SetActive(true);
+        m_listObjectPool.Add(tempObj);
+
+        return tempObj;
+    }
+
+
     #endregion
 
 }

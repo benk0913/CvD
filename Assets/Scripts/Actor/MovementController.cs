@@ -85,6 +85,11 @@ public class MovementController : MonoBehaviour {
             Jump();
         }
 
+        if (Input.GetKeyDown(InputMap.Map["Shift Ability"]))
+        {
+            Hurt();
+        }
+
         Animer.SetBool("inAir", !isGrounded && isFalling);
 
         for(int i=0;i< Character.Class.Abilities.Count;i++)
@@ -143,18 +148,6 @@ public class MovementController : MonoBehaviour {
         JumpRoutineInstance = null;
     }
 
-    void ActivateAbility(Ability ability)
-    {
-        Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
-        //Animer.SetInteger("AbilityID", ability.AnimationsIDs[UnityEngine.Random.Range(0, ability.AnimationsIDs.Count)]);
-        //Animer.SetTrigger("Ability");
-        
-        //SocketClient.Instance.SendPreformedAttack(1f, 0);
-        //GameObject obj = ResourcesLoader.Instance.GetRecycledObject("HitBox");
-        //obj.transform.position = transform.position;
-        //obj.GetComponent<HitBoxScript>().SetInfo();
-    }
-
     private void FixedUpdate()
     {
         if (isPlayer)
@@ -179,9 +172,34 @@ public class MovementController : MonoBehaviour {
         this.Character = info;
     }
 
+    public void ActivateAbility(Ability ability)
+    {
+        Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
+
+        if (isPlayer)
+        {
+            SocketClient.Instance.SendUsedAbility(ability.name);
+
+            GameObject tempObj;
+            for (int i = 0; i < ability.ObjectsToSpawn.Count; i++)
+            {
+                tempObj = ResourcesLoader.Instance.GetRecycledObject(ability.ObjectsToSpawn[i]);
+                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character.ID, ability);
+            }
+        }
+
+        //Animer.SetInteger("AbilityID", ability.AnimationsIDs[UnityEngine.Random.Range(0, ability.AnimationsIDs.Count)]);
+        //Animer.SetTrigger("Ability");
+
+        //SocketClient.Instance.SendPreformedAttack(1f, 0);
+        //GameObject obj = ResourcesLoader.Instance.GetRecycledObject("HitBox");
+        //obj.transform.position = transform.position;
+        //obj.GetComponent<HitBoxScript>().SetInfo();
+    }
+
     public void Hurt()
     {
-        Animer.SetTrigger("Hurt");
+        Animer.Play(Character.Class.HurtAnimations[UnityEngine.Random.Range(0, Character.Class.HurtAnimations.Count)]);
     }
 
     #endregion
@@ -251,13 +269,13 @@ public class MovementController : MonoBehaviour {
     private IEnumerator FixPositionRoutine()
     {
         float t = 0f;
-        while(t<1f)
+        while (t < 1f)
         {
             t += 3f * Time.deltaTime;
 
             Rigid.position = Vector3.Lerp(Rigid.position, LastGivenPosition, t);
 
-            if(lastDirectionY > 0f)
+            if (lastDirectionY > 0f)
             {
                 Rigid.gravityScale = 0f;
             }
@@ -272,23 +290,13 @@ public class MovementController : MonoBehaviour {
         FixPositionRoutineInstance = null;
     }
 
-    public void PreformAttack()
-    {
-        Animer.SetTrigger("Attack");
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(!isPlayer && collision.tag == "HitBox")
         {
-            List<string> ids = new List<string>();
             CharacterInfo chara = CORE.Instance.CurrentRoom.GetPlayer(this.gameObject);
 
-
-            ids.Add(chara.Name);
-            SocketClient.Instance.SendUsedPrimaryAbility(ids, 0);
-
-            collision.GetComponent<HitBoxScript>().Interact();
+            collision.GetComponent<HitBoxScript>().Interact(chara.Name);
         }
     }
 

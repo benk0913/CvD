@@ -153,7 +153,7 @@ public class CORE : MonoBehaviour {
         character.LastPosition = new Vector3(0, 0, -3f);
 
 
-        GameObject charObj = Instantiate(ResourcesLoader.Instance.GetObject("Actor_Test"));
+        GameObject charObj = Instantiate(character.Class.ClassActor);
 
         charObj.GetComponent<MovementController>().SetInfo(character ,(character.ID == CurrentCharacter.ID));
 
@@ -186,9 +186,9 @@ public class CORE : MonoBehaviour {
         CurrentRoom.GetPlayer(jSONNode["id"].Value).CInstance.GetComponent<MovementController>().SetLastPosition(pos, dirX, dirY);
     }
 
-    public void PerformAttack(string id)
+    public void ActivateAbility(string id, string abilityKey)
     {
-        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().PreformAttack();
+        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().ActivateAbility(Data.GetAbility(abilityKey));
     }
 
     public void ActorHurt(string id)
