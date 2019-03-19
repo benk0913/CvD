@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: SmallBleed
+  m_Script: {fileID: 11500000, guid: 8245cc2d9df5dee49affb1bc1129d353, type: 3}
+  m_Name: AoeModifier
   m_EditorClassIdentifier: 
-  Attribute: {fileID: 11400000, guid: c70c28a307b8c5648a272c0df795c6e8, type: 2}
-  MinValue: 1
-  MaxValue: 2
-  Chance: 0.25

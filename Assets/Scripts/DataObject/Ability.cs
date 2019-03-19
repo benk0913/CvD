@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SimpleJSON;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,5 +19,27 @@ public class Ability : ScriptableObject
     public List<GameObject> ObjectsToSpawn;
 
     public Ability AbilityOnHit;
+
+    public JSONNode ToJson()
+    {
+        JSONNode node = new JSONClass();
+
+        node["ability_key"] = this.name;
+        node["duration"] = this.Duration.ToString();
+        node["cooldown"] = this.Cooldown.ToString();
+
+        for (int i = 0; i < Perks.Count; i++)
+        {
+            node["perks"][i] = Perks[i].ToJson();
+        }
+
+        if(AbilityOnHit != null)
+        {
+            node["ability_on_hit"] = this.AbilityOnHit.ToJson();
+        }
+
+
+        return node;
+    }
 
 }

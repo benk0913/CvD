@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SimpleJSON;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,5 +27,20 @@ public class CharacterClass : ScriptableObject
         }
 
         return null;
+    }
+
+    public JSONNode ToJson()
+    {
+        JSONNode node = new JSONClass();
+
+        node["class_key"] = this.name;
+        node["base_hp"] = this.BaseHP.ToString();
+        
+        for(int i=0;i<Abilities.Count;i++)
+        {
+            node["abilities"][i] = Abilities[i].ToJson();
+        }
+
+        return node;
     }
 }

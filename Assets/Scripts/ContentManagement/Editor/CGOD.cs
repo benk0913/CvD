@@ -1,4 +1,5 @@
 ﻿
+using SimpleJSON;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class CGOD : EditorWindow
 {
 
     CGODSubwindow CurrentSubwindow;
+
+    Database DB;
 
     [MenuItem("CvD/Content God")]
     static void Init()
@@ -61,10 +64,12 @@ public class CGOD : EditorWindow
 
         GUILayout.FlexibleSpace();
 
-        if (GUILayout.Button("MASS UPDATE"))
+        if (GUILayout.Button("UPDATE DATABASE"))
         {
-
+            UpdateDatabase();
         }
+
+        DB = (Database)EditorGUILayout.ObjectField(DB, typeof(Database), true);
 
         EditorGUILayout.EndHorizontal();
 
@@ -127,6 +132,18 @@ public class CGOD : EditorWindow
         }
 
         GUILayout.EndVertical();
+    }
+
+    public void UpdateDatabase()
+    {
+        JSONNode database = new JSONClass();
+
+        for(int i=0;i<DB.Classes.Count;i++)
+        {
+            database["classes"][i] = DB.Classes[i].ToJson();
+        }
+
+        //TODO Send HTTP Request
     }
 
 
