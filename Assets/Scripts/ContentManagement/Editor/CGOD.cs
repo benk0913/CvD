@@ -143,6 +143,7 @@ public class CGOD : EditorWindow
             database["classes"][i] = DB.Classes[i].ToJson();
         }
 
+        Debug.Log(database.ToString());
         //TODO Send HTTP Request
     }
 

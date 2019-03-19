@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
   m_Name: SmallChance
   m_EditorClassIdentifier: 
-  Attribute: {fileID: 11400000, guid: c70c28a307b8c5648a272c0df795c6e8, type: 2}
+  Attribute: {fileID: 11400000, guid: 82c344485484e204aaeb1b0eecba94fd, type: 2}
   MinValue: 0.1
   MaxValue: 0.1
   Perks: []
