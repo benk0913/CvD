@@ -674,7 +674,7 @@ public class SocketClient : MonoBehaviour
         JSONNode data = (JSONNode)args[0];
         BroadcastEvent("Damage taken | " + data.ToString());
 
-        CORE.Instance.ActorHurt(data["target_id"].Value);
+        CORE.Instance.ActorHurt(data["player_id"].Value, data["damage"].AsInt);
 
         //int hp = data["hp"].AsInt;
 

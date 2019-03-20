@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Slash
   Duration: 0.01
-  Cooldown: 0.5
+  Cooldown: 0.2
   Animations:
   - Attack1
   - Attack2

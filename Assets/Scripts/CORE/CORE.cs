@@ -154,14 +154,17 @@ public class CORE : MonoBehaviour {
 
 
         GameObject charObj = Instantiate(character.Class.ClassActor);
+        MovementController actor = charObj.GetComponent<MovementController>();
 
-        charObj.GetComponent<MovementController>().SetInfo(character ,(character.ID == CurrentCharacter.ID));
+        actor.SetInfo(character ,(character.ID == CurrentCharacter.ID));
 
         charObj.transform.position = new Vector3(0, 0, -3f);
 
         character.CInstance = charObj;
 
         CurrentRoom.Characters.Add(character);
+
+        InGamePanelUI.Instance.SetInfo(actor);
     }
 
     IEnumerator InitializeSceneContent()
@@ -191,9 +194,9 @@ public class CORE : MonoBehaviour {
         CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().ActivateAbility(Data.GetAbility(abilityKey));
     }
 
-    public void ActorHurt(string id)
+    public void ActorHurt(string id, int amount)
     {
-        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().Hurt();
+        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().Hurt(amount);
     }
 
     #endregion

@@ -24,6 +24,8 @@ public class MovementController : MonoBehaviour {
 
     public CharacterInfo Character;
 
+    public ActorState Status;
+
     public bool isPlayer;
 
     float lastXDir;
@@ -87,7 +89,7 @@ public class MovementController : MonoBehaviour {
 
         if (Input.GetKeyDown(InputMap.Map["Shift Ability"]))
         {
-            Hurt();
+            Hurt(1);
         }
 
         Animer.SetBool("inAir", !isGrounded && isFalling);
@@ -162,6 +164,26 @@ public class MovementController : MonoBehaviour {
         }
     }
 
+
+    private void StartCooldown(Ability ability)
+    {
+        AbilityStatus abilityStatus = Status.GetAbilityStatus(ability);
+
+        if (abilityStatus.CooldownRoutine != null)
+        {
+            StopCoroutine(abilityStatus.CooldownRoutine);
+        }
+
+        abilityStatus.CooldownRoutine = StartCoroutine(CooldownRoutine(abilityStatus));
+    }
+
+    IEnumerator CooldownRoutine(AbilityStatus abilityStatus)
+    {
+        yield return new WaitForSeconds(abilityStatus.Reference.Cooldown);
+
+        abilityStatus.CooldownRoutine = null;
+    }
+
     #endregion
 
     #region Shared
@@ -170,14 +192,22 @@ public class MovementController : MonoBehaviour {
     {
         this.isPlayer = isplayer;
         this.Character = info;
+
+        Status.Initialize(this.Character);
     }
 
     public void ActivateAbility(Ability ability)
     {
-        Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
-
         if (isPlayer)
         {
+            if(Status.GetAbilityStatus(ability).CooldownRoutine != null)
+            {
+                //TODO - IN COOLDOWN ALERT!
+                return;
+            }
+
+            Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
+
             SocketClient.Instance.SendUsedAbility(ability.name);
 
             GameObject tempObj;
@@ -186,20 +216,22 @@ public class MovementController : MonoBehaviour {
                 tempObj = ResourcesLoader.Instance.GetRecycledObject(ability.ObjectsToSpawn[i]);
                 tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character.ID, ability);
             }
+
+            InGamePanelUI.Instance.ActivateAbility(ability);
+
+            StartCooldown(ability);
         }
-
-        //Animer.SetInteger("AbilityID", ability.AnimationsIDs[UnityEngine.Random.Range(0, ability.AnimationsIDs.Count)]);
-        //Animer.SetTrigger("Ability");
-
-        //SocketClient.Instance.SendPreformedAttack(1f, 0);
-        //GameObject obj = ResourcesLoader.Instance.GetRecycledObject("HitBox");
-        //obj.transform.position = transform.position;
-        //obj.GetComponent<HitBoxScript>().SetInfo();
+        else
+        {
+            Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
+        }
     }
 
-    public void Hurt()
+    public void Hurt(int damage)
     {
         Animer.Play(Character.Class.HurtAnimations[UnityEngine.Random.Range(0, Character.Class.HurtAnimations.Count)]);
+
+        Status.CurrentHP -= damage;
     }
 
     #endregion

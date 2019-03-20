@@ -403,8 +403,9 @@ GameObject:
   - component: {fileID: 3031166282219027077}
   - component: {fileID: 7954459403393066071}
   - component: {fileID: 7193160884187330843}
+  - component: {fileID: 2249799873277289769}
   m_Layer: 8
-  m_Name: Panel
+  m_Name: HP_BAR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,8 +428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.5, y: -0.6899986}
-  m_SizeDelta: {x: -56.15, y: -92.88}
+  m_AnchoredPosition: {x: 1.6, y: -0.6899986}
+  m_SizeDelta: {x: -43.29, y: -92.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7954459403393066071
 CanvasRenderer:
@@ -467,6 +468,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2249799873277289769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048311440129094646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8daa4449e924a42918fe65cbf67b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentValue: 0
+  FillImage: {fileID: 2452816639216854276}
 --- !u!1 &1118960450371998133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,6 +1725,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   CurrentCollider: {fileID: 99240365}
+  Status:
+    HPBar: {fileID: 2249799873277289769}
   isPlayer: 1
   ExtrapolationMultiplier: 0.05
   DeltaMultiplier: 2

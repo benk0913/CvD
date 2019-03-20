@@ -9,15 +9,18 @@ public class HealthBarUI : MonoBehaviour
 
     [SerializeField]
     Image FillImage;
-
-    public void SetInfo(CharacterInfo info)
-    {
-
-    }
+    
 
     public void RefreshValue(float value)
     {
         this.CurrentValue = value;
+
+        if(RefreshRoutineInstance != null)
+        {
+            StopCoroutine(RefreshRoutineInstance);
+        }
+
+        RefreshRoutineInstance = StartCoroutine(RefreshRoutine());
     }
 
     Coroutine RefreshRoutineInstance;
