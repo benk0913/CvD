@@ -22,6 +22,12 @@ public class CORE : MonoBehaviour {
     [SerializeField]
     public Database Data;
 
+    [SerializeField]
+    List<GameObject> CommonPrefabs = new List<GameObject>();
+
+    public Dictionary<string, GameObject> PrefabDatabase = new Dictionary<string, GameObject>();
+
+
     #endregion
 
     #region Initialize
@@ -39,6 +45,13 @@ public class CORE : MonoBehaviour {
     void Initialize()
     {
         AutoLogin();
+
+        GameObject tempPrefab;
+        for(int i=0;i<CommonPrefabs.Count;i++)
+        {
+            tempPrefab = CommonPrefabs[i];
+            PrefabDatabase.Add(tempPrefab.name, tempPrefab);
+        }
     }
 
     private void AutoLogin()
@@ -107,6 +120,8 @@ public class CORE : MonoBehaviour {
 
 
     #region Public Methods
+
+    #region Scene Loading
 
     public void LoadScene(JSONNode roomData, JSONNode charData)
     {
@@ -184,6 +199,10 @@ public class CORE : MonoBehaviour {
         ((SceneCamera)CurrentRoom.Settings.GetSceneEntity("Camera")).SetFollowTarget(CurrentCharacter.CInstance);
     }
 
+    #endregion
+
+    #region Room Events Handling
+
     public void UpdateMovement(JSONNode jSONNode, Vector3 pos, float dirX, float dirY)
     {
         CurrentRoom.GetPlayer(jSONNode["id"].Value).CInstance.GetComponent<MovementController>().SetLastPosition(pos, dirX, dirY);
@@ -198,6 +217,8 @@ public class CORE : MonoBehaviour {
     {
         CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().Hurt(amount);
     }
+
+    #endregion
 
     #endregion
 

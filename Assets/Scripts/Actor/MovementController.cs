@@ -7,8 +7,10 @@ public class MovementController : MonoBehaviour {
 
     #region Client Control
 
+    [SerializeField] bool DEBUG_TARGET = false;
     [SerializeField] Animator Animer;
     [SerializeField] Rigidbody2D Rigid;
+    [SerializeField] Canvas StatsCanvas;
     [SerializeField] float Speed = 1f;
     [SerializeField] float JumpPower = 1f;
     [SerializeField] float MaxVelocity = 10f;
@@ -55,6 +57,7 @@ public class MovementController : MonoBehaviour {
             return Rigid.velocity.y < 0f;
         }
     }
+
 
     private void Update()
     {
@@ -213,19 +216,7 @@ public class MovementController : MonoBehaviour {
 
     public void CompleteAbility(Ability ability)
     {
-        GameObject tempObj;
-        for (int i = 0; i < ability.ObjectsToSpawn.Count; i++)
-        {
-            tempObj = ResourcesLoader.Instance.GetRecycledObject(ability.ObjectsToSpawn[i]);
-            tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character.ID, ability);
-            tempObj.transform.position = transform.position;
-            
-            tempObj.transform.localScale =
-                new Vector3(
-                    Mathf.Abs(tempObj.transform.localScale.x) * ((Animer.transform.localScale.x < 0) ? -1f : 1f),
-                    tempObj.transform.localScale.y,
-                    tempObj.transform.localScale.z);
-        }
+        SpawnAbilityObjects(ability);
 
         SocketClient.Instance.SendUsedAbility(ability.name);
 
@@ -261,6 +252,15 @@ public class MovementController : MonoBehaviour {
 
     #region Shared
 
+    private void OnEnable()
+    {
+        if (DEBUG_TARGET)
+        {
+            this.Character = new CharacterInfo("123", "Debug Target", CORE.Instance.Data.GetClass("Test_Class"));
+            Status.Initialize(this.Character);
+        }
+    }
+
     public void SetInfo(CharacterInfo info, bool isplayer)
     {
         this.isPlayer = isplayer;
@@ -276,9 +276,52 @@ public class MovementController : MonoBehaviour {
 
     public void Hurt(int damage)
     {
+        ShowDamageText(damage);
+
         Animer.Play(Character.Class.HurtAnimations[UnityEngine.Random.Range(0, Character.Class.HurtAnimations.Count)]);
 
         Status.CurrentHP -= damage;
+    }
+
+    public void ShowDamageText(int damage)
+    {
+        string prefabName;
+
+        if(isPlayer)
+        {
+            prefabName = "FloatingDamage_Self";
+        }
+        else
+        {
+            prefabName = "FloatingDamage_Target";
+        }
+
+        GameObject tempDamageText = ResourcesLoader.Instance.GetRecycledObject(CORE.Instance.PrefabDatabase[prefabName]);
+
+        tempDamageText.transform.position = StatsCanvas.transform.position;
+        tempDamageText.GetComponent<FloatingDamageUI>().Activate(damage.ToString());
+    }
+
+    public void SpawnAbilityObjects(Ability ability)
+    {
+        GameObject tempObj;
+        for (int i = 0; i < ability.ObjectsToSpawn.Count; i++)
+        {
+            tempObj = ResourcesLoader.Instance.GetRecycledObject(ability.ObjectsToSpawn[i]);
+
+            HitBoxScript hitbox = tempObj.GetComponent<HitBoxScript>();
+            if (hitbox != null)
+            {
+                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character.ID, ability);
+            }
+
+            tempObj.transform.position = transform.position;
+            tempObj.transform.localScale =
+                new Vector3(
+                    Mathf.Abs(tempObj.transform.localScale.x) * ((Animer.transform.localScale.x < 0) ? -1f : 1f),
+                    tempObj.transform.localScale.y,
+                    tempObj.transform.localScale.z);
+        }
     }
 
     #endregion
@@ -371,12 +414,23 @@ public class MovementController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!isPlayer && collision.tag == "HitBox")
+        HitBoxScript hitbox = collision.GetComponent<HitBoxScript>();
+
+        if (DEBUG_TARGET) //TODO - REMOVE LATER / DEBUG PURPOSES....
+        {
+            Hurt(UnityEngine.Random.Range(1, 4));
+            SpawnAbilityObjects(hitbox.ParentAbility.AbilityOnHit);
+            return;
+        }
+
+        if (!isPlayer && collision.tag == "HitBox")
         {
             CharacterInfo chara = CORE.Instance.CurrentRoom.GetPlayer(this.gameObject);
 
-            collision.GetComponent<HitBoxScript>().Interact(chara.Name);
+            hitbox.Interact(chara.Name);
+            SpawnAbilityObjects(hitbox.ParentAbility.AbilityOnHit);
         }
+
     }
 
     #endregion

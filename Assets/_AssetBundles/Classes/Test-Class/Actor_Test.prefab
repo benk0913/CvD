@@ -72,7 +72,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 0.701
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
 --- !u!1 &573403232722686807
 GameObject:
@@ -1066,7 +1066,7 @@ RectTransform:
   m_GameObject: {fileID: 4510980237389651170}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.0064094, y: -0.0064094, z: -0.0064094}
+  m_LocalScale: {x: 0.0064094, y: 0.0064094, z: 0.0064094}
   m_Children:
   - {fileID: 3031166282219027077}
   m_Father: {fileID: 8860700969835227244}
@@ -1094,7 +1094,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1715,8 +1715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84fadac0be99bd44c99ebc0b579caf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClientOnly: 0
   Animer: {fileID: 968616950857932777}
   Rigid: {fileID: 8860700969835227246}
+  StatsCanvas: {fileID: 6581674787693888541}
   Speed: 2
   JumpPower: 4
   MaxVelocity: 5
@@ -1727,7 +1729,7 @@ MonoBehaviour:
   CurrentCollider: {fileID: 99240365}
   Status:
     HPBar: {fileID: 2249799873277289769}
-  isPlayer: 1
+  isPlayer: 0
   ExtrapolationMultiplier: 0.05
   DeltaMultiplier: 2
 --- !u!70 &99240365

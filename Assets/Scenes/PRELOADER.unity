@@ -551,6 +551,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 258a8cf058037c64d8720eccc05fc298, type: 2}
+  CommonPrefabs:
+  - {fileID: 3957324745313516682, guid: f6f8a62d4fa07fe43b5b8c43981fbbef, type: 3}
+  - {fileID: 5621492845327038445, guid: b4936d199f46d0e458082a830b81ff55, type: 3}
+  - {fileID: 6513288287470521101, guid: b61a184d0070a6541ad0aa19c9aa9be8, type: 3}
 --- !u!114 &1167732154
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Rogue
   ClassActor: {fileID: 8860700969835227240, guid: fc86fd1b73b5524469e97d42d232d7e0,
     type: 3}
-  BaseHP: 10
+  BaseHP: 70
   HurtAnimations:
   - Hurt1
   - Hurt2
