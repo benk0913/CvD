@@ -189,9 +189,9 @@ public class CORE : MonoBehaviour {
         CurrentRoom.GetPlayer(jSONNode["id"].Value).CInstance.GetComponent<MovementController>().SetLastPosition(pos, dirX, dirY);
     }
 
-    public void ActivateAbility(string id, string abilityKey)
+    public void PlayerStartsAbility(string id, string abilityKey)
     {
-        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().ActivateAbility(Data.GetAbility(abilityKey));
+        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().StartAbility(Data.GetAbility(abilityKey));
     }
 
     public void ActorHurt(string id, int amount)

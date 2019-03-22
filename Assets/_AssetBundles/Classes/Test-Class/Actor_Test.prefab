@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00006866455, y: -0.000044345856}
+  m_AnchoredPosition: {x: 0.00006866455, y: -0.00004386902}
   m_SizeDelta: {x: -0.0000030994415, y: -0.00000011920929}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1162412995610462735
@@ -65,7 +65,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b1b65733dc67c844798ba9d73389ab31, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58bac85efa6a8eb4ea7f462b06f573f4, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -428,7 +428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.6, y: -0.6899986}
+  m_AnchoredPosition: {x: 1.5999985, y: -0.6899986}
   m_SizeDelta: {x: -43.29, y: -92.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7954459403393066071
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048311440129094646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1607,8 +1607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.105960846, y: -0.04191208}
-  m_SizeDelta: {x: -2.3529968, y: -1.9759998}
+  m_AnchoredPosition: {x: -0.30400085, y: 0.06999993}
+  m_SizeDelta: {x: -1.534, y: 10.458}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &666404336789774938
 CanvasRenderer:
@@ -1631,16 +1631,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16981131, g: 0.0985226, b: 0.0985226, a: 1}
+  m_Color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b1b65733dc67c844798ba9d73389ab31, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58bac85efa6a8eb4ea7f462b06f573f4, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
   m_FillAmount: 1

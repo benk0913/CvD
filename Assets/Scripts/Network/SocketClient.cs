@@ -92,11 +92,7 @@ public class SocketClient : MonoBehaviour
         CurrentSocket.On("actor_ded", OnActorDed);
         CurrentSocket.On("actor_resurrect", OnActorResurrect);
 
-        CurrentSocket.On("actor_load_attack", OnActorLoadAttack);
-        CurrentSocket.On("actor_perform_attack", OnActorPreformAttack);
-        CurrentSocket.On("actor_change_ability", OnActorChangeAbility);
-        CurrentSocket.On("actor_start_secondary_mode", OnActorStartSecondaryMode);
-        CurrentSocket.On("actor_end_secondary_mode", OnActorEndSecondaryMode);
+        CurrentSocket.On("player_use_ability", OnPlayerUseAbility);
 
         CurrentSocket.On("mob_spawn", OnMobSpawn);
         CurrentSocket.On("mob_die", OnMobDeath);
@@ -777,76 +773,13 @@ public class SocketClient : MonoBehaviour
         //Game.Instance.IsAlive = true;
     }
 
-    protected void OnActorLoadAttack(Socket socket, Packet packet, object[] args)
+    protected void OnPlayerUseAbility(Socket socket, Packet packet, object[] args)
     {
         JSONNode data = (JSONNode)args[0];
 
-        //ActorInfo actorInfo = Game.Instance.CurrentScene.GetActor(data["id"].Value);
+        BroadcastEvent(data["player_id"].Value + " Preforms Ability");
 
-        //if (actorInfo != null)
-        //{
-        //    BroadcastEvent(actorInfo.Name + " Loads Attack");
-        //    actorInfo.Instance.LoadAttack();
-        //}
-    }
-
-    protected void OnActorPreformAttack(Socket socket, Packet packet, object[] args)
-    {
-        JSONNode data = (JSONNode)args[0];
-
-        BroadcastEvent(data["id"].Value + " Preforms Attack");
-
-        CORE.Instance.ActivateAbility(data["id"].Value, data["ability_key"]);
-        //ActorInfo actorInfo = Game.Instance.CurrentScene.GetActor(data["id"].Value);
-
-        //if (actorInfo != null)
-        //{
-
-        //    float load = (1f * data["load"].AsInt) / 100f;
-        //    actorInfo.Instance.PreformAttack(load);
-        //    actorInfo.Instance.MovementController.ActivatePrimaryAbility(load);
-        //}
-    }
-
-    protected void OnActorChangeAbility(Socket socket, Packet packet, object[] args)
-    {
-        JSONNode data = (JSONNode)args[0];
-
-        //ActorInfo actorInfo = Game.Instance.CurrentScene.GetActor(data["id"].Value);
-
-        //if (actorInfo != null)
-        //{
-        //    BroadcastEvent(actorInfo.Name + " Changed ability Attack");
-        //    actorInfo.SetPrimaryAbility(data["ability"].Value);
-        //}
-    }
-
-    protected void OnActorStartSecondaryMode(Socket socket, Packet packet, object[] args)
-    {
-        JSONNode data = (JSONNode)args[0];
-
-        BroadcastEvent(data.ToString());
-
-        //ActorInfo actorInfo = Game.Instance.CurrentScene.GetActor(data["id"].Value);
-
-        //if (actorInfo != null && actorInfo.Instance != null)
-        //{
-        //    actorInfo.Instance.ToggleSecondaryAttackAnimation(true);
-        //}
-    }
-
-    protected void OnActorEndSecondaryMode(Socket socket, Packet packet, object[] args)
-    {
-        JSONNode data = (JSONNode)args[0];
-
-        BroadcastEvent(data.ToString());
-
-        //ActorInfo actorInfo = Game.Instance.CurrentScene.GetActor(data["id"].Value);
-
-        //if (actorInfo != null && actorInfo.Instance != null)
-        //{
-        //    actorInfo.Instance.ToggleSecondaryAttackAnimation(false);
-        //}
+        CORE.Instance.PlayerStartsAbility(data["player_id"].Value, data["ability_key"]);
     }
 
     private void OnMobMovement(Socket socket, Packet packet, object[] args)
@@ -1550,9 +1483,9 @@ public class SocketClient : MonoBehaviour
     {
         JSONNode node = new JSONClass();
 
-        node["x"] = pos.x.ToString();
-        node["y"] = pos.y.ToString();
-        node["z"] = pos.z.ToString();
+        node["x"].AsFloat = pos.x;
+        node["y"].AsFloat = pos.y;
+        node["z"].AsFloat = pos.z;
         node["angle"].AsFloat = direction;
         node["velocity"].AsFloat = velocity;
 
@@ -1566,6 +1499,8 @@ public class SocketClient : MonoBehaviour
         node["ability_key"] = abilityKey;
 
         CurrentSocket.Emit("used_ability", node);
+
+        BroadcastEvent("SENT - Used Ability " + node.ToString());
     }
 
     public void SendHitAbility(List<string> targetIDs, string abilityKey)
@@ -1580,6 +1515,8 @@ public class SocketClient : MonoBehaviour
         }
 
         CurrentSocket.Emit("hit_ability", node);
+
+        BroadcastEvent("SENT - Hit Ability " + node.ToString());
     }
 
     public void SendStartedClimbing()

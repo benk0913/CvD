@@ -7,6 +7,8 @@ public class HitBoxScript : MonoBehaviour {
     [SerializeField]
     float timeLeft = 0.1f;
 
+    float timeLeftCurrent;
+
     [SerializeField]
     bool ShutOnHit = true;
 
@@ -24,7 +26,7 @@ public class HitBoxScript : MonoBehaviour {
         this.ParentAbility = ability;
         this.ParentOwner = owner;
 
-        timeLeft = 0.1f;
+        timeLeftCurrent = timeLeft;
         gameObject.SetActive(true);
     }
 
@@ -55,12 +57,12 @@ public class HitBoxScript : MonoBehaviour {
 
     private void LateUpdate()
     {
-        if (timeLeft <= 0f)
+        if (timeLeftCurrent <= 0f)
         {
             this.gameObject.SetActive(false);
         }
 
-        timeLeft -= 1f * Time.deltaTime;
+        timeLeftCurrent -= 1f * Time.deltaTime;
     }
 
 }

@@ -98,7 +98,7 @@ public class MovementController : MonoBehaviour {
         {
             if (Input.GetKeyDown(InputMap.Map["Ability"+(i+1)]))
             {
-                ActivateAbility(Character.Class.Abilities[i]);
+                StartAbility(Character.Class.Abilities[i]);
             }
         }
     }
@@ -152,7 +152,7 @@ public class MovementController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (isPlayer)
+        if (isPlayer && (lastSentPos != transform.position))
         {
             SocketClient.Instance.EmitMovement(transform.position, lastXDir, Rigid.velocity.y);
             lastSentPos = transform.position;
@@ -162,6 +162,77 @@ public class MovementController : MonoBehaviour {
         {
             Rigid.velocity = Rigid.velocity.normalized * MaxVelocity;
         }
+    }
+
+    #region Abilities
+
+    public void StartAbility(Ability ability)
+    {
+        if (isPlayer)
+        {
+            if (AbilityDurationRoutineInstance != null)
+            {
+                //TODO - CURRENTLY DOING AN ABILITY ALERT!
+                return;
+            }
+
+            if (Status.GetAbilityStatus(ability).CooldownRoutine != null)
+            {
+                //TODO - IN COOLDOWN ALERT!
+                return;
+            }
+
+            AnimateStartAbility(ability);
+
+            StartAbilityDuration(ability);
+        }
+        else
+        {
+            AnimateStartAbility(ability);
+        }
+    }
+
+    void StartAbilityDuration(Ability ability)
+    {
+        if(AbilityDurationRoutineInstance != null)
+        {
+            return;
+        }
+
+        AbilityDurationRoutineInstance = StartCoroutine(AbilityDurationRoutine(ability));
+    }
+
+    Coroutine AbilityDurationRoutineInstance;
+    IEnumerator AbilityDurationRoutine(Ability ability)
+    {
+        yield return new WaitForSeconds(ability.Duration);
+
+        CompleteAbility(ability);
+        AbilityDurationRoutineInstance = null;
+    }
+
+    public void CompleteAbility(Ability ability)
+    {
+        GameObject tempObj;
+        for (int i = 0; i < ability.ObjectsToSpawn.Count; i++)
+        {
+            tempObj = ResourcesLoader.Instance.GetRecycledObject(ability.ObjectsToSpawn[i]);
+            tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character.ID, ability);
+            tempObj.transform.position = transform.position;
+            
+            tempObj.transform.localScale =
+                new Vector3(
+                    Mathf.Abs(tempObj.transform.localScale.x) * ((Animer.transform.localScale.x < 0) ? -1f : 1f),
+                    tempObj.transform.localScale.y,
+                    tempObj.transform.localScale.z);
+        }
+
+        SocketClient.Instance.SendUsedAbility(ability.name);
+
+
+        InGamePanelUI.Instance.ActivateAbility(ability);
+
+        StartCooldown(ability);
     }
 
 
@@ -186,6 +257,8 @@ public class MovementController : MonoBehaviour {
 
     #endregion
 
+    #endregion
+
     #region Shared
 
     public void SetInfo(CharacterInfo info, bool isplayer)
@@ -196,35 +269,9 @@ public class MovementController : MonoBehaviour {
         Status.Initialize(this.Character);
     }
 
-    public void ActivateAbility(Ability ability)
+    public void AnimateStartAbility(Ability ability)
     {
-        if (isPlayer)
-        {
-            if(Status.GetAbilityStatus(ability).CooldownRoutine != null)
-            {
-                //TODO - IN COOLDOWN ALERT!
-                return;
-            }
-
-            Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
-
-            SocketClient.Instance.SendUsedAbility(ability.name);
-
-            GameObject tempObj;
-            for (int i = 0; i < ability.ObjectsToSpawn.Count; i++)
-            {
-                tempObj = ResourcesLoader.Instance.GetRecycledObject(ability.ObjectsToSpawn[i]);
-                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character.ID, ability);
-            }
-
-            InGamePanelUI.Instance.ActivateAbility(ability);
-
-            StartCooldown(ability);
-        }
-        else
-        {
-            Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
-        }
+        Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
     }
 
     public void Hurt(int damage)
