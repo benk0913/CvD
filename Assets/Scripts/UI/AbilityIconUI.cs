@@ -54,8 +54,8 @@ public class AbilityIconUI : MonoBehaviour
         {
             t += (1f / Reference.Cooldown) * Time.deltaTime;
 
-            CooldownSecondsText.text = Mathf.RoundToInt(t * Reference.Cooldown).ToString();
-            CooldownFill.fillAmount = t;
+            CooldownSecondsText.text = Mathf.RoundToInt(Reference.Cooldown - (t * Reference.Cooldown)).ToString();
+            CooldownFill.fillAmount = 1f-t;
 
             yield return 0;
         }

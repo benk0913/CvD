@@ -5,14 +5,14 @@ using UnityEngine;
 public class AnimatorSpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject ObjectToSpawn;
+    List<GameObject> ObjectsToSpawn;
 
     [SerializeField]
     bool myDirection;
 
-    public void Spawn()
+    public void Spawn(string objectToSpawn)
     {
-        GameObject tempObj = ResourcesLoader.Instance.GetRecycledObject(ObjectToSpawn);
+        GameObject tempObj = ResourcesLoader.Instance.GetRecycledObject(GetObjectByName(objectToSpawn));
         tempObj.transform.position = transform.position;
 
         if (myDirection)
@@ -23,5 +23,18 @@ public class AnimatorSpawner : MonoBehaviour
                     tempObj.transform.localScale.y,
                     tempObj.transform.localScale.z);
         }
+    }
+
+    GameObject GetObjectByName(string objName)
+    {
+        for(int i=0;i<ObjectsToSpawn.Count;i++)
+        {
+            if (ObjectsToSpawn[i].name == objName)
+            {
+                return ObjectsToSpawn[i];
+            }
+        }
+
+        return null;
     }
 }

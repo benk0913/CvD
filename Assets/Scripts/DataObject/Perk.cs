@@ -27,4 +27,54 @@ public class Perk : ScriptableObject
 
         return node;
     }
+
+    public Perk GetPerk(string perkKey)
+    {
+        for(int i=0;i<Perks.Count;i++)
+        {
+            if(Perks[i].name == perkKey)
+            {
+                return Perks[i];
+            }
+        }
+
+        return null;
+    }
+
+    public Perk GetPerkByType(string perkType)
+    {
+        for (int i = 0; i < Perks.Count; i++)
+        {
+            if (Perks[i].Attribute.name == perkType)
+            {
+                return Perks[i];
+            }
+        }
+
+        return null;
+    }
+
+    public float GetPerkValue(string perkKey, float defaultValue)
+    {
+        Perk tempPerk = GetPerk(perkKey);
+
+        if(tempPerk == null)
+        {
+            return defaultValue;
+        }
+
+        return Random.Range(tempPerk.MinValue, tempPerk.MaxValue);
+    }
+
+    public float GetPerkValueByType(string perkType, float defaultValue)
+    {
+        Perk tempPerk = GetPerkByType(perkType);
+
+        if (tempPerk == null)
+        {
+            return defaultValue;
+        }
+
+        return Random.Range(tempPerk.MinValue, tempPerk.MaxValue);
+    }
 }

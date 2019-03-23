@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HitBoxScript : MonoBehaviour {
 
@@ -12,19 +13,26 @@ public class HitBoxScript : MonoBehaviour {
     [SerializeField]
     bool ShutOnHit = true;
 
-    [System.NonSerialized]
-    public string ParentOwner;
+    [SerializeField]
+    bool StickToOwner = false;
 
     [System.NonSerialized]
-    public Ability ParentAbility;
+    public Ability CurrentAbility;
 
     [System.NonSerialized]
     public List<string> ActorsHit = new List<string>();
 
-    public void SetInfo(string owner ,Ability ability)
+    [System.NonSerialized]
+    public CharacterInfo CurrentOwner;
+
+    HitboxEvent CurrentHitEvent;
+
+    public void SetInfo(CharacterInfo ownerInsance,Ability ability, HitboxEvent onHitEvent)
     {
-        this.ParentAbility = ability;
-        this.ParentOwner = owner;
+        ActorsHit.Clear();
+        this.CurrentAbility = ability;
+        this.CurrentOwner = ownerInsance;
+        this.CurrentHitEvent = onHitEvent;
 
         timeLeftCurrent = timeLeft;
         gameObject.SetActive(true);
@@ -47,9 +55,11 @@ public class HitBoxScript : MonoBehaviour {
 
     void Shut()
     {
+
         if(ActorsHit.Count > 0)
         {
-            SocketClient.Instance.SendHitAbility(ActorsHit, ParentAbility.name);
+            SocketClient.Instance.SendHitAbility(ActorsHit, CurrentAbility.name);
+            CurrentHitEvent.Invoke(CurrentAbility);
         }
 
         this.gameObject.SetActive(false);
@@ -63,6 +73,11 @@ public class HitBoxScript : MonoBehaviour {
         }
 
         timeLeftCurrent -= 1f * Time.deltaTime;
+
+        if(StickToOwner && CurrentOwner != null)
+        {
+            transform.position = CurrentOwner.CInstance.transform.position;
+        }
     }
 
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
+  m_Name: Test_Attack
+  m_EditorClassIdentifier: 
+  DisplayName: Slash
+  Duration: 0.1
+  Cooldown: 0.2
+  Animations:
+  - Attack1
+  - Attack2
+  - Attack3
+  Perks: []
+  PerksOnHit:
+  - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
+  - {fileID: 11400000, guid: 567a7f8c6b0c97148bf558c7488452ab, type: 2}
+  ObjectsToSpawn:
+  - {fileID: 1886398916049500, guid: d07dac3aceee87f4aa93b06ebd8690a9, type: 3}
+  AbilityOnHit: {fileID: 11400000, guid: bdf31a9e407f6ff43acab1df51596764, type: 2}
