@@ -12,6 +12,8 @@ public class ActorState
 
     List<AbilityStatus> AbilityStatuses = new List<AbilityStatus>();
 
+    public Coroutine MovementAbilityRoutineInstance;
+
     public int CurrentHP
     {
         get

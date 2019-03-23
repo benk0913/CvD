@@ -15,6 +15,8 @@ public class Ability : ScriptableObject
     public List<string> Animations;
 
     public List<Perk> Perks = new List<Perk>();
+    
+    public List<Perk> PerksOnHit = new List<Perk>();
 
     public List<GameObject> ObjectsToSpawn;
 
@@ -33,7 +35,12 @@ public class Ability : ScriptableObject
             node["perks"][i] = Perks[i].ToJson();
         }
 
-        if(AbilityOnHit != null)
+        for (int i = 0; i < PerksOnHit.Count; i++)
+        {
+            node["perks_on_hit"][i] = PerksOnHit[i].ToJson();
+        }
+
+        if (AbilityOnHit != null)
         {
             node["ability_on_hit"] = this.AbilityOnHit.ToJson();
         }

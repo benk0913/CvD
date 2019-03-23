@@ -5896,7 +5896,7 @@ AnimationClip:
   m_Events:
   - time: 0.083333336
     functionName: Spawn
-    data: 
+    data: Test_Attack_Effect
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
