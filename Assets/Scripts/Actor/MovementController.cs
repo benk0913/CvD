@@ -422,6 +422,11 @@ public class MovementController : MonoBehaviour {
 
     public void AnimateStartAbility(Ability ability)
     {
+        if(ability.Animations.Count == 0)
+        {
+            return;
+        }
+
         Animer.Play(ability.Animations[UnityEngine.Random.Range(0, ability.Animations.Count)]);
     }
 
