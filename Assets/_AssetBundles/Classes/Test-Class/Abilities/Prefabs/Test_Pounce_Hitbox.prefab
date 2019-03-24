@@ -73,4 +73,5 @@ MonoBehaviour:
   timeLeft: 1
   ShutOnHit: 1
   StickToOwner: 1
+  DependsOnMovementAbility: 1
   Collider: {fileID: 61247604090743934}

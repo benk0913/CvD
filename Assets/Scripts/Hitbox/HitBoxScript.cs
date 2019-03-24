@@ -16,6 +16,12 @@ public class HitBoxScript : MonoBehaviour {
     [SerializeField]
     protected bool StickToOwner = false;
 
+    [SerializeField]
+    protected bool DependsOnMovementAbility = false;
+
+    [SerializeField]
+    Collider2D Collider;
+
     [System.NonSerialized]
     public Ability CurrentAbility;
 
@@ -25,8 +31,10 @@ public class HitBoxScript : MonoBehaviour {
     [System.NonSerialized]
     public CharacterInfo CurrentOwner;
 
-    [SerializeField]
-    Collider2D Collider;
+    [System.NonSerialized]
+    protected MovementController CurrentOwnerMovementController;
+
+
 
     protected HitboxEvent CurrentHitEvent;
 
@@ -39,6 +47,7 @@ public class HitBoxScript : MonoBehaviour {
         ActorsHit.Clear();
         this.CurrentAbility = ability;
         this.CurrentOwner = ownerInsance;
+        this.CurrentOwnerMovementController = CurrentOwner.CInstance.GetComponent<MovementController>();
         this.CurrentHitEvent = onHitEvent;
 
         timeLeftCurrent = timeLeft;
@@ -87,6 +96,14 @@ public class HitBoxScript : MonoBehaviour {
         if(StickToOwner && CurrentOwner != null)
         {
             transform.position = CurrentOwner.CInstance.transform.position;
+        }
+
+        if(DependsOnMovementAbility && CurrentOwnerMovementController != null)
+        {
+            if(CurrentOwnerMovementController.Status.MovementAbilityRoutineInstance == null)
+            {
+                Shut();
+            }
         }
     }
 

@@ -552,7 +552,7 @@ public class MovementController : MonoBehaviour {
     {
         lastDirectionY = dirY;
 
-        lastDirectionX = dirX;
+        lastDirectionX = dirX;//  Lag Compensation
         LastGivenPosition = new Vector3(position.x + dirX * (ExtrapolationMultiplier * TimeFromLastEvent), position.y);
 
         if (FixPositionRoutineInstance != null)
