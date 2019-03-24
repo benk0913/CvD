@@ -143,8 +143,19 @@ public class CGOD : EditorWindow
             database["classes"][i] = DB.Classes[i].ToJson();
         }
 
-        Debug.Log(database.ToString());
-        //TODO Send HTTP Request
+        ServerUtilDatabaseHandler serverUtilHandler = new ServerUtilDatabaseHandler(OnServerUtilResponse);
+        serverUtilHandler.UpdateDatabase(database);
+    }
+
+    public void GetDatabase()
+    {
+        ServerUtilDatabaseHandler serverUtilHandler = new ServerUtilDatabaseHandler(OnServerUtilResponse);
+        serverUtilHandler.GetCurrentDatabase();
+    }
+
+    void OnServerUtilResponse(JSONNode responseData)
+    {
+        Debug.Log("CGOD RESPONSE -" + responseData.ToString());
     }
 
 

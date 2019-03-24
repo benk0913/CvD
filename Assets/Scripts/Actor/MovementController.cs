@@ -492,12 +492,12 @@ public class MovementController : MonoBehaviour {
 
         if (dirX > 0f)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            Animer.transform.localScale = new Vector3(-1f, 1f, 1f);
             Animer.SetBool("Run", true);
         }
         else if (dirX < 0f)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            Animer.transform.localScale = new Vector3(1f, 1f, 1f);
             Animer.SetBool("Run", true);
         }
         else
