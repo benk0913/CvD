@@ -200,6 +200,8 @@ public class MovementController : MonoBehaviour {
                 //TODO - IN COOLDOWN ALERT!
                 return;
             }
+
+            SocketClient.Instance.SendUsedAbility(ability.name);
         }
 
         AnimateStartAbility(ability);
@@ -240,9 +242,6 @@ public class MovementController : MonoBehaviour {
         if (isPlayer)
         {
             ActivateAbilityPerks(ability);
-
-            SocketClient.Instance.SendUsedAbility(ability.name);
-
 
             InGamePanelUI.Instance.ActivateAbility(ability);
 
