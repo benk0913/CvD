@@ -20,6 +20,8 @@ public class Ability : ScriptableObject
 
     public List<GameObject> ObjectsToSpawn;
 
+    public List<GameObject> ObjectsToSpawnOnTargets;
+
     public Ability AbilityOnHit;
 
     public JSONNode ToJson()

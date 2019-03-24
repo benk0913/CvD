@@ -87,9 +87,9 @@ public class SocketClient : MonoBehaviour
         CurrentSocket.On("actor_lvl_up", OnActorLevelUp);
         CurrentSocket.On("actor_gain_ability", OnActorGainAbility);
 
-        CurrentSocket.On("take_damage", OnTakeDamage);
+        CurrentSocket.On("player_hurt", OnTakeDamage);
         CurrentSocket.On("actor_blocked", OnActorBlocked);
-        CurrentSocket.On("actor_ded", OnActorDed);
+        CurrentSocket.On("player_ded", OnActorDed);
         CurrentSocket.On("actor_resurrect", OnActorResurrect);
 
         CurrentSocket.On("player_use_ability", OnPlayerUseAbility);
@@ -671,54 +671,6 @@ public class SocketClient : MonoBehaviour
         BroadcastEvent("Damage taken | " + data.ToString());
 
         CORE.Instance.ActorHurt(data["player_id"].Value, data["damage"].AsInt);
-
-        //int hp = data["hp"].AsInt;
-
-        //ActorInfo targetActor = Game.Instance.CurrentScene.GetActor(data["target_id"].Value);
-
-        //// TODO use same hurt method for actor and mob
-        
-        //if (targetActor != null) 
-        //{
-        //    // actor takes the damage
-        //    targetActor.CurrentHealth = hp;
-
-        //    string text = String.Format("{0:n0}", data["dmg"].AsInt);
-        //    if (data["crit"].AsBool)
-        //    {
-        //        // TODO make this beautiful, lel
-        //        text += " (CRIT)";
-        //    }
-        //    targetActor.Instance.PopHint(text, new Color(231f / 255f, 103f / 255f, 103f / 255f, 1f));
-
-        //    if (targetActor == LocalUserInfo.Me.ClientCharacter)
-        //    {
-        //        InGameMainMenuUI.Instance.RefreshHP();
-
-        //        if(!targetActor.Instance.InputController.Invincible)
-        //        {
-        //            targetActor.Instance.Hurt();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        targetActor.Instance.MovementController.RefreshHealth();
-        //        targetActor.Instance.Hurt();
-        //    }
-        //} else {
-        //    // mob takes damage    
-        //    Enemy monster = Game.Instance.CurrentScene.GetEnemy(data["target_id"].Value);
-        //    ActorInfo attackingActor = Game.Instance.CurrentScene.GetActor(data["attacker_id"].Value);
-        //    // mob attacking mob still not supported ;P
-        //    if (attackingActor != null && monster != null) 
-        //    {
-        //        monster.Hurt(attackingActor.Instance, data["dmg"].AsInt, hp, data["cause"].Value, data["crit"].AsBool);
-        //    }
-        //}
-
-        //// updated knowns' health
-        //string name = data["name"].Value;
-        //UpdateKnownHealth(name, hp);
     }
     
     protected void OnActorBlocked(Socket socket, Packet packet, object[] args)
@@ -745,27 +697,6 @@ public class SocketClient : MonoBehaviour
         //}
     }
 
-    protected void OnActorDed(Socket socket, Packet packet, object[] args)
-    {
-
-        JSONNode data = (JSONNode)args[0];
-        BroadcastEvent("Actor Has Died");
-
-        //ActorInfo actorInfo = Game.Instance.CurrentScene.GetActor(data["id"].Value);
-        //if (actorInfo != null)
-        //{
-        //    if (actorInfo == LocalUserInfo.Me.ClientCharacter)
-        //    {
-        //        actorInfo.Instance.GetComponent<ActorController>().Death();
-        //        InGameMainMenuUI.Instance.ShowDeathWindow();
-        //    }
-        //    else
-        //    {
-        //        actorInfo.Instance.Death();
-        //    }
-        //}
-    }
-
     protected void OnActorResurrect(Socket socket, Packet packet, object[] args)
     {
         BroadcastEvent("Actor Has Been Resurrected");
@@ -780,6 +711,19 @@ public class SocketClient : MonoBehaviour
         BroadcastEvent(data["player_id"].Value + " Preforms Ability");
 
         CORE.Instance.PlayerStartsAbility(data["player_id"].Value, data["ability_key"]);
+    }
+
+    protected void OnActorDed(Socket socket, Packet packet, object[] args)
+    {
+        JSONNode data = (JSONNode)args[0];
+        BroadcastEvent("Actor Has Died");
+
+        CharacterInfo character = CORE.Instance.CurrentRoom.GetPlayer(data["id"].Value);
+
+        if (character != null)
+        {
+            character.CInstance.GetComponent<MovementController>().Death();
+        }
     }
 
     private void OnMobMovement(Socket socket, Packet packet, object[] args)

@@ -293,8 +293,39 @@ public class MovementController : MonoBehaviour {
         }
     }
 
+    public void SpawnTargetAbilityObjects(Ability ability)
+    {
+        GameObject tempObj;
+        for (int i = 0; i < ability.ObjectsToSpawnOnTargets.Count; i++)
+        {
+            tempObj = ResourcesLoader.Instance.GetRecycledObject(ability.ObjectsToSpawnOnTargets[i]);
+
+            HitBoxScript hitbox = tempObj.GetComponent<HitBoxScript>();
+
+            if (hitbox != null)
+            {
+                HitboxEvent HitEvent = new HitboxEvent();
+                HitEvent.AddListener(OnHitboxEvent);
+
+                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent);
+            }
+
+            tempObj.transform.position = transform.position;
+            tempObj.transform.localScale =
+                new Vector3(
+                    Mathf.Abs(tempObj.transform.localScale.x) * ((Animer.transform.localScale.x < 0) ? -1f : 1f),
+                    tempObj.transform.localScale.y,
+                    tempObj.transform.localScale.z);
+        }
+    }
+
     private void OnHitboxEvent(Ability ability)
     {
+        if(ability.AbilityOnHit == null)
+        {
+            return;
+        }
+
         StartAbility(ability.AbilityOnHit);
     }
 
@@ -587,9 +618,9 @@ public class MovementController : MonoBehaviour {
         if (DEBUG_TARGET) //TODO - REMOVE LATER / DEBUG PURPOSES....
         {
             Hurt(UnityEngine.Random.Range(1, 4));
-            SpawnAbilityObjects(hitbox.CurrentAbility.AbilityOnHit);
 
             hitbox.Interact("test");
+            SpawnTargetAbilityObjects(hitbox.CurrentAbility);
             return;
         }
 
@@ -597,8 +628,8 @@ public class MovementController : MonoBehaviour {
         {
             CharacterInfo chara = CORE.Instance.CurrentRoom.GetPlayer(this.gameObject);
 
-            hitbox.Interact(chara.Name);
-            
+            hitbox.Interact(chara.ID);
+            SpawnTargetAbilityObjects(hitbox.CurrentAbility);
         }
     }
 
