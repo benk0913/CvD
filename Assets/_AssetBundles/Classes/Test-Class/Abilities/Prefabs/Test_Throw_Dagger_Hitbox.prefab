@@ -4875,7 +4875,7 @@ MonoBehaviour:
   ShutOnHit: 1
   StickToOwner: 0
   Collider: {fileID: 4133640719120957987}
-  Speed: 6
+  Speed: 4
   Rigid: {fileID: 5493175153034948720}
 --- !u!50 &5493175153034948720
 Rigidbody2D:
