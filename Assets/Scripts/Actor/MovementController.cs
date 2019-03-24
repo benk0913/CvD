@@ -12,6 +12,7 @@ public class MovementController : MonoBehaviour {
     [SerializeField] Animator Animer;
     [SerializeField] Rigidbody2D Rigid;
     [SerializeField] Canvas StatsCanvas;
+    [SerializeField] SpriteAlphaGroup AlphaGroup;
     [SerializeField] float Speed = 1f;
     [SerializeField] float JumpPower = 1f;
     [SerializeField] float MaxVelocity = 10f;
@@ -30,6 +31,7 @@ public class MovementController : MonoBehaviour {
     public ActorState Status;
 
     public bool isPlayer;
+    public bool isDead;
 
     float lastXDir;
     float lastYDir;
@@ -71,6 +73,11 @@ public class MovementController : MonoBehaviour {
     void RefreshInput()
     {
         if(Status.MovementAbilityRoutineInstance != null)
+        {
+            return;
+        }
+        
+        if(isDead)
         {
             return;
         }
@@ -437,6 +444,33 @@ public class MovementController : MonoBehaviour {
         Animer.Play(Character.Class.HurtAnimations[UnityEngine.Random.Range(0, Character.Class.HurtAnimations.Count)]);
 
         Status.CurrentHP -= damage;
+    }
+
+    public void Death()
+    {
+        Animer.Play(Character.Class.DeathAnimations[UnityEngine.Random.Range(0, Character.Class.DeathAnimations.Count)]);
+        isDead = true;
+
+        if(DeathRoutineInstance != null)
+        {
+            return;
+        }
+
+        DeathRoutineInstance = StartCoroutine(DeathRoutine());
+    }
+
+    Coroutine DeathRoutineInstance;
+    IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+
+        AlphaGroup.FadeOut(1f);
+
+        yield return new WaitForSeconds(2f);
+
+        this.Character.CInstance = null;
+
+        Destroy(this.gameObject);
     }
 
     public void ShowDamageText(int damage)

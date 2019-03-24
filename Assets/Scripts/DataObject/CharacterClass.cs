@@ -14,6 +14,8 @@ public class CharacterClass : ScriptableObject
 
     public List<string> HurtAnimations = new List<string>();
 
+    public List<string> DeathAnimations = new List<string>();
+
     public List<Ability> Abilities = new List<Ability>();
 
     public Ability GetAbility(string abilityName)

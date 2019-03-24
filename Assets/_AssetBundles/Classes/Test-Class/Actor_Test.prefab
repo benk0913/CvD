@@ -1316,6 +1316,7 @@ GameObject:
   - component: {fileID: 133}
   - component: {fileID: 127}
   - component: {fileID: 238}
+  - component: {fileID: 4255800037803161439}
   m_Layer: 8
   m_Name: cat_body
   m_TagString: Untagged
@@ -1385,6 +1386,20 @@ MonoBehaviour:
   - {fileID: 9016981803415906027, guid: 195a7d5a15bbe1b4e82a1591420942b7, type: 3}
   - {fileID: 9016981803415906027, guid: eb9dba8ce77fd5e4ea34d766a77e41e1, type: 3}
   myDirection: 1
+--- !u!114 &4255800037803161439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3075cb0a318b73044aaf6cf3da941e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Alpha: 1
+  OriginalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &89
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,6 +1736,7 @@ MonoBehaviour:
   Animer: {fileID: 127}
   Rigid: {fileID: 123}
   StatsCanvas: {fileID: 163}
+  AlphaGroup: {fileID: 4255800037803161439}
   Speed: 2
   JumpPower: 4
   MaxVelocity: 5
@@ -1732,6 +1748,7 @@ MonoBehaviour:
   Status:
     HPBar: {fileID: 230}
   isPlayer: 0
+  isDead: 0
   ExtrapolationMultiplier: 0.05
   DeltaMultiplier: 2
 --- !u!70 &126

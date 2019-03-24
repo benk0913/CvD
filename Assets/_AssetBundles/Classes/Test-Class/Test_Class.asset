@@ -19,6 +19,9 @@ MonoBehaviour:
   - Hurt1
   - Hurt2
   - Hurt3
+  DeathAnimations:
+  - Death1
+  - Death2
   Abilities:
   - {fileID: 11400000, guid: 7d0f85ed8415f3e4ab99a7f651a62935, type: 2}
   - {fileID: 11400000, guid: 1dd08545e6c1db045aa11fde90c6b19e, type: 2}
