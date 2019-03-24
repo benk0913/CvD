@@ -1750,7 +1750,7 @@ MonoBehaviour:
     HPBar: {fileID: 229}
   isPlayer: 0
   isDead: 0
-  ExtrapolationMultiplier: 0.1
+  ExtrapolationMultiplier: 0.2
   DeltaMultiplier: 2
 --- !u!70 &130
 CapsuleCollider2D:
