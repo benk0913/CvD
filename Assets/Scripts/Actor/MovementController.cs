@@ -67,17 +67,6 @@ public class MovementController : MonoBehaviour {
         if (isPlayer)
         {
             RefreshInput();
-
-            if (isPlayer && (lastSentPos != transform.position))
-            {
-                SocketClient.Instance.EmitMovement(transform.position, lastXDir, Rigid.velocity.y);
-                lastSentPos = transform.position;
-            }
-
-            if (Rigid.velocity.magnitude > MaxVelocity)
-            {
-                Rigid.velocity = Rigid.velocity.normalized * MaxVelocity;
-            }
         }
     }
 
@@ -179,7 +168,16 @@ public class MovementController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (isPlayer && (lastSentPos != transform.position))
+        {
+            SocketClient.Instance.EmitMovement(transform.position, lastXDir, Rigid.velocity.y);
+            lastSentPos = transform.position;
+        }
 
+        if (Rigid.velocity.magnitude > MaxVelocity)
+        {
+            Rigid.velocity = Rigid.velocity.normalized * MaxVelocity;
+        }
     }
 
     #region Abilities
@@ -226,7 +224,7 @@ public class MovementController : MonoBehaviour {
 
         if(!isPlayer) // Lag compensation
         {
-            duration = Mathf.Clamp(duration - 1f ,0f ,Mathf.Infinity);
+            duration = Mathf.Clamp(duration - TimeFromLastEvent ,0f ,Mathf.Infinity);
         }
 
         yield return new WaitForSeconds(duration);
