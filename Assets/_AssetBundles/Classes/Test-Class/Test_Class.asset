@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test_Class
   m_EditorClassIdentifier: 
   DisplayName: Rogue
-  ClassActor: {fileID: 98, guid: fc86fd1b73b5524469e97d42d232d7e0, type: 3}
+  ClassActor: {fileID: 81, guid: fc86fd1b73b5524469e97d42d232d7e0, type: 3}
   BaseHP: 70
   HurtAnimations:
   - Hurt1
@@ -25,3 +25,4 @@ MonoBehaviour:
   Abilities:
   - {fileID: 11400000, guid: 7d0f85ed8415f3e4ab99a7f651a62935, type: 2}
   - {fileID: 11400000, guid: 1dd08545e6c1db045aa11fde90c6b19e, type: 2}
+  - {fileID: 11400000, guid: 06dfc68b562ec1c4f9a8e68a20cc11ef, type: 2}

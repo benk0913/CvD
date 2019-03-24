@@ -198,15 +198,11 @@ public class MovementController : MonoBehaviour {
                 //TODO - IN COOLDOWN ALERT!
                 return;
             }
-
-            AnimateStartAbility(ability);
-
-            StartAbilityDuration(ability);
         }
-        else
-        {
-            AnimateStartAbility(ability);
-        }
+
+        AnimateStartAbility(ability);
+
+        StartAbilityDuration(ability);
     }
 
     void StartAbilityDuration(Ability ability)
@@ -222,7 +218,14 @@ public class MovementController : MonoBehaviour {
     Coroutine AbilityDurationRoutineInstance;
     IEnumerator AbilityDurationRoutine(Ability ability)
     {
-        yield return new WaitForSeconds(ability.Duration);
+        float duration = ability.Duration;
+
+        if(!isPlayer) // Lag compensation
+        {
+            duration = Mathf.Clamp(duration - 1f ,0f ,Mathf.Infinity);
+        }
+
+        yield return new WaitForSeconds(duration);
 
         CompleteAbility(ability);
         AbilityDurationRoutineInstance = null;
@@ -231,14 +234,18 @@ public class MovementController : MonoBehaviour {
     public void CompleteAbility(Ability ability)
     {
         SpawnAbilityObjects(ability);
-        ActivateAbilityPerks(ability);
 
-        SocketClient.Instance.SendUsedAbility(ability.name);
+        if (isPlayer)
+        {
+            ActivateAbilityPerks(ability);
+
+            SocketClient.Instance.SendUsedAbility(ability.name);
 
 
-        InGamePanelUI.Instance.ActivateAbility(ability);
+            InGamePanelUI.Instance.ActivateAbility(ability);
 
-        StartCooldown(ability);
+            StartCooldown(ability);
+        }
     }
 
 
@@ -281,7 +288,7 @@ public class MovementController : MonoBehaviour {
                 HitboxEvent HitEvent = new HitboxEvent();
                 HitEvent.AddListener(OnHitboxEvent);
 
-                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent);
+                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent, isPlayer);
             }
 
             tempObj.transform.position = transform.position;
@@ -307,7 +314,7 @@ public class MovementController : MonoBehaviour {
                 HitboxEvent HitEvent = new HitboxEvent();
                 HitEvent.AddListener(OnHitboxEvent);
 
-                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent);
+                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent, isPlayer);
             }
 
             tempObj.transform.position = transform.position;
@@ -624,12 +631,20 @@ public class MovementController : MonoBehaviour {
             return;
         }
 
-        if (!isPlayer && collision.tag == "HitBox")
+        if (collision.tag == "HitBox" && hitbox.CurrentOwner.ID != Character.ID)
         {
-            CharacterInfo chara = CORE.Instance.CurrentRoom.GetPlayer(this.gameObject);
+            if (!isPlayer)
+            {
+                CharacterInfo chara = CORE.Instance.CurrentRoom.GetPlayer(this.gameObject);
 
-            hitbox.Interact(chara.ID);
-            SpawnTargetAbilityObjects(hitbox.CurrentAbility);
+                hitbox.Interact(chara.ID);
+                SpawnTargetAbilityObjects(hitbox.CurrentAbility);
+            }
+            if (isPlayer)
+            {
+                hitbox.Interact(Character.ID);
+                SpawnTargetAbilityObjects(hitbox.CurrentAbility);
+            }
         }
     }
 

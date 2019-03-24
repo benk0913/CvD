@@ -72,3 +72,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLeft: 1
   ShutOnHit: 1
+  StickToOwner: 0
+  Collider: {fileID: 61247604090743934}

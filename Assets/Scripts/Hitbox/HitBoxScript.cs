@@ -6,15 +6,15 @@ using UnityEngine.Events;
 public class HitBoxScript : MonoBehaviour {
 
     [SerializeField]
-    float timeLeft = 0.1f;
+    protected float timeLeft = 0.1f;
 
-    float timeLeftCurrent;
-
-    [SerializeField]
-    bool ShutOnHit = true;
+    protected float timeLeftCurrent;
 
     [SerializeField]
-    bool StickToOwner = false;
+    protected bool ShutOnHit = true;
+
+    [SerializeField]
+    protected bool StickToOwner = false;
 
     [System.NonSerialized]
     public Ability CurrentAbility;
@@ -25,10 +25,17 @@ public class HitBoxScript : MonoBehaviour {
     [System.NonSerialized]
     public CharacterInfo CurrentOwner;
 
-    HitboxEvent CurrentHitEvent;
+    [SerializeField]
+    Collider2D Collider;
 
-    public void SetInfo(CharacterInfo ownerInsance,Ability ability, HitboxEvent onHitEvent)
+    protected HitboxEvent CurrentHitEvent;
+
+    bool isPlayer;
+
+    public virtual void SetInfo(CharacterInfo ownerInsance,Ability ability, HitboxEvent onHitEvent, bool isplayer)
     {
+        this.isPlayer = isplayer;
+
         ActorsHit.Clear();
         this.CurrentAbility = ability;
         this.CurrentOwner = ownerInsance;
@@ -38,14 +45,17 @@ public class HitBoxScript : MonoBehaviour {
         gameObject.SetActive(true);
     }
 
-    public void Interact(string charID)
+    public virtual void Interact(string charID)
     {
         if(ActorsHit.Contains(charID))
         {
             return;
         }
 
-        ActorsHit.Add(charID);
+        if (isPlayer)
+        {
+            ActorsHit.Add(charID);
+        }
 
         if (ShutOnHit)
         {
@@ -53,7 +63,7 @@ public class HitBoxScript : MonoBehaviour {
         }
     }
 
-    void Shut()
+    protected virtual void Shut()
     {
 
         if(ActorsHit.Count > 0)
