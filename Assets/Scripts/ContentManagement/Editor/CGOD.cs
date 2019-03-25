@@ -136,15 +136,8 @@ public class CGOD : EditorWindow
 
     public void UpdateDatabase()
     {
-        JSONNode database = new JSONClass();
-
-        for(int i=0;i<DB.Classes.Count;i++)
-        {
-            database["classes"][i] = DB.Classes[i].ToJson();
-        }
-
         ServerUtilDatabaseHandler serverUtilHandler = new ServerUtilDatabaseHandler(OnServerUtilResponse);
-        serverUtilHandler.UpdateDatabase(database);
+        serverUtilHandler.UpdateDatabase(DB.ToJson());
     }
 
     public void GetDatabase()
