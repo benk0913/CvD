@@ -90,7 +90,7 @@ public class SocketClient : MonoBehaviour
         CurrentSocket.On("player_hurt", OnTakeDamage);
         CurrentSocket.On("actor_blocked", OnActorBlocked);
         CurrentSocket.On("player_ded", OnActorDed);
-        CurrentSocket.On("actor_resurrect", OnActorResurrect);
+        CurrentSocket.On("player_respawn", OnPlayerRespawn);
 
         CurrentSocket.On("player_use_ability", OnPlayerUseAbility);
 
@@ -697,11 +697,13 @@ public class SocketClient : MonoBehaviour
         //}
     }
 
-    protected void OnActorResurrect(Socket socket, Packet packet, object[] args)
+    protected void OnPlayerRespawn(Socket socket, Packet packet, object[] args)
     {
         BroadcastEvent("Actor Has Been Resurrected");
 
-        //Game.Instance.IsAlive = true;
+        JSONNode data = (JSONNode)args[0];
+
+        CORE.Instance.ActorRespawn(data["player_id"].Value);
     }
 
     protected void OnPlayerUseAbility(Socket socket, Packet packet, object[] args)
