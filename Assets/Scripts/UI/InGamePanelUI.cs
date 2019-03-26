@@ -61,7 +61,7 @@ public class InGamePanelUI : MonoBehaviour
         {
             currentAbility = AbilitiesGrid.GetChild(i).GetComponent<AbilityIconUI>();
 
-            if (currentAbility.Reference.name == ability.name)
+            if (currentAbility.AbilityStatus.name == ability.name)
             {
                 currentAbility.ActivateAbility();
             }

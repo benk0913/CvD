@@ -57,16 +57,40 @@ public class ActorState
         return null;
     }
 
+    public BuffStatus GetBuffStatus(Buff buff)
+    {
+        for(int i=0;i<ActiveBuffs.Count;i++)
+        {
+            if(ActiveBuffs[i].Reference.name == buff.name)
+            {
+                return ActiveBuffs[i];
+            }
+        }
+
+        return null;
+    }
+
 }
 
 public class AbilityStatus
 {
     public Ability Reference;
     public Coroutine CooldownRoutine;
+    public int Charges;
 
     public AbilityStatus(Ability ability)
     {
         this.Reference = ability;
+        Charges = ability.ChargesCap;
+    }
+
+    public void Recharge()
+    {
+        Charges++;
+        if(Charges > Reference.ChargesCap)
+        {
+            Charges = Reference.ChargesCap;
+        }
     }
 }
 
@@ -76,8 +100,11 @@ public class BuffStatus
 
     public UnityEvent OnClearEvent;
 
-    public BuffStatus(Buff reference)
+    public GameObject BuffPrefab;
+
+    public BuffStatus(Buff reference, GameObject buffPrefab = null)
     {
         this.Reference = reference;
+        this.BuffPrefab = buffPrefab;
     }
 }

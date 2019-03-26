@@ -12,6 +12,8 @@ public class Ability : ScriptableObject
 
     public float Cooldown = 1f;
 
+    public int ChargesCap = 1;
+
     public List<string> Animations;
 
     public List<Perk> Perks = new List<Perk>();

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class AbilityIconUI : MonoBehaviour
 {
-    public Ability Reference;
+    public AbilityStatus AbilityStatus;
 
     [SerializeField]
     Image CooldownFill;
@@ -21,14 +21,22 @@ public class AbilityIconUI : MonoBehaviour
     TextMeshProUGUI AbilityHotkeyText;
 
     [SerializeField]
+    TextMeshProUGUI AbilityChargesText;
+
+    [SerializeField]
     Image Icon;
 
 
-    public void Initialize(Ability ability, int AbilityNumber)
+    public void Initialize(AbilityStatus ability, int AbilityNumber)
     {
-        this.Reference = ability;
+        this.AbilityStatus = ability;
 
         AbilityHotkeyText.text = InputMap.Map["Ability" + (AbilityNumber+1)].ToString();
+
+        if (ability.Reference.ChargesCap > 1)
+        {
+            AbilityChargesText.text = ability.Reference.ChargesCap.ToString();
+        }
 
         CooldownPanel.SetActive(false);
     }
@@ -43,6 +51,7 @@ public class AbilityIconUI : MonoBehaviour
 
         CooldownRoutineInstance = StartCoroutine(CooldownRoutine());
     }
+    
 
     Coroutine CooldownRoutineInstance;
     IEnumerator CooldownRoutine()
@@ -52,9 +61,9 @@ public class AbilityIconUI : MonoBehaviour
         float t = 0f;
         while(t < 1f)
         {
-            t += (1f / Reference.Cooldown) * Time.deltaTime;
+            t += (1f / AbilityStatus.Reference.Cooldown) * Time.deltaTime;
 
-            CooldownSecondsText.text = Mathf.RoundToInt(Reference.Cooldown - (t * Reference.Cooldown)).ToString();
+            CooldownSecondsText.text = Mathf.RoundToInt(AbilityStatus.Reference.Cooldown - (t * AbilityStatus.Reference.Cooldown)).ToString();
             CooldownFill.fillAmount = 1f-t;
 
             yield return 0;

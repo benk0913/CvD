@@ -9,6 +9,7 @@ public class Buff : ScriptableObject
     public string DisplayName;
     public float Duration;
     public List<Perk> Perks;
+    public GameObject BuffPrefab;
 
     public JSONNode ToJson()
     {

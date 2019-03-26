@@ -259,7 +259,7 @@ public class MovementController : MonoBehaviour {
 
         if (abilityStatus.CooldownRoutine != null)
         {
-            StopCoroutine(abilityStatus.CooldownRoutine);
+            StopCoroutine(abilityStatus.CooldownRoutine); // Edge Case
         }
 
         abilityStatus.CooldownRoutine = StartCoroutine(CooldownRoutine(abilityStatus));
@@ -269,7 +269,14 @@ public class MovementController : MonoBehaviour {
     {
         yield return new WaitForSeconds(abilityStatus.Reference.Cooldown);
 
+        abilityStatus.Recharge();
         abilityStatus.CooldownRoutine = null;
+
+
+        if(abilityStatus.Charges < abilityStatus.Reference.ChargesCap)
+        {
+            StartCooldown(abilityStatus.Reference);
+        }
     }
 
 
@@ -531,10 +538,18 @@ public class MovementController : MonoBehaviour {
 
     public void AddBuff(Buff buff)
     {
-        BuffStatus buffStatus = new BuffStatus(buff);
+        GameObject buffPrefab = null;
+
+        if(buff.BuffPrefab != null)
+        {
+            buffPrefab = ResourcesLoader.Instance.GetRecycledObject(buff.BuffPrefab);
+            buffPrefab.transform.SetParent(transform);
+            buffPrefab.transform.position = transform.position;
+        }
+
+        BuffStatus buffStatus = new BuffStatus(buff, buffPrefab);
 
         Status.ActiveBuffs.Add(buffStatus);
-        //TODO Visualize addition
     }
 
     public void RemoveBuff(Buff buff)
@@ -542,8 +557,13 @@ public class MovementController : MonoBehaviour {
         BuffStatus status = Status.GetBuffStatus(buff);
         status.OnClearEvent.Invoke();
 
+        if(status.BuffPrefab != null)
+        {
+            status.BuffPrefab.transform.SetParent(null);
+            status.BuffPrefab.SetActive(false);
+        }
+
         Status.ActiveBuffs.Remove(status);
-        //TODO Visualize removal
     }
 
     #endregion
