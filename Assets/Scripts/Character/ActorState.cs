@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class ActorState
@@ -11,6 +12,8 @@ public class ActorState
     HealthBarUI HPBar;
 
     List<AbilityStatus> AbilityStatuses = new List<AbilityStatus>();
+
+    public List<BuffStatus> ActiveBuffs = new List<BuffStatus>();
 
     public Coroutine MovementAbilityRoutineInstance;
 
@@ -64,5 +67,17 @@ public class AbilityStatus
     public AbilityStatus(Ability ability)
     {
         this.Reference = ability;
+    }
+}
+
+public class BuffStatus
+{
+    public Buff Reference;
+
+    public UnityEvent OnClearEvent;
+
+    public BuffStatus(Buff reference)
+    {
+        this.Reference = reference;
     }
 }

@@ -89,7 +89,7 @@ public class SocketClient : MonoBehaviour
 
         CurrentSocket.On("player_hurt", OnTakeDamage);
         CurrentSocket.On("actor_blocked", OnActorBlocked);
-        CurrentSocket.On("player_ded", OnActorDed);
+        CurrentSocket.On("player_ded", OnPlayerDead);
         CurrentSocket.On("player_respawn", OnPlayerRespawn);
 
         CurrentSocket.On("player_use_ability", OnPlayerUseAbility);
@@ -715,7 +715,7 @@ public class SocketClient : MonoBehaviour
         CORE.Instance.PlayerStartsAbility(data["player_id"].Value, data["ability_key"]);
     }
 
-    protected void OnActorDed(Socket socket, Packet packet, object[] args)
+    protected void OnPlayerDead(Socket socket, Packet packet, object[] args)
     {
         JSONNode data = (JSONNode)args[0];
         BroadcastEvent("Actor Has Died");
@@ -726,6 +726,24 @@ public class SocketClient : MonoBehaviour
         {
             character.CInstance.GetComponent<MovementController>().Death();
         }
+    }
+
+    private void OnBuffAdded(Socket socket, Packet packet, object[] args)
+    {
+        JSONNode data = (JSONNode)args[0];
+
+        CORE.Instance.PlayerBuffAdded(data["player_id"], data["buff_key"]);
+
+        BroadcastEvent(data.ToString());
+    }
+    
+    private void OnBuffRemoved(Socket socket, Packet packet, object[] args)
+    {
+        JSONNode data = (JSONNode)args[0];
+
+        CORE.Instance.PlayerBuffRemoved(data["player_id"], data["buff_key"]);
+
+        BroadcastEvent(data.ToString());
     }
 
     private void OnMobMovement(Socket socket, Packet packet, object[] args)
@@ -1282,20 +1300,6 @@ public class SocketClient : MonoBehaviour
         JSONNode data = (JSONNode)args[0];
 
         BroadcastEvent(data.ToString());
-
-        //Enemy tempEnemy = Game.Instance.CurrentScene.GetEnemy(data["target_id"].Value);
-        //if (tempEnemy != null) //IS MOB
-        //{
-        //    tempEnemy.AddBuff(data["key"].Value, data["duration"].AsFloat);
-        //}
-        //else
-        //{
-        //    ActorInfo actor = Game.Instance.CurrentScene.GetActor(data["target_id"].Value);
-        //    if (actor != null)
-        //    {
-        //        actor.Instance.AddBuff(data["key"].Value, data["duration"].AsFloat);
-        //    }
-        //}
     }
 
     private void OnBuffResisted(Socket socket, Packet packet, object[] args)
@@ -1327,32 +1331,6 @@ public class SocketClient : MonoBehaviour
         JSONNode data = (JSONNode)args[0];
 
         BroadcastEvent(data.ToString());
-
-        //Enemy tempEnemy = Game.Instance.CurrentScene.GetEnemy(data["target_id"].Value);
-
-        //List<string> buffNames = null;
-        //if (data["buff_names"] != null && data["buff_names"].Count > 0)
-        //{
-        //    buffNames = new List<string>();
-        //    for (int i = 0; i < data["buff_names"].Count; i++)
-        //    {
-        //        buffNames.Add(data["buff_names"][i]);
-        //    }
-        //}
-
-        
-        //if (tempEnemy != null) //IS MOB
-        //{
-        //    tempEnemy.ClearBuffs(buffNames);
-        //}
-        //else
-        //{
-        //    ActorInfo actor = Game.Instance.CurrentScene.GetActor(data["target_id"].Value);
-        //    if (actor != null)
-        //    {
-        //        actor.Instance.ClearBuffs(buffNames);
-        //    }
-        //}
     }
 
     private void OnSpellActivated(Socket socket, Packet packet, object[] args)

@@ -529,6 +529,23 @@ public class MovementController : MonoBehaviour {
         tempDamageText.GetComponent<FloatingDamageUI>().Activate(damage.ToString());
     }
 
+    public void AddBuff(Buff buff)
+    {
+        BuffStatus buffStatus = new BuffStatus(buff);
+
+        Status.ActiveBuffs.Add(buffStatus);
+        //TODO Visualize addition
+    }
+
+    public void RemoveBuff(Buff buff)
+    {
+        BuffStatus status = Status.GetBuffStatus(buff);
+        status.OnClearEvent.Invoke();
+
+        Status.ActiveBuffs.Remove(status);
+        //TODO Visualize removal
+    }
+
     #endregion
 
     #region Server Control

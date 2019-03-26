@@ -223,6 +223,16 @@ public class CORE : MonoBehaviour {
         SpawnCharacter(CurrentRoom.GetPlayer(id));
     }
 
+    public void PlayerBuffAdded(string playerID, string buffKey)
+    {
+        CurrentRoom.GetPlayer(playerID).CInstance.GetComponent<MovementController>().AddBuff(Data.GetBuff(buffKey));
+    }
+
+    public void PlayerBuffRemoved(string playerID, string buffKey)
+    {
+        CurrentRoom.GetPlayer(playerID).CInstance.GetComponent<MovementController>().RemoveBuff(Data.GetBuff(buffKey));
+    }
+
     #endregion
 
     #endregion
