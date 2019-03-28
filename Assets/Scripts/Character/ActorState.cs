@@ -11,7 +11,7 @@ public class ActorState
     [SerializeField]
     HealthBarUI HPBar;
 
-    List<AbilityStatus> AbilityStatuses = new List<AbilityStatus>();
+    public List<AbilityStatus> AbilityStatuses = new List<AbilityStatus>();
 
     public List<BuffStatus> ActiveBuffs = new List<BuffStatus>();
 
@@ -76,6 +76,9 @@ public class AbilityStatus
 {
     public Ability Reference;
     public Coroutine CooldownRoutine;
+    public UnityEvent OnRecharge = new UnityEvent();
+    public UnityEvent OnCooldownComplete = new UnityEvent();
+    public UnityEvent OnAbilityActivated = new UnityEvent();
     public int Charges;
 
     public AbilityStatus(Ability ability)
@@ -86,11 +89,32 @@ public class AbilityStatus
 
     public void Recharge()
     {
-        Charges++;
-        if(Charges > Reference.ChargesCap)
+        if (Charges >= Reference.ChargesCap)
         {
-            Charges = Reference.ChargesCap;
+            return;
         }
+
+        Charges++;
+
+        OnRecharge.Invoke();
+    }
+
+    public void CooldownComplete()
+    {
+        Recharge();
+
+        CooldownRoutine = null;
+
+        OnCooldownComplete.Invoke();
+    }
+
+    public void ActivateAbility(Coroutine cooldownRoutine)
+    {
+        Charges--;
+
+        CooldownRoutine = cooldownRoutine;
+
+        OnAbilityActivated.Invoke();
     }
 }
 

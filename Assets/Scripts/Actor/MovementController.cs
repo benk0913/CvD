@@ -193,7 +193,7 @@ public class MovementController : MonoBehaviour {
             }
 
             AbilityStatus abilityStatus = Status.GetAbilityStatus(ability);
-            if (abilityStatus != null && abilityStatus.CooldownRoutine != null)
+            if (abilityStatus.Charges <= 0)
             {
                 //TODO - IN COOLDOWN ALERT!
                 return;
@@ -209,12 +209,10 @@ public class MovementController : MonoBehaviour {
 
     void StartAbilityDuration(Ability ability)
     {
-        if(AbilityDurationRoutineInstance != null)
+        if (Status.GetAbilityStatus(ability).Charges > 0)
         {
-            return;
+            AbilityDurationRoutineInstance = StartCoroutine(AbilityDurationRoutine(ability));
         }
-
-        AbilityDurationRoutineInstance = StartCoroutine(AbilityDurationRoutine(ability));
     }
 
     Coroutine AbilityDurationRoutineInstance;
@@ -229,11 +227,11 @@ public class MovementController : MonoBehaviour {
 
         yield return new WaitForSeconds(duration);
 
-        CompleteAbility(ability);
+        CompleteAbilityDuration(ability);
         AbilityDurationRoutineInstance = null;
     }
 
-    public void CompleteAbility(Ability ability)
+    public void CompleteAbilityDuration(Ability ability)
     {
         SpawnAbilityObjects(ability);
 
@@ -241,8 +239,7 @@ public class MovementController : MonoBehaviour {
         {
             ActivateAbilityPerks(ability);
 
-            InGamePanelUI.Instance.ActivateAbility(ability);
-
+            
             StartCooldown(ability);
         }
     }
@@ -257,21 +254,26 @@ public class MovementController : MonoBehaviour {
             return;
         }
 
-        if (abilityStatus.CooldownRoutine != null)
+        if (abilityStatus.Charges <= 0)
         {
-            StopCoroutine(abilityStatus.CooldownRoutine); // Edge Case
+            return;
         }
 
-        abilityStatus.CooldownRoutine = StartCoroutine(CooldownRoutine(abilityStatus));
+        if (abilityStatus.CooldownRoutine != null)
+        {
+            abilityStatus.ActivateAbility(abilityStatus.CooldownRoutine);
+        }
+        else
+        {
+            abilityStatus.ActivateAbility(StartCoroutine(CooldownRoutine(abilityStatus)));
+        }
     }
 
     IEnumerator CooldownRoutine(AbilityStatus abilityStatus)
     {
         yield return new WaitForSeconds(abilityStatus.Reference.Cooldown);
 
-        abilityStatus.Recharge();
-        abilityStatus.CooldownRoutine = null;
-
+        abilityStatus.CooldownComplete();
 
         if(abilityStatus.Charges < abilityStatus.Reference.ChargesCap)
         {

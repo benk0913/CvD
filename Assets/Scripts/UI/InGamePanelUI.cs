@@ -29,20 +29,38 @@ public class InGamePanelUI : MonoBehaviour
 
     void InitializeAbilities()
     {
-        ClearAbilities();
-
-        for(int i=0;i< Actor.Character.Class.Abilities.Count;i++)
+        if(InitializeAbilitiesRoutineInstance != null)
         {
-            AddAbility(Actor.Character.Class.Abilities[i], i);
+            return;
         }
+
+        InitializeAbilitiesRoutineInstance = StartCoroutine(InitializeAbilitiesRoutine());
     }
 
-    void AddAbility(Ability ability, int index)
+    Coroutine InitializeAbilitiesRoutineInstance;
+    IEnumerator InitializeAbilitiesRoutine()
+    {
+        ClearAbilities();
+
+        while(Actor.Status == null)
+        {
+            yield return 0;
+        }
+
+        for (int i = 0; i < Actor.Status.AbilityStatuses.Count; i++)
+        {
+            AddAbility(Actor.Status.AbilityStatuses[i], i);
+        }
+        
+        InitializeAbilitiesRoutineInstance = null;
+    }
+
+    void AddAbility(AbilityStatus abilityStatus, int index)
     {
         GameObject abilityObject = Instantiate(AbilityUIPrefab);
         abilityObject.transform.SetParent(AbilitiesGrid, false);
 
-        abilityObject.GetComponent<AbilityIconUI>().Initialize(ability, index);
+        abilityObject.GetComponent<AbilityIconUI>().Initialize(abilityStatus, index);
     }
 
     void ClearAbilities()
@@ -50,21 +68,6 @@ public class InGamePanelUI : MonoBehaviour
         for(int i=0;i<AbilitiesGrid.childCount;i++)
         {
             Destroy(AbilitiesGrid.GetChild(i).gameObject);
-        }
-    }
-
-    public void ActivateAbility(Ability ability)
-    {
-        AbilityIconUI currentAbility;
-
-        for(int i=0;i<AbilitiesGrid.childCount;i++)
-        {
-            currentAbility = AbilitiesGrid.GetChild(i).GetComponent<AbilityIconUI>();
-
-            if (currentAbility.AbilityStatus.name == ability.name)
-            {
-                currentAbility.ActivateAbility();
-            }
         }
     }
 
