@@ -171,7 +171,7 @@ public class CORE : MonoBehaviour {
         GameObject charObj = Instantiate(character.Class.ClassActor);
         MovementController actor = charObj.GetComponent<MovementController>();
 
-        actor.SetInfo(character ,(character.ID == CurrentCharacter.ID));
+        actor.SetInfo(character ,character.isPlayer);
 
         charObj.transform.position = new Vector3(0, 0, -3f);
 
@@ -179,7 +179,11 @@ public class CORE : MonoBehaviour {
 
         CurrentRoom.Characters.Add(character);
 
-        InGamePanelUI.Instance.SetInfo(actor);
+        if (character.isPlayer)
+        {
+            InGamePanelUI.Instance.SetInfo(actor);
+            ((SceneCamera)CurrentRoom.Settings.GetSceneEntity("Camera")).SetFollowTarget(CurrentCharacter.CInstance);
+        }
     }
 
     IEnumerator InitializeSceneContent()
@@ -195,8 +199,6 @@ public class CORE : MonoBehaviour {
         }
 
         SpawnCharacter(CurrentCharacter);
-
-        ((SceneCamera)CurrentRoom.Settings.GetSceneEntity("Camera")).SetFollowTarget(CurrentCharacter.CInstance);
     }
 
     #endregion

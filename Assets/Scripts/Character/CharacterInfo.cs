@@ -7,6 +7,15 @@ public class CharacterInfo
     public CharacterClass Class;
 
     public Vector3 LastPosition;
+
+    public bool isPlayer
+    {
+        get
+        {
+            return CORE.Instance.CurrentCharacter.ID == this.ID;
+        }
+    }
+
     
     /// <summary>
     /// The In Scene Instance of the character (The one that moves around)

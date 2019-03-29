@@ -112,9 +112,14 @@ public class AbilityStatus
     {
         Charges--;
 
-        CooldownRoutine = cooldownRoutine;
+        StartRechargeCooldown(cooldownRoutine);
 
         OnAbilityActivated.Invoke();
+    }
+
+    public void StartRechargeCooldown(Coroutine cooldownRoutine)
+    {
+        this.CooldownRoutine = cooldownRoutine;
     }
 }
 

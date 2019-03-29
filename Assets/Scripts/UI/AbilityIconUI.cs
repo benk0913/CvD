@@ -25,6 +25,9 @@ public class AbilityIconUI : MonoBehaviour
     TextMeshProUGUI AbilityChargesText;
 
     [SerializeField]
+    Button AbilityButton;
+
+    [SerializeField]
     Image Icon;
 
 
@@ -100,6 +103,9 @@ public class AbilityIconUI : MonoBehaviour
         {
             AbilityChargesText.text = "";
         }
+
+        AbilityButton.interactable = !(abilityStatus.Charges <= 0);
+        
 
         CooldownRoutineInstance = StartCoroutine(CooldownRoutine());
     }

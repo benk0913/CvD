@@ -193,7 +193,7 @@ public class MovementController : MonoBehaviour {
             }
 
             AbilityStatus abilityStatus = Status.GetAbilityStatus(ability);
-            if (abilityStatus.Charges <= 0)
+            if (abilityStatus != null && abilityStatus.Charges <= 0)
             {
                 //TODO - IN COOLDOWN ALERT!
                 return;
@@ -209,10 +209,14 @@ public class MovementController : MonoBehaviour {
 
     void StartAbilityDuration(Ability ability)
     {
-        if (Status.GetAbilityStatus(ability).Charges > 0)
+        AbilityStatus abilityStatus = Status.GetAbilityStatus(ability);
+        if(abilityStatus != null && abilityStatus.Charges <= 0)
         {
-            AbilityDurationRoutineInstance = StartCoroutine(AbilityDurationRoutine(ability));
+            return;
         }
+        
+        AbilityDurationRoutineInstance = StartCoroutine(AbilityDurationRoutine(ability));
+        
     }
 
     Coroutine AbilityDurationRoutineInstance;
@@ -259,14 +263,7 @@ public class MovementController : MonoBehaviour {
             return;
         }
 
-        if (abilityStatus.CooldownRoutine != null)
-        {
-            abilityStatus.ActivateAbility(abilityStatus.CooldownRoutine);
-        }
-        else
-        {
-            abilityStatus.ActivateAbility(StartCoroutine(CooldownRoutine(abilityStatus)));
-        }
+        abilityStatus.ActivateAbility(StartCoroutine(CooldownRoutine(abilityStatus)));
     }
 
     IEnumerator CooldownRoutine(AbilityStatus abilityStatus)
@@ -277,7 +274,7 @@ public class MovementController : MonoBehaviour {
 
         if(abilityStatus.Charges < abilityStatus.Reference.ChargesCap)
         {
-            StartCooldown(abilityStatus.Reference);
+            abilityStatus.StartRechargeCooldown(StartCoroutine(CooldownRoutine(abilityStatus)));
         }
     }
 
@@ -400,14 +397,21 @@ public class MovementController : MonoBehaviour {
         float speed    = perk.GetPerkValueByType("SpeedModifier", 3f);
         bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
 
-        Vector2 direction = (Rigid.velocity.y > 0? Vector2.up : Vector2.down) + (Animer.transform.localScale.x > 0 ? Vector2.left : Vector2.right);
+        bool isGoingUp = Rigid.velocity.y >= 0;
+        
+        Vector2 direction = (isGoingUp? Vector2.up : Vector2.down) + (Animer.transform.localScale.x > 0 ? Vector2.left : Vector2.right);
+
+        if(isGoingUp)
+        {
+            Animer.Play("TestChar_PounceUp");//TODO Make an alternative method...
+        }
 
         while (duration > 0)
         {
             duration -= 1f * Time.deltaTime;
             Rigid.position += direction * speed * Time.deltaTime;
 
-            if(isInterruptOnGrounded && isGrounded)
+            if(!isGoingUp && isInterruptOnGrounded && isGrounded)
             {
                 ShutMovementAbility();
                 yield break;

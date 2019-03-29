@@ -1387,6 +1387,7 @@ MonoBehaviour:
   - {fileID: 9016981803415906027, guid: eb9dba8ce77fd5e4ea34d766a77e41e1, type: 3}
   - {fileID: 7567260111314732214, guid: 85fd1e9399602a04f8e1c39294682b6c, type: 3}
   - {fileID: 1262712202013594729, guid: dd221a57c8395f246a52ac21a4c3f173, type: 3}
+  - {fileID: 9016981803415906027, guid: 8760764a58adff44ba6e5b1bdc7560a9, type: 3}
   myDirection: 1
 --- !u!114 &246
 MonoBehaviour:
