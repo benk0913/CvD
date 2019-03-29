@@ -121,6 +121,15 @@ public class CORE : MonoBehaviour {
 
     #region Public Methods
 
+    #region DEBUG
+
+    public void SwitchCharacter(CharacterClass cClass)
+    {
+        SocketClient.Instance.SendSwitchCharacter(cClass);
+    }
+
+    #endregion
+
     #region Scene Loading
 
     public void LoadScene(JSONNode roomData, JSONNode charData)
@@ -152,7 +161,7 @@ public class CORE : MonoBehaviour {
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
+    
     public void SpawnCharacter(JSONNode response)
     {
         CharacterInfo character = new CharacterInfo(

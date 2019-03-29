@@ -1438,6 +1438,17 @@ public class SocketClient : MonoBehaviour
         BroadcastEvent("SENT - Hit Ability " + node.ToString());
     }
 
+    public void SendSwitchCharacter(CharacterClass cClass)
+    {
+        JSONNode node = new JSONClass();
+
+        node["class_key"] = cClass.name;
+        
+        CurrentSocket.Emit("switch_character", node);
+
+        BroadcastEvent("SENT - Switch Character " + node.ToString());
+    }
+
     public void SendStartedClimbing()
     {
         JSONNode node = new JSONClass();

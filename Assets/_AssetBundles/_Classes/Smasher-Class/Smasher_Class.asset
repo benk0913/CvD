@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c0f9f67125cb84c894b629cae9bcce, type: 3}
+  m_Name: Smasher_Class
+  m_EditorClassIdentifier: 
+  DisplayName: Smasher
+  ClassActor: {fileID: 6757056515279646673, guid: 792fca4fd0174594f9eedee5c86a5713,
+    type: 3}
+  BaseHP: 150
+  HurtAnimations:
+  - Hurt1
+  - Hurt2
+  DeathAnimations:
+  - Death1
+  Abilities: []
