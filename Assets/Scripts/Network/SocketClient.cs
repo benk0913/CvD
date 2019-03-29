@@ -718,14 +718,9 @@ public class SocketClient : MonoBehaviour
     protected void OnPlayerDead(Socket socket, Packet packet, object[] args)
     {
         JSONNode data = (JSONNode)args[0];
-        BroadcastEvent("Actor Has Died");
+        BroadcastEvent("Actor "+ data["player_id"].Value+" Has Died");
 
-        CharacterInfo character = CORE.Instance.CurrentRoom.GetPlayer(data["id"].Value);
-
-        if (character != null)
-        {
-            character.CInstance.GetComponent<MovementController>().Death();
-        }
+        CORE.Instance.ActorDead(data["player_id"].Value);
     }
 
     private void OnBuffAdded(Socket socket, Packet packet, object[] args)

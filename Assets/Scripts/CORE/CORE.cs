@@ -218,6 +218,11 @@ public class CORE : MonoBehaviour {
         CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().Hurt(amount);
     }
 
+    public void ActorDead(string id)
+    {
+        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().Death();
+    }
+
     public void ActorRespawn(string id)
     {
         SpawnCharacter(CurrentRoom.GetPlayer(id));

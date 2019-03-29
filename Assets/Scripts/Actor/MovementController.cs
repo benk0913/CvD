@@ -400,7 +400,7 @@ public class MovementController : MonoBehaviour {
         float speed    = perk.GetPerkValueByType("SpeedModifier", 3f);
         bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
 
-        Vector2 direction = Vector2.down + (Animer.transform.localScale.x > 0 ? Vector2.left : Vector2.right);
+        Vector2 direction = (Rigid.velocity.y > 0? Vector2.up : Vector2.down) + (Animer.transform.localScale.x > 0 ? Vector2.left : Vector2.right);
 
         while (duration > 0)
         {

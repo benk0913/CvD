@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test_Pounce
   m_EditorClassIdentifier: 
   DisplayName: Pounce
-  Duration: 0.5
+  Duration: 0.1
   Cooldown: 5
   ChargesCap: 2
   Animations:
@@ -21,8 +21,7 @@ MonoBehaviour:
   Perks:
   - {fileID: 11400000, guid: 7ba626dc3b2bbab43be937f965a363a7, type: 2}
   PerksOnHit:
-  - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
-  - {fileID: 11400000, guid: 567a7f8c6b0c97148bf558c7488452ab, type: 2}
+  - {fileID: 11400000, guid: b0e91ab10b03f2f4cb9acf9034d1629d, type: 2}
   ObjectsToSpawn:
   - {fileID: 1886398916049500, guid: c01599a6b39b594478996ebfbb8f8069, type: 3}
   ObjectsToSpawnOnTargets:
