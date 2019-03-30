@@ -70,7 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92454742f726f642baba87bbd1ba0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 1
+  timeLeft: 0.3
   ShutOnHit: 1
   StickToOwner: 0
+  DependsOnMovementAbility: 0
   Collider: {fileID: 61247604090743934}

@@ -49,6 +49,8 @@ public class AbilityIconUI : MonoBehaviour
             AbilityChargesText.text = "x"+ability.Reference.ChargesCap.ToString();
         }
 
+        AbilityButton.interactable = !(abilityStatus.Charges <= 0);
+
         CooldownPanel.SetActive(false);
     }
 
@@ -75,6 +77,7 @@ public class AbilityIconUI : MonoBehaviour
         }
 
         AbilityChargesText.text = "x"+this.abilityStatus.Charges.ToString();
+        AbilityButton.interactable = !(abilityStatus.Charges <= 0);
     }
 
     private void OnAbilityCooldownComplete()

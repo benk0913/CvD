@@ -16,7 +16,7 @@ public class ActorState
     public List<BuffStatus> ActiveBuffs = new List<BuffStatus>();
 
     public Coroutine MovementAbilityRoutineInstance;
-
+   
     public int CurrentHP
     {
         get
@@ -127,7 +127,7 @@ public class BuffStatus
 {
     public Buff Reference;
 
-    public UnityEvent OnClearEvent;
+    public UnityEvent OnClearEvent = new UnityEvent();
 
     public GameObject BuffPrefab;
 

@@ -22,6 +22,8 @@ MonoBehaviour:
   DeathAnimations:
   - Death1
   - Death2
+  StunnedAnimations:
+  - Stunned
   Abilities:
   - {fileID: 11400000, guid: 7d0f85ed8415f3e4ab99a7f651a62935, type: 2}
   - {fileID: 11400000, guid: 5e9b9588f93e1d340a6e794514e63bc7, type: 2}

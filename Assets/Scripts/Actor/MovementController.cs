@@ -42,6 +42,8 @@ public class MovementController : MonoBehaviour {
 
     Vector3 lastSentPos;
 
+    public bool isStunned = false;
+
     public bool isGrounded
     {
         get
@@ -61,6 +63,25 @@ public class MovementController : MonoBehaviour {
         }
     }
 
+    public bool isDuringAbility
+    {
+        get
+        {
+            if (Status.MovementAbilityRoutineInstance != null)
+            {
+                return true;
+            }
+
+            if(AbilityDurationRoutineInstance != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+
 
     private void Update()
     {
@@ -78,6 +99,11 @@ public class MovementController : MonoBehaviour {
         }
         
         if(isDead)
+        {
+            return;
+        }
+
+        if(isStunned)
         {
             return;
         }
@@ -491,7 +517,10 @@ public class MovementController : MonoBehaviour {
     {
         ShowDamageText(damage);
 
-        Animer.Play(Character.Class.HurtAnimations[UnityEngine.Random.Range(0, Character.Class.HurtAnimations.Count)]);
+        if (!isDuringAbility)
+        {
+            Animer.Play(Character.Class.HurtAnimations[UnityEngine.Random.Range(0, Character.Class.HurtAnimations.Count)]);
+        }
 
         Status.CurrentHP -= damage;
     }
@@ -559,6 +588,9 @@ public class MovementController : MonoBehaviour {
         BuffStatus buffStatus = new BuffStatus(buff, buffPrefab);
 
         Status.ActiveBuffs.Add(buffStatus);
+
+        ActivateMovementBuff(buffStatus);
+
     }
 
     public void RemoveBuff(Buff buff)
@@ -573,6 +605,48 @@ public class MovementController : MonoBehaviour {
         }
 
         Status.ActiveBuffs.Remove(status);
+
+        DeactivateMovementBuff(status);
+    }
+
+    void ActivateMovementBuff(BuffStatus buffStatus)
+    {
+        switch(buffStatus.Reference.name)
+        {
+            case "Stun":
+                {
+                    isStunned = true;
+                    Animer.Play(Character.Class.StunnedAnimations[UnityEngine.Random.Range(0, Character.Class.StunnedAnimations.Count)]);
+
+                    InterruptAbility();
+                    return;
+                }
+        }
+    }
+
+    void DeactivateMovementBuff(BuffStatus buffStatus)
+    {
+        switch (buffStatus.Reference.name)
+        {
+            case "Stun":
+                {
+                    if (Status.GetBuffStatus(buffStatus.Reference) == null)
+                    {
+                        isStunned = false;
+                    }
+
+                    return;
+                }
+        }
+    }
+
+    void InterruptAbility()
+    {
+        if(AbilityDurationRoutineInstance != null)
+        {
+            StopCoroutine(AbilityDurationRoutineInstance);
+            AbilityDurationRoutineInstance = null;
+        }
     }
 
     #endregion

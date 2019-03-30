@@ -21,5 +21,7 @@ MonoBehaviour:
   - Hurt2
   DeathAnimations:
   - Death1
+  StunnedAnimations:
+  - Stunned
   Abilities:
   - {fileID: 11400000, guid: a0417ab96fa45af43bbc4a36c82c7549, type: 2}
