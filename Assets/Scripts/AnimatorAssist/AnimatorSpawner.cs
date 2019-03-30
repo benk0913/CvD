@@ -17,11 +17,17 @@ public class AnimatorSpawner : MonoBehaviour
 
         if (myDirection)
         {
-            tempObj.transform.localScale =
-                new Vector3(
-                    Mathf.Abs(tempObj.transform.localScale.x) * ((transform.localScale.x < 0)? -1f : 1f),
-                    tempObj.transform.localScale.y,
-                    tempObj.transform.localScale.z);
+            //tempObj.transform.localScale =
+            //    new Vector3(
+            //        Mathf.Abs(tempObj.transform.localScale.x) * ((transform.localScale.x < 0)? -1f : 1f),
+            //        tempObj.transform.localScale.y,
+            //        tempObj.transform.localScale.z);
+
+            tempObj.transform.rotation =
+                Quaternion.Euler(
+                    tempObj.transform.rotation.x,
+                    ((transform.localScale.x < 0) ? 180f : 0f),
+                    tempObj.transform.rotation.z);
         }
     }
 

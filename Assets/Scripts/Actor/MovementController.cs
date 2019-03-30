@@ -518,7 +518,10 @@ public class MovementController : MonoBehaviour {
 
         yield return new WaitForSeconds(2f);
 
-        this.Character.CInstance = null;
+        if (this.Character.CInstance == this)
+        {
+            this.Character.CInstance = null;
+        }
 
         Destroy(this.gameObject);
     }

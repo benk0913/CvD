@@ -216,37 +216,94 @@ public class CORE : MonoBehaviour {
 
     public void UpdateMovement(JSONNode jSONNode, Vector3 pos, float dirX, float dirY)
     {
-        CurrentRoom.GetPlayer(jSONNode["id"].Value).CInstance.GetComponent<MovementController>().SetLastPosition(pos, dirX, dirY);
+        CharacterInfo player = CurrentRoom.GetPlayer(jSONNode["id"].Value);
+
+        if (player.CInstance != null)
+        {
+            CurrentRoom.GetPlayer(jSONNode["id"].Value).CInstance.GetComponent<MovementController>().SetLastPosition(pos, dirX, dirY);
+        }
+        else
+        {
+            Debug.LogError("UPDATE MOVEMENT - Player is dead or missing!");
+        }
     }
 
-    public void PlayerStartsAbility(string id, string abilityKey)
+    public void PlayerStartsAbility(string playerID, string abilityKey)
     {
-        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().StartAbility(Data.GetAbility(abilityKey));
+        CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+
+        if (player.CInstance != null)
+        {
+            player.CInstance.GetComponent<MovementController>().StartAbility(Data.GetAbility(abilityKey));
+        }
+        else
+        {
+            Debug.LogError("START ABILITY - Player is dead or missing!");
+        }
     }
 
-    public void ActorHurt(string id, int amount)
+    public void ActorHurt(string playerID, int amount)
     {
-        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().Hurt(amount);
+        CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+
+        if (player.CInstance != null)
+        {
+            player.CInstance.GetComponent<MovementController>().Hurt(amount);
+        }
+        else
+        {
+            Debug.LogError("HURT - Player is dead or missing!");
+        }
     }
 
-    public void ActorDead(string id)
+    public void ActorDead(string playerID)
     {
-        CurrentRoom.GetPlayer(id).CInstance.GetComponent<MovementController>().Death();
+        CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+
+        if (player.CInstance != null)
+        {
+            player.CInstance.GetComponent<MovementController>().Death();
+        }
+        else
+        {
+            Debug.LogError("DEATH - Player is dead or missing!");
+        }
     }
 
-    public void ActorRespawn(string id)
+    public void ActorRespawn(string playerID, string classKey)
     {
-        SpawnCharacter(CurrentRoom.GetPlayer(id));
+        CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+        player.Class = Data.GetClass(classKey);
+
+        SpawnCharacter(player);
     }
 
     public void PlayerBuffAdded(string playerID, string buffKey)
     {
-        CurrentRoom.GetPlayer(playerID).CInstance.GetComponent<MovementController>().AddBuff(Data.GetBuff(buffKey));
+        CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+
+        if (player.CInstance != null)
+        {
+            player.CInstance.GetComponent<MovementController>().AddBuff(Data.GetBuff(buffKey));
+        }
+        else
+        {
+            Debug.LogError("ADD BUFF - Player is dead or missing!");
+        }
     }
 
     public void PlayerBuffRemoved(string playerID, string buffKey)
     {
-        CurrentRoom.GetPlayer(playerID).CInstance.GetComponent<MovementController>().RemoveBuff(Data.GetBuff(buffKey));
+        CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+
+        if (player.CInstance != null)
+        {
+            player.CInstance.GetComponent<MovementController>().RemoveBuff(Data.GetBuff(buffKey));
+        }
+        else
+        {
+            Debug.LogError("REMOVE BUFF - Player is dead or missing!");
+        }
     }
 
     #endregion

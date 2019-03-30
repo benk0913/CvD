@@ -188,11 +188,12 @@ public class SocketClient : MonoBehaviour
 
     protected void OnActorJoinRoom(Socket socket, Packet packet, params object[] args)
     {
-        BroadcastEvent("Actor has joined the room ");
 
-        JSONNode data = (JSONNode)args[0];
+        JSONNode characterData = (JSONNode)args[0];
         
-        CORE.Instance.SpawnCharacter(data);
+        CORE.Instance.SpawnCharacter(characterData);
+
+        BroadcastEvent("Actor has joined the room "+characterData.ToString());
     }
 
     protected void OnActorLeaveRoom(Socket socket, Packet packet, params object[] args)
@@ -699,11 +700,12 @@ public class SocketClient : MonoBehaviour
 
     protected void OnPlayerRespawn(Socket socket, Packet packet, object[] args)
     {
-        BroadcastEvent("Actor Has Been Resurrected");
 
         JSONNode data = (JSONNode)args[0];
 
-        CORE.Instance.ActorRespawn(data["player_id"].Value);
+        CORE.Instance.ActorRespawn(data["player_id"].Value, data["class_key"].Value);
+
+        BroadcastEvent("Actor Has Been Resurrected "+data.ToString());
     }
 
     protected void OnPlayerUseAbility(Socket socket, Packet packet, object[] args)
