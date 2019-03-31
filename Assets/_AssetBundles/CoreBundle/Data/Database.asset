@@ -18,3 +18,4 @@ MonoBehaviour:
   Buffs:
   - {fileID: 11400000, guid: 5975336065841c84d9f1f997bb422e71, type: 2}
   - {fileID: 11400000, guid: ed33ceedcd9eeed419ada166f323123e, type: 2}
+  - {fileID: 11400000, guid: 7b376f1c9021883408e6ab9dceec78aa, type: 2}

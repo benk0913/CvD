@@ -33,6 +33,8 @@ public class MovementController : MonoBehaviour {
     public bool isPlayer;
     public bool isDead;
 
+    float baseSpeed = 1f;
+
     float lastXDir;
     float lastYDir;
 
@@ -501,6 +503,8 @@ public class MovementController : MonoBehaviour {
         this.Character = info;
 
         Status.Initialize(this.Character);
+
+        baseSpeed = this.Speed;
     }
 
     public void AnimateStartAbility(Ability ability)
@@ -621,6 +625,12 @@ public class MovementController : MonoBehaviour {
                     InterruptAbility();
                     return;
                 }
+            case "Slow":
+                {
+                    Speed = baseSpeed / 2f;
+
+                    return;
+                }
         }
     }
 
@@ -634,6 +644,12 @@ public class MovementController : MonoBehaviour {
                     {
                         isStunned = false;
                     }
+
+                    return;
+                }
+            case "Slow":
+                {
+                    Speed = baseSpeed;
 
                     return;
                 }
