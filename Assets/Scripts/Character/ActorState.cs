@@ -16,7 +16,9 @@ public class ActorState
     public List<BuffStatus> ActiveBuffs = new List<BuffStatus>();
 
     public Coroutine MovementAbilityRoutineInstance;
-   
+
+    public HPChangedEvent OnHPChanged = new HPChangedEvent();
+
     public int CurrentHP
     {
         get
@@ -26,7 +28,7 @@ public class ActorState
         set
         {
             currentHP = value;
-            HPBar.RefreshValue((float)currentHP / (float)CurrentCharacter.Class.BaseHP);
+            OnHPChanged.Invoke(currentHP, CurrentCharacter.Class.BaseHP);
         }
     }
     int currentHP;
@@ -35,6 +37,7 @@ public class ActorState
     public void Initialize(CharacterInfo character)
     {
         this.CurrentCharacter = character;
+        this.HPBar.SetInfo(OnHPChanged);
 
         CurrentHP = character.Class.BaseHP;
 
@@ -136,4 +139,8 @@ public class BuffStatus
         this.Reference = reference;
         this.BuffPrefab = buffPrefab;
     }
+}
+
+public class HPChangedEvent : UnityEvent<int, int>
+{
 }

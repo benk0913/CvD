@@ -14,6 +14,9 @@ public class InGamePanelUI : MonoBehaviour
     [SerializeField]
     GameObject AbilityUIPrefab;
 
+    [SerializeField]
+    HealthBarUI HPBar;
+
     private void Awake()
     {
         Instance = this;
@@ -23,6 +26,7 @@ public class InGamePanelUI : MonoBehaviour
     {
         this.Actor = actor;
         InitializeAbilities();
+        HPBar.SetInfo(actor.Status.OnHPChanged);
     }
 
     #region Abilities
@@ -60,7 +64,7 @@ public class InGamePanelUI : MonoBehaviour
         GameObject abilityObject = Instantiate(AbilityUIPrefab);
         abilityObject.transform.SetParent(AbilitiesGrid, false);
 
-        abilityObject.GetComponent<AbilityIconUI>().Initialize(abilityStatus, index);
+        abilityObject.GetComponent<AbilityIconUI>().SetInfo(abilityStatus, index);
     }
 
     void ClearAbilities()

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
@@ -9,10 +11,37 @@ public class HealthBarUI : MonoBehaviour
 
     [SerializeField]
     Image FillImage;
+
+    [SerializeField]
+    TextMeshProUGUI PrecentText;
+
+    HPChangedEvent OnHPChangedEvent;
     
+    public void SetInfo(HPChangedEvent onHpChangedEvent)
+    {
+        if(OnHPChangedEvent != null)
+        {
+            OnHPChangedEvent.RemoveListener(OnHPChanged);
+        }
+
+        OnHPChangedEvent = onHpChangedEvent;
+
+        OnHPChangedEvent.AddListener(OnHPChanged);
+    }
+
+    private void OnHPChanged(int newHP, int totalHP)
+    {
+        RefreshValue((float)newHP / (float)totalHP);
+    }
 
     public void RefreshValue(float value)
     {
+
+        if(PrecentText != null)
+        {
+            PrecentText.text = Mathf.RoundToInt(value * 100f) + "%";
+        }
+
         this.CurrentValue = value;
 
         if(RefreshRoutineInstance != null)

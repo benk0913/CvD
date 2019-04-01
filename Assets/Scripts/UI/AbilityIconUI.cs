@@ -31,7 +31,7 @@ public class AbilityIconUI : MonoBehaviour
     Image Icon;
 
 
-    public void Initialize(AbilityStatus ability, int AbilityNumber)
+    public void SetInfo(AbilityStatus ability, int AbilityNumber)
     {
         if(this.abilityStatus != null)
         {
