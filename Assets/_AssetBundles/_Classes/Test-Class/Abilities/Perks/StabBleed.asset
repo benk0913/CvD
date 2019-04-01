@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: SwingDamage
+  m_Name: StabBleed
   m_EditorClassIdentifier: 
-  Attribute: {fileID: 11400000, guid: bfebe5c92b1a1e148825ae13baf1e9fa, type: 2}
-  MinValue: 2
+  Attribute: {fileID: 11400000, guid: c70c28a307b8c5648a272c0df795c6e8, type: 2}
+  MinValue: 1
   MaxValue: 2
-  Perks: []
+  Perks:
+  - {fileID: 11400000, guid: 4febf0d99d24df14b90bd7282514e9d6, type: 2}
+  - {fileID: 11400000, guid: fe17be5e03b516847bdb3ce0e9d1a059, type: 2}
+  - {fileID: 11400000, guid: 0c69715a1186989478bb21d46b3f2ad0, type: 2}

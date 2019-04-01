@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Test_Attack
   m_EditorClassIdentifier: 
   DisplayName: Slash
-  Duration: 0.1
+  Duration: 0.2
   Cooldown: 0.2
+  ChargesCap: 1
   Animations:
   - Attack1
   - Attack3

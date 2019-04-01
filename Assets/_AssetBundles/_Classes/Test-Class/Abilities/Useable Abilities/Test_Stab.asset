@@ -21,7 +21,7 @@ MonoBehaviour:
   Perks: []
   PerksOnHit:
   - {fileID: 11400000, guid: 567a7f8c6b0c97148bf558c7488452ab, type: 2}
-  - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
+  - {fileID: 11400000, guid: 0c69715a1186989478bb21d46b3f2ad0, type: 2}
   ObjectsToSpawn:
   - {fileID: 1886398916049500, guid: d07dac3aceee87f4aa93b06ebd8690a9, type: 3}
   ObjectsToSpawnOnTargets:

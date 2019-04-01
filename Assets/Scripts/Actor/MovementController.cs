@@ -257,7 +257,17 @@ public class MovementController : MonoBehaviour {
             duration = Mathf.Clamp(duration - TimeFromLastEvent ,0f ,Mathf.Infinity);
         }
 
+        if(Speed == baseSpeed)
+        {
+            Speed = baseSpeed*0.7f; //TODO REPLACE LATER WITH BETTER IMPLEMENTATION
+        }
+
         yield return new WaitForSeconds(duration);
+
+        if (Speed == (baseSpeed * 0.7f)) //TODO REPLACE LATER WITH BETTER IMPLEMENTATION
+        {
+            Speed = baseSpeed;
+        }
 
         CompleteAbilityDuration(ability);
         AbilityDurationRoutineInstance = null;

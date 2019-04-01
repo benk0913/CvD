@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PounceDamage
   m_EditorClassIdentifier: 
   Attribute: {fileID: 11400000, guid: bfebe5c92b1a1e148825ae13baf1e9fa, type: 2}
-  MinValue: 4
-  MaxValue: 8
+  MinValue: 12
+  MaxValue: 12
   Perks: []

@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Test_Throw_Dagger
   m_EditorClassIdentifier: 
   DisplayName: Throw Dagger
-  Duration: 0.4
+  Duration: 0.1
   Cooldown: 3
+  ChargesCap: 1
   Animations:
   - ThrowDagger
   Perks: []
   PerksOnHit:
   - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
+  - {fileID: 11400000, guid: 04e5aeae709dba440aadb87705dca444, type: 2}
   ObjectsToSpawn:
   - {fileID: 7374196983190912051, guid: f402769ea05a59040a384137785b4ff0, type: 3}
   ObjectsToSpawnOnTargets:
