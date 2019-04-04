@@ -27,6 +27,8 @@ public class HealthBarUI : MonoBehaviour
         OnHPChangedEvent = onHpChangedEvent;
 
         OnHPChangedEvent.AddListener(OnHPChanged);
+
+        RefreshValue(1f);
     }
 
     private void OnHPChanged(int newHP, int totalHP)

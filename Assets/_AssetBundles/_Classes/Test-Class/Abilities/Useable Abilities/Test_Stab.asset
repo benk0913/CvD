@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Stab
   Duration: 0.1
-  Cooldown: 3
+  Cooldown: 7
   ChargesCap: 1
   Animations:
   - Attack2

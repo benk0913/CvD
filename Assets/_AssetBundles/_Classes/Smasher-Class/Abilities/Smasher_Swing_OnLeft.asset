@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Smasher_Swing
+  m_Name: Smasher_Swing_OnLeft
   m_EditorClassIdentifier: 
   DisplayName: Swing
   Duration: 0.6
@@ -21,11 +21,11 @@ MonoBehaviour:
   Perks: []
   PerksOnHit:
   - {fileID: 11400000, guid: 7a9e4399cb7e9cc429e8bc06db90ae26, type: 2}
-  - {fileID: 11400000, guid: 55898a29838b8434ea6c2b56178c7218, type: 2}
+  - {fileID: 11400000, guid: 5cab8c1958b916c42ad8d2190b656cfa, type: 2}
   ObjectsToSpawn:
   - {fileID: 1050513488234562161, guid: 8b45b2ce9bfabf14db9590b8a115c4ba, type: 3}
   ObjectsToSpawnOnTargets:
   - {fileID: 6097158779406925979, guid: 1a4f387167649ad428498677cab5661a, type: 3}
   AbilityOnHit: {fileID: 0}
-  AbilityOnLeft: {fileID: 11400000, guid: 7eb7647c144c52243acad1cb5ab0f018, type: 2}
+  AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

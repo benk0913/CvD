@@ -83,6 +83,16 @@ public class MovementController : MonoBehaviour {
         }
     }
 
+    public bool isFacingLeft
+    {
+        get { return Animer.transform.localScale.x > 0;  }
+    }
+
+    public bool isGoingUp
+    {
+        get { return Rigid.velocity.y >= 0; }
+    }
+
 
 
     private void Update()
@@ -224,6 +234,12 @@ public class MovementController : MonoBehaviour {
             if (abilityStatus != null && abilityStatus.Charges <= 0)
             {
                 //TODO - IN COOLDOWN ALERT!
+                return;
+            }
+
+            if(ability.AbilityOnLeft != null && isFacingLeft)
+            {
+                StartAbility(ability.AbilityOnLeft);
                 return;
             }
 
@@ -434,14 +450,12 @@ public class MovementController : MonoBehaviour {
         float duration = perk.GetPerkValueByType("DurationModifier", 1f);
         float speed    = perk.GetPerkValueByType("SpeedModifier", 3f);
         bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
-
-        bool isGoingUp = Rigid.velocity.y >= 0;
         
-        Vector2 direction = (isGoingUp? Vector2.up : Vector2.down) + (Animer.transform.localScale.x > 0 ? Vector2.left : Vector2.right);
+        Vector2 direction = (isGoingUp? Vector2.up : Vector2.down) + (isFacingLeft ? Vector2.left : Vector2.right);
 
         if(isGoingUp)
         {
-            Animer.Play("TestChar_PounceUp");//TODO Make an alternative method...
+            Animer.Play("TestChar_PounceUp");//TODO Replace with a seperate ability which is this ones "AbilityOnUp"
         }
 
         while (duration > 0)
@@ -479,6 +493,60 @@ public class MovementController : MonoBehaviour {
             Rigid.position += direction * speed * (duration / initDuration) * Time.deltaTime;
 
             if(duration > 0.5f && isInterruptOnGrounded && isGrounded)
+            {
+                ShutMovementAbility();
+                yield break;
+            }
+
+            yield return 0;
+        }
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
+    IEnumerator PushbackRightAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
+        bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
+
+        Vector2 direction = Vector2.right + (Vector2.up * 0.3f);
+
+        float initDuration = duration;
+
+        while (duration > 0)
+        {
+            duration -= 1f * Time.deltaTime;
+            Rigid.position += direction * speed * (duration / initDuration) * Time.deltaTime;
+
+            if (duration > 0.5f && isInterruptOnGrounded && isGrounded)
+            {
+                ShutMovementAbility();
+                yield break;
+            }
+
+            yield return 0;
+        }
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
+    IEnumerator PushbackLeftAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
+        bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
+
+        Vector2 direction = Vector2.left + (Vector2.up * 0.3f);
+
+        float initDuration = duration;
+
+        while (duration > 0)
+        {
+            duration -= 1f * Time.deltaTime;
+            Rigid.position += direction * speed * (duration / initDuration) * Time.deltaTime;
+
+            if (duration > 0.5f && isInterruptOnGrounded && isGrounded)
             {
                 ShutMovementAbility();
                 yield break;
@@ -639,6 +707,16 @@ public class MovementController : MonoBehaviour {
                 {
                     Speed = baseSpeed / 2f;
 
+                    return;
+                }
+            case "PushbackLeft":
+                {
+                    ActivateMovementPerk(buffStatus.Reference.Perks[0]); //TODO - Maybe invoke all movement perks?
+                    return;
+                }
+            case "PushbackRight":
+                {
+                    ActivateMovementPerk(buffStatus.Reference.Perks[0]); //TODO - Maybe invoke all movement perks?
                     return;
                 }
         }

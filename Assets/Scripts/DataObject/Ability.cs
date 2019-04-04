@@ -24,7 +24,14 @@ public class Ability : ScriptableObject
 
     public List<GameObject> ObjectsToSpawnOnTargets;
 
+    [Tooltip("Ability which gets executed when this one hits.")]
     public Ability AbilityOnHit;
+
+    [Tooltip("Is there going to be a different ability when facing left? (Used for abilities based on direction / etc...)")]
+    public Ability AbilityOnLeft;
+
+    [Tooltip("Is there going to be a different ability when falling? (Used for abilities based on direction / etc...)")]
+    public Ability AbilityOnFalling;
 
     public JSONNode ToJson()
     {
@@ -47,6 +54,16 @@ public class Ability : ScriptableObject
         if (AbilityOnHit != null)
         {
             node["ability_on_hit"] = this.AbilityOnHit.ToJson();
+        }
+
+        if (AbilityOnLeft != null)
+        {
+            node["ability_on_left"] = this.AbilityOnLeft.ToJson();
+        }
+
+        if (AbilityOnFalling != null)
+        {
+            node["ability_on_falling"] = this.AbilityOnFalling.ToJson();
         }
 
 

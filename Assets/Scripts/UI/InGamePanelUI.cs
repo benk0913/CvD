@@ -20,10 +20,13 @@ public class InGamePanelUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        this.gameObject.SetActive(false);
     }
 
     public void SetInfo(MovementController actor)
     {
+        this.gameObject.SetActive(true);
+
         this.Actor = actor;
         InitializeAbilities();
         HPBar.SetInfo(actor.Status.OnHPChanged);
