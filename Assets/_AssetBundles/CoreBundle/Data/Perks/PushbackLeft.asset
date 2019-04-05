@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
   m_Name: PushbackLeft
   m_EditorClassIdentifier: 
-  Attribute: {fileID: 11400000, guid: 63846eda530e31c428e54672713b862e, type: 2}
+  Attribute: {fileID: 11400000, guid: 34b87d7975365e140aed39acbca31698, type: 2}
   MinValue: 0
   MaxValue: 1
   Perks:

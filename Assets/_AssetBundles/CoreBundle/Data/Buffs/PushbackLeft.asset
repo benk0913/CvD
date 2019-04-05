@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Pushback
   Duration: 1
-  Perks:
-  - {fileID: 11400000, guid: 5cab8c1958b916c42ad8d2190b656cfa, type: 2}
-  - {fileID: 11400000, guid: 1a50cde8c16e56747bed4bdefe81305e, type: 2}
+  Perks: []
   BuffPrefab: {fileID: 7103891165475163255, guid: 57aef1b4ecb4c624cb85d684f24e9c05,
     type: 3}
