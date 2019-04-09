@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: PushbackRight
+  m_Name: FiveTargets
   m_EditorClassIdentifier: 
-  Attribute: {fileID: 11400000, guid: 63846eda530e31c428e54672713b862e, type: 2}
-  MinValue: 0
-  MaxValue: 1
-  Perks:
-  - {fileID: 11400000, guid: cfdcc6175b330974ba95b1303c2d0909, type: 2}
+  Attribute: {fileID: 11400000, guid: eac4cbdeffd75d34991fc34b6ef3faaf, type: 2}
+  MinValue: 5
+  MaxValue: 5
+  Perks: []

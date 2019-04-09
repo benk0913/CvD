@@ -1339,7 +1339,7 @@ MonoBehaviour:
   Rigid: {fileID: 1584122511162679182}
   StatsCanvas: {fileID: 2549624707945219669}
   AlphaGroup: {fileID: 607071159712040553}
-  Speed: 1.5
+  Speed: 1.75
   JumpPower: 6
   MaxVelocity: 5
   GroundedThreshold: 0.3

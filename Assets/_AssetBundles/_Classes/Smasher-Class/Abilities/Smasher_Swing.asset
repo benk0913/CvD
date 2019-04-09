@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Swing
   Duration: 0.6
-  Cooldown: 5
+  Cooldown: 10
   ChargesCap: 1
   Animations:
   - Swing
   Perks: []
   PerksOnHit:
   - {fileID: 11400000, guid: 7a9e4399cb7e9cc429e8bc06db90ae26, type: 2}
-  - {fileID: 11400000, guid: e652523b5447e9648b99dd7abe3e6674, type: 2}
+  - {fileID: 11400000, guid: f0af8f6bcf702e84c96d0892d9a7f3b7, type: 2}
   ObjectsToSpawn:
   - {fileID: 1050513488234562161, guid: 8b45b2ce9bfabf14db9590b8a115c4ba, type: 3}
   ObjectsToSpawnOnTargets:
   - {fileID: 6097158779406925979, guid: 1a4f387167649ad428498677cab5661a, type: 3}
   AbilityOnHit: {fileID: 0}
-  AbilityOnLeft: {fileID: 11400000, guid: 7eb7647c144c52243acad1cb5ab0f018, type: 2}
+  AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

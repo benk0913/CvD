@@ -18,9 +18,12 @@ MonoBehaviour:
   ChargesCap: 1
   Animations:
   - Shout
-  Perks: []
-  PerksOnHit: []
-  ObjectsToSpawn: []
+  Perks:
+  - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
+  PerksOnHit:
+  - {fileID: 11400000, guid: 04e5aeae709dba440aadb87705dca444, type: 2}
+  ObjectsToSpawn:
+  - {fileID: 1050513488234562161, guid: 4469f37b903a0d74c947869dc8b2c1ef, type: 3}
   ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
