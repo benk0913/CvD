@@ -10,21 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Smasher_Smash
+  m_Name: Smasher_Shout
   m_EditorClassIdentifier: 
-  DisplayName: Smash
-  Duration: 0.75
-  Cooldown: 1
+  DisplayName: Shout
+  Duration: 0.6
   ChargesCap: 1
+  Cooldown: 5
+  CooldownRequirements: []
   Animations:
-  - Smash1
-  - Smash2
-  Perks: []
+  - Shout
+  Perks:
+  - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
   PerksOnHit:
-  - {fileID: 11400000, guid: 7a9e4399cb7e9cc429e8bc06db90ae26, type: 2}
   - {fileID: 11400000, guid: 04e5aeae709dba440aadb87705dca444, type: 2}
   ObjectsToSpawn:
-  - {fileID: 1050513488234562161, guid: 8b45b2ce9bfabf14db9590b8a115c4ba, type: 3}
+  - {fileID: 1050513488234562161, guid: 4469f37b903a0d74c947869dc8b2c1ef, type: 3}
   ObjectsToSpawnOnTargets:
-  - {fileID: 6097158779406925979, guid: 1a4f387167649ad428498677cab5661a, type: 3}
+  - {fileID: 2460775907781733708, guid: 8999878e2669ad54bb0e8439685364a0, type: 3}
   AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}
