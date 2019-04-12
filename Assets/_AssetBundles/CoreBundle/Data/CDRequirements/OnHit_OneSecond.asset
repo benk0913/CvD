@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8dc1870cd323664185645e1f46b6d66, type: 3}
-  m_Name: OnHitFourTimes
+  m_Name: OnHit_OneSecond
   m_EditorClassIdentifier: 
   Attribute: {fileID: 11400000, guid: 1cbea79353855ea4690c54ba0c3c5c46, type: 2}
-  MinValue: 4
-  MaxValue: 4
+  MinValue: 1
+  MaxValue: 1
   SubRequirements: []
