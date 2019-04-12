@@ -19,6 +19,9 @@ public class HitBoxScript : MonoBehaviour {
     [SerializeField]
     protected bool DependsOnMovementAbility = false;
 
+    [SerializeField][Tooltip("Continious Damage will send 'Hit Events' per player entering and not by the regular way (per 'Hitbox Destruction') ")]
+    protected bool IsContiniousDamage = false;
+
     [SerializeField]
     Collider2D Collider;
 
@@ -40,11 +43,15 @@ public class HitBoxScript : MonoBehaviour {
 
     bool isPlayer;
 
+    bool WasHitThisFrame;
+
     public virtual void SetInfo(CharacterInfo ownerInsance,Ability ability, HitboxEvent onHitEvent, bool isplayer)
     {
         this.isPlayer = isplayer;
 
         ActorsHit.Clear();
+        WasHitThisFrame = false;
+
         this.CurrentAbility = ability;
         this.CurrentOwner = ownerInsance;
         this.CurrentOwnerMovementController = CurrentOwner.CInstance.GetComponent<MovementController>();
@@ -56,6 +63,7 @@ public class HitBoxScript : MonoBehaviour {
 
     public virtual void Interact(string charID)
     {
+
         if(ActorsHit.Contains(charID))
         {
             return;
@@ -66,16 +74,20 @@ public class HitBoxScript : MonoBehaviour {
             ActorsHit.Add(charID);
         }
 
-        if (ShutOnHit)
+        if(IsContiniousDamage)
         {
-            Shut();
+            List<string> tempList = new List<string>();
+            tempList.Add(charID);
+
+            SocketClient.Instance.SendHitAbility(tempList, CurrentAbility.name);
         }
+
+        WasHitThisFrame = true;
     }
 
     protected virtual void Shut()
     {
-
-        if(ActorsHit.Count > 0)
+        if(ActorsHit.Count > 0 && !IsContiniousDamage)
         {
             SocketClient.Instance.SendHitAbility(ActorsHit, CurrentAbility.name);
             CurrentHitEvent.Invoke(CurrentAbility);
@@ -104,6 +116,12 @@ public class HitBoxScript : MonoBehaviour {
             {
                 Shut();
             }
+        }
+
+        if(ShutOnHit && WasHitThisFrame)
+        {
+            WasHitThisFrame = false;
+            Shut();
         }
     }
 

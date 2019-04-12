@@ -10,9 +10,11 @@ public class Ability : ScriptableObject
 
     public float Duration = 1f;
 
+    public int ChargesCap = 1;
+
     public float Cooldown = 1f;
 
-    public int ChargesCap = 1;
+    public List<Requirement> CooldownRequirements = new List<Requirement>();
 
     public List<string> Animations;
 
@@ -40,6 +42,11 @@ public class Ability : ScriptableObject
         node["ability_key"] = this.name;
         node["duration"] = this.Duration.ToString();
         node["cooldown"] = this.Cooldown.ToString();
+
+        for (int i = 0; i < CooldownRequirements.Count; i++)
+        {
+            node["cooldown_requirements"][i] = CooldownRequirements[i].ToJson();
+        }
 
         for (int i = 0; i < Perks.Count; i++)
         {

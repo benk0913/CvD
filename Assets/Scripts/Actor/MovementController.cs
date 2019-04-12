@@ -143,7 +143,7 @@ public class MovementController : MonoBehaviour {
 
         if (Input.GetKeyDown(InputMap.Map["Shift Ability"]))
         {
-            Hurt(1);
+            Hurt(1); // TODO Replace this with w/e!
         }
 
         Animer.SetBool("inAir", !isGrounded && isFalling);
