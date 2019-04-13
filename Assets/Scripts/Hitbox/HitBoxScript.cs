@@ -41,9 +41,9 @@ public class HitBoxScript : MonoBehaviour {
 
     protected HitboxEvent CurrentHitEvent;
 
-    bool isPlayer;
+    protected bool isPlayer;
 
-    bool WasHitThisFrame;
+    protected bool WasHitThisFrame;
 
     public virtual void SetInfo(CharacterInfo ownerInsance,Ability ability, HitboxEvent onHitEvent, bool isplayer)
     {

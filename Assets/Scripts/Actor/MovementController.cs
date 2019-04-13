@@ -32,20 +32,51 @@ public class MovementController : MonoBehaviour {
 
     public bool isPlayer;
     public bool isDead;
+    public bool isStunned = false;
+    public bool isSlowed = false;
+    public bool isCastingAbility = false;
+    public bool isRecentlyHurt = false;
 
-    float baseSpeed = 1f;
+    //Should be used only by "Movement Abilities"
+    float movementAbilitySpeedModifier = 1f;
 
+    //Use only this for speed
+    public float FinalSpeed
+    {
+        get
+        {
+            float speedResult = this.Speed;
+
+            if(isCastingAbility)
+            {
+                speedResult -= this.Speed * 0.3f;
+            }
+
+            if(isSlowed)
+            {
+                speedResult -= this.Speed * 0.5f;
+            }
+
+            if (isRecentlyHurt)
+            {
+                speedResult -= this.Speed * 0.2f;
+            }
+
+            speedResult *= movementAbilitySpeedModifier;
+
+            return Mathf.Clamp(speedResult, 0.1f, Mathf.Infinity);
+        }
+    }
+
+    
     float lastXDir;
     float lastYDir;
 
     RaycastHit2D GroundRayRight;
     RaycastHit2D GroundRayLeft;
-
-
+    
     Vector3 lastSentPos;
-
-    public bool isStunned = false;
-
+    
     public bool isGrounded
     {
         get
@@ -162,9 +193,9 @@ public class MovementController : MonoBehaviour {
         Animer.SetBool("Run", true);
         Animer.transform.localScale = new Vector3(1f, 1f, 1f);
 
-        Rigid.position += (Vector2)transform.right * -Speed * Time.deltaTime;
+        Rigid.position += (Vector2)transform.right * -FinalSpeed * Time.deltaTime;
 
-        lastXDir = -Speed;
+        lastXDir = -FinalSpeed;
     }
 
     void WalkRight()
@@ -172,9 +203,9 @@ public class MovementController : MonoBehaviour {
         Animer.SetBool("Run", true);
         Animer.transform.localScale = new Vector3(-1f, 1f, 1f);
 
-        Rigid.position += (Vector2)transform.right * Speed * Time.deltaTime;
+        Rigid.position += (Vector2)transform.right * FinalSpeed * Time.deltaTime;
 
-        lastXDir = Speed;
+        lastXDir = FinalSpeed;
     }
 
     void StandStill()
@@ -273,17 +304,11 @@ public class MovementController : MonoBehaviour {
             duration = Mathf.Clamp(duration - TimeFromLastEvent ,0f ,Mathf.Infinity);
         }
 
-        if(Speed == baseSpeed)
-        {
-            Speed = baseSpeed*0.7f; //TODO REPLACE LATER WITH BETTER IMPLEMENTATION
-        }
+        isCastingAbility = true;
 
         yield return new WaitForSeconds(duration);
 
-        if (Speed == (baseSpeed * 0.7f)) //TODO REPLACE LATER WITH BETTER IMPLEMENTATION
-        {
-            Speed = baseSpeed;
-        }
+        isCastingAbility = false;
 
         CompleteAbilityDuration(ability);
         AbilityDurationRoutineInstance = null;
@@ -296,7 +321,6 @@ public class MovementController : MonoBehaviour {
         if (isPlayer)
         {
             ActivateAbilityPerks(ability);
-
             
             StartCooldown(ability);
         }
@@ -421,6 +445,7 @@ public class MovementController : MonoBehaviour {
 
     public void ActivateMovementPerk(Perk perk)
     {
+
         if (Status.MovementAbilityRoutineInstance != null)
         {
             StopCoroutine(Status.MovementAbilityRoutineInstance);
@@ -558,6 +583,52 @@ public class MovementController : MonoBehaviour {
         Status.MovementAbilityRoutineInstance = null;
     }
 
+    IEnumerator ChargeRightAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
+
+        float initDuration = duration;
+
+        while (duration > 0)
+        {
+            duration -= 1f * Time.deltaTime;
+
+            movementAbilitySpeedModifier = 1.5f;
+
+            WalkRight();
+
+            yield return 0;
+        }
+
+        movementAbilitySpeedModifier = 1f;
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
+    IEnumerator ChargeLeftAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
+
+        float initDuration = duration;
+
+        while (duration > 0)
+        {
+            duration -= 1f * Time.deltaTime;
+
+            movementAbilitySpeedModifier = 1.5f;
+
+            WalkLeft();
+
+            yield return 0;
+        }
+
+        movementAbilitySpeedModifier = 1f;
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
     #endregion
 
     #endregion
@@ -581,8 +652,6 @@ public class MovementController : MonoBehaviour {
         this.Character = info;
 
         Status.Initialize(this.Character);
-
-        baseSpeed = this.Speed;
     }
 
     public void AnimateStartAbility(Ability ability)
@@ -605,6 +674,13 @@ public class MovementController : MonoBehaviour {
         }
 
         Status.CurrentHP -= damage;
+
+        if(HurtEffectRoutineInstance != null)
+        {
+            StopCoroutine(HurtEffectRoutineInstance);
+        }
+
+        HurtEffectRoutineInstance = StartCoroutine(HurtEffectRoutine());
     }
 
     public void Death()
@@ -635,6 +711,17 @@ public class MovementController : MonoBehaviour {
         }
 
         Destroy(this.gameObject);
+    }
+
+    Coroutine HurtEffectRoutineInstance;
+    IEnumerator HurtEffectRoutine()
+    {
+        isRecentlyHurt = true;
+
+        yield return new WaitForSeconds(0.1f);
+
+        isRecentlyHurt = false;
+        HurtEffectRoutineInstance = null;
     }
 
     public void ShowDamageText(int damage)
@@ -705,18 +792,31 @@ public class MovementController : MonoBehaviour {
                 }
             case "Slow":
                 {
-                    Speed = baseSpeed / 2f;
-
+                    isSlowed = true;
                     return;
                 }
             case "PushbackLeft":
                 {
-                    ActivateMovementPerk(buffStatus.Reference.Perks[0]); //TODO - Maybe invoke all movement perks?
+                    for(int i=0;i<buffStatus.Reference.Perks.Count;i++)
+                    {
+                        if(buffStatus.Reference.Perks[i].Attribute.name == "Movement")
+                        {
+                            ActivateMovementPerk(buffStatus.Reference.Perks[i]);
+                        }
+                    }
+                    
                     return;
                 }
             case "PushbackRight":
                 {
-                    ActivateMovementPerk(buffStatus.Reference.Perks[0]); //TODO - Maybe invoke all movement perks?
+                    for (int i = 0; i < buffStatus.Reference.Perks.Count; i++)
+                    {
+                        if (buffStatus.Reference.Perks[i].Attribute.name == "Movement")
+                        {
+                            ActivateMovementPerk(buffStatus.Reference.Perks[i]);
+                        }
+                    }
+
                     return;
                 }
         }
@@ -737,7 +837,7 @@ public class MovementController : MonoBehaviour {
                 }
             case "Slow":
                 {
-                    Speed = baseSpeed;
+                    isSlowed = false;
 
                     return;
                 }

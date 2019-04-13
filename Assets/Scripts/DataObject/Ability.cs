@@ -72,8 +72,7 @@ public class Ability : ScriptableObject
         {
             node["ability_on_falling"] = this.AbilityOnFalling.ToJson();
         }
-
-
+        
         return node;
     }
 

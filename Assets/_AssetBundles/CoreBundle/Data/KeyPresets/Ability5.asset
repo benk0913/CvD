@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: SmasherSwingDamage
+  m_Script: {fileID: 11500000, guid: 5549ccee5417b44408a0ee2fceabf33a, type: 3}
+  m_Name: Ability5
   m_EditorClassIdentifier: 
-  Attribute: {fileID: 11400000, guid: bfebe5c92b1a1e148825ae13baf1e9fa, type: 2}
-  MinValue: 10
-  MaxValue: 10
-  Perks: []
+  KeyCode: 98

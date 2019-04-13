@@ -13,7 +13,7 @@ public class HitboxProjectile : HitBoxScript
     private void LateUpdate()
     {
         Rigid.position += (Vector2) transform.right * (-transform.localScale.x) * Speed * Time.deltaTime;
-
+        
         if (timeLeftCurrent <= 0f)
         {
             this.gameObject.SetActive(false);
@@ -24,6 +24,20 @@ public class HitboxProjectile : HitBoxScript
         if (StickToOwner && CurrentOwner != null)
         {
             transform.position = CurrentOwner.CInstance.transform.position;
+        }
+
+        if (DependsOnMovementAbility && CurrentOwnerMovementController != null)
+        {
+            if (CurrentOwnerMovementController.Status.MovementAbilityRoutineInstance == null)
+            {
+                Shut();
+            }
+        }
+
+        if (ShutOnHit && WasHitThisFrame)
+        {
+            WasHitThisFrame = false;
+            Shut();
         }
     }
 }
