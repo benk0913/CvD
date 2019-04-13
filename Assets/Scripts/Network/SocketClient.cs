@@ -52,7 +52,9 @@ public class SocketClient : MonoBehaviour
         CurrentSocket.On("actor_move_room", OnMoveRoom);
 
         CurrentSocket.On("movement", OnMovement);
-        
+
+        CurrentSocket.On("cooldown_progress", OnCooldownProgress);
+
         CurrentSocket.On("player_hurt", OnTakeDamage);
         CurrentSocket.On("player_ded", OnPlayerDead);
         CurrentSocket.On("player_respawn", OnPlayerRespawn);
@@ -195,7 +197,17 @@ public class SocketClient : MonoBehaviour
         CORE.Instance.PlayerBuffRemoved(data["player_id"].Value, data["buff_key"].Value);
 
     }
-    
+
+    private void OnCooldownProgress(Socket socket, Packet packet, object[] args)
+    {
+        JSONNode data = (JSONNode)args[0];
+
+        BroadcastEvent("Cooldown Progress " + data.ToString());
+
+        CORE.Instance.PlayerCooldownProgress(data["ability_key"].Value, data["total_progress"].AsFloat);
+
+    }
+
     #endregion
 
     #region Emittions

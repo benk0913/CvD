@@ -66,6 +66,7 @@ public class AbilityIconUI : MonoBehaviour
     void AddListeners()
     {
         this.abilityStatus.OnAbilityActivated.AddListener(OnAbilityActivated);
+        this.abilityStatus.OnCooldownUpdated.AddListener(OnAbilityCooldownUpdated);
         this.abilityStatus.OnCooldownComplete.AddListener(OnAbilityCooldownComplete);
         this.abilityStatus.OnRecharge.AddListener(OnAbilityRecharge);
     }
@@ -73,6 +74,7 @@ public class AbilityIconUI : MonoBehaviour
     void RemoveListeners()
     {
         this.abilityStatus.OnAbilityActivated.RemoveListener(OnAbilityActivated);
+        this.abilityStatus.OnCooldownUpdated.RemoveListener(OnAbilityCooldownUpdated);
         this.abilityStatus.OnCooldownComplete.RemoveListener(OnAbilityCooldownComplete);
         this.abilityStatus.OnRecharge.RemoveListener(OnAbilityRecharge);
     }
@@ -95,6 +97,13 @@ public class AbilityIconUI : MonoBehaviour
         CooldownComplete();
     }
 
+    private void OnAbilityCooldownUpdated()
+    {
+        SetCooldownUI(
+              Mathf.RoundToInt(abilityStatus.CooldownSecondsLeft).ToString()
+            , (abilityStatus.CooldownSecondsLeft / abilityStatus.Reference.Cooldown));
+    }
+
     private void OnAbilityActivated()
     {
         ActivateAbility();
@@ -102,12 +111,6 @@ public class AbilityIconUI : MonoBehaviour
 
     void ActivateAbility()
     {
-        if(CooldownRoutineInstance != null)
-        {
-            StopCoroutine(CooldownRoutineInstance);
-            CooldownPanel.SetActive(false);
-        }
-
         if (abilityStatus.Reference.ChargesCap > 1)
         {
             AbilityChargesText.text = "x" + abilityStatus.Charges;
@@ -118,20 +121,65 @@ public class AbilityIconUI : MonoBehaviour
         }
 
         AbilityButton.interactable = !(abilityStatus.Charges <= 0);
-        
 
-        CooldownRoutineInstance = StartCoroutine(CooldownRoutine());
+        SetCooldownUI(Mathf.RoundToInt(abilityStatus.Reference.Cooldown).ToString(), 1f);
     }
 
     void CooldownComplete()
     {
-        if(CooldownRoutineInstance == null)
+        if(AnimateCooldownUIRoutineInstance != null)
         {
-            CooldownPanel.SetActive(false);
+            StopCoroutine(AnimateCooldownUIRoutineInstance);
+            AnimateCooldownUIRoutineInstance = null;
         }
+
+        CooldownPanel.SetActive(false);
     }
     
+    void SetCooldownUI(string text, float fill, bool animate = false)
+    {
+        if(!CooldownPanel.activeInHierarchy)
+        {
+            CooldownPanel.SetActive(true);
+        }
 
+        if (!animate)
+        {
+            CooldownSecondsText.text = text;
+            CooldownFill.fillAmount = fill;
+            return;
+        }
+
+        if(AnimateCooldownUIRoutineInstance != null)
+        {
+            StopCoroutine(AnimateCooldownUIRoutineInstance);
+        }
+
+        AnimateCooldownUIRoutineInstance = StartCoroutine(AnimateCooldownUIRoutine(text, fill));
+    }
+
+    Coroutine AnimateCooldownUIRoutineInstance;
+    IEnumerator AnimateCooldownUIRoutine(string text, float fill)
+    {
+        CooldownPanel.SetActive(true);
+        
+        CooldownSecondsText.text = text;
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += 1f * Time.deltaTime;
+
+            CooldownFill.fillAmount = Mathf.Lerp(CooldownFill.fillAmount, fill, t);
+
+            yield return 0;
+        }
+
+        AnimateCooldownUIRoutineInstance = null;
+    }
+
+
+    //--DEPRECATED
     Coroutine CooldownRoutineInstance;
     IEnumerator CooldownRoutine()
     {
@@ -142,8 +190,9 @@ public class AbilityIconUI : MonoBehaviour
         {
             t += (1f / abilityStatus.Reference.Cooldown) * Time.deltaTime;
 
-            CooldownSecondsText.text = Mathf.RoundToInt(abilityStatus.Reference.Cooldown - (t * abilityStatus.Reference.Cooldown)).ToString();
-            CooldownFill.fillAmount = 1f-t;
+            SetCooldownUI(
+                Mathf.RoundToInt(abilityStatus.Reference.Cooldown - (t * abilityStatus.Reference.Cooldown)).ToString()
+                ,1f-t);
 
             yield return 0;
         }
@@ -151,4 +200,5 @@ public class AbilityIconUI : MonoBehaviour
         CooldownRoutineInstance = null;
         CooldownComplete();
     }
+    //--
 }

@@ -80,4 +80,12 @@ public class Ability : ScriptableObject
         return node;
     }
 
+    public bool HasTimerCountdown
+    {
+        get
+        {
+            return CooldownRequirements.Count == 0;
+        }
+    }
+
 }

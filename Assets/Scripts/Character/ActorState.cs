@@ -80,9 +80,11 @@ public class AbilityStatus
     public Ability Reference;
     public Coroutine CooldownRoutine;
     public UnityEvent OnRecharge = new UnityEvent();
+    public UnityEvent OnCooldownUpdated = new UnityEvent();
     public UnityEvent OnCooldownComplete = new UnityEvent();
     public UnityEvent OnAbilityActivated = new UnityEvent();
     public int Charges;
+    public float CooldownSecondsLeft;
 
     public AbilityStatus(Ability ability)
     {
@@ -102,7 +104,13 @@ public class AbilityStatus
         OnRecharge.Invoke();
     }
 
-    public void CooldownComplete()
+    public void UpdateCooldown(float secondsLeft)
+    {
+        this.CooldownSecondsLeft = secondsLeft;
+        OnCooldownUpdated.Invoke();
+    }
+
+    public void CompleteCooldown()
     {
         Recharge();
 

@@ -16,13 +16,14 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: c963bb1aebfdd934e86321437d9e1d89, type: 3}
   Duration: 0.1
   ChargesCap: 1
-  Cooldown: 2
+  Cooldown: 4
   StartWithCooldown: 1
   CooldownRequirements:
   - {fileID: 11400000, guid: a1698ff1b727a1144bc436b126dbabb1, type: 2}
   Animations:
   - ThrowDagger
-  Perks: []
+  Perks:
+  - {fileID: 11400000, guid: 993dc49cfc1f40e488acca1394b24bc4, type: 2}
   PerksOnHit: []
   ObjectsToSpawn: []
   ObjectsToSpawnOnTargets: []

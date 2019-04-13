@@ -34,6 +34,7 @@ public class MovementController : MonoBehaviour {
     public bool isDead;
     public bool isStunned = false;
     public bool isSlowed = false;
+    public bool isHasted = false;
     public bool isCastingAbility = false;
     public bool isRecentlyHurt = false;
 
@@ -55,6 +56,11 @@ public class MovementController : MonoBehaviour {
             if(isSlowed)
             {
                 speedResult -= this.Speed * 0.5f;
+            }
+
+            if (isHasted)
+            {
+                speedResult += this.Speed * 1f;
             }
 
             if (isRecentlyHurt)
@@ -341,14 +347,26 @@ public class MovementController : MonoBehaviour {
             return;
         }
 
+        abilityStatus.UpdateCooldown(abilityStatus.Reference.Cooldown);
+        
         abilityStatus.ActivateAbility(StartCoroutine(CooldownRoutine(abilityStatus)));
     }
 
     IEnumerator CooldownRoutine(AbilityStatus abilityStatus)
     {
-        yield return new WaitForSeconds(abilityStatus.Reference.Cooldown);
+        while(abilityStatus.CooldownSecondsLeft > 0)
+        {
+            if (abilityStatus.Reference.HasTimerCountdown)
+            {
+                abilityStatus.CooldownSecondsLeft -= 1f * Time.deltaTime;
 
-        abilityStatus.CooldownComplete();
+                abilityStatus.UpdateCooldown(abilityStatus.CooldownSecondsLeft);
+            }
+
+            yield return 0;
+        }
+
+        abilityStatus.CompleteCooldown();
 
         if(abilityStatus.Charges < abilityStatus.Reference.ChargesCap)
         {
@@ -795,6 +813,11 @@ public class MovementController : MonoBehaviour {
                     isSlowed = true;
                     return;
                 }
+            case "Haste":
+                {
+                    isHasted = true;
+                    return;
+                }
             case "PushbackLeft":
                 {
                     for(int i=0;i<buffStatus.Reference.Perks.Count;i++)
@@ -838,6 +861,12 @@ public class MovementController : MonoBehaviour {
             case "Slow":
                 {
                     isSlowed = false;
+
+                    return;
+                }
+            case "Haste":
+                {
+                    isHasted = false;
 
                     return;
                 }
