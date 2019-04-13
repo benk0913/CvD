@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Test_Throw_Dagger
   m_EditorClassIdentifier: 
   DisplayName: Throw Dagger
+  Icon: {fileID: 21300000, guid: 2a3f8c97c8da7d34890f05068bc925f0, type: 3}
   Duration: 0.1
-  Cooldown: 3
   ChargesCap: 1
+  Cooldown: 3
+  CooldownRequirements: []
   Animations:
   - ThrowDagger
   Perks: []
@@ -27,3 +29,5 @@ MonoBehaviour:
   ObjectsToSpawnOnTargets:
   - {fileID: 7567260111314732214, guid: 85fd1e9399602a04f8e1c39294682b6c, type: 3}
   AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}

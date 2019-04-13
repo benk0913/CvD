@@ -535,7 +535,7 @@ public class MovementController : MonoBehaviour {
         float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
         bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
 
-        Vector2 direction = Vector2.right + (Vector2.up * 0.3f);
+        Vector2 direction = Vector2.right + Vector2.up;
 
         float initDuration = duration;
 
@@ -562,7 +562,7 @@ public class MovementController : MonoBehaviour {
         float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
         bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
 
-        Vector2 direction = Vector2.left + (Vector2.up * 0.3f);
+        Vector2 direction = Vector2.left + Vector2.up;
 
         float initDuration = duration;
 

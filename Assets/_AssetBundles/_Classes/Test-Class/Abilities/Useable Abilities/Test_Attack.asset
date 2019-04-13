@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Test_Attack
   m_EditorClassIdentifier: 
   DisplayName: Slash
+  Icon: {fileID: 21300000, guid: ffc3c947ec9ce024b8f481e8eaca117f, type: 3}
   Duration: 0.2
-  Cooldown: 0.2
   ChargesCap: 1
+  Cooldown: 0.2
+  CooldownRequirements: []
   Animations:
   - Attack1
   - Attack3
@@ -27,3 +29,5 @@ MonoBehaviour:
   ObjectsToSpawnOnTargets:
   - {fileID: 7567260111314732214, guid: 85fd1e9399602a04f8e1c39294682b6c, type: 3}
   AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}

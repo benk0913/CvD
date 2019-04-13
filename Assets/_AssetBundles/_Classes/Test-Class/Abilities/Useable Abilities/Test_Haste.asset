@@ -10,26 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Smasher_Tornado
+  m_Name: Test_Haste
   m_EditorClassIdentifier: 
-  DisplayName: Tornado
-  Icon: {fileID: 21300000, guid: 4652b75ae9bfb04448d1fda54bcc862e, type: 3}
-  Duration: 0.6
+  DisplayName: Haste
+  Icon: {fileID: 21300000, guid: c963bb1aebfdd934e86321437d9e1d89, type: 3}
+  Duration: 0.1
   ChargesCap: 1
-  Cooldown: 4
+  Cooldown: 2
   StartWithCooldown: 1
   CooldownRequirements:
   - {fileID: 11400000, guid: a1698ff1b727a1144bc436b126dbabb1, type: 2}
   Animations:
-  - Swing
+  - ThrowDagger
   Perks: []
-  PerksOnHit:
-  - {fileID: 11400000, guid: 7a9e4399cb7e9cc429e8bc06db90ae26, type: 2}
-  - {fileID: 11400000, guid: f0af8f6bcf702e84c96d0892d9a7f3b7, type: 2}
-  ObjectsToSpawn:
-  - {fileID: 1050513488234562161, guid: 8b45b2ce9bfabf14db9590b8a115c4ba, type: 3}
-  ObjectsToSpawnOnTargets:
-  - {fileID: 6097158779406925979, guid: 1a4f387167649ad428498677cab5661a, type: 3}
+  PerksOnHit: []
+  ObjectsToSpawn: []
+  ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

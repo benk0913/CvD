@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Test_Stab
   m_EditorClassIdentifier: 
   DisplayName: Stab
+  Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
   Duration: 0.1
-  Cooldown: 7
   ChargesCap: 1
+  Cooldown: 7
+  CooldownRequirements: []
   Animations:
   - Attack2
   Perks: []
@@ -27,3 +29,5 @@ MonoBehaviour:
   ObjectsToSpawnOnTargets:
   - {fileID: 7567260111314732214, guid: 85fd1e9399602a04f8e1c39294682b6c, type: 3}
   AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}

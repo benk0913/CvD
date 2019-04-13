@@ -48,8 +48,17 @@ public class AbilityIconUI : MonoBehaviour
         {
             AbilityChargesText.text = "x"+ability.Reference.ChargesCap.ToString();
         }
+        else
+        {
+            AbilityChargesText.text = "";
+        }
 
         AbilityButton.interactable = !(abilityStatus.Charges <= 0);
+
+        if(ability.Reference.Icon != null)
+        {
+            this.Icon.sprite = ability.Reference.Icon;
+        }
 
         CooldownPanel.SetActive(false);
     }
@@ -70,14 +79,15 @@ public class AbilityIconUI : MonoBehaviour
 
     private void OnAbilityRecharge()
     {
-        if(this.abilityStatus.Reference.ChargesCap <= 1)
+        AbilityButton.interactable = !(abilityStatus.Charges <= 0);
+
+        if (this.abilityStatus.Reference.ChargesCap <= 1)
         {
             AbilityChargesText.text = "";
             return;
         }
 
         AbilityChargesText.text = "x"+this.abilityStatus.Charges.ToString();
-        AbilityButton.interactable = !(abilityStatus.Charges <= 0);
     }
 
     private void OnAbilityCooldownComplete()
@@ -117,7 +127,6 @@ public class AbilityIconUI : MonoBehaviour
     {
         if(CooldownRoutineInstance == null)
         {
-
             CooldownPanel.SetActive(false);
         }
     }

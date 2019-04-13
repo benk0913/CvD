@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Smasher_Swing
   m_EditorClassIdentifier: 
   DisplayName: Swing
+  Icon: {fileID: 21300000, guid: 64e02b7ff11281c469930642134ddfec, type: 3}
   Duration: 0.6
   ChargesCap: 1
   Cooldown: 10
+  StartWithCooldown: 0
   CooldownRequirements: []
   Animations:
   - Swing

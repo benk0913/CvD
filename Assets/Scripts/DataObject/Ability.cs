@@ -8,11 +8,15 @@ public class Ability : ScriptableObject
 {
     public string DisplayName;
 
+    public Sprite Icon;
+
     public float Duration = 1f;
 
     public int ChargesCap = 1;
 
     public float Cooldown = 1f;
+
+    public bool StartWithCooldown = false;
 
     public List<Requirement> CooldownRequirements = new List<Requirement>();
 
