@@ -32,6 +32,12 @@ public class SocketClient : MonoBehaviour
         webSocketConnector = new WebSocketConnector();
     }
 
+    void OnApplicationQuit()
+    {
+        Disconnect();
+    }
+
+
     #endregion
 
     #region Public Methods
@@ -72,11 +78,6 @@ public class SocketClient : MonoBehaviour
             CurrentSocket.Disconnect();
             CurrentSocket.Off();
         }
-    }
-
-    void OnApplicationQuit()
-    {
-        Disconnect();
     }
 
     #endregion
@@ -184,7 +185,7 @@ public class SocketClient : MonoBehaviour
 
         BroadcastEvent("Buff Added "+data.ToString());
 
-        CORE.Instance.PlayerBuffAdded(data["player_id"].Value, data["buff_key"].Value);
+        CORE.Instance.PlayerBuffAdded(data["player_id"].Value, data["attacker_id"].Value ,data["buff_key"].Value);
 
     }
     
@@ -296,4 +297,5 @@ public class SocketClient : MonoBehaviour
 
 
     #endregion
+
 }

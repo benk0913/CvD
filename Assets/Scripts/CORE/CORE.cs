@@ -278,13 +278,14 @@ public class CORE : MonoBehaviour {
         SpawnCharacter(player);
     }
 
-    public void PlayerBuffAdded(string playerID, string buffKey)
+    public void PlayerBuffAdded(string playerID, string attackerID,  string buffKey)
     {
         CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+        CharacterInfo byPlayer = CurrentRoom.GetPlayer(attackerID);
 
         if (player.CInstance != null)
         {
-            player.CInstance.GetComponent<MovementController>().AddBuff(Data.GetBuff(buffKey));
+            player.CInstance.GetComponent<MovementController>().AddBuff(Data.GetBuff(buffKey), byPlayer);
         }
         else
         {

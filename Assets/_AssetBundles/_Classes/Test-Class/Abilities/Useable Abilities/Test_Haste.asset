@@ -21,8 +21,9 @@ MonoBehaviour:
   CooldownRequirements:
   - {fileID: 11400000, guid: a1698ff1b727a1144bc436b126dbabb1, type: 2}
   Animations:
-  - ThrowDagger
+  - Haste
   Perks:
+  - {fileID: 11400000, guid: d71c2b519ef26eb4b9827d6447a04c2d, type: 2}
   - {fileID: 11400000, guid: 993dc49cfc1f40e488acca1394b24bc4, type: 2}
   PerksOnHit: []
   ObjectsToSpawn: []

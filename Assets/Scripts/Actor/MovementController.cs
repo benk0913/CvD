@@ -70,6 +70,7 @@ public class MovementController : MonoBehaviour {
 
             speedResult *= movementAbilitySpeedModifier;
 
+            
             return Mathf.Clamp(speedResult, 0.1f, Mathf.Infinity);
         }
     }
@@ -82,7 +83,10 @@ public class MovementController : MonoBehaviour {
     RaycastHit2D GroundRayLeft;
     
     Vector3 lastSentPos;
-    
+
+    CharacterInfo lastOffender;
+
+
     public bool isGrounded
     {
         get
@@ -130,6 +134,7 @@ public class MovementController : MonoBehaviour {
         get { return Rigid.velocity.y >= 0; }
     }
 
+    
 
 
     private void Update()
@@ -498,7 +503,7 @@ public class MovementController : MonoBehaviour {
 
         if(isGoingUp)
         {
-            Animer.Play("TestChar_PounceUp");//TODO Replace with a seperate ability which is this ones "AbilityOnUp"
+            Animer.Play("TestChar_PounceUp");
         }
 
         while (duration > 0)
@@ -526,7 +531,7 @@ public class MovementController : MonoBehaviour {
         float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
         bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
 
-        Vector2 direction = (Vector2.up * 1.5f) + (Animer.transform.localScale.x > 0 ? Vector2.right : Vector2.left);
+        Vector2 direction = (Vector2.up * 1.5f) + (isFacingLeft ? Vector2.left : Vector2.right);
 
         float initDuration = duration;
 
@@ -547,13 +552,12 @@ public class MovementController : MonoBehaviour {
         Status.MovementAbilityRoutineInstance = null;
     }
 
-    IEnumerator PushbackRightAbilityRoutine(Perk perk)
+    IEnumerator PushbackAbilityRoutine(Perk perk)
     {
         float duration = perk.GetPerkValueByType("DurationModifier", 1f);
         float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
-        bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
 
-        Vector2 direction = Vector2.right + Vector2.up;
+        Vector2 direction = transform.position - lastOffender.CInstance.transform.position;
 
         float initDuration = duration;
 
@@ -561,39 +565,6 @@ public class MovementController : MonoBehaviour {
         {
             duration -= 1f * Time.deltaTime;
             Rigid.position += direction * speed * (duration / initDuration) * Time.deltaTime;
-
-            if (duration > 0.5f && isInterruptOnGrounded && isGrounded)
-            {
-                ShutMovementAbility();
-                yield break;
-            }
-
-            yield return 0;
-        }
-
-        Status.MovementAbilityRoutineInstance = null;
-    }
-
-    IEnumerator PushbackLeftAbilityRoutine(Perk perk)
-    {
-        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
-        float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
-        bool isInterruptOnGrounded = (perk.GetPerkValue("interruptOnGrounded", 0f) > 0f);
-
-        Vector2 direction = Vector2.left + Vector2.up;
-
-        float initDuration = duration;
-
-        while (duration > 0)
-        {
-            duration -= 1f * Time.deltaTime;
-            Rigid.position += direction * speed * (duration / initDuration) * Time.deltaTime;
-
-            if (duration > 0.5f && isInterruptOnGrounded && isGrounded)
-            {
-                ShutMovementAbility();
-                yield break;
-            }
 
             yield return 0;
         }
@@ -643,6 +614,34 @@ public class MovementController : MonoBehaviour {
         }
 
         movementAbilitySpeedModifier = 1f;
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
+    IEnumerator StartHasteAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
+
+        float initDuration = duration;
+
+        Vector2 direction = isFacingLeft ? Vector2.left : Vector2.right;
+
+        while (duration > 0)
+        {
+            duration -= 1f * Time.deltaTime;
+
+            if(duration > 0.5f)
+            {
+                Rigid.position += direction * speed * duration;
+            }
+            else
+            {
+                Rigid.position += direction * speed * (1f-duration);
+            }
+
+            yield return 0;
+        }
 
         Status.MovementAbilityRoutineInstance = null;
     }
@@ -769,7 +768,7 @@ public class MovementController : MonoBehaviour {
         tempDamageText.GetComponent<FloatingDamageUI>().Activate(damage.ToString());
     }
 
-    public void AddBuff(Buff buff)
+    public void AddBuff(Buff buff, CharacterInfo fromPlayer)
     {
         GameObject buffPrefab = null;
 
@@ -784,7 +783,8 @@ public class MovementController : MonoBehaviour {
 
         Status.ActiveBuffs.Add(buffStatus);
 
-        ActivateMovementBuff(buffStatus);
+
+        ActivateMovementBuff(buffStatus, fromPlayer);
 
     }
 
@@ -804,7 +804,7 @@ public class MovementController : MonoBehaviour {
         DeactivateMovementBuff(status);
     }
 
-    void ActivateMovementBuff(BuffStatus buffStatus)
+    void ActivateMovementBuff(BuffStatus buffStatus, CharacterInfo fromPlayer)
     {
         switch(buffStatus.Reference.name)
         {
@@ -826,28 +826,20 @@ public class MovementController : MonoBehaviour {
                     isHasted = true;
                     return;
                 }
-            case "PushbackLeft":
+            case "Pushback":
                 {
-                    for(int i=0;i<buffStatus.Reference.Perks.Count;i++)
+                    if (this.Character.isPlayer)
                     {
-                        if(buffStatus.Reference.Perks[i].Attribute.name == "Movement")
+                        for (int i = 0; i < buffStatus.Reference.Perks.Count; i++)
                         {
-                            ActivateMovementPerk(buffStatus.Reference.Perks[i]);
+                            if (buffStatus.Reference.Perks[i].Attribute.name == "Movement")
+                            {
+                                lastOffender = fromPlayer;
+                                ActivateMovementPerk(buffStatus.Reference.Perks[i]);
+                            }
                         }
                     }
                     
-                    return;
-                }
-            case "PushbackRight":
-                {
-                    for (int i = 0; i < buffStatus.Reference.Perks.Count; i++)
-                    {
-                        if (buffStatus.Reference.Perks[i].Attribute.name == "Movement")
-                        {
-                            ActivateMovementPerk(buffStatus.Reference.Perks[i]);
-                        }
-                    }
-
                     return;
                 }
         }
