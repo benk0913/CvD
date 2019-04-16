@@ -572,12 +572,14 @@ public class MovementController : MonoBehaviour {
         Status.MovementAbilityRoutineInstance = null;
     }
 
-    IEnumerator ChargeRightAbilityRoutine(Perk perk)
+    IEnumerator ChargeAbilityRoutine(Perk perk)
     {
         float duration = perk.GetPerkValueByType("DurationModifier", 1f);
         float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
 
         float initDuration = duration;
+
+        bool initIsFacingLeft = isFacingLeft;
 
         while (duration > 0)
         {
@@ -585,30 +587,14 @@ public class MovementController : MonoBehaviour {
 
             movementAbilitySpeedModifier = 1.5f;
 
-            WalkRight();
-
-            yield return 0;
-        }
-
-        movementAbilitySpeedModifier = 1f;
-
-        Status.MovementAbilityRoutineInstance = null;
-    }
-
-    IEnumerator ChargeLeftAbilityRoutine(Perk perk)
-    {
-        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
-        float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
-
-        float initDuration = duration;
-
-        while (duration > 0)
-        {
-            duration -= 1f * Time.deltaTime;
-
-            movementAbilitySpeedModifier = 1.5f;
-
-            WalkLeft();
+            if (isFacingLeft)
+            {
+                WalkLeft();
+            }
+            else
+            {
+                WalkRight();
+            }
 
             yield return 0;
         }
