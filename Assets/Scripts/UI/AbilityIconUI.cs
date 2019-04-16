@@ -30,6 +30,9 @@ public class AbilityIconUI : MonoBehaviour
     [SerializeField]
     Image Icon;
 
+    [SerializeField]
+    Animator AbilityAnimator;
+
 
     public void SetInfo(AbilityStatus ability, int AbilityNumber)
     {
@@ -60,7 +63,18 @@ public class AbilityIconUI : MonoBehaviour
             this.Icon.sprite = ability.Reference.Icon;
         }
 
-        CooldownPanel.SetActive(false);
+        if(ability.CooldownSecondsLeft > 0)
+        {
+            CooldownPanel.SetActive(true);
+
+            SetCooldownUI(
+              Mathf.RoundToInt(abilityStatus.CooldownSecondsLeft).ToString()
+            , (abilityStatus.CooldownSecondsLeft / abilityStatus.Reference.Cooldown));
+        }
+        else
+        {
+            CooldownPanel.SetActive(false);
+        }
     }
 
     void AddListeners()
@@ -97,11 +111,12 @@ public class AbilityIconUI : MonoBehaviour
         CooldownComplete();
     }
 
-    private void OnAbilityCooldownUpdated()
+    private void OnAbilityCooldownUpdated(bool external = false)
     {
         SetCooldownUI(
               Mathf.RoundToInt(abilityStatus.CooldownSecondsLeft).ToString()
-            , (abilityStatus.CooldownSecondsLeft / abilityStatus.Reference.Cooldown));
+            , (abilityStatus.CooldownSecondsLeft / abilityStatus.Reference.Cooldown)
+            ,external);
     }
 
     private void OnAbilityActivated()
@@ -123,6 +138,8 @@ public class AbilityIconUI : MonoBehaviour
         AbilityButton.interactable = !(abilityStatus.Charges <= 0);
 
         SetCooldownUI(Mathf.RoundToInt(abilityStatus.Reference.Cooldown).ToString(), 1f);
+
+        AbilityAnimator.SetTrigger("AbilityUsedEffect");
     }
 
     void CooldownComplete()
@@ -133,17 +150,19 @@ public class AbilityIconUI : MonoBehaviour
             AnimateCooldownUIRoutineInstance = null;
         }
 
+        AbilityAnimator.SetTrigger("CooldownCompleteEffect");
+
         CooldownPanel.SetActive(false);
     }
     
-    void SetCooldownUI(string text, float fill, bool animate = false)
+    void SetCooldownUI(string text, float fill, bool animated = false)
     {
         if(!CooldownPanel.activeInHierarchy)
         {
             CooldownPanel.SetActive(true);
         }
 
-        if (!animate)
+        if (!animated)
         {
             CooldownSecondsText.text = text;
             CooldownFill.fillAmount = fill;
@@ -156,6 +175,8 @@ public class AbilityIconUI : MonoBehaviour
         }
 
         AnimateCooldownUIRoutineInstance = StartCoroutine(AnimateCooldownUIRoutine(text, fill));
+
+        AbilityAnimator.SetTrigger("CooldownEffect");
     }
 
     Coroutine AnimateCooldownUIRoutineInstance;

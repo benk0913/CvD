@@ -80,7 +80,7 @@ public class AbilityStatus
     public Ability Reference;
     public Coroutine CooldownRoutine;
     public UnityEvent OnRecharge = new UnityEvent();
-    public UnityEvent OnCooldownUpdated = new UnityEvent();
+    public CooldownUpdateEvent OnCooldownUpdated = new CooldownUpdateEvent();
     public UnityEvent OnCooldownComplete = new UnityEvent();
     public UnityEvent OnAbilityActivated = new UnityEvent();
     public int Charges;
@@ -104,10 +104,10 @@ public class AbilityStatus
         OnRecharge.Invoke();
     }
 
-    public void UpdateCooldown(float secondsLeft)
+    public void UpdateCooldown(float secondsLeft, bool external = false)
     {
         this.CooldownSecondsLeft = secondsLeft;
-        OnCooldownUpdated.Invoke();
+        OnCooldownUpdated.Invoke(external);
     }
 
     public void CompleteCooldown()
@@ -151,4 +151,9 @@ public class BuffStatus
 
 public class HPChangedEvent : UnityEvent<int, int>
 {
+}
+
+public class CooldownUpdateEvent : UnityEvent<bool>
+{
+
 }

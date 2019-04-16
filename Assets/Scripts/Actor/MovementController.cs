@@ -670,6 +670,14 @@ public class MovementController : MonoBehaviour {
         this.Character = info;
 
         Status.Initialize(this.Character);
+        
+        foreach(Ability ability in Character.Class.Abilities)
+        {
+            if(ability.StartWithCooldown)
+            {
+                StartCooldown(ability);
+            }
+        }
     }
 
     public void AnimateStartAbility(Ability ability)

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: OnHit_OneSecond
   m_EditorClassIdentifier: 
   Attribute: {fileID: 11400000, guid: 1cbea79353855ea4690c54ba0c3c5c46, type: 2}
-  MinValue: -1
-  MaxValue: -1
+  MinValue: 1
+  MaxValue: 1
   SubRequirements: []

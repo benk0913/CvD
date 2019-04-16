@@ -16,6 +16,8 @@ public class HealthBarUI : MonoBehaviour
     TextMeshProUGUI PrecentText;
 
     HPChangedEvent OnHPChangedEvent;
+
+    Color InitColor;
     
     public void SetInfo(HPChangedEvent onHpChangedEvent)
     {
@@ -29,6 +31,8 @@ public class HealthBarUI : MonoBehaviour
         OnHPChangedEvent.AddListener(OnHPChanged);
 
         RefreshValue(1f);
+
+        InitColor = FillImage.color;
     }
 
     private void OnHPChanged(int newHP, int totalHP)
@@ -58,8 +62,19 @@ public class HealthBarUI : MonoBehaviour
     IEnumerator RefreshRoutine()
     {
         float t = 0f;
-        while(t<1f)
+        while (t<1f)
         {
+            if(t<0.05f)
+            {
+                FillImage.color = Color.Lerp(FillImage.color, Color.black, t*10f);
+
+                yield return 0;
+            }
+            else if (t < 0.2f)
+            {
+                FillImage.color = Color.Lerp(Color.black, InitColor, (t*5f) - 0.05f);
+            }
+
             t += 1f * Time.deltaTime;
 
             FillImage.fillAmount = Mathf.Lerp(FillImage.fillAmount, CurrentValue, t);
