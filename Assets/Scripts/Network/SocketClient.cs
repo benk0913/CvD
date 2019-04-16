@@ -205,7 +205,8 @@ public class SocketClient : MonoBehaviour
 
         BroadcastEvent("Cooldown Progress " + data.ToString());
 
-        CORE.Instance.PlayerCooldownProgress(data["ability_key"].Value, data["total_progress"].AsFloat);
+
+        CORE.Instance.PlayerCooldownProgress(data["player_id"], data["ability_key"].Value, data["total_progress"].AsFloat);
 
     }
 

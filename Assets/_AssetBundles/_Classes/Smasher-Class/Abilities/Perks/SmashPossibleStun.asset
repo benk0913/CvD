@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: SmasherChargePushbackRight
+  m_Name: SmashPossibleStun
   m_EditorClassIdentifier: 
-  Attribute: {fileID: 11400000, guid: 8f4b75604da663f44bb3a29544629003, type: 2}
-  MinValue: 0
+  Attribute: {fileID: 11400000, guid: c7e179e1743a2e84592dc0b97316b317, type: 2}
+  MinValue: 1
   MaxValue: 1
   Perks:
+  - {fileID: 11400000, guid: 89a73ab765c8afd4cba4bb5511540fcb, type: 2}
   - {fileID: 11400000, guid: cfdcc6175b330974ba95b1303c2d0909, type: 2}

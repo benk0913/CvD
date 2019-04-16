@@ -557,7 +557,7 @@ public class MovementController : MonoBehaviour {
         float duration = perk.GetPerkValueByType("DurationModifier", 1f);
         float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
 
-        Vector2 direction = transform.position - lastOffender.CInstance.transform.position;
+        Vector2 direction = -((Vector2)(lastOffender.CInstance.transform.position - transform.position)) + Vector2.up;
 
         float initDuration = duration;
 

@@ -307,9 +307,11 @@ public class CORE : MonoBehaviour {
         }
     }
 
-    public void PlayerCooldownProgress(string abilityKey, float cooldownProgress)
+    public void PlayerCooldownProgress(string playerID, string abilityKey, float cooldownProgress)
     {
-        AbilityStatus abilityStatus = CurrentCharacter.CInstance.GetComponent<MovementController>().Status.GetAbilityStatus(Data.GetAbility(abilityKey));
+        CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+        
+        AbilityStatus abilityStatus = player.CInstance.GetComponent<MovementController>().Status.GetAbilityStatus(Data.GetAbility(abilityKey));
         abilityStatus.UpdateCooldown(cooldownProgress, true);
     }
 

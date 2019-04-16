@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SmallChance
   m_EditorClassIdentifier: 
   Attribute: {fileID: 11400000, guid: 82c344485484e204aaeb1b0eecba94fd, type: 2}
-  MinValue: 0.1
-  MaxValue: 0.1
+  MinValue: 0.25
+  MaxValue: 0.25
   Perks: []
