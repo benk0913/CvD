@@ -145,7 +145,7 @@ public class CORE : MonoBehaviour {
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
+    
     private void OnSceneLoaded(Scene newScene, LoadSceneMode mode)
     {
         if(CurrentRoom != null)
@@ -316,6 +316,26 @@ public class CORE : MonoBehaviour {
     }
 
     #endregion
+
+    #endregion
+
+    #region Util
+
+    public static Vector3 SplineLerp(Vector3 source, Vector3 target, float Height, float t)
+    {
+        Vector3 ST = new Vector3(source.x, source.y + Height, source.z);
+        Vector3 TT = new Vector3(target.x, target.y + Height, target.z);
+
+        Vector3 STTTM = Vector3.Lerp(ST, TT, t);
+
+        Vector3 STM = Vector3.Lerp(source, ST, t);
+        Vector3 TTM = Vector3.Lerp(TT, target, t);
+
+        Vector3 SplineST = Vector3.Lerp(STM, STTTM, t);
+        Vector3 SplineTM = Vector3.Lerp(STTTM, TTM, t);
+
+        return Vector3.Lerp(SplineST, SplineTM, t);
+    }
 
     #endregion
 

@@ -589,18 +589,18 @@ public class MovementController : MonoBehaviour {
 
     IEnumerator PullAbilityRoutine(Perk perk)
     {
-        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
         float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
 
+        Vector3 initPos = Rigid.position;
         Vector3 targetPos = lastOffender.CInstance.transform.position;
+        float randomHeight = UnityEngine.Random.Range(1f, 5f);
 
-        float initDuration = duration;
-
-        while (duration > 0)
+        float duration = 0f;
+        while (duration < 1f)
         {
-            duration -= speed * Time.deltaTime;
+            duration += speed * Time.deltaTime;
 
-            Rigid.position = Vector2.Lerp(Rigid.position, targetPos, duration);
+            Rigid.position = CORE.SplineLerp(initPos, targetPos, randomHeight, duration);
 
             yield return 0;
         }
