@@ -466,6 +466,21 @@ public class MovementController : MonoBehaviour {
         }
     }
 
+    public void ApplyMovementBuff(BuffStatus buffStatus, CharacterInfo fromPlayer)
+    {
+        if (this.Character.isPlayer)
+        {
+            for (int i = 0; i < buffStatus.Reference.Perks.Count; i++)
+            {
+                if (buffStatus.Reference.Perks[i].Attribute.name == "Movement")
+                {
+                    lastOffender = fromPlayer;
+                    ActivateMovementPerk(buffStatus.Reference.Perks[i]);
+                }
+            }
+        }
+    }
+
     public void ActivateMovementPerk(Perk perk)
     {
 
@@ -571,6 +586,28 @@ public class MovementController : MonoBehaviour {
 
         Status.MovementAbilityRoutineInstance = null;
     }
+
+    IEnumerator PullAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
+
+        Vector3 targetPos = lastOffender.CInstance.transform.position;
+
+        float initDuration = duration;
+
+        while (duration > 0)
+        {
+            duration -= speed * Time.deltaTime;
+
+            Rigid.position = Vector2.Lerp(Rigid.position, targetPos, duration);
+
+            yield return 0;
+        }
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
 
     IEnumerator ChargeAbilityRoutine(Perk perk)
     {
@@ -792,7 +829,9 @@ public class MovementController : MonoBehaviour {
 
     void ActivateMovementBuff(BuffStatus buffStatus, CharacterInfo fromPlayer)
     {
-        switch(buffStatus.Reference.name)
+        ApplyMovementBuff(buffStatus, fromPlayer);
+
+        switch (buffStatus.Reference.name)
         {
             case "Stun":
                 {
@@ -810,22 +849,6 @@ public class MovementController : MonoBehaviour {
             case "Haste":
                 {
                     isHasted = true;
-                    return;
-                }
-            case "Pushback":
-                {
-                    if (this.Character.isPlayer)
-                    {
-                        for (int i = 0; i < buffStatus.Reference.Perks.Count; i++)
-                        {
-                            if (buffStatus.Reference.Perks[i].Attribute.name == "Movement")
-                            {
-                                lastOffender = fromPlayer;
-                                ActivateMovementPerk(buffStatus.Reference.Perks[i]);
-                            }
-                        }
-                    }
-                    
                     return;
                 }
         }

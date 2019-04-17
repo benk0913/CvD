@@ -100,7 +100,7 @@ public class HitBoxScript : MonoBehaviour {
     {
         if (timeLeftCurrent <= 0f)
         {
-            this.gameObject.SetActive(false);
+            Shut();
         }
 
         timeLeftCurrent -= 1f * Time.deltaTime;

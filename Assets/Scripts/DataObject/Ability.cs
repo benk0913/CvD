@@ -18,6 +18,8 @@ public class Ability : ScriptableObject
 
     public bool StartWithCooldown = false;
 
+    public bool CooldownResetsOnRespawn = true;
+
     public List<Requirement> CooldownRequirements = new List<Requirement>();
 
     public List<string> Animations;
@@ -46,6 +48,8 @@ public class Ability : ScriptableObject
         node["ability_key"] = this.name;
         node["duration"] = this.Duration.ToString();
         node["cooldown"] = this.Cooldown.ToString();
+        node["start_with_cooldown"] = this.StartWithCooldown.ToString();
+        node["cooldown_resets_on_respawn"] = this.CooldownResetsOnRespawn.ToString();
 
         for (int i = 0; i < CooldownRequirements.Count; i++)
         {

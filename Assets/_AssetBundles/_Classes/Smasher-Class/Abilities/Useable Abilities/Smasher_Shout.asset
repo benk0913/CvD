@@ -18,6 +18,7 @@ MonoBehaviour:
   ChargesCap: 1
   Cooldown: 5
   StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
   - Shout

@@ -18,13 +18,15 @@ MonoBehaviour:
   ChargesCap: 1
   Cooldown: 10
   StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
   - Charge
   Perks:
   - {fileID: 11400000, guid: 85a2b17728fa6d9479de011d18b30036, type: 2}
   PerksOnHit: []
-  ObjectsToSpawn: []
+  ObjectsToSpawn:
+  - {fileID: 1050513488234562161, guid: 5b63c255c99b60845bb299c3ff2dc1ad, type: 3}
   ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}

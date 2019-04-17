@@ -14,22 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Tornado
   Icon: {fileID: 21300000, guid: 4652b75ae9bfb04448d1fda54bcc862e, type: 3}
-  Duration: 0.6
+  Duration: 0
   ChargesCap: 1
   Cooldown: 4
   StartWithCooldown: 1
+  CooldownResetsOnRespawn: 1
   CooldownRequirements:
   - {fileID: 11400000, guid: a1698ff1b727a1144bc436b126dbabb1, type: 2}
   Animations:
   - Tornado
-  Perks: []
+  Perks:
+  - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
   PerksOnHit:
-  - {fileID: 11400000, guid: 7a9e4399cb7e9cc429e8bc06db90ae26, type: 2}
-  - {fileID: 11400000, guid: f0af8f6bcf702e84c96d0892d9a7f3b7, type: 2}
+  - {fileID: 11400000, guid: 18fbc934245d0d944acc277bab3517c1, type: 2}
   ObjectsToSpawn:
   - {fileID: 2430701423303081698, guid: 390f2ce338055b047bead51e22dbae23, type: 3}
-  ObjectsToSpawnOnTargets:
-  - {fileID: 6097158779406925979, guid: 1a4f387167649ad428498677cab5661a, type: 3}
+  - {fileID: 9065815587768110144, guid: 0e770269e60875b4cad80d7d47065467, type: 3}
+  ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

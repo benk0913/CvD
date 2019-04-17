@@ -16,7 +16,7 @@ public class HitboxProjectile : HitBoxScript
         
         if (timeLeftCurrent <= 0f)
         {
-            this.gameObject.SetActive(false);
+            Shut();
         }
 
         timeLeftCurrent -= 1f * Time.deltaTime;
