@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7dd2e13bfc802d446a31a6201444b67b, type: 2}
   - {fileID: 11400000, guid: 06a06161ca2367c40b133d1c2d387dee, type: 2}
   - {fileID: 11400000, guid: f56fef29466a95247bb377d277cfa746, type: 2}
+  - {fileID: 11400000, guid: 5fd6f9a075ac81640821dc1f8702b8c7, type: 2}
   Buffs:
   - {fileID: 11400000, guid: 5975336065841c84d9f1f997bb422e71, type: 2}
   - {fileID: 11400000, guid: ed33ceedcd9eeed419ada166f323123e, type: 2}

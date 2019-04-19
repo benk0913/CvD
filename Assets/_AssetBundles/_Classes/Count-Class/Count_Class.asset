@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c0f9f67125cb84c894b629cae9bcce, type: 3}
+  m_Name: Count_Class
+  m_EditorClassIdentifier: 
+  DisplayName: Count
+  ClassActor: {fileID: 99787557505466745, guid: cd5f7b3d9de92f343ac56cdfd5268bcf,
+    type: 3}
+  BaseHP: 35
+  HurtAnimations:
+  - Hurt1
+  - Hurt2
+  DeathAnimations:
+  - Death1
+  StunnedAnimations:
+  - Stunned
+  Abilities:
+  - {fileID: 11400000, guid: 69f7b6745d742d441b1bcbe505ee676f, type: 2}
+  - {fileID: 11400000, guid: 6d27f969e270cf546a27d5de3b8a4be0, type: 2}

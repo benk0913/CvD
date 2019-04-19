@@ -1339,7 +1339,7 @@ MonoBehaviour:
   Rigid: {fileID: 1584122511162679182}
   StatsCanvas: {fileID: 2549624707945219669}
   AlphaGroup: {fileID: 607071159712040553}
-  Speed: 1.75
+  Speed: 1.5
   JumpPower: 6
   MaxVelocity: 5
   GroundedThreshold: 0.3
@@ -1352,6 +1352,10 @@ MonoBehaviour:
   isPlayer: 0
   isDead: 0
   isStunned: 0
+  isSlowed: 0
+  isHasted: 0
+  isCastingAbility: 0
+  isRecentlyHurt: 0
   ExtrapolationMultiplier: 0.2
   DeltaMultiplier: 2
 --- !u!70 &5517281551088239909
