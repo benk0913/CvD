@@ -8,6 +8,8 @@ public class Ability : ScriptableObject
 {
     public string DisplayName;
 
+    public string Description;
+
     public Sprite Icon;
 
     public float Duration = 1f;

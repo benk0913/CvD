@@ -77,6 +77,19 @@ public class AbilityIconUI : MonoBehaviour
         }
     }
 
+    public void ShowTooltip()
+    {
+        InGamePanelUI.Instance.ShowAbilityTooltip(
+            transform.position,
+            this.abilityStatus.Reference.DisplayName,
+            this.abilityStatus.Reference.Description);
+    }
+
+    public void HideTooltip()
+    {
+        InGamePanelUI.Instance.HideAbilityTooltip();
+    }
+
     void AddListeners()
     {
         this.abilityStatus.OnAbilityActivated.AddListener(OnAbilityActivated);

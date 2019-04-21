@@ -17,6 +17,9 @@ public class InGamePanelUI : MonoBehaviour
     [SerializeField]
     HealthBarUI HPBar;
 
+    [SerializeField]
+    AbilityTooltipUI AbilityTooltip;
+
     private void Awake()
     {
         Instance = this;
@@ -76,6 +79,17 @@ public class InGamePanelUI : MonoBehaviour
         {
             Destroy(AbilitiesGrid.GetChild(i).gameObject);
         }
+    }
+
+    public void ShowAbilityTooltip(Vector2 position, string title, string content)
+    {
+        AbilityTooltip.transform.position = position;
+        AbilityTooltip.Show(title, content);
+    }
+
+    public void HideAbilityTooltip()
+    {
+        AbilityTooltip.Hide();
     }
 
     #endregion
