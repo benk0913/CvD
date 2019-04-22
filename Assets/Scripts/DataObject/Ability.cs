@@ -8,6 +8,7 @@ public class Ability : ScriptableObject
 {
     public string DisplayName;
 
+    [TextArea(2,6)]
     public string Description;
 
     public Sprite Icon;

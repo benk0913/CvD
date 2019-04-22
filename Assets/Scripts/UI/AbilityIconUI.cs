@@ -79,10 +79,17 @@ public class AbilityIconUI : MonoBehaviour
 
     public void ShowTooltip()
     {
+        List<string> attributes = new List<string>();
+        attributes.Add("Cooldown : " + abilityStatus.Reference.Cooldown);
+        for(int i=0;i<abilityStatus.Reference.Perks.Count;i++)
+        {
+            attributes.Add("Perk: "+abilityStatus.Reference.Perks[i].name.ToString());
+        }
         InGamePanelUI.Instance.ShowAbilityTooltip(
             transform.position,
             this.abilityStatus.Reference.DisplayName,
-            this.abilityStatus.Reference.Description);
+            this.abilityStatus.Reference.Description,
+            attributes);
     }
 
     public void HideTooltip()

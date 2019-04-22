@@ -81,10 +81,10 @@ public class InGamePanelUI : MonoBehaviour
         }
     }
 
-    public void ShowAbilityTooltip(Vector2 position, string title, string content)
+    public void ShowAbilityTooltip(Vector2 position, string title, string content, List<string> attributes = null)
     {
         AbilityTooltip.transform.position = position;
-        AbilityTooltip.Show(title, content);
+        AbilityTooltip.Show(title, content, attributes);
     }
 
     public void HideAbilityTooltip()
