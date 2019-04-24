@@ -729,6 +729,7 @@ public class MovementController : MonoBehaviour {
         }
 
         HurtEffectRoutineInstance = StartCoroutine(HurtEffectRoutine());
+        AlphaGroup.BlinkDamage();
     }
 
     public void Death()

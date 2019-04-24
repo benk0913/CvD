@@ -80,11 +80,20 @@ public class AbilityIconUI : MonoBehaviour
     public void ShowTooltip()
     {
         List<string> attributes = new List<string>();
+
         attributes.Add("Cooldown : " + abilityStatus.Reference.Cooldown);
-        for(int i=0;i<abilityStatus.Reference.Perks.Count;i++)
+        attributes.Add("Perks On Player: ");
+        for (int i=0;i<abilityStatus.Reference.Perks.Count;i++)
         {
-            attributes.Add("Perk: "+abilityStatus.Reference.Perks[i].name.ToString());
+            attributes.Add(abilityStatus.Reference.Perks[i].name.ToString());
         }
+
+        attributes.Add("Perks On Target: ");
+        for (int i = 0; i < abilityStatus.Reference.PerksOnHit.Count; i++)
+        {
+            attributes.Add(abilityStatus.Reference.PerksOnHit[i].name.ToString());
+        }
+
         InGamePanelUI.Instance.ShowAbilityTooltip(
             transform.position,
             this.abilityStatus.Reference.DisplayName,
