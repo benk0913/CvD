@@ -669,6 +669,48 @@ public class MovementController : MonoBehaviour {
         Status.MovementAbilityRoutineInstance = null;
     }
 
+
+    IEnumerator AttackForwardAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 3f);
+
+        Vector2 direction = (isFacingLeft ? Vector2.left : Vector2.right);
+
+        while (duration > 0)
+        {
+            duration -= 1f * Time.deltaTime;
+            Rigid.position += direction * speed * Time.deltaTime;
+
+            yield return 0;
+        }
+
+        yield return 0;
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
+    IEnumerator AttackBackwardAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 3f);
+
+        Vector2 direction = (isFacingLeft ? Vector2.right : Vector2.left);
+
+        while (duration > 0)
+        {
+            duration -= 1f * Time.deltaTime;
+            Rigid.position += direction * speed * Time.deltaTime;
+
+            yield return 0;
+        }
+
+        yield return 0;
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
+
     #endregion
 
     #endregion
