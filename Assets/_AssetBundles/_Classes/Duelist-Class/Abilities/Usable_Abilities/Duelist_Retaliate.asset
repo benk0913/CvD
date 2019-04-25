@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
+  m_Name: Duelist_Retaliate
+  m_EditorClassIdentifier: 
+  DisplayName: Retaliate
+  Description: Return your enemeis attack back!
+  Icon: {fileID: 21300000, guid: ffc3c947ec9ce024b8f481e8eaca117f, type: 3}
+  Duration: 0
+  ChargesCap: 1
+  Cooldown: 4
+  StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
+  CooldownRequirements: []
+  Animations:
+  - 
+  Perks:
+  - {fileID: 11400000, guid: 294a7f74a4a131a478659423dfcaa1d5, type: 2}
+  PerksOnHit: []
+  ObjectsToSpawn: []
+  ObjectsToSpawnOnTargets: []
+  AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}

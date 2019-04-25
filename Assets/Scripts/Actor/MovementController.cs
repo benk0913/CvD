@@ -845,6 +845,11 @@ public class MovementController : MonoBehaviour {
             buffPrefab.transform.position = transform.position;
         }
 
+        if (!string.IsNullOrEmpty(buff.AddBuffAnimation))
+        {
+            Animer.Play(buff.AddBuffAnimation);
+        }
+
         BuffStatus buffStatus = new BuffStatus(buff, buffPrefab);
 
         Status.ActiveBuffs.Add(buffStatus);
@@ -863,6 +868,11 @@ public class MovementController : MonoBehaviour {
         {
             status.BuffPrefab.transform.SetParent(null);
             status.BuffPrefab.SetActive(false);
+        }
+
+        if (!string.IsNullOrEmpty(buff.RemoveBuffAnimation))
+        {
+            Animer.Play(buff.RemoveBuffAnimation);
         }
 
         Status.ActiveBuffs.Remove(status);
