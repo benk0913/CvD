@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Retaliate
   Description: Return your enemeis attack back!
-  Icon: {fileID: 21300000, guid: ffc3c947ec9ce024b8f481e8eaca117f, type: 3}
+  Icon: {fileID: 21300000, guid: 073bdff88868ce34cab917f8c08ec17e, type: 3}
   Duration: 0
   ChargesCap: 1
   Cooldown: 4

@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7435ee4a5a8ede84c9dbdd59c597d0ad, type: 3}
-  m_Name: Retaliate
+  m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
+  m_Name: LungeDamage
   m_EditorClassIdentifier: 
-  DisplayName: Retaliate
-  Duration: 1
+  Attribute: {fileID: 11400000, guid: bfebe5c92b1a1e148825ae13baf1e9fa, type: 2}
+  MinValue: 16
+  MaxValue: 16
   Perks: []
-  BuffPrefab: {fileID: 1396191692916948693, guid: 644f0f6f817a6d847b8a199e68137e3b,
-    type: 3}
-  AddBuffAnimation: RetaliateAdd
-  RemoveBuffAnimation: RetaliateRemove

@@ -489,8 +489,19 @@ public class MovementController : MonoBehaviour {
             StopCoroutine(Status.MovementAbilityRoutineInstance);
         }
 
+        string abilityRoutineName;
+
+        if(!string.IsNullOrEmpty(perk.DisplayName))
+        {
+            abilityRoutineName = perk.DisplayName;
+        }
+        else
+        {
+            abilityRoutineName = perk.name;
+        }
+
         Status.MovementAbilityRoutineInstance
-                        = StartCoroutine(perk.name + "AbilityRoutine", perk);
+                     = StartCoroutine(abilityRoutineName + "AbilityRoutine", perk);
     }
 
     public void ShutMovementAbility()

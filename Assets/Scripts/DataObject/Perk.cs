@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Perk", menuName = "DataObjects/Content/Perk", order = 2)]
 public class Perk : ScriptableObject
 {
+    public string DisplayName;
     public PerkAttribute Attribute;
     public float MinValue = 0f;
     public float MaxValue = 1f;
