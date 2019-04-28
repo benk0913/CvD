@@ -21,6 +21,7 @@ MonoBehaviour:
   - Hurt2
   DeathAnimations:
   - Death1
+  - Death2
   StunnedAnimations:
   - Stunned
   Abilities:
