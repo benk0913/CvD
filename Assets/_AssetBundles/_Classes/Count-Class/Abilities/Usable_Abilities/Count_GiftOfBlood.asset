@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Test_Blight
+  m_Name: Count_GiftOfBlood
   m_EditorClassIdentifier: 
-  DisplayName: Blight
-  Description: Curse your enemy with the curse of blight.
-  Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
+  DisplayName: Gift Of Blood
+  Description: Gift your ally with the ability to steal HP from the enemy.
+  Icon: {fileID: 21300000, guid: 073bdff88868ce34cab917f8c08ec17e, type: 3}
   Duration: 0.2
   ChargesCap: 1
-  Cooldown: 3
+  Cooldown: 2
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
   CooldownRequirements: []
@@ -27,9 +27,9 @@ MonoBehaviour:
   Perks: []
   PerksOnHit: []
   ObjectsToSpawn:
-  - {fileID: 7567260111314732214, guid: b5dacbff34cbe69478eaf61da2a0e28e, type: 3}
-  ObjectsToSpawnOnTargets:
   - {fileID: 7374196983190912051, guid: 58b69d97d3ec5784e9c9cb5024f265a6, type: 3}
+  ObjectsToSpawnOnTargets:
+  - {fileID: 7567260111314732214, guid: b5dacbff34cbe69478eaf61da2a0e28e, type: 3}
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}
