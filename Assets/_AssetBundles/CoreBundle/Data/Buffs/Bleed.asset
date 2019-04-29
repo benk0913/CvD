@@ -15,6 +15,8 @@ MonoBehaviour:
   DisplayName: Bleed
   Duration: 3
   Perks:
-  - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
+  - {fileID: 11400000, guid: e453f1d1b32a83040bde3a471b73a02a, type: 2}
   BuffPrefab: {fileID: 5995192168721783927, guid: 08788dd05cd73a843943607163fdd77a,
     type: 3}
+  AddBuffAnimation: 
+  RemoveBuffAnimation: 

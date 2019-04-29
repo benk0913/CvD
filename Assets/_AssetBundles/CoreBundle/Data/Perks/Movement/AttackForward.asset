@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
+  m_Name: AttackForward
+  m_EditorClassIdentifier: 
+  DisplayName: 
+  Attribute: {fileID: 11400000, guid: 63846eda530e31c428e54672713b862e, type: 2}
+  MinValue: 1
+  MaxValue: 2
+  Perks:
+  - {fileID: 11400000, guid: 2ca1204c0b90be144804e5326f717b2c, type: 2}
+  - {fileID: 11400000, guid: 25bb6758d6bd9d24fa56019ead1b1e6d, type: 2}

@@ -17,6 +17,7 @@ public class Perk : ScriptableObject
     {
         JSONNode node = new JSONClass();
 
+        node["name"] = this.name;
         node["perk_attribute"] = this.Attribute.name;
         node["min_value"] = this.MinValue.ToString();
         node["max_value"] = this.MaxValue.ToString();
