@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Smasher_Smash
   m_EditorClassIdentifier: 
   DisplayName: Smash
+  Description: 
   Icon: {fileID: 21300000, guid: cf83f4a90654da6478c856864d2b608c, type: 3}
   Duration: 0.75
   ChargesCap: 1
   Cooldown: 1
   StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
   - Smash1
@@ -25,7 +27,6 @@ MonoBehaviour:
   Perks: []
   PerksOnHit:
   - {fileID: 11400000, guid: 7a9e4399cb7e9cc429e8bc06db90ae26, type: 2}
-  - {fileID: 11400000, guid: 0e612a776caa77b4eb29b1c265c9cefc, type: 2}
   - {fileID: 11400000, guid: 1b77ab34ef827f540906fe792e5111b2, type: 2}
   ObjectsToSpawn:
   - {fileID: 1050513488234562161, guid: 8b45b2ce9bfabf14db9590b8a115c4ba, type: 3}

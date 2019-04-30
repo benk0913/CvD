@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: SmasherTornadoPullBuff
+  m_Script: {fileID: 11500000, guid: f8dc1870cd323664185645e1f46b6d66, type: 3}
+  m_Name: Retaliate
   m_EditorClassIdentifier: 
-  Attribute: {fileID: 11400000, guid: 30be45ec87312a041b11cd2abec60f8b, type: 2}
-  MinValue: 0
+  Attribute: {fileID: 11400000, guid: 6c5689716c6735b499225e80c1aed30e, type: 2}
+  MinValue: 1
   MaxValue: 1
-  Perks:
-  - {fileID: 11400000, guid: cfdcc6175b330974ba95b1303c2d0909, type: 2}
+  SubRequirements: []

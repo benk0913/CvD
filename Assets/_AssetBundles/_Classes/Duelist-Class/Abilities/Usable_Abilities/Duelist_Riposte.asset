@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
+  m_Name: Duelist_Riposte
+  m_EditorClassIdentifier: 
+  DisplayName: Riposte
+  Description: Enter a state of ultimate retaliation!
+  Icon: {fileID: 21300000, guid: 9970085e2e087e54598f3b000ee41900, type: 3}
+  Duration: 0
+  ChargesCap: 1
+  Cooldown: 4
+  StartWithCooldown: 1
+  CooldownResetsOnRespawn: 0
+  CooldownRequirements:
+  - {fileID: 11400000, guid: 3f5234fc9616b7b4b96e0accae26ed17, type: 2}
+  Animations: []
+  Perks:
+  - {fileID: 11400000, guid: 82b84ffc8df3f724c9a413860ff77a64, type: 2}
+  PerksOnHit: []
+  ObjectsToSpawn: []
+  ObjectsToSpawnOnTargets: []
+  AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}
