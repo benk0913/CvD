@@ -33,8 +33,6 @@ public class MovementController : MonoBehaviour {
     public bool isPlayer;
     public bool isDead;
     public bool isStunned = false;
-    public bool isSlowed = false;
-    public bool isHasted = false;
     public bool isCastingAbility = false;
     public bool isRecentlyHurt = false;
 
@@ -53,19 +51,21 @@ public class MovementController : MonoBehaviour {
                 speedResult -= this.Speed * 0.3f;
             }
 
-            if(isSlowed)
-            {
-                speedResult -= this.Speed * 0.5f;
-            }
-
-            if (isHasted)
-            {
-                speedResult += this.Speed * 1f;
-            }
-
             if (isRecentlyHurt)
             {
                 speedResult -= this.Speed * 0.2f;
+            }
+
+            foreach (BuffStatus buff in Status.ActiveBuffs)
+            {
+                for (int i = 0; i < buff.Reference.Perks.Count; i++)
+                {
+                    if (buff.Reference.Perks[i].Attribute.name == "SpeedModifier")
+                    {
+                        speedResult += (this.Speed * buff.Reference.Perks[i].MinValue);
+                        break;
+                    }
+                }
             }
 
             speedResult *= movementAbilitySpeedModifier;
@@ -905,16 +905,6 @@ public class MovementController : MonoBehaviour {
                     InterruptAbility();
                     return;
                 }
-            case "Slow":
-                {
-                    isSlowed = true;
-                    return;
-                }
-            case "Haste":
-                {
-                    isHasted = true;
-                    return;
-                }
         }
     }
 
@@ -928,18 +918,6 @@ public class MovementController : MonoBehaviour {
                     {
                         isStunned = false;
                     }
-
-                    return;
-                }
-            case "Slow":
-                {
-                    isSlowed = false;
-
-                    return;
-                }
-            case "Haste":
-                {
-                    isHasted = false;
 
                     return;
                 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: interruptOnGrounded
+  m_Name: LifestealOnHit
   m_EditorClassIdentifier: 
   DisplayName: 
-  Attribute: {fileID: 11400000, guid: 41ce24e6b778ea8448ae4e52647b250b, type: 2}
+  Attribute: {fileID: 11400000, guid: d10e961df00b1e146a70a5e79f38fb5d, type: 2}
   MinValue: 1
   MaxValue: 1
   Perks:
-  - {fileID: 11400000, guid: f180f190183d8644ab0961e0bf085ad3, type: 2}
+  - {fileID: 11400000, guid: 61c84c7daafea6147864a2659b54aa7e, type: 2}

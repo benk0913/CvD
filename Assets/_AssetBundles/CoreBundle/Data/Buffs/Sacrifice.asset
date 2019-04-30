@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7435ee4a5a8ede84c9dbdd59c597d0ad, type: 3}
-  m_Name: Slow
+  m_Name: Sacrifice
   m_EditorClassIdentifier: 
-  DisplayName: Slow
-  Duration: 3
+  DisplayName: Sacrifice
+  Duration: 4
   Perks:
-  - {fileID: 11400000, guid: 325deae2f8c02b04b82be6e8f75717ce, type: 2}
-  BuffPrefab: {fileID: 1265141566403082923, guid: 8ca6104c8c6ba51499d93195d149f433,
+  - {fileID: 11400000, guid: b96a5b4f36bde014abdd8ba104231976, type: 2}
+  BuffPrefab: {fileID: 1265141566403082923, guid: 31d13a88a785fa84797ac4e1abbcc1b5,
     type: 3}
   AddBuffAnimation: 
   RemoveBuffAnimation: 
