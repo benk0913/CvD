@@ -25,7 +25,8 @@ MonoBehaviour:
   - Blight1
   - Blight2
   Perks: []
-  PerksOnHit: []
+  PerksOnHit:
+  - {fileID: 11400000, guid: 04b33c1dd3bccf04583606702a3f8205, type: 2}
   ObjectsToSpawn:
   - {fileID: 7374196983190912051, guid: 58b69d97d3ec5784e9c9cb5024f265a6, type: 3}
   ObjectsToSpawnOnTargets:
