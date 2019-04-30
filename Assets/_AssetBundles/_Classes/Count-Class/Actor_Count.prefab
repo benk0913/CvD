@@ -558,7 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e4d453704e1f144852cc135fad1451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectsToSpawn: []
+  ObjectsToSpawn:
+  - {fileID: 1179474593001107221, guid: aeae26f9a89dc2d4aa571e638445c918, type: 3}
   myDirection: 1
 --- !u!114 &3941859325249901525
 MonoBehaviour:
