@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89c0f9f67125cb84c894b629cae9bcce, type: 3}
-  m_Name: Count_Class
+  m_Name: Priest_Class
   m_EditorClassIdentifier: 
-  DisplayName: Count
-  ClassActor: {fileID: 99787557505466745, guid: cd5f7b3d9de92f343ac56cdfd5268bcf,
+  DisplayName: Priest
+  ClassActor: {fileID: 1931553018630813397, guid: ffd229794bee47548a9d6870b792b480,
     type: 3}
   BaseHP: 35
   HurtAnimations:
@@ -24,8 +24,4 @@ MonoBehaviour:
   StunnedAnimations:
   - Stunned
   Abilities:
-  - {fileID: 11400000, guid: 97d1daf022851d64a9f8283811f1ea89, type: 2}
-  - {fileID: 11400000, guid: f6fbdb8194238f341b4f4a98242d65ab, type: 2}
-  - {fileID: 11400000, guid: f9c9d063828ea674d8c1310b7c0a42c1, type: 2}
-  - {fileID: 11400000, guid: 1251eed0b610c0e4199732509540621a, type: 2}
-  - {fileID: 11400000, guid: 54be4c6d708ea2249ac77d45cfe159d4, type: 2}
+  - {fileID: 11400000, guid: 3cbee5e9aa8a5c44db2e5d0d0ea7f026, type: 2}

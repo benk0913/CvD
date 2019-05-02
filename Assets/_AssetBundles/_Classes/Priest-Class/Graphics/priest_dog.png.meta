@@ -15,6 +15,7 @@ TextureImporter:
     21300020: priest_dog_13
     21300022: priest_dog_14
     21300024: priest_dog_15
+    21300026: priest_dog_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -58,7 +59,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 512
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -122,18 +123,18 @@ TextureImporter:
       name: priest_dog_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 429
-        width: 44
-        height: 70
+        x: 1
+        y: 78
+        width: 188
+        height: 422
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26179915b58981944a497afa9d1cb9d2
+      spriteID: bbace9d5f6a478a47afcf39ea39ae320
       vertices: []
       indices: 
       edges: []
@@ -142,18 +143,18 @@ TextureImporter:
       name: priest_dog_1
       rect:
         serializedVersion: 2
-        x: 67
-        y: 424
-        width: 51
-        height: 75
+        x: 197
+        y: 215
+        width: 28
+        height: 290
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbd82465b94159d469f42579d5fddd35
+      spriteID: cfcc405c6b0476e4d972ca270a532e32
       vertices: []
       indices: 
       edges: []
@@ -162,18 +163,18 @@ TextureImporter:
       name: priest_dog_2
       rect:
         serializedVersion: 2
-        x: 126
+        x: 240
         y: 371
         width: 142
         height: 134
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee2359fe788b89c48b7ffe0524e7158b
+      spriteID: b4abfa35fa340f7419bfebf96e7e7531
       vertices: []
       indices: 
       edges: []
@@ -182,18 +183,18 @@ TextureImporter:
       name: priest_dog_3
       rect:
         serializedVersion: 2
-        x: 282
-        y: 215
-        width: 29
-        height: 290
+        x: 389
+        y: 424
+        width: 51
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d9f12a043a966a4b8dbd569f64530ab
+      spriteID: b50f861d6a1f68d45a470a8cf22d74a7
       vertices: []
       indices: 
       edges: []
@@ -202,38 +203,38 @@ TextureImporter:
       name: priest_dog_4
       rect:
         serializedVersion: 2
-        x: 319
-        y: 78
-        width: 188
-        height: 422
+        x: 449
+        y: 429
+        width: 45
+        height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7078255b97136894c83ac7cb93c4867d
+      spriteID: bbda3af4b14aede4fac581214947c459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: priest_dog_6
+      name: priest_dog_5
       rect:
         serializedVersion: 2
-        x: 14
+        x: 400
         y: 366
         width: 94
         height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c4cd83a3a1f34b41a822043261d5c1c
+      spriteID: f11b021edde681e4195d1f366e3e67a0
       vertices: []
       indices: 
       edges: []
@@ -242,18 +243,18 @@ TextureImporter:
       name: priest_dog_9
       rect:
         serializedVersion: 2
-        x: 25
-        y: 249
-        width: 75
-        height: 95
+        x: 229
+        y: 281
+        width: 145
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a64884c056c43e4483f8ca7501e72d3
+      spriteID: e8f8db836fc54f045bab3eb5b60dae07
       vertices: []
       indices: 
       edges: []
@@ -262,18 +263,18 @@ TextureImporter:
       name: priest_dog_10
       rect:
         serializedVersion: 2
-        x: 134
-        y: 281
-        width: 145
-        height: 81
+        x: 407
+        y: 249
+        width: 75
+        height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 574f33a5f6cb9504a82ffb222730b3ed
+      spriteID: e156d22eb768b6441ba18ba5fddb7044
       vertices: []
       indices: 
       edges: []
@@ -282,18 +283,18 @@ TextureImporter:
       name: priest_dog_11
       rect:
         serializedVersion: 2
-        x: 1
-        y: 56
-        width: 104
-        height: 184
+        x: 239
+        y: 190
+        width: 52
+        height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f6fe76cfc8b4714eb2fb0f2a2dcd5d5
+      spriteID: 37e45e30c4b0fb041a277c8657517e00
       vertices: []
       indices: 
       edges: []
@@ -302,18 +303,18 @@ TextureImporter:
       name: priest_dog_12
       rect:
         serializedVersion: 2
-        x: 126
+        x: 317
         y: 90
-        width: 64
+        width: 65
         height: 168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b068a6ff372b9642b1bf22aea698c47
+      spriteID: 6a1c01f3ce7d8fd4682f4b170bb26955
       vertices: []
       indices: 
       edges: []
@@ -322,18 +323,18 @@ TextureImporter:
       name: priest_dog_13
       rect:
         serializedVersion: 2
-        x: 216
-        y: 190
-        width: 52
-        height: 88
+        x: 402
+        y: 56
+        width: 105
+        height: 184
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57e9abd82946fcf4f928fa6a17c076f4
+      spriteID: c46eb100eecb30047b9df9fdbeb71577
       vertices: []
       indices: 
       edges: []
@@ -342,18 +343,18 @@ TextureImporter:
       name: priest_dog_14
       rect:
         serializedVersion: 2
-        x: 200
-        y: 64
-        width: 111
-        height: 122
+        x: 114
+        y: 4
+        width: 59
+        height: 67
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81f601fdf83178740a252162465faf06
+      spriteID: 0d36b7961a9b30247ab66b1ada9556fe
       vertices: []
       indices: 
       edges: []
@@ -362,10 +363,30 @@ TextureImporter:
       name: priest_dog_15
       rect:
         serializedVersion: 2
-        x: 335
-        y: 4
-        width: 58
-        height: 67
+        x: 196
+        y: 64
+        width: 111
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dc22e4ed24cd5d48bda732cb52de70f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: priest_dog_6
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 2
+        width: 218
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,7 +394,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8c552d27dd926e4688848cb9d200065
+      spriteID: 457f5bf0ab83a1a46a234426848c374a
       vertices: []
       indices: 
       edges: []
