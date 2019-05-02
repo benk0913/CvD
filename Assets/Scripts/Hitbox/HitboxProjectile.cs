@@ -10,7 +10,7 @@ public class HitboxProjectile : HitBoxScript
     [SerializeField]
     protected Rigidbody2D Rigid;
 
-    private void LateUpdate()
+    protected void LateUpdate()
     {
         Rigid.position += (Vector2) transform.right * (-transform.localScale.x) * Speed * Time.deltaTime;
         
