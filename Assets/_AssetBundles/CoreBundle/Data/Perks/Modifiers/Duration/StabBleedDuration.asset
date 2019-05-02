@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: ShoutSlow
+  m_Name: StabBleedDuration
   m_EditorClassIdentifier: 
   DisplayName: 
-  Attribute: {fileID: 11400000, guid: fe2fbfc6cefed1840bd619b070238a44, type: 2}
-  MinValue: 1
-  MaxValue: 1
-  Perks:
-  - {fileID: 11400000, guid: cfdcc6175b330974ba95b1303c2d0909, type: 2}
+  Attribute: {fileID: 11400000, guid: d8a1b71e48809374784459a6ca21443f, type: 2}
+  MinValue: 6
+  MaxValue: 6
+  Perks: []

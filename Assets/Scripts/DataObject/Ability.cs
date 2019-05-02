@@ -46,6 +46,8 @@ public class Ability : ScriptableObject
 
     public JSONNode ToJson()
     {
+        //Debug.Log(this.name);
+
         JSONNode node = new JSONClass();
 
         node["ability_key"] = this.name;
