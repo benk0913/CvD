@@ -10,24 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Priest_CallOrbs
+  m_Name: Priest_Purge
   m_EditorClassIdentifier: 
-  DisplayName: Call Orbs
-  Description: Detonate your orbs of healing on your allies!
+  DisplayName: Purge
+  Description: Purge an ally of his debuffs, or an enemy of his buffs.
   Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
   Duration: 0.3
   ChargesCap: 1
-  Cooldown: 1
+  Cooldown: 12
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
-  - Detonate
+  - Purge
   Perks: []
   PerksOnHit: []
   ObjectsToSpawn:
-  - {fileID: 3399095561321281814, guid: cf42795eabe157143ab5169b1a230bc7, type: 3}
-  ObjectsToSpawnOnTargets: []
+  - {fileID: 7888162850768900906, guid: 91454fb1f433cc6418c83a03fe00c947, type: 3}
+  - {fileID: 1827418595407188246, guid: 255c246ef272b2c49accec43438e8177, type: 3}
+  ObjectsToSpawnOnTargets:
+  - {fileID: 8272606567454643937, guid: 2888b895efc04214a8612d046fad9304, type: 3}
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

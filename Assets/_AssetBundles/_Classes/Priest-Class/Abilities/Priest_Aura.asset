@@ -10,24 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Priest_CallOrbs
+  m_Name: Priest_Aura
   m_EditorClassIdentifier: 
-  DisplayName: Call Orbs
-  Description: Detonate your orbs of healing on your allies!
+  DisplayName: Aura
+  Description: Cast a blast of holy light which relieves your nearby allies.
   Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
-  Duration: 0.3
+  Duration: 0.1
   ChargesCap: 1
-  Cooldown: 1
+  Cooldown: 12
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
-  - Detonate
+  - Aura
   Perks: []
-  PerksOnHit: []
+  PerksOnHit:
+  - {fileID: 11400000, guid: 95806bda92aec4b40a58b3e5bd8dc610, type: 2}
+  - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
   ObjectsToSpawn:
-  - {fileID: 3399095561321281814, guid: cf42795eabe157143ab5169b1a230bc7, type: 3}
-  ObjectsToSpawnOnTargets: []
+  - {fileID: 8626387834385685779, guid: 5df72f1b5f1783a419493453543a4d20, type: 3}
+  ObjectsToSpawnOnTargets:
+  - {fileID: 5767041899201778742, guid: abf8e9528ab0dd04e95207c5c401f046, type: 3}
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

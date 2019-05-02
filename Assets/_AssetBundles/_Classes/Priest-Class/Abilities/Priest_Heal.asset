@@ -16,8 +16,8 @@ MonoBehaviour:
   Description: Conjure an orb of healing and launch it over!
   Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
   Duration: 0.1
-  ChargesCap: 1
-  Cooldown: 2
+  ChargesCap: 3
+  Cooldown: 6
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
   CooldownRequirements: []
@@ -25,10 +25,13 @@ MonoBehaviour:
   - Attack1
   - Attack2
   Perks: []
-  PerksOnHit: []
+  PerksOnHit:
+  - {fileID: 11400000, guid: 95806bda92aec4b40a58b3e5bd8dc610, type: 2}
+  - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
   ObjectsToSpawn:
   - {fileID: 6295688477688944063, guid: 6f2ca79eaf4e692499eb5d051381dba3, type: 3}
-  ObjectsToSpawnOnTargets: []
+  ObjectsToSpawnOnTargets:
+  - {fileID: 5767041899201778742, guid: abf8e9528ab0dd04e95207c5c401f046, type: 3}
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}
