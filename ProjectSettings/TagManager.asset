@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Actor
   - HitBox
+  - Detonatable
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Actor
   - Hitbox
   - LOCKED
-  - 
+  - Misc
   - 
   - 
   - 

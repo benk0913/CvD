@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Haste
   Duration: 8
-  Perks: []
+  Perks:
+  - {fileID: 11400000, guid: 4726cd7089618cb4d84965194e9a113d, type: 2}
   BuffPrefab: {fileID: 1265141566403082923, guid: 31d13a88a785fa84797ac4e1abbcc1b5,
     type: 3}
+  AddBuffAnimation: 
+  RemoveBuffAnimation: 

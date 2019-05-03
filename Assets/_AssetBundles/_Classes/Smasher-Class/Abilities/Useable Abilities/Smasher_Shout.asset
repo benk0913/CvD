@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Smasher_Shout
   m_EditorClassIdentifier: 
   DisplayName: Shout
+  Description: 
   Icon: {fileID: 21300000, guid: 9e8143b4f6e08c8408566d0417c7a202, type: 3}
   Duration: 0.6
   ChargesCap: 1
@@ -25,7 +26,7 @@ MonoBehaviour:
   Perks:
   - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
   PerksOnHit:
-  - {fileID: 11400000, guid: 04e5aeae709dba440aadb87705dca444, type: 2}
+  - {fileID: 11400000, guid: ea03b0b7ea63d5b46a8db0bcf44bdf61, type: 2}
   ObjectsToSpawn:
   - {fileID: 187, guid: 4469f37b903a0d74c947869dc8b2c1ef, type: 3}
   ObjectsToSpawnOnTargets:

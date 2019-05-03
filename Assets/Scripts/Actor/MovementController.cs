@@ -33,8 +33,6 @@ public class MovementController : MonoBehaviour {
     public bool isPlayer;
     public bool isDead;
     public bool isStunned = false;
-    public bool isSlowed = false;
-    public bool isHasted = false;
     public bool isCastingAbility = false;
     public bool isRecentlyHurt = false;
 
@@ -53,19 +51,21 @@ public class MovementController : MonoBehaviour {
                 speedResult -= this.Speed * 0.3f;
             }
 
-            if(isSlowed)
-            {
-                speedResult -= this.Speed * 0.5f;
-            }
-
-            if (isHasted)
-            {
-                speedResult += this.Speed * 1f;
-            }
-
             if (isRecentlyHurt)
             {
                 speedResult -= this.Speed * 0.2f;
+            }
+
+            foreach (BuffStatus buff in Status.ActiveBuffs)
+            {
+                for (int i = 0; i < buff.Reference.Perks.Count; i++)
+                {
+                    if (buff.Reference.Perks[i].Attribute.name == "SpeedModifier")
+                    {
+                        speedResult += (this.Speed * buff.Reference.Perks[i].MinValue);
+                        break;
+                    }
+                }
             }
 
             speedResult *= movementAbilitySpeedModifier;
@@ -489,8 +489,19 @@ public class MovementController : MonoBehaviour {
             StopCoroutine(Status.MovementAbilityRoutineInstance);
         }
 
+        string abilityRoutineName;
+
+        if(!string.IsNullOrEmpty(perk.DisplayName))
+        {
+            abilityRoutineName = perk.DisplayName;
+        }
+        else
+        {
+            abilityRoutineName = perk.name;
+        }
+
         Status.MovementAbilityRoutineInstance
-                        = StartCoroutine(perk.name + "AbilityRoutine", perk);
+                     = StartCoroutine(abilityRoutineName + "AbilityRoutine", perk);
     }
 
     public void ShutMovementAbility()
@@ -669,6 +680,48 @@ public class MovementController : MonoBehaviour {
         Status.MovementAbilityRoutineInstance = null;
     }
 
+
+    IEnumerator AttackForwardAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 3f);
+
+        Vector2 direction = (isFacingLeft ? Vector2.left : Vector2.right);
+
+        while (duration > 0)
+        {
+            duration -= 1f * Time.deltaTime;
+            Rigid.position += direction * speed * Time.deltaTime;
+
+            yield return 0;
+        }
+
+        yield return 0;
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
+    IEnumerator AttackBackwardAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+        float speed = perk.GetPerkValueByType("SpeedModifier", 3f);
+
+        Vector2 direction = (isFacingLeft ? Vector2.right : Vector2.left);
+
+        while (duration > 0)
+        {
+            duration -= 1f * Time.deltaTime;
+            Rigid.position += direction * speed * Time.deltaTime;
+
+            yield return 0;
+        }
+
+        yield return 0;
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
+
     #endregion
 
     #endregion
@@ -803,6 +856,11 @@ public class MovementController : MonoBehaviour {
             buffPrefab.transform.position = transform.position;
         }
 
+        if (!string.IsNullOrEmpty(buff.AddBuffAnimation))
+        {
+            Animer.Play(buff.AddBuffAnimation);
+        }
+
         BuffStatus buffStatus = new BuffStatus(buff, buffPrefab);
 
         Status.ActiveBuffs.Add(buffStatus);
@@ -821,6 +879,11 @@ public class MovementController : MonoBehaviour {
         {
             status.BuffPrefab.transform.SetParent(null);
             status.BuffPrefab.SetActive(false);
+        }
+
+        if (!string.IsNullOrEmpty(buff.RemoveBuffAnimation))
+        {
+            Animer.Play(buff.RemoveBuffAnimation);
         }
 
         Status.ActiveBuffs.Remove(status);
@@ -842,16 +905,6 @@ public class MovementController : MonoBehaviour {
                     InterruptAbility();
                     return;
                 }
-            case "Slow":
-                {
-                    isSlowed = true;
-                    return;
-                }
-            case "Haste":
-                {
-                    isHasted = true;
-                    return;
-                }
         }
     }
 
@@ -865,18 +918,6 @@ public class MovementController : MonoBehaviour {
                     {
                         isStunned = false;
                     }
-
-                    return;
-                }
-            case "Slow":
-                {
-                    isSlowed = false;
-
-                    return;
-                }
-            case "Haste":
-                {
-                    isHasted = false;
 
                     return;
                 }

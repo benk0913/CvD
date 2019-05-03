@@ -24,5 +24,8 @@ MonoBehaviour:
   StunnedAnimations:
   - Stunned
   Abilities:
-  - {fileID: 11400000, guid: 69f7b6745d742d441b1bcbe505ee676f, type: 2}
-  - {fileID: 11400000, guid: 6d27f969e270cf546a27d5de3b8a4be0, type: 2}
+  - {fileID: 11400000, guid: 97d1daf022851d64a9f8283811f1ea89, type: 2}
+  - {fileID: 11400000, guid: f6fbdb8194238f341b4f4a98242d65ab, type: 2}
+  - {fileID: 11400000, guid: f9c9d063828ea674d8c1310b7c0a42c1, type: 2}
+  - {fileID: 11400000, guid: 1251eed0b610c0e4199732509540621a, type: 2}
+  - {fileID: 11400000, guid: 54be4c6d708ea2249ac77d45cfe159d4, type: 2}

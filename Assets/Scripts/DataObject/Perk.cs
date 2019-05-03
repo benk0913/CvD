@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Perk", menuName = "DataObjects/Content/Perk", order = 2)]
 public class Perk : ScriptableObject
 {
+    public string DisplayName;
     public PerkAttribute Attribute;
     public float MinValue = 0f;
     public float MaxValue = 1f;
@@ -16,6 +17,7 @@ public class Perk : ScriptableObject
     {
         JSONNode node = new JSONClass();
 
+        node["name"] = this.name;
         node["perk_attribute"] = this.Attribute.name;
         node["min_value"] = this.MinValue.ToString();
         node["max_value"] = this.MaxValue.ToString();

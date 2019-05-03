@@ -23,7 +23,7 @@ public class HitBoxScript : MonoBehaviour {
     protected bool IsContiniousDamage = false;
 
     [SerializeField]
-    Collider2D Collider;
+    protected Collider2D Collider;
 
     [System.NonSerialized]
     public Ability CurrentAbility;
@@ -37,6 +37,7 @@ public class HitBoxScript : MonoBehaviour {
     [System.NonSerialized]
     protected MovementController CurrentOwnerMovementController;
 
+    
 
 
     protected HitboxEvent CurrentHitEvent;
@@ -123,6 +124,11 @@ public class HitBoxScript : MonoBehaviour {
             WasHitThisFrame = false;
             Shut();
         }
+    }
+
+    public virtual void Detonate()
+    {
+        //NOTHING
     }
 
 }

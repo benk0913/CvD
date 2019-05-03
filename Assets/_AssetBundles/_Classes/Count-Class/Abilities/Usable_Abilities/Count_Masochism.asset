@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
+  m_Name: Count_Masochism
+  m_EditorClassIdentifier: 
+  DisplayName: Masochism
+  Description: Use pain and blood to feel better!
+  Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
+  Duration: 0.2
+  ChargesCap: 1
+  Cooldown: 4
+  StartWithCooldown: 1
+  CooldownResetsOnRespawn: 0
+  CooldownRequirements:
+  - {fileID: 11400000, guid: 52c34d0092c19714cb27c3a58ef8ccf2, type: 2}
+  Animations:
+  - Sacrifice
+  Perks:
+  - {fileID: 11400000, guid: 471fae6eab2eaa046b0652fa90434caf, type: 2}
+  PerksOnHit: []
+  ObjectsToSpawn: []
+  ObjectsToSpawnOnTargets: []
+  AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}
