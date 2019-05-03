@@ -103,7 +103,7 @@ ParticleSystem:
   m_GameObject: {fileID: 7888162850768900906}
   serializedVersion: 6
   lengthInSec: 1
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
@@ -721,7 +721,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 5
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
