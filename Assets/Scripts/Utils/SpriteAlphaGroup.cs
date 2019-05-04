@@ -87,25 +87,36 @@ public class SpriteAlphaGroup : MonoBehaviour {
         }
     }
 
-    Coroutine BlinkDamageInstance;
-    public void BlinkDamage()
+    Coroutine BlinkRoutineInstance;
+    public void BlinkColor(Color clr)
     {
-        if(BlinkDamageInstance != null)
+        if(BlinkRoutineInstance != null)
         {
-            StopCoroutine(BlinkDamageInstance);
+            StopCoroutine(BlinkRoutineInstance);
         }
 
-        BlinkDamageInstance = StartCoroutine(BlinkDamageRoutine());
+        BlinkRoutineInstance = StartCoroutine(BlinkDamageRoutine(clr));
     }
 
-    private IEnumerator BlinkDamageRoutine()
+    public void BlinkColor()
     {
-        SetChildrenColor(transform, Color.black);
+        if (BlinkRoutineInstance != null)
+        {
+            StopCoroutine(BlinkRoutineInstance);
+        }
+
+        BlinkRoutineInstance = StartCoroutine(BlinkDamageRoutine(Color.black));
+    }
+
+    private IEnumerator BlinkDamageRoutine(Color clr)
+    {
+        SetChildrenColor(transform, clr);
 
         yield return new WaitForSeconds(0.05f);
 
         SetChildrenColor(transform, OriginalColor);
 
-        BlinkDamageInstance = null;
+        BlinkRoutineInstance = null;
     }
+
 }

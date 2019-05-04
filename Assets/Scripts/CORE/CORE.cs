@@ -256,6 +256,34 @@ public class CORE : MonoBehaviour {
         }
     }
 
+    public void ActorHealed(string playerID, int amount)
+    {
+        CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+
+        if (player.CInstance != null)
+        {
+            player.CInstance.GetComponent<MovementController>().Heal(amount);
+        }
+        else
+        {
+            Debug.LogError("HEAL - Player is dead or missing!");
+        }
+    }
+
+    public void ActorBlocked(string playerID)
+    {
+        CharacterInfo player = CurrentRoom.GetPlayer(playerID);
+
+        if (player.CInstance != null)
+        {
+            player.CInstance.GetComponent<MovementController>().Blocked();
+        }
+        else
+        {
+            Debug.LogError("BLOCKED - Player is dead or missing!");
+        }
+    }
+
     public void ActorDead(string playerID)
     {
         CharacterInfo player = CurrentRoom.GetPlayer(playerID);

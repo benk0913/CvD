@@ -782,7 +782,24 @@ public class MovementController : MonoBehaviour {
         }
 
         HurtEffectRoutineInstance = StartCoroutine(HurtEffectRoutine());
-        AlphaGroup.BlinkDamage();
+        AlphaGroup.BlinkColor(Color.black);
+    }
+
+    public void Heal(int health)
+    {
+        ShowHealText(health);
+
+        Status.CurrentHP += health;
+
+        AlphaGroup.BlinkColor(Color.green);
+    }
+
+    public void Blocked()
+    {
+        ShowBlockedText();
+        AlphaGroup.BlinkColor(Color.grey);
+
+        Animer.Play("Block");
     }
 
     public void Death()
@@ -841,9 +858,63 @@ public class MovementController : MonoBehaviour {
 
         GameObject tempDamageText = ResourcesLoader.Instance.GetRecycledObject(CORE.Instance.PrefabDatabase[prefabName]);
 
-        tempDamageText.transform.position = StatsCanvas.transform.position;
+        tempDamageText.transform.position = StatsCanvas.transform.position
+            + StatsCanvas.transform.TransformDirection(
+                UnityEngine.Random.Range(-0.1f, 0.1f),
+                UnityEngine.Random.Range(-0.1f, 0.1f),
+                0f);
+
         tempDamageText.GetComponent<FloatingDamageUI>().Activate(damage.ToString());
     }
+
+    public void ShowHealText(int health)
+    {
+        string prefabName;
+
+        if (isPlayer)
+        {
+            prefabName = "FloatingHeal_Self";
+        }
+        else
+        {
+            prefabName = "FloatingHeal_Target";
+        }
+
+        GameObject tempDamageText = ResourcesLoader.Instance.GetRecycledObject(CORE.Instance.PrefabDatabase[prefabName]);
+
+        tempDamageText.transform.position = StatsCanvas.transform.position 
+            + StatsCanvas.transform.TransformDirection(
+                UnityEngine.Random.Range(-0.1f, 0.1f),
+                UnityEngine.Random.Range(-0.1f, 0.1f),
+                0f);
+
+        tempDamageText.GetComponent<FloatingDamageUI>().Activate(health.ToString());
+    }
+
+    public void ShowBlockedText()
+    {
+        string prefabName;
+
+        if (isPlayer)
+        {
+            prefabName = "FloatingBlocked_Self";
+        }
+        else
+        {
+            prefabName = "FloatingBlocked_Target";
+        }
+
+        GameObject tempDamageText = ResourcesLoader.Instance.GetRecycledObject(CORE.Instance.PrefabDatabase[prefabName]);
+
+        tempDamageText.transform.position = StatsCanvas.transform.position
+            + StatsCanvas.transform.TransformDirection(
+                UnityEngine.Random.Range(-0.1f, 0.1f),
+                UnityEngine.Random.Range(-0.1f, 0.1f),
+                0f);
+
+        tempDamageText.GetComponent<FloatingDamageUI>().Activate("BLOCKED");
+    }
+
 
     public void AddBuff(Buff buff, CharacterInfo fromPlayer)
     {

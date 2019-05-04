@@ -22,7 +22,7 @@ MonoBehaviour:
   CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
-  - 
+  - Retaliate
   Perks:
   - {fileID: 11400000, guid: 294a7f74a4a131a478659423dfcaa1d5, type: 2}
   PerksOnHit: []
