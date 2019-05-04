@@ -29,7 +29,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 95806bda92aec4b40a58b3e5bd8dc610, type: 2}
   - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
   ObjectsToSpawn:
-  - {fileID: 6295688477688944063, guid: 6f2ca79eaf4e692499eb5d051381dba3, type: 3}
+  - {fileID: 497, guid: 6f2ca79eaf4e692499eb5d051381dba3, type: 3}
   ObjectsToSpawnOnTargets:
   - {fileID: 5767041899201778742, guid: abf8e9528ab0dd04e95207c5c401f046, type: 3}
   AbilityOnHit: {fileID: 0}
