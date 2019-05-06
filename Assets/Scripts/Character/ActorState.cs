@@ -78,7 +78,7 @@ public class ActorState
 public class AbilityStatus
 {
     public Ability Reference;
-    public Coroutine CooldownRoutine;
+    public Coroutine LastCooldownRoutine;
     public UnityEvent OnRecharge = new UnityEvent();
     public CooldownUpdateEvent OnCooldownUpdated = new CooldownUpdateEvent();
     public UnityEvent OnCooldownComplete = new UnityEvent();
@@ -110,11 +110,14 @@ public class AbilityStatus
         OnCooldownUpdated.Invoke(external);
     }
 
-    public void CompleteCooldown()
+    public void CompleteCooldown(Coroutine routineInstance)
     {
         Recharge();
-
-        CooldownRoutine = null;
+        
+        if(routineInstance == LastCooldownRoutine)
+        {
+            LastCooldownRoutine = null;
+        }
 
         OnCooldownComplete.Invoke();
     }
@@ -130,7 +133,7 @@ public class AbilityStatus
 
     public void StartRechargeCooldown(Coroutine cooldownRoutine)
     {
-        this.CooldownRoutine = cooldownRoutine;
+        this.LastCooldownRoutine = cooldownRoutine;
     }
 }
 

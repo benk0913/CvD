@@ -134,8 +134,6 @@ public class MovementController : MonoBehaviour {
         get { return Rigid.velocity.y >= 0; }
     }
 
-    
-
 
     private void Update()
     {
@@ -353,29 +351,45 @@ public class MovementController : MonoBehaviour {
         }
 
         abilityStatus.UpdateCooldown(abilityStatus.Reference.Cooldown);
-        
-        abilityStatus.ActivateAbility(StartCoroutine(CooldownRoutine(abilityStatus)));
+
+        CoroutineContainer tempContainer = new CoroutineContainer();
+        tempContainer.RoutineInstance = StartCoroutine(CooldownRoutine(abilityStatus, tempContainer));
+
+        abilityStatus.ActivateAbility(tempContainer.RoutineInstance);
     }
 
-    IEnumerator CooldownRoutine(AbilityStatus abilityStatus)
+    IEnumerator CooldownRoutine(AbilityStatus abilityStatus, CoroutineContainer thisInstance)
     {
-        while(abilityStatus.CooldownSecondsLeft > 0)
+        yield return 0;
+
+        float secondsLeft = abilityStatus.Reference.Cooldown;
+
+        while (secondsLeft > 0)
         {
             if (abilityStatus.Reference.HasTimerCountdown)
             {
-                abilityStatus.CooldownSecondsLeft -= 1f * Time.deltaTime;
-
-                abilityStatus.UpdateCooldown(abilityStatus.CooldownSecondsLeft);
+                if (thisInstance.RoutineInstance == abilityStatus.LastCooldownRoutine)
+                {
+                    secondsLeft = abilityStatus.CooldownSecondsLeft;
+                    abilityStatus.CooldownSecondsLeft -= 1f * Time.deltaTime;
+                    abilityStatus.UpdateCooldown(abilityStatus.CooldownSecondsLeft);
+                }
+                else
+                {
+                    secondsLeft -= 1f * Time.deltaTime;
+                }
             }
 
             yield return 0;
         }
 
-        abilityStatus.CompleteCooldown();
+        abilityStatus.CompleteCooldown(thisInstance.RoutineInstance);
 
         if(abilityStatus.Charges < abilityStatus.Reference.ChargesCap)
         {
-            abilityStatus.StartRechargeCooldown(StartCoroutine(CooldownRoutine(abilityStatus)));
+            CoroutineContainer tempContainer = new CoroutineContainer();
+            tempContainer.RoutineInstance = StartCoroutine(CooldownRoutine(abilityStatus, tempContainer));
+            abilityStatus.StartRechargeCooldown(tempContainer.RoutineInstance);
         }
     }
 
@@ -1128,4 +1142,14 @@ public class MovementController : MonoBehaviour {
 [System.Serializable]
 public class HitboxEvent : UnityEvent<Ability>
 {
+}
+
+public class CoroutineContainer
+{
+    public Coroutine RoutineInstance;
+    
+    public CoroutineContainer(Coroutine routine = null)
+    {
+        this.RoutineInstance = routine;
+    }
 }
