@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Sacrifice
   Description: Use pain and blood to gain speed!
-  Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
+  Icon: {fileID: 21300000, guid: 5c1bfc7246f21554c9f0c742429a8f7f, type: 3}
   Duration: 0.2
   ChargesCap: 1
   Cooldown: 2

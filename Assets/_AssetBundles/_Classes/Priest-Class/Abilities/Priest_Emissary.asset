@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Emissary
   Description: Accept the gods gift as his emissary and let his punishes be delivered
     trough your energy.
-  Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
+  Icon: {fileID: 21300000, guid: e7423bb81a70f3d4985dcab93a9271e1, type: 3}
   Duration: 0.3
   ChargesCap: 1
   Cooldown: 6

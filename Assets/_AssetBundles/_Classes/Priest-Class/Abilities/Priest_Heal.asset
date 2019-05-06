@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Heal
   Description: Conjure an orb of healing and launch it over!
-  Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
+  Icon: {fileID: 21300000, guid: 788a7353c3a3d8348ad8562f70fba593, type: 3}
   Duration: 0.1
   ChargesCap: 3
   Cooldown: 6

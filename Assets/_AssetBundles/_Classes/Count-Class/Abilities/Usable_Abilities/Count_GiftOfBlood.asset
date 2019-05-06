@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Gift Of Blood
   Description: Gift your ally with the ability to steal HP from the enemy.
-  Icon: {fileID: 21300000, guid: 073bdff88868ce34cab917f8c08ec17e, type: 3}
+  Icon: {fileID: 21300000, guid: b3f716d16a567ac48b3d05ceee09bb6f, type: 3}
   Duration: 0.2
   ChargesCap: 1
   Cooldown: 2
