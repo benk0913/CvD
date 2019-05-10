@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Hiss
   Description: Hiss on your enemies and see them run in fear!
   Icon: {fileID: 21300000, guid: 3b57d46a5739b2e45a9fd408511a2ace, type: 3}
-  Duration: 0.4
+  Duration: 0.3
   ChargesCap: 1
   Cooldown: 6
   StartWithCooldown: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   Perks:
   - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
   PerksOnHit:
-  - {fileID: 11400000, guid: ea03b0b7ea63d5b46a8db0bcf44bdf61, type: 2}
+  - {fileID: 11400000, guid: 02a746b4bba7cb045a127f19df6be388, type: 2}
   ObjectsToSpawn:
   - {fileID: 6387958651227891384, guid: d27eb806b64cd0f418021e599da6bf89, type: 3}
   ObjectsToSpawnOnTargets:

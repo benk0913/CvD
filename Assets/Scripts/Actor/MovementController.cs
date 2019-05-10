@@ -735,6 +735,36 @@ public class MovementController : MonoBehaviour {
         Status.MovementAbilityRoutineInstance = null;
     }
 
+    IEnumerator FearAbilityRoutine(Perk perk)
+    {
+        float duration = perk.GetPerkValueByType("DurationModifier", 1f);
+
+        Vector3 targetPos = lastOffender.CInstance.transform.position;
+        float randomHeight = UnityEngine.Random.Range(1f, 5f);
+
+        bool facingRight = (targetPos.x < Rigid.position.x);
+
+        while (duration > 0f)
+        {
+            duration -= 1f * Time.deltaTime;
+
+            movementAbilitySpeedModifier = 1.25f;
+
+            if (facingRight)
+            {
+                WalkRight();
+            }
+            else
+            {
+                WalkLeft();
+            }
+
+            yield return 0;
+        }
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
 
     #endregion
 
