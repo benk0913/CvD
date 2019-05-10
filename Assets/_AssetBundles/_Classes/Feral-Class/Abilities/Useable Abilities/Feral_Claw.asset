@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
+  m_Name: Feral_Claw
+  m_EditorClassIdentifier: 
+  DisplayName: Claw
+  Description: Claw And Tear!
+  Icon: {fileID: 21300000, guid: 4c56d2811c6e8be4eb3da14104248ef9, type: 3}
+  Duration: 0.4
+  ChargesCap: 1
+  Cooldown: 1
+  StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
+  CooldownRequirements: []
+  Animations:
+  - Attack1
+  - Attack2
+  Perks: []
+  PerksOnHit:
+  - {fileID: 11400000, guid: 98b4275cc92ea1640bddc31a518d8619, type: 2}
+  ObjectsToSpawn:
+  - {fileID: 1050513488234562161, guid: a92675af38ca48c4a9cd56052f78895b, type: 3}
+  ObjectsToSpawnOnTargets:
+  - {fileID: 6395029701369512784, guid: b0689a9c96f1fa54982d7fbdd3100535, type: 3}
+  AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}
