@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Feral_Woopadoo
+  m_Name: Feral_HesOnMe
   m_EditorClassIdentifier: 
-  DisplayName: Bodyshield
-  Description: Hop on one of your allies to become it's body shield.
-  Icon: {fileID: 21300000, guid: 553bcd083ae336d4d8bd38da88bba8c6, type: 3}
+  DisplayName: Tussle
+  Description: Hop on a target and annoy it to death.
+  Icon: {fileID: 21300000, guid: 09c5922ad5fd8d743bc79058c4a4a6fb, type: 3}
   Duration: 0
   ChargesCap: 1
-  Cooldown: 6
-  StartWithCooldown: 0
-  CooldownResetsOnRespawn: 1
+  Cooldown: 90
+  StartWithCooldown: 1
+  CooldownResetsOnRespawn: 0
   CooldownRequirements: []
   Animations:
-  - WoopadooAttempt
-  Perks: []
+  - HesOnMe
+  Perks:
+  - {fileID: 11400000, guid: 40c31c33d82b8694ab54365b7a275899, type: 2}
   PerksOnHit: []
-  ObjectsToSpawn:
-  - {fileID: 3360375277070035921, guid: c7e1682be354a6544b55604442390f51, type: 3}
+  ObjectsToSpawn: []
   ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}

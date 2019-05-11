@@ -89,9 +89,9 @@ public class AbilityIconUI : MonoBehaviour
         }
 
         attributes.Add("Perks On Target: ");
-        for (int i = 0; i < abilityStatus.Reference.PerksOnHit.Count; i++)
+        for (int i = 0; i < abilityStatus.Reference.PerksOnHitTarget.Count; i++)
         {
-            attributes.Add(abilityStatus.Reference.PerksOnHit[i].name.ToString());
+            attributes.Add(abilityStatus.Reference.PerksOnHitTarget[i].name.ToString());
         }
 
         InGamePanelUI.Instance.ShowAbilityTooltip(

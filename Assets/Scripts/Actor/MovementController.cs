@@ -85,6 +85,7 @@ public class MovementController : MonoBehaviour {
     Vector3 lastSentPos;
 
     CharacterInfo lastOffender;
+    List<CharacterInfo> lastTargets;
 
 
     public bool isGrounded
@@ -446,8 +447,18 @@ public class MovementController : MonoBehaviour {
         }
     }
 
-    private void OnHitboxEvent(Ability ability)
+    private void OnHitboxEvent(Ability ability, List<string> targets)
     {
+        if(targets != null)
+        {
+            lastTargets = new List<CharacterInfo>();
+
+            for (int i = 0; i < targets.Count; i++)
+            {
+                lastTargets.Add(CORE.Instance.CurrentRoom.GetPlayer(targets[i]));
+            }
+        }
+
         if(ability.AbilityOnHit == null)
         {
             return;
@@ -758,6 +769,36 @@ public class MovementController : MonoBehaviour {
             {
                 WalkLeft();
             }
+
+            yield return 0;
+        }
+
+        Status.MovementAbilityRoutineInstance = null;
+    }
+
+    IEnumerator HomeOnAbilityRoutine(Perk perk)
+    {
+        yield return 0;
+
+        if (lastTargets == null || lastTargets.Count == 0)
+        {
+            Status.MovementAbilityRoutineInstance = null;
+            yield break;
+        }
+        
+        Animer.Play("HomeOn");
+
+        float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
+
+        Transform targetTransform = lastTargets[0].CInstance.transform;
+        float randomHeight = UnityEngine.Random.Range(1f, 5f);
+
+        float duration = 0f;
+        while (duration < 1f)
+        {
+            duration += speed * Time.deltaTime;
+
+            Rigid.position = CORE.SplineLerp(Rigid.position, targetTransform.position, randomHeight, duration);
 
             yield return 0;
         }
@@ -1170,7 +1211,7 @@ public class MovementController : MonoBehaviour {
 }
 
 [System.Serializable]
-public class HitboxEvent : UnityEvent<Ability>
+public class HitboxEvent : UnityEvent<Ability, List<string>>
 {
 }
 

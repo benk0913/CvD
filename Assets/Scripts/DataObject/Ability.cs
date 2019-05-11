@@ -29,7 +29,9 @@ public class Ability : ScriptableObject
 
     public List<Perk> Perks = new List<Perk>();
     
-    public List<Perk> PerksOnHit = new List<Perk>();
+    public List<Perk> PerksOnHitTarget = new List<Perk>();
+
+    public List<Perk> PerksOnHitSelf = new List<Perk>();
 
     public List<GameObject> ObjectsToSpawn;
 
@@ -66,9 +68,14 @@ public class Ability : ScriptableObject
             node["perks"][i] = Perks[i].ToJson();
         }
 
-        for (int i = 0; i < PerksOnHit.Count; i++)
+        for (int i = 0; i < PerksOnHitTarget.Count; i++)
         {
-            node["perks_on_hit"][i] = PerksOnHit[i].ToJson();
+            node["perks_on_hit"][i] = PerksOnHitTarget[i].ToJson();
+        }
+
+        for (int i = 0; i < PerksOnHitSelf.Count; i++)
+        {
+            node["perks_on_hit_self"][i] = PerksOnHitSelf[i].ToJson();
         }
 
         if (AbilityOnHit != null)

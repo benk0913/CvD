@@ -91,7 +91,7 @@ public class HitBoxScript : MonoBehaviour {
         if(ActorsHit.Count > 0 && !IsContiniousDamage)
         {
             SocketClient.Instance.SendHitAbility(ActorsHit, CurrentAbility.name);
-            CurrentHitEvent.Invoke(CurrentAbility);
+            CurrentHitEvent.Invoke(CurrentAbility, ActorsHit);
         }
 
         this.gameObject.SetActive(false);
