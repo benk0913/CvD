@@ -29,6 +29,7 @@ public class Database : ScriptableObject
         for(int i=0;i<Classes.Count;i++)
         {
             tempAbility = Classes[i].GetAbility(abilityName);
+
             if(tempAbility != null)
             {
                 return tempAbility;

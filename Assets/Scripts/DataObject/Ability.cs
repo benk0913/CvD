@@ -31,8 +31,6 @@ public class Ability : ScriptableObject
     
     public List<Perk> PerksOnHitTarget = new List<Perk>();
 
-    public List<Perk> PerksOnHitSelf = new List<Perk>();
-
     public List<GameObject> ObjectsToSpawn;
 
     public List<GameObject> ObjectsToSpawnOnTargets;
@@ -73,11 +71,6 @@ public class Ability : ScriptableObject
             node["perks_on_hit"][i] = PerksOnHitTarget[i].ToJson();
         }
 
-        for (int i = 0; i < PerksOnHitSelf.Count; i++)
-        {
-            node["perks_on_hit_self"][i] = PerksOnHitSelf[i].ToJson();
-        }
-
         if (AbilityOnHit != null)
         {
             node["ability_on_hit"] = this.AbilityOnHit.ToJson();
@@ -102,6 +95,31 @@ public class Ability : ScriptableObject
         {
             return CooldownRequirements.Count == 0;
         }
+    }
+
+    public Ability GetAbility(string abilityKey)
+    {
+        if(this.name == abilityKey)
+        {
+            return this;
+        }
+
+        if(AbilityOnHit != null && AbilityOnHit.name == abilityKey)
+        {
+            return AbilityOnHit;
+        }
+
+        if (AbilityOnLeft != null && AbilityOnLeft.name == abilityKey)
+        {
+            return AbilityOnLeft;
+        }
+
+        if (AbilityOnFalling != null && AbilityOnFalling.name == abilityKey)
+        {
+            return AbilityOnFalling;
+        }
+
+        return null;
     }
 
 }

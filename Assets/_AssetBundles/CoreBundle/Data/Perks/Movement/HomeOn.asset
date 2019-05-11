@@ -18,3 +18,5 @@ MonoBehaviour:
   MaxValue: 1
   Perks:
   - {fileID: 11400000, guid: 9d7dc49768b598842882b9b23c448555, type: 2}
+  - {fileID: 11400000, guid: 78be7ea610a21724c9adeb34675feb9b, type: 2}
+  - {fileID: 11400000, guid: 94f39005b16f11b46b0b7c24c2d6f5c3, type: 2}

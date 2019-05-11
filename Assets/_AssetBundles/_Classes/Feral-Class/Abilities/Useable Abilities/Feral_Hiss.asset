@@ -25,7 +25,7 @@ MonoBehaviour:
   - Hiss
   Perks:
   - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
-  PerksOnHit:
+  PerksOnHitTarget:
   - {fileID: 11400000, guid: 02a746b4bba7cb045a127f19df6be388, type: 2}
   ObjectsToSpawn:
   - {fileID: 6387958651227891384, guid: d27eb806b64cd0f418021e599da6bf89, type: 3}

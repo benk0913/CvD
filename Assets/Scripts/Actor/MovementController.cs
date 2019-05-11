@@ -330,7 +330,7 @@ public class MovementController : MonoBehaviour {
 
         if (isPlayer)
         {
-            ActivateAbilityPerks(ability);
+            ActivatePerks(ability.Perks);
             
             StartCooldown(ability);
         }
@@ -467,11 +467,11 @@ public class MovementController : MonoBehaviour {
         StartAbility(ability.AbilityOnHit);
     }
 
-    public void ActivateAbilityPerks(Ability ability)
+    public void ActivatePerks(List<Perk> perks)
     {
-        for (int i = 0; i < ability.Perks.Count; i++)
+        for (int i = 0; i < perks.Count; i++)
         {
-            ActivatePerk(ability.Perks[i]);
+            ActivatePerk(perks[i]);
         }
     }
 
@@ -626,10 +626,12 @@ public class MovementController : MonoBehaviour {
     IEnumerator PullAbilityRoutine(Perk perk)
     {
         float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
+        float minHeight = perk.GetPerkValueByType("MinValueModifier", -1f);
+        float maxHeight = perk.GetPerkValueByType("MaxValueModifier", 1f);
 
         Vector3 initPos = Rigid.position;
         Vector3 targetPos = lastOffender.CInstance.transform.position;
-        float randomHeight = UnityEngine.Random.Range(1f, 5f);
+        float randomHeight = UnityEngine.Random.Range(minHeight, maxHeight);
 
         float duration = 0f;
         while (duration < 1f)
@@ -751,7 +753,6 @@ public class MovementController : MonoBehaviour {
         float duration = perk.GetPerkValueByType("DurationModifier", 1f);
 
         Vector3 targetPos = lastOffender.CInstance.transform.position;
-        float randomHeight = UnityEngine.Random.Range(1f, 5f);
 
         bool facingRight = (targetPos.x < Rigid.position.x);
 
@@ -785,13 +786,13 @@ public class MovementController : MonoBehaviour {
             Status.MovementAbilityRoutineInstance = null;
             yield break;
         }
-        
-        Animer.Play("HomeOn");
 
         float speed = perk.GetPerkValueByType("SpeedModifier", 1f);
+        float minHeight = perk.GetPerkValueByType("MinValueModifier", -1f);
+        float maxHeight = perk.GetPerkValueByType("MaxValueModifier", 1f);
 
         Transform targetTransform = lastTargets[0].CInstance.transform;
-        float randomHeight = UnityEngine.Random.Range(1f, 5f);
+        float randomHeight = UnityEngine.Random.Range(minHeight, maxHeight);
 
         float duration = 0f;
         while (duration < 1f)

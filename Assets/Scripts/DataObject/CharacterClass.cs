@@ -22,11 +22,15 @@ public class CharacterClass : ScriptableObject
 
     public Ability GetAbility(string abilityName)
     {
+        Ability tempAbility = null;
+
         for(int i=0;i<Abilities.Count;i++)
         {
-            if(Abilities[i].name == abilityName)
+            tempAbility = Abilities[i].GetAbility(abilityName);
+
+            if (tempAbility != null)
             {
-                return Abilities[i];
+                return tempAbility;
             }
         }
 

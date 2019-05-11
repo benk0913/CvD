@@ -184,7 +184,7 @@ public class SocketClient : MonoBehaviour
     {
         JSONNode data = (JSONNode)args[0];
 
-        BroadcastEvent(data["player_id"].Value + " Preforms Ability");
+        BroadcastEvent(data["player_id"].Value + " Preforms Ability " + data["ability_key"].Value);
 
         CORE.Instance.PlayerStartsAbility(data["player_id"].Value, data["ability_key"]);
     }

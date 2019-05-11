@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Feral_Woopadoo
+  m_Name: Feral_Woopadoo_Hit
   m_EditorClassIdentifier: 
   DisplayName: Bodyshield
   Description: Hop on one of your allies to become it's body shield.
@@ -22,12 +22,12 @@ MonoBehaviour:
   CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
-  - WoopadooAttempt
-  Perks: []
+  - HomeOn
+  Perks:
+  - {fileID: 11400000, guid: 40c31c33d82b8694ab54365b7a275899, type: 2}
   PerksOnHitTarget: []
-  ObjectsToSpawn:
-  - {fileID: 3360375277070035921, guid: c7e1682be354a6544b55604442390f51, type: 3}
+  ObjectsToSpawn: []
   ObjectsToSpawnOnTargets: []
-  AbilityOnHit: {fileID: 11400000, guid: 3704222c6b9cb4841bfaa706724a06e3, type: 2}
+  AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}
