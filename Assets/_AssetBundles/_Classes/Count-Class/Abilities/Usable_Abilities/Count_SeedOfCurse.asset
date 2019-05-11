@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Seed Of Blood
   Description: Inject your ally with a seed, which he may pass to his enemies and
     convert them to a fountain of heals!
-  Icon: {fileID: 21300000, guid: 073bdff88868ce34cab917f8c08ec17e, type: 3}
+  Icon: {fileID: 21300000, guid: 123e0be0dbd6c274e9ecaaa64e5df179, type: 3}
   Duration: 0.2
   ChargesCap: 1
   Cooldown: 2
@@ -27,7 +27,8 @@ MonoBehaviour:
   Perks: []
   PerksOnHit:
   - {fileID: 11400000, guid: fba4e631153c63d489166fe5150f24e3, type: 2}
-  ObjectsToSpawn: []
+  ObjectsToSpawn:
+  - {fileID: 6173687463211151376, guid: f61447eebedb40a4480c4ddb90807c7c, type: 3}
   ObjectsToSpawnOnTargets:
   - {fileID: 7419674655921242081, guid: dbcd1457a260061448b6775fb3aae868, type: 3}
   AbilityOnHit: {fileID: 0}

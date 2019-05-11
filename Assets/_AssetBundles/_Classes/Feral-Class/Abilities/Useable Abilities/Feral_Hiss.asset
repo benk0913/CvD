@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
+  m_Name: Feral_Hiss
+  m_EditorClassIdentifier: 
+  DisplayName: Hiss
+  Description: Hiss on your enemies and see them run in fear!
+  Icon: {fileID: 21300000, guid: 3b57d46a5739b2e45a9fd408511a2ace, type: 3}
+  Duration: 0.3
+  ChargesCap: 1
+  Cooldown: 6
+  StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
+  CooldownRequirements: []
+  Animations:
+  - Hiss
+  Perks:
+  - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
+  PerksOnHit:
+  - {fileID: 11400000, guid: 02a746b4bba7cb045a127f19df6be388, type: 2}
+  ObjectsToSpawn:
+  - {fileID: 6387958651227891384, guid: d27eb806b64cd0f418021e599da6bf89, type: 3}
+  ObjectsToSpawnOnTargets:
+  - {fileID: 2460775907781733708, guid: 8999878e2669ad54bb0e8439685364a0, type: 3}
+  AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}

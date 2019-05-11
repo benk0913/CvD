@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Blight
   Description: Curse your enemy with the curse of blight.
-  Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
+  Icon: {fileID: 21300000, guid: 6c12c6093c76f3346b93c06e3eb465ef, type: 3}
   Duration: 0.2
   ChargesCap: 1
   Cooldown: 2
@@ -27,6 +27,7 @@ MonoBehaviour:
   Perks: []
   PerksOnHit:
   - {fileID: 11400000, guid: 6b53f71ae63c7bb4ba341bcf21c90e2c, type: 2}
+  - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
   ObjectsToSpawn:
   - {fileID: 7374196983190912051, guid: 58b69d97d3ec5784e9c9cb5024f265a6, type: 3}
   ObjectsToSpawnOnTargets:

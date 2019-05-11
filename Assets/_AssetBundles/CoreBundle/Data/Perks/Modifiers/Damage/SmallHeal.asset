@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmallHeal
   m_EditorClassIdentifier: 
   DisplayName: 
-  Attribute: {fileID: 11400000, guid: bfebe5c92b1a1e148825ae13baf1e9fa, type: 2}
-  MinValue: -4
-  MaxValue: -4
+  Attribute: {fileID: 11400000, guid: cae0142dfb2f5e443a4cd45f8a9a16bd, type: 2}
+  MinValue: 4
+  MaxValue: 4
   Perks: []

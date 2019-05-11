@@ -1,19 +1,15 @@
 fileFormatVersion: 2
-guid: 5871826a1dded1c4685a3034e5772f54
+guid: c5fad196c12de74478b0e97d6337d294
 TextureImporter:
   fileIDToRecycleName:
-    21300000: cat_feral_0
-    21300002: cat_feral_1
-    21300004: cat_feral_3
-    21300006: cat_feral_4
-    21300008: cat_feral_5
-    21300010: cat_feral_6
-    21300012: cat_feral_7
-    21300014: cat_feral_8
-    21300016: cat_feral_9
-    21300018: cat_feral_10
-    21300020: cat_feral_11
-    21300022: cat_feral_12
+    21300000: fx_sprites_ferla_0
+    21300002: fx_sprites_ferla_1
+    21300004: fx_sprites_ferla_2
+    21300006: fx_sprites_ferla_3
+    21300008: fx_sprites_ferla_4
+    21300010: fx_sprites_ferla_5
+    21300012: fx_sprites_ferla_6
+    21300014: fx_sprites_ferla_7
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -57,7 +53,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1024
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -72,7 +68,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -83,7 +79,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -94,7 +90,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Android
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -105,7 +101,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: WebGL
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -118,13 +114,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cat_feral_0
+      name: fx_sprites_ferla_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 453
-        width: 348
-        height: 374
+        x: 4
+        y: 337
+        width: 176
+        height: 171
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,58 +128,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56eda8b52f7a9094493ab8da0a600515
+      spriteID: 9084db6e1d37d7549b62bcd5d722c919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_feral_1
+      name: fx_sprites_ferla_1
       rect:
         serializedVersion: 2
-        x: 373
-        y: 764
-        width: 249
-        height: 127
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b3ebaf3f27d4c934688a8965d42109ac
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_feral_3
-      rect:
-        serializedVersion: 2
-        x: 635
-        y: 628
-        width: 147
-        height: 188
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23077b84e313bb34481398d7b941bbd0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_feral_4
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 243
-        width: 131
+        x: 186
+        y: 307
+        width: 192
         height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -192,19 +148,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a6706f20e5adcf4a9bbbdc2ed4417f2
+      spriteID: 9097fdbd9af66e043b20c20a3f3f1220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_feral_5
+      name: fx_sprites_ferla_2
       rect:
         serializedVersion: 2
-        x: 173
-        y: 266
-        width: 126
-        height: 155
+        x: 422
+        y: 448
+        width: 49
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,19 +168,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1419151a2c0d1bc4284ea150e58183a2
+      spriteID: eb28b1283c9da7748a5e922416e111cd
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_feral_6
+      name: fx_sprites_ferla_3
       rect:
         serializedVersion: 2
-        x: 377
-        y: 291
-        width: 248
-        height: 455
+        x: 422
+        y: 381
+        width: 43
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,19 +188,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d60157a1086b834ca0941ce0a916cea
+      spriteID: 39a2f42939663c84e92a436f44fdd303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_feral_7
+      name: fx_sprites_ferla_4
       rect:
         serializedVersion: 2
-        x: 649
-        y: 373
-        width: 98
-        height: 214
+        x: 397
+        y: 307
+        width: 26
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,19 +208,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5e2df024d9507545b9ac80df26bb0a6
+      spriteID: aafecef4dd6818a4b85e6d60f0ce0fcf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_feral_8
+      name: fx_sprites_ferla_5
       rect:
         serializedVersion: 2
-        x: 14
-        y: 13
-        width: 108
-        height: 216
+        x: 443
+        y: 327
+        width: 28
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,19 +228,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acbf137986868a0408924f251eb7608a
+      spriteID: b570a3170f9b87c4093201e2a9670969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_feral_9
+      name: fx_sprites_ferla_6
       rect:
         serializedVersion: 2
-        x: 176
-        y: 54
-        width: 131
-        height: 162
+        x: 4
+        y: 28
+        width: 257
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,19 +248,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b046798dd3aeb8642ae97fa4344e9628
+      spriteID: b8caecb81d913944ab0ad57b03589cd6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat_feral_10
+      name: fx_sprites_ferla_7
       rect:
         serializedVersion: 2
-        x: 340
-        y: 91
-        width: 129
-        height: 147
+        x: 268
+        y: 39
+        width: 239
+        height: 232
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,47 +268,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e196b5c8014b10c4f8fb09b89147c5d6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_feral_11
-      rect:
-        serializedVersion: 2
-        x: 492
-        y: 97
-        width: 123
-        height: 159
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8855e55151779684badf6bea234c762b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cat_feral_12
-      rect:
-        serializedVersion: 2
-        x: 648
-        y: 56
-        width: 310
-        height: 281
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ffc3e12dc8632904a864078c77caf9cc
+      spriteID: 7b2eb7882db848c4a8e1d01b94007725
       vertices: []
       indices: 
       edges: []
@@ -360,7 +276,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f6e48375334c57940ac493aad0a829cd
+    spriteID: 26fce9b7ed8eaeb46a851e673e135ce7
     vertices: []
     indices: 
     edges: []

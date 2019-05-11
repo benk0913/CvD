@@ -6,7 +6,7 @@ public class HitboxProjectileDetonatable : HitboxProjectile
 {
 
     [SerializeField]
-    GameObject DetonationHitbox;
+    List<GameObject> DetonationObjects;
 
     public override void SetInfo(CharacterInfo ownerInsance, Ability ability, HitboxEvent onHitEvent, bool isplayer)
     {
@@ -15,11 +15,17 @@ public class HitboxProjectileDetonatable : HitboxProjectile
 
     public override void Detonate()
     {
-        GameObject tempHitbox = ResourcesLoader.Instance.GetRecycledObject(DetonationHitbox);
+        foreach (GameObject obj in DetonationObjects)
+        {
+            GameObject generatedObject = ResourcesLoader.Instance.GetRecycledObject(obj);
+            generatedObject.transform.position = transform.position;
 
-        tempHitbox.transform.position = transform.position;
-
-        tempHitbox.GetComponent<HitBoxScript>().SetInfo(this.CurrentOwner, this.CurrentAbility, this.CurrentHitEvent, this.isPlayer);
+            HitBoxScript hitbox = generatedObject.GetComponent<HitBoxScript>();
+            if (hitbox != null)
+            {
+                hitbox.SetInfo(this.CurrentOwner, this.CurrentAbility, this.CurrentHitEvent, this.isPlayer);
+            }
+        }
 
         Shut();
     }

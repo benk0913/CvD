@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Aura
   Description: Cast a blast of holy light which relieves your nearby allies.
-  Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
+  Icon: {fileID: 21300000, guid: ed382371732101541942f591bdac75b5, type: 3}
   Duration: 0.1
   ChargesCap: 1
   Cooldown: 12

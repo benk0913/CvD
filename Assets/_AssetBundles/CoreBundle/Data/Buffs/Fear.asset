@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7435ee4a5a8ede84c9dbdd59c597d0ad, type: 3}
+  m_Name: Fear
+  m_EditorClassIdentifier: 
+  DisplayName: Fear
+  Duration: 3
+  Perks:
+  - {fileID: 11400000, guid: 1c8b09742e295fc4da80560010af037e, type: 2}
+  BuffPrefab: {fileID: 1927323676321358274, guid: 4a7ac99d27e782a43a5380e05485e6c9,
+    type: 3}
+  AddBuffAnimation: 
+  RemoveBuffAnimation: 

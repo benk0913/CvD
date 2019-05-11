@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Masochism
   Description: Use pain and blood to feel better!
-  Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
+  Icon: {fileID: 21300000, guid: 52a6b1e75d053fa4ca562ea55b87dbbb, type: 3}
   Duration: 0.2
   ChargesCap: 1
   Cooldown: 4

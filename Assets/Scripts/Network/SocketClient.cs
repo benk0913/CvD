@@ -62,6 +62,8 @@ public class SocketClient : MonoBehaviour
         CurrentSocket.On("cooldown_progress", OnCooldownProgress);
 
         CurrentSocket.On("player_hurt", OnTakeDamage);
+        CurrentSocket.On("player_heal", OnTakeHeal);
+        CurrentSocket.On("player_block", OnTakeBlock);
         CurrentSocket.On("player_ded", OnPlayerDead);
         CurrentSocket.On("player_respawn", OnPlayerRespawn);
 
@@ -151,7 +153,23 @@ public class SocketClient : MonoBehaviour
 
         CORE.Instance.ActorHurt(data["player_id"].Value, data["damage"].AsInt);
     }
-    
+
+    protected void OnTakeHeal(Socket socket, Packet packet, object[] args)
+    {
+        JSONNode data = (JSONNode)args[0];
+        BroadcastEvent("Heals taken | " + data.ToString());
+
+        CORE.Instance.ActorHealed(data["player_id"].Value, data["heal"].AsInt);
+    }
+
+    protected void OnTakeBlock(Socket socket, Packet packet, object[] args)
+    {
+        JSONNode data = (JSONNode)args[0];
+        BroadcastEvent("Blocked Attack | " + data.ToString());
+
+        CORE.Instance.ActorBlocked(data["player_id"].Value);
+    }
+
     protected void OnPlayerRespawn(Socket socket, Packet packet, object[] args)
     {
 
