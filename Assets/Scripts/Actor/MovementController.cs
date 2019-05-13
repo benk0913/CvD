@@ -36,6 +36,8 @@ public class MovementController : MonoBehaviour {
     public bool isCastingAbility = false;
     public bool isRecentlyHurt = false;
 
+    public CharacterInfo ClingTarget;
+
     //Should be used only by "Movement Abilities"
     float movementAbilitySpeedModifier = 1f;
 
@@ -159,6 +161,11 @@ public class MovementController : MonoBehaviour {
         if(isStunned)
         {
             return;
+        }
+
+        if(ClingTarget != null)
+        {
+            transform.position = ClingTarget.CInstance.transform.position;
         }
 
         if (Input.GetKey(InputMap.Map["Walk Left"]))
@@ -1062,6 +1069,11 @@ public class MovementController : MonoBehaviour {
                     InterruptAbility();
                     return;
                 }
+            case "Clinging":
+                {
+                    ClingTarget = fromPlayer;
+                    return;
+                }
         }
     }
 
@@ -1076,6 +1088,11 @@ public class MovementController : MonoBehaviour {
                         isStunned = false;
                     }
 
+                    return;
+                }
+            case "Clinging":
+                {
+                    ClingTarget = null;
                     return;
                 }
         }
@@ -1161,6 +1178,16 @@ public class MovementController : MonoBehaviour {
         {
             t += 3f * Time.deltaTime;
 
+            yield return 0;
+
+            //Clinging State
+            if (ClingTarget != null)
+            {
+                transform.position = ClingTarget.CInstance.transform.position;
+                continue;
+            }
+
+            //Regular State
             Rigid.position = Vector3.Lerp(Rigid.position, LastGivenPosition, t);
 
             if (lastDirectionY > 0f)
@@ -1171,8 +1198,6 @@ public class MovementController : MonoBehaviour {
             {
                 Rigid.gravityScale = 1f;
             }
-
-            yield return 0;
         }
 
         FixPositionRoutineInstance = null;

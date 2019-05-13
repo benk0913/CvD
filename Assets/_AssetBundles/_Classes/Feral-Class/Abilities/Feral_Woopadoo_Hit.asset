@@ -25,7 +25,8 @@ MonoBehaviour:
   - HomeOn
   Perks:
   - {fileID: 11400000, guid: 40c31c33d82b8694ab54365b7a275899, type: 2}
-  PerksOnHitTarget: []
+  PerksOnHitTarget:
+  - {fileID: 11400000, guid: 0a884f7e3cae33e42a7ea2b074efb093, type: 2}
   ObjectsToSpawn: []
   ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}
