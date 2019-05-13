@@ -46,7 +46,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.99730456, b: 0.7688679, a: 0.49019608}
+      maxColor: {r: 0.990566, g: 0.9877942, b: 0.82702917, a: 0.8666667}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4712,7 +4712,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b68fa5d53ded97f4bae19ccaed5a4df3, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4861,7 +4861,7 @@ Transform:
   m_GameObject: {fileID: 6632494235917901614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3934824, y: 2.3934824, z: 2.3934824}
+  m_LocalScale: {x: 1.6866871, y: 1.6866871, z: 1.6866871}
   m_Children: []
   m_Father: {fileID: 2594495778228629906}
   m_RootOrder: 2
@@ -4903,7 +4903,7 @@ SpriteRenderer:
   m_SortingLayerID: -1530805477
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 9bf7eb0b90cd3e640aa903557d7e6d97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f552480271c2f14f9989c6fbb188be0, type: 3}
   m_Color: {r: 1, g: 0.95993716, b: 0.8066038, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -4982,7 +4982,7 @@ SpriteRenderer:
   m_SortingLayerID: -1530805477
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9bf7eb0b90cd3e640aa903557d7e6d97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f552480271c2f14f9989c6fbb188be0, type: 3}
   m_Color: {r: 1, g: 0.95993716, b: 0.8066038, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -5090,7 +5090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92454742f726f642baba87bbd1ba0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 0.5
+  timeLeft: 1
   ShutOnHit: 0
   StickToOwner: 1
   DependsOnMovementAbility: 0

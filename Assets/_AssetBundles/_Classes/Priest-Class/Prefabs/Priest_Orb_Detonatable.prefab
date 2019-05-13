@@ -68,7 +68,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb7a079072f534b418e0dfbee96a3a00, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45a99d6238b3af1418237e297a03fbe7, type: 3}
   m_Color: {r: 0.9770815, g: 1, b: 0.6273585, a: 0.67058825}
   m_FlipX: 0
   m_FlipY: 0
@@ -363,7 +363,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.55
+      scalar: 0.25
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4733,7 +4733,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3efb39b5a5230294dabc1f2a42c318e4, type: 2}
+  - {fileID: 2100000, guid: 25f0fb2d093b38346aada73ba8e2197e, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -5076,7 +5076,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2207d66a84f0bfa449ce1d1a34ddead2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f552480271c2f14f9989c6fbb188be0, type: 3}
   m_Color: {r: 0.9770815, g: 1, b: 0.6273585, a: 0.67058825}
   m_FlipX: 0
   m_FlipY: 0
