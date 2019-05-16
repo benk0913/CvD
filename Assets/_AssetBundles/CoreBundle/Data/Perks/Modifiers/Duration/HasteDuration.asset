@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: Clingee
+  m_Name: HasteDuration
   m_EditorClassIdentifier: 
   DisplayName: 
-  Attribute: {fileID: 11400000, guid: 95fcc52c7b191024b9a32c749c77628a, type: 2}
-  MinValue: 1
-  MaxValue: 1
-  Perks:
-  - {fileID: 11400000, guid: d96a93190f8833f439aa580c59296e7e, type: 2}
+  Attribute: {fileID: 11400000, guid: d8a1b71e48809374784459a6ca21443f, type: 2}
+  MinValue: 8
+  MaxValue: 8
+  Perks: []
