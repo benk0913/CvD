@@ -17,6 +17,7 @@ MonoBehaviour:
   Perks:
   - {fileID: 11400000, guid: b987e535059a35148a2e60891c13d57d, type: 2}
   - {fileID: 11400000, guid: ba4d304986d8c7e428bf0db2610b73f3, type: 2}
+  - {fileID: 11400000, guid: 0edfaa35c6706654589fe7c0e995ae91, type: 2}
   BuffPrefab: {fileID: 9205985510841332577, guid: 4acaf9a9d64491a49ab03449423e6f73,
     type: 3}
   AddBuffAnimation: 

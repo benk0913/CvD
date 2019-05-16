@@ -7,7 +7,6 @@ using UnityEngine;
 public class Buff : ScriptableObject
 {
     public string DisplayName;
-    public float Duration;
     public List<Perk> Perks;
     public GameObject BuffPrefab;
     public string AddBuffAnimation;
@@ -18,7 +17,6 @@ public class Buff : ScriptableObject
         JSONNode node = new JSONClass();
 
         node["buff_key"] = this.name;
-        node["duration"] = this.Duration.ToString();
 
         for (int i = 0; i < Perks.Count; i++)
         {

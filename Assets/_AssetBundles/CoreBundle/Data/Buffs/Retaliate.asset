@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01cfae7b14e38f8418efdf091bffa44c, type: 2}
   - {fileID: 11400000, guid: b46734dd9b3fdc143af7b80885574bea, type: 2}
   - {fileID: 11400000, guid: 33019af16a0f32648bf5f0a256293b34, type: 2}
+  - {fileID: 11400000, guid: 4b4b37c70fc7c78459d5842d0ab1d6ff, type: 2}
   BuffPrefab: {fileID: 1396191692916948693, guid: 644f0f6f817a6d847b8a199e68137e3b,
     type: 3}
   AddBuffAnimation: 

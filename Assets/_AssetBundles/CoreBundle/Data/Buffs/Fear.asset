@@ -16,6 +16,7 @@ MonoBehaviour:
   Duration: 3
   Perks:
   - {fileID: 11400000, guid: 1c8b09742e295fc4da80560010af037e, type: 2}
+  - {fileID: 11400000, guid: f491558d19b26ae408b35030f0361ff3, type: 2}
   BuffPrefab: {fileID: 1927323676321358274, guid: 4a7ac99d27e782a43a5380e05485e6c9,
     type: 3}
   AddBuffAnimation: 

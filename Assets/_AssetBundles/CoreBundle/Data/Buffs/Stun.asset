@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Stun
   Duration: 3
-  Perks: []
+  Perks:
+  - {fileID: 11400000, guid: 8a3e3095c26d5c64eba8bf93f32ed691, type: 2}
   BuffPrefab: {fileID: 3061387146365979362, guid: 5da2c3c5232bb644da686c7d9a4fbeba,
     type: 3}
+  AddBuffAnimation: 
+  RemoveBuffAnimation: 
