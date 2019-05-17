@@ -37,8 +37,6 @@ public class HitBoxScript : MonoBehaviour {
     [System.NonSerialized]
     protected MovementController CurrentOwnerMovementController;
 
-    
-
 
     protected HitboxEvent CurrentHitEvent;
 

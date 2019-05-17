@@ -2543,7 +2543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e4d453704e1f144852cc135fad1451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectsToSpawn: []
+  ObjectsToSpawn:
+  - {fileID: 8014607974143684959, guid: 67ad35ffd9bde3e43be2c55ca1215896, type: 3}
   myDirection: 1
 --- !u!114 &4800824249318845281
 MonoBehaviour:

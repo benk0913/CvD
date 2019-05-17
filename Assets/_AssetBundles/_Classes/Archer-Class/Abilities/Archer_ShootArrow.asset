@@ -15,9 +15,9 @@ MonoBehaviour:
   DisplayName: Shoot Arrow
   Description: 
   Icon: {fileID: 21300000, guid: fb1e5b653a7918143a3c84dfe21394bc, type: 3}
-  Duration: 0.2
+  Duration: 0.3
   ChargesCap: 1
-  Cooldown: 1
+  Cooldown: 0.5
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
   CooldownRequirements: []
@@ -29,7 +29,7 @@ MonoBehaviour:
   ObjectsToSpawn:
   - {fileID: 7374196983190912051, guid: 3b299e42c99117e479bde3a5c03c6982, type: 3}
   ObjectsToSpawnOnTargets:
-  - {fileID: 7567260111314732214, guid: 85fd1e9399602a04f8e1c39294682b6c, type: 3}
+  - {fileID: 2132814436211664549, guid: d62dd5d3bd8982b4f92c3ad692716247, type: 3}
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}
