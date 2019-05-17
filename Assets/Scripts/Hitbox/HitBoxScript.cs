@@ -37,6 +37,12 @@ public class HitBoxScript : MonoBehaviour {
     [System.NonSerialized]
     protected MovementController CurrentOwnerMovementController;
 
+    [SerializeField]
+    protected UnityEvent OnSetInfoEvent;
+
+    [SerializeField]
+    protected UnityEvent OnShutEvent;
+
 
     protected HitboxEvent CurrentHitEvent;
 
@@ -58,6 +64,8 @@ public class HitBoxScript : MonoBehaviour {
 
         timeLeftCurrent = timeLeft;
         gameObject.SetActive(true);
+
+        OnSetInfoEvent.Invoke();
     }
 
     public virtual void Interact(string charID)
@@ -91,6 +99,8 @@ public class HitBoxScript : MonoBehaviour {
             SocketClient.Instance.SendHitAbility(ActorsHit, CurrentAbility.name);
             CurrentHitEvent.Invoke(CurrentAbility, ActorsHit);
         }
+
+        OnShutEvent.Invoke();
 
         this.gameObject.SetActive(false);
     }

@@ -409,8 +409,16 @@ public class MovementController : MonoBehaviour {
         {
             tempObj = ResourcesLoader.Instance.GetRecycledObject(ability.ObjectsToSpawn[i]);
 
+            tempObj.transform.position = transform.position;
+            tempObj.transform.localScale =
+                new Vector3(
+                    Mathf.Abs(tempObj.transform.localScale.x) * ((Animer.transform.localScale.x < 0) ? -1f : 1f),
+                    tempObj.transform.localScale.y,
+                    tempObj.transform.localScale.z);
+
+
             HitBoxScript hitbox = tempObj.GetComponent<HitBoxScript>();
-            
+
             if (hitbox != null)
             {
                 HitboxEvent HitEvent = new HitboxEvent();
@@ -418,13 +426,6 @@ public class MovementController : MonoBehaviour {
 
                 tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent, isPlayer);
             }
-
-            tempObj.transform.position = transform.position;
-            tempObj.transform.localScale =
-                new Vector3(
-                    Mathf.Abs(tempObj.transform.localScale.x) * ((Animer.transform.localScale.x < 0) ? -1f : 1f),
-                    tempObj.transform.localScale.y,
-                    tempObj.transform.localScale.z);
         }
     }
 
@@ -435,6 +436,14 @@ public class MovementController : MonoBehaviour {
         {
             tempObj = ResourcesLoader.Instance.GetRecycledObject(ability.ObjectsToSpawnOnTargets[i]);
 
+            tempObj.transform.position = transform.position;
+            tempObj.transform.localScale =
+                new Vector3(
+                    Mathf.Abs(tempObj.transform.localScale.x) * ((Animer.transform.localScale.x < 0) ? -1f : 1f),
+                    tempObj.transform.localScale.y,
+                    tempObj.transform.localScale.z);
+
+
             HitBoxScript hitbox = tempObj.GetComponent<HitBoxScript>();
 
             if (hitbox != null)
@@ -444,13 +453,6 @@ public class MovementController : MonoBehaviour {
 
                 tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent, isPlayer);
             }
-
-            tempObj.transform.position = transform.position;
-            tempObj.transform.localScale =
-                new Vector3(
-                    Mathf.Abs(tempObj.transform.localScale.x) * ((Animer.transform.localScale.x < 0) ? -1f : 1f),
-                    tempObj.transform.localScale.y,
-                    tempObj.transform.localScale.z);
         }
     }
 
