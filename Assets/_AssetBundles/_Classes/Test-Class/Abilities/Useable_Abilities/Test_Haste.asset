@@ -13,19 +13,21 @@ MonoBehaviour:
   m_Name: Test_Haste
   m_EditorClassIdentifier: 
   DisplayName: Haste
+  Description: 
   Icon: {fileID: 21300000, guid: c963bb1aebfdd934e86321437d9e1d89, type: 3}
   Duration: 0.1
   ChargesCap: 1
   Cooldown: 120
   StartWithCooldown: 1
   CooldownResetsOnRespawn: 0
+  isMovementAbility: 1
   CooldownRequirements: []
   Animations:
   - Haste
   Perks:
   - {fileID: 11400000, guid: d71c2b519ef26eb4b9827d6447a04c2d, type: 2}
   - {fileID: 11400000, guid: 993dc49cfc1f40e488acca1394b24bc4, type: 2}
-  PerksOnHit: []
+  PerksOnHitTarget: []
   ObjectsToSpawn: []
   ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}

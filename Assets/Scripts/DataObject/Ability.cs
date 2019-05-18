@@ -23,6 +23,8 @@ public class Ability : ScriptableObject
 
     public bool CooldownResetsOnRespawn = true;
 
+    public bool isMovementAbility = false;
+
     public List<Requirement> CooldownRequirements = new List<Requirement>();
 
     public List<string> Animations;

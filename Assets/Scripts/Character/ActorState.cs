@@ -83,6 +83,8 @@ public class AbilityStatus
     public CooldownUpdateEvent OnCooldownUpdated = new CooldownUpdateEvent();
     public UnityEvent OnCooldownComplete = new UnityEvent();
     public UnityEvent OnAbilityActivated = new UnityEvent();
+    public UnityEvent OnAbilityDisabled = new UnityEvent();
+    public UnityEvent OnAbilityEnabled= new UnityEvent();
     public int Charges;
     public float CooldownSecondsLeft;
 

@@ -168,6 +168,22 @@ public class MovementController : MonoBehaviour {
             transform.position = ClingTarget.CInstance.transform.position;
         }
 
+        if(isRecentlyHurt)
+        {
+            for (int i = 0; i < Character.Class.Abilities.Count; i++)
+            {
+                if (Input.GetKeyDown(InputMap.Map["Ability" + (i + 1)]))
+                {
+                    if (Character.Class.Abilities[i].isMovementAbility)
+                    {
+                        StartAbility(Character.Class.Abilities[i]);
+                    }
+                }
+            }
+
+            return;
+        }
+
         if (Input.GetKey(InputMap.Map["Walk Left"]))
         {
             WalkLeft();
@@ -931,10 +947,27 @@ public class MovementController : MonoBehaviour {
     IEnumerator HurtEffectRoutine()
     {
         isRecentlyHurt = true;
+        
+        for(int i=0;i< Status.AbilityStatuses.Count;i++)
+        {
+            if(!Status.AbilityStatuses[i].Reference.isMovementAbility)
+            {
+                Status.AbilityStatuses[i].OnAbilityDisabled.Invoke();
+            }
+        }
 
         yield return new WaitForSeconds(0.1f);
 
         isRecentlyHurt = false;
+
+        for (int i = 0; i < Status.AbilityStatuses.Count; i++)
+        {
+            if (!Status.AbilityStatuses[i].Reference.isMovementAbility)
+            {
+                Status.AbilityStatuses[i].OnAbilityEnabled.Invoke();
+            }
+        }
+
         HurtEffectRoutineInstance = null;
     }
 

@@ -20,6 +20,7 @@ MonoBehaviour:
   Cooldown: 6
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  isMovementAbility: 1
   CooldownRequirements: []
   Animations:
   - WoopadooAttempt

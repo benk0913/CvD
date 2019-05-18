@@ -20,6 +20,7 @@ MonoBehaviour:
   Cooldown: 5
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  isMovementAbility: 1
   CooldownRequirements: []
   Animations:
   - Pounce

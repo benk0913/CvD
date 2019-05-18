@@ -112,6 +112,8 @@ public class AbilityIconUI : MonoBehaviour
         this.abilityStatus.OnCooldownUpdated.AddListener(OnAbilityCooldownUpdated);
         this.abilityStatus.OnCooldownComplete.AddListener(OnAbilityCooldownComplete);
         this.abilityStatus.OnRecharge.AddListener(OnAbilityRecharge);
+        this.abilityStatus.OnAbilityDisabled.AddListener(OnAbilityDisabled);
+        this.abilityStatus.OnAbilityEnabled.AddListener(OnAbilityEnabled);
     }
 
     void RemoveListeners()
@@ -120,6 +122,18 @@ public class AbilityIconUI : MonoBehaviour
         this.abilityStatus.OnCooldownUpdated.RemoveListener(OnAbilityCooldownUpdated);
         this.abilityStatus.OnCooldownComplete.RemoveListener(OnAbilityCooldownComplete);
         this.abilityStatus.OnRecharge.RemoveListener(OnAbilityRecharge);
+        this.abilityStatus.OnAbilityDisabled.RemoveListener(OnAbilityDisabled);
+        this.abilityStatus.OnAbilityEnabled.RemoveListener(OnAbilityEnabled);
+    }
+
+    private void OnAbilityDisabled()
+    {
+        AbilityButton.interactable = false;
+    }
+
+    private void OnAbilityEnabled()
+    {
+        AbilityButton.interactable = true;
     }
 
     private void OnAbilityRecharge()
