@@ -16,4 +16,5 @@ MonoBehaviour:
   Attribute: {fileID: 11400000, guid: 95fcc52c7b191024b9a32c749c77628a, type: 2}
   MinValue: 1
   MaxValue: 1
-  Perks: []
+  Perks:
+  - {fileID: 11400000, guid: d96a93190f8833f439aa580c59296e7e, type: 2}

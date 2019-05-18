@@ -25,7 +25,7 @@ MonoBehaviour:
   - Evade
   Perks:
   - {fileID: 11400000, guid: caa090a82b8a3d64bb9fb756096db4d9, type: 2}
-  PerksOnHit: []
+  PerksOnHitTarget: []
   ObjectsToSpawn:
   - {fileID: 7381420831024328076, guid: 9d77e57472441bf4eb1c84f244ec19bc, type: 3}
   ObjectsToSpawnOnTargets: []

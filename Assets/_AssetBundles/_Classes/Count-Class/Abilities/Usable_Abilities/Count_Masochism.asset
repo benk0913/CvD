@@ -26,7 +26,7 @@ MonoBehaviour:
   - Sacrifice
   Perks:
   - {fileID: 11400000, guid: 471fae6eab2eaa046b0652fa90434caf, type: 2}
-  PerksOnHit: []
+  PerksOnHitTarget: []
   ObjectsToSpawn: []
   ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}

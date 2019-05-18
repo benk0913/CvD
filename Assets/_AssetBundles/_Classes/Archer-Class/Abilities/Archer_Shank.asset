@@ -17,19 +17,19 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 910666d24753ff54b8a3164b1c44dfef, type: 3}
   Duration: 0.15
   ChargesCap: 1
-  Cooldown: 0.2
+  Cooldown: 4
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
-  - Attack1
-  - Attack3
+  - Shank
   Perks: []
-  PerksOnHitTarget: []
+  PerksOnHitTarget:
+  - {fileID: 11400000, guid: e5d76495cda9c114da3b0cdc6fa3664f, type: 2}
   ObjectsToSpawn:
-  - {fileID: 1886398916049500, guid: d07dac3aceee87f4aa93b06ebd8690a9, type: 3}
+  - {fileID: 1886398916049500, guid: 743aa08697702db4c9b3f143000532c0, type: 3}
   ObjectsToSpawnOnTargets:
-  - {fileID: 7567260111314732214, guid: 85fd1e9399602a04f8e1c39294682b6c, type: 3}
-  AbilityOnHit: {fileID: 0}
+  - {fileID: 7567260111314732214, guid: 0b9b62b53d9dd1d4b81bba09a244b4d0, type: 3}
+  AbilityOnHit: {fileID: 11400000, guid: 166c3d3c07a95d047ab069b6b25820e3, type: 2}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

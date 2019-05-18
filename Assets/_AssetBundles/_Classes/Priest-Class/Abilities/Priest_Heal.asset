@@ -24,10 +24,10 @@ MonoBehaviour:
   Animations:
   - Attack1
   - Attack2
-  Perks: []
-  PerksOnHit:
-  - {fileID: 11400000, guid: 95806bda92aec4b40a58b3e5bd8dc610, type: 2}
+  Perks:
   - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
+  PerksOnHitTarget:
+  - {fileID: 11400000, guid: 95806bda92aec4b40a58b3e5bd8dc610, type: 2}
   ObjectsToSpawn:
   - {fileID: 497, guid: 6f2ca79eaf4e692499eb5d051381dba3, type: 3}
   ObjectsToSpawnOnTargets:

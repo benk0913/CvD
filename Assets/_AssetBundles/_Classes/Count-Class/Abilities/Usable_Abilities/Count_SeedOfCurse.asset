@@ -24,9 +24,9 @@ MonoBehaviour:
   CooldownRequirements: []
   Animations:
   - Gift
-  Perks: []
-  PerksOnHit:
+  Perks:
   - {fileID: 11400000, guid: fba4e631153c63d489166fe5150f24e3, type: 2}
+  PerksOnHitTarget: []
   ObjectsToSpawn:
   - {fileID: 6173687463211151376, guid: f61447eebedb40a4480c4ddb90807c7c, type: 3}
   ObjectsToSpawnOnTargets:

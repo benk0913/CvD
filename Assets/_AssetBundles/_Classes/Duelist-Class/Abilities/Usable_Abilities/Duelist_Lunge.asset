@@ -25,7 +25,7 @@ MonoBehaviour:
   - Lunge
   Perks:
   - {fileID: 11400000, guid: 4c18dfec58291444fa923d172c078b07, type: 2}
-  PerksOnHit:
+  PerksOnHitTarget:
   - {fileID: 11400000, guid: f56dbd4a7be443840b79674bda541cca, type: 2}
   ObjectsToSpawn:
   - {fileID: 3073186553926262265, guid: b29ca294a3920ab4cbc10f673e9e6608, type: 3}

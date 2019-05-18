@@ -26,7 +26,8 @@ MonoBehaviour:
   - Shoot1
   - Shoot2
   Perks: []
-  PerksOnHitTarget: []
+  PerksOnHitTarget:
+  - {fileID: 11400000, guid: 9ce43232cf0184e41b5e63b03eba920b, type: 2}
   ObjectsToSpawn:
   - {fileID: 7374196983190912051, guid: 3b299e42c99117e479bde3a5c03c6982, type: 3}
   ObjectsToSpawnOnTargets:

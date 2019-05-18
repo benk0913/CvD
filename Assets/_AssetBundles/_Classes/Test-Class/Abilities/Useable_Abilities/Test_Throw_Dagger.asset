@@ -24,8 +24,8 @@ MonoBehaviour:
   Animations:
   - ThrowDagger
   Perks: []
-  PerksOnHit:
-  - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
+  PerksOnHitTarget:
+  - {fileID: 11400000, guid: faa7194bdfc5a4f4c988bf0b1e27ea87, type: 2}
   - {fileID: 11400000, guid: ea03b0b7ea63d5b46a8db0bcf44bdf61, type: 2}
   ObjectsToSpawn:
   - {fileID: 7374196983190912051, guid: f402769ea05a59040a384137785b4ff0, type: 3}

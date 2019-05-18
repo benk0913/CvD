@@ -12,11 +12,34 @@ public class Buff : ScriptableObject
     public string AddBuffAnimation;
     public string RemoveBuffAnimation;
 
+    public Perk GetPerkByType(string perkType)
+    {
+        Perk tempPerk;
+        for(int i=0;i<Perks.Count;i++)
+        {
+            if (Perks[i].Attribute.name == perkType)
+            {
+                return Perks[i];
+            }
+            else
+            {
+                tempPerk = Perks[i].GetPerkByType(perkType);
+                if (tempPerk != null)
+                {
+                    return tempPerk;
+                }
+            }
+        }
+
+        return null;
+    }
+
     public JSONNode ToJson()
     {
         JSONNode node = new JSONClass();
 
         node["buff_key"] = this.name;
+        node["duration"].AsFloat = GetPerkByType("DurationModifier").MinValue; //TODO REMOVE WHEN IMPLEMENTED IN SERVER.
 
         for (int i = 0; i < Perks.Count; i++)
         {

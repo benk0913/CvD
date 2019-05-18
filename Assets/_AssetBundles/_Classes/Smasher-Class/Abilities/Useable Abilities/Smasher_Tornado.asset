@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Smasher_Tornado
   m_EditorClassIdentifier: 
   DisplayName: Tornado
+  Description: 
   Icon: {fileID: 21300000, guid: 4652b75ae9bfb04448d1fda54bcc862e, type: 3}
   Duration: 0
   ChargesCap: 1
@@ -25,7 +26,7 @@ MonoBehaviour:
   - Tornado
   Perks:
   - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
-  PerksOnHit:
+  PerksOnHitTarget:
   - {fileID: 11400000, guid: 18fbc934245d0d944acc277bab3517c1, type: 2}
   ObjectsToSpawn:
   - {fileID: 2430701423303081698, guid: 390f2ce338055b047bead51e22dbae23, type: 3}

@@ -25,7 +25,7 @@ MonoBehaviour:
   - Attack1
   - Attack3
   Perks: []
-  PerksOnHit:
+  PerksOnHitTarget:
   - {fileID: 11400000, guid: a2205c3b093933643aa7e679d47f4963, type: 2}
   ObjectsToSpawn:
   - {fileID: 1886398916049500, guid: d07dac3aceee87f4aa93b06ebd8690a9, type: 3}

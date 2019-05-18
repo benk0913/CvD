@@ -13,13 +13,22 @@ MonoBehaviour:
   m_Name: Test_Pounce_Post_Hit
   m_EditorClassIdentifier: 
   DisplayName: Pounce Hit
+  Description: 
+  Icon: {fileID: 0}
   Duration: 0
+  ChargesCap: 1
   Cooldown: 0
+  StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
+  CooldownRequirements: []
   Animations:
   - PounceHit
   Perks:
   - {fileID: 11400000, guid: 9281a18d4902f884ab089b1cd57674a8, type: 2}
-  PerksOnHit: []
+  - {fileID: 11400000, guid: b0e91ab10b03f2f4cb9acf9034d1629d, type: 2}
+  PerksOnHitTarget: []
   ObjectsToSpawn: []
   ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}

@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: Smasher_Swing
   m_EditorClassIdentifier: 
   DisplayName: Swing
+  Description: 
   Icon: {fileID: 21300000, guid: 64e02b7ff11281c469930642134ddfec, type: 3}
   Duration: 0.6
   ChargesCap: 1
   Cooldown: 10
   StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
   - Swing
   Perks: []
-  PerksOnHit:
-  - {fileID: 11400000, guid: 7a9e4399cb7e9cc429e8bc06db90ae26, type: 2}
+  PerksOnHitTarget:
   - {fileID: 11400000, guid: 9c6bc5d4acd827d4a8d163d56a9c5d6d, type: 2}
+  - {fileID: 11400000, guid: 7a9e4399cb7e9cc429e8bc06db90ae26, type: 2}
   ObjectsToSpawn:
   - {fileID: 1050513488234562161, guid: 8b45b2ce9bfabf14db9590b8a115c4ba, type: 3}
   ObjectsToSpawnOnTargets:

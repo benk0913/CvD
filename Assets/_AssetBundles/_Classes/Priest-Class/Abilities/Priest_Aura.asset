@@ -23,10 +23,11 @@ MonoBehaviour:
   CooldownRequirements: []
   Animations:
   - Aura
-  Perks: []
-  PerksOnHit:
-  - {fileID: 11400000, guid: 95806bda92aec4b40a58b3e5bd8dc610, type: 2}
+  Perks:
+  - {fileID: 11400000, guid: dff85dc94308ac144ba2082b474f24a8, type: 2}
   - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
+  PerksOnHitTarget:
+  - {fileID: 11400000, guid: dff85dc94308ac144ba2082b474f24a8, type: 2}
   ObjectsToSpawn:
   - {fileID: 8626387834385685779, guid: 5df72f1b5f1783a419493453543a4d20, type: 3}
   ObjectsToSpawnOnTargets:
