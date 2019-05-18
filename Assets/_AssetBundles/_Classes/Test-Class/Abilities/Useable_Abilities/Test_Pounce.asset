@@ -13,16 +13,19 @@ MonoBehaviour:
   m_Name: Test_Pounce
   m_EditorClassIdentifier: 
   DisplayName: Pounce
+  Description: 
   Icon: {fileID: 21300000, guid: 7c0b17232c2f1b0449b57ed3109760f9, type: 3}
   Duration: 0.1
   ChargesCap: 2
   Cooldown: 5
+  StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
   CooldownRequirements: []
   Animations:
   - Pounce
   Perks:
   - {fileID: 11400000, guid: 7ba626dc3b2bbab43be937f965a363a7, type: 2}
-  PerksOnHit:
+  PerksOnHitTarget:
   - {fileID: 11400000, guid: b0e91ab10b03f2f4cb9acf9034d1629d, type: 2}
   ObjectsToSpawn:
   - {fileID: 1886398916049500, guid: c01599a6b39b594478996ebfbb8f8069, type: 3}

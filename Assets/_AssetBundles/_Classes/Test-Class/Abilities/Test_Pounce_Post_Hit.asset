@@ -25,7 +25,6 @@ MonoBehaviour:
   - PounceHit
   Perks:
   - {fileID: 11400000, guid: 9281a18d4902f884ab089b1cd57674a8, type: 2}
-  - {fileID: 11400000, guid: b0e91ab10b03f2f4cb9acf9034d1629d, type: 2}
   PerksOnHitTarget: []
   ObjectsToSpawn: []
   ObjectsToSpawnOnTargets: []
