@@ -35,7 +35,6 @@ public class MovementController : MonoBehaviour {
     public bool isStunned = false;
     public bool isCastingAbility = false;
     public bool isRecentlyHurt = false;
-    public bool isTryingToMove = false;
 
     public CharacterInfo ClingTarget;
 
@@ -172,23 +171,19 @@ public class MovementController : MonoBehaviour {
         if (Input.GetKey(InputMap.Map["Walk Left"]))
         {
             WalkLeft();
-            isTryingToMove = true;
         }
         else if (Input.GetKey(InputMap.Map["Walk Right"]))
         {
             WalkRight();
-            isTryingToMove = true;
         }
         else
         {
             StandStill();
-            isTryingToMove = false;
         }
 
         if (Input.GetKeyDown(InputMap.Map["Space Ability"]) && isGrounded)
         {
             Jump();
-            isTryingToMove = true;
         }
 
         if (Input.GetKeyDown(InputMap.Map["Shift Ability"]))
@@ -276,8 +271,7 @@ public class MovementController : MonoBehaviour {
         {
             if (AbilityDurationRoutineInstance != null)
             {
-                //TODO - CURRENTLY DOING AN ABILITY ALERT!
-                return;
+                InterruptAbility();
             }
 
             AbilityStatus abilityStatus = Status.GetAbilityStatus(ability);
@@ -324,14 +318,18 @@ public class MovementController : MonoBehaviour {
         }
 
         isCastingAbility = true;
-        
-        while(duration > 0f)
+
+        InGamePanelUI.Instance.ShowAbilityCharge();
+
+        int abilityIndex = Character.Class.Abilities.IndexOf(ability);
+
+        while (duration > 0f)
         {
             duration -= 1f * Time.deltaTime;
 
-            Debug.Log(Rigid.velocity); 
+            InGamePanelUI.Instance.SetAbilityCharge(1f-(duration/ability.Duration));
 
-            if(ability.MovementInterrupts && isTryingToMove)
+            if (Input.GetKeyUp(InputMap.Map["Ability"+ (abilityIndex+1)]))
             {
                 InterruptAbility();
                 Animer.Play(Character.Class.HurtAnimations[0]);
@@ -340,6 +338,7 @@ public class MovementController : MonoBehaviour {
             yield return 0;
         }
 
+        InGamePanelUI.Instance.HideAbilityCharge();
         isCastingAbility = false;
 
         CompleteAbilityDuration(ability);
@@ -1122,6 +1121,8 @@ public class MovementController : MonoBehaviour {
             StopCoroutine(AbilityDurationRoutineInstance);
             AbilityDurationRoutineInstance = null;
             isCastingAbility = false;
+            Animer.Play("Idle");
+            InGamePanelUI.Instance.HideAbilityCharge();
         }
     }
 

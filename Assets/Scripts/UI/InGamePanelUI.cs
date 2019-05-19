@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGamePanelUI : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public class InGamePanelUI : MonoBehaviour
 
     [SerializeField]
     AbilityTooltipUI AbilityTooltip;
+
+    [SerializeField]
+    CanvasGroup AbilityChargeCG;
+
+    [SerializeField]
+    Image AbilityChargeImage;
+
 
     private void Awake()
     {
@@ -91,6 +99,58 @@ public class InGamePanelUI : MonoBehaviour
     {
         AbilityTooltip.Hide();
     }
+
+    public void SetAbilityCharge(float value)
+    {
+        AbilityChargeImage.fillAmount = value;
+    }
+
+    public void ShowAbilityCharge()
+    {
+        if (VisibilityAbilityChargeRoutineInstance != null)
+        {
+            StopCoroutine(VisibilityAbilityChargeRoutineInstance);
+        }
+
+        VisibilityAbilityChargeRoutineInstance = StartCoroutine(ShowAbilityChargeRoutine());
+    }
+
+    public void HideAbilityCharge()
+    {
+        if (VisibilityAbilityChargeRoutineInstance != null)
+        {
+            StopCoroutine(VisibilityAbilityChargeRoutineInstance);
+        }
+
+        VisibilityAbilityChargeRoutineInstance = StartCoroutine(HideAbilityChargeRoutine());
+    }
+
+    Coroutine VisibilityAbilityChargeRoutineInstance;
+    IEnumerator ShowAbilityChargeRoutine()
+    {
+        while (AbilityChargeCG.alpha < 1f)
+        {
+            AbilityChargeCG.alpha += 3f * Time.deltaTime;
+
+            yield return 0;
+        }
+
+        VisibilityAbilityChargeRoutineInstance = null;
+    }
+    
+    IEnumerator HideAbilityChargeRoutine()
+    {
+        while (AbilityChargeCG.alpha > 0f)
+        {
+            AbilityChargeCG.alpha -= 3f * Time.deltaTime;
+
+            yield return 0;
+        }
+
+        VisibilityAbilityChargeRoutineInstance = null;
+    }
+
+
 
     #endregion
 }
