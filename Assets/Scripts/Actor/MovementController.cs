@@ -270,6 +270,13 @@ public class MovementController : MonoBehaviour {
 
     public void StartAbility(Ability ability)
     {
+        AnimateStartAbility(ability);
+
+        StartAbilityDuration(ability);
+    }
+
+    public void ReleaseAbility(Ability ability)
+    {
         if (isPlayer)
         {
             if (AbilityDurationRoutineInstance != null)
@@ -285,7 +292,7 @@ public class MovementController : MonoBehaviour {
                 return;
             }
 
-            if(ability.AbilityOnLeft != null && isFacingLeft)
+            if (ability.AbilityOnLeft != null && isFacingLeft)
             {
                 StartAbility(ability.AbilityOnLeft);
                 return;
@@ -293,10 +300,6 @@ public class MovementController : MonoBehaviour {
 
             SocketClient.Instance.SendUsedAbility(ability.name);
         }
-
-        AnimateStartAbility(ability);
-
-        StartAbilityDuration(ability);
     }
 
     void StartAbilityDuration(Ability ability)
@@ -323,12 +326,31 @@ public class MovementController : MonoBehaviour {
 
         isCastingAbility = true;
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(0.1f);
+
+        Animer.speed = 0f;
+
+        int index = Character.Class.Abilities.IndexOf(ability);
+        while(true)
+        {
+            if(Input.GetKeyUp(InputMap.Map["Ability" + (index + 1)]))
+            {
+                break;
+            }
+
+            yield return 0;
+        }
+
+        yield return new WaitForSeconds(duration - 0.1f);
 
         isCastingAbility = false;
 
         CompleteAbilityDuration(ability);
+        Animer.speed = 1f;
+
         AbilityDurationRoutineInstance = null;
+
+        ReleaseAbility(ability);
     }
 
     public void CompleteAbilityDuration(Ability ability)
