@@ -35,6 +35,7 @@ public class MovementController : MonoBehaviour {
     public bool isStunned = false;
     public bool isCastingAbility = false;
     public bool isRecentlyHurt = false;
+    public bool isTryingToMove = false;
 
     public CharacterInfo ClingTarget;
 
@@ -171,22 +172,23 @@ public class MovementController : MonoBehaviour {
         if (Input.GetKey(InputMap.Map["Walk Left"]))
         {
             WalkLeft();
-
+            isTryingToMove = true;
         }
         else if (Input.GetKey(InputMap.Map["Walk Right"]))
         {
             WalkRight();
-
+            isTryingToMove = true;
         }
         else
         {
             StandStill();
-
+            isTryingToMove = false;
         }
 
         if (Input.GetKeyDown(InputMap.Map["Space Ability"]) && isGrounded)
         {
             Jump();
+            isTryingToMove = true;
         }
 
         if (Input.GetKeyDown(InputMap.Map["Shift Ability"]))
@@ -322,8 +324,21 @@ public class MovementController : MonoBehaviour {
         }
 
         isCastingAbility = true;
+        
+        while(duration > 0f)
+        {
+            duration -= 1f * Time.deltaTime;
 
-        yield return new WaitForSeconds(duration);
+            Debug.Log(Rigid.velocity); 
+
+            if(ability.MovementInterrupts && isTryingToMove)
+            {
+                InterruptAbility();
+                Animer.Play(Character.Class.HurtAnimations[0]);
+            }
+
+            yield return 0;
+        }
 
         isCastingAbility = false;
 
@@ -1106,6 +1121,7 @@ public class MovementController : MonoBehaviour {
         {
             StopCoroutine(AbilityDurationRoutineInstance);
             AbilityDurationRoutineInstance = null;
+            isCastingAbility = false;
         }
     }
 

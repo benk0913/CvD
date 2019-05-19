@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: FearDuration
+  m_Name: TrapDamage
   m_EditorClassIdentifier: 
   DisplayName: 
-  Attribute: {fileID: 11400000, guid: d8a1b71e48809374784459a6ca21443f, type: 2}
-  MinValue: 2
-  MaxValue: 2
+  Attribute: {fileID: 11400000, guid: bfebe5c92b1a1e148825ae13baf1e9fa, type: 2}
+  MinValue: 20
+  MaxValue: 20
   Perks: []
