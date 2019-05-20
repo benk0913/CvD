@@ -20,6 +20,7 @@ MonoBehaviour:
   Cooldown: 7
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 1
   CooldownRequirements: []
   Animations:
   - Attack2

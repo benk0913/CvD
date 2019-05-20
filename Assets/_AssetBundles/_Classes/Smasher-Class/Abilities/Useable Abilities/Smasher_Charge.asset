@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: Smasher_Charge
   m_EditorClassIdentifier: 
   DisplayName: Swing
+  Description: 
   Icon: {fileID: 21300000, guid: 6a9df18bff7bae94588b61945d1cf174, type: 3}
   Duration: 0
   ChargesCap: 1
   Cooldown: 10
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 0
   CooldownRequirements: []
   Animations:
   - Charge
   Perks:
   - {fileID: 11400000, guid: 85a2b17728fa6d9479de011d18b30036, type: 2}
-  PerksOnHit: []
+  PerksOnHitTarget: []
   ObjectsToSpawn:
   - {fileID: 1050513488234562161, guid: 5b63c255c99b60845bb299c3ff2dc1ad, type: 3}
   ObjectsToSpawnOnTargets: []
