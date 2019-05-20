@@ -21,7 +21,7 @@ MonoBehaviour:
   Cooldown: 10
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
-  MovementInterrupts: 1
+  ImmobileCasting: 1
   CooldownRequirements: []
   Animations:
   - Trap

@@ -20,11 +20,12 @@ MonoBehaviour:
   Cooldown: 1
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 1
   CooldownRequirements: []
   Animations:
   - Detonate
   Perks: []
-  PerksOnHit: []
+  PerksOnHitTarget: []
   ObjectsToSpawn:
   - {fileID: 3399095561321281814, guid: cf42795eabe157143ab5169b1a230bc7, type: 3}
   ObjectsToSpawnOnTargets: []

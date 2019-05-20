@@ -33,8 +33,9 @@ public class MovementController : MonoBehaviour {
     public bool isPlayer;
     public bool isDead;
     public bool isStunned = false;
-    public bool isCastingAbility = false;
     public bool isRecentlyHurt = false;
+
+    public Ability abilityInCast = null;
 
     public CharacterInfo ClingTarget;
 
@@ -48,7 +49,7 @@ public class MovementController : MonoBehaviour {
         {
             float speedResult = this.Speed;
 
-            if(isCastingAbility)
+            if(abilityInCast != null)
             {
                 speedResult -= this.Speed * 0.3f;
             }
@@ -168,6 +169,18 @@ public class MovementController : MonoBehaviour {
             transform.position = ClingTarget.CInstance.transform.position;
         }
 
+        RefreshMovementInput();
+
+        RefreshAbilityInput();
+    }
+
+    void RefreshMovementInput()
+    {
+        if (abilityInCast != null && abilityInCast.ImmobileCasting)
+        {
+            return;
+        }
+
         if (Input.GetKey(InputMap.Map["Walk Left"]))
         {
             WalkLeft();
@@ -192,10 +205,13 @@ public class MovementController : MonoBehaviour {
         }
 
         Animer.SetBool("inAir", !isGrounded && isFalling);
+    }
 
-        for(int i=0;i< Character.Class.Abilities.Count;i++)
+    void RefreshAbilityInput()
+    {
+        for (int i = 0; i < Character.Class.Abilities.Count; i++)
         {
-            if (Input.GetKeyDown(InputMap.Map["Ability"+(i+1)]))
+            if (Input.GetKeyDown(InputMap.Map["Ability" + (i + 1)]))
             {
                 StartAbility(Character.Class.Abilities[i]);
             }
@@ -317,7 +333,7 @@ public class MovementController : MonoBehaviour {
             duration = Mathf.Clamp(duration - TimeFromLastEvent ,0f ,Mathf.Infinity);
         }
 
-        isCastingAbility = true;
+        abilityInCast = ability;
 
         InGamePanelUI.Instance.ShowAbilityCharge();
 
@@ -339,7 +355,7 @@ public class MovementController : MonoBehaviour {
         }
 
         InGamePanelUI.Instance.HideAbilityCharge();
-        isCastingAbility = false;
+        abilityInCast = null;
 
         CompleteAbilityDuration(ability);
         AbilityDurationRoutineInstance = null;
@@ -1120,7 +1136,7 @@ public class MovementController : MonoBehaviour {
         {
             StopCoroutine(AbilityDurationRoutineInstance);
             AbilityDurationRoutineInstance = null;
-            isCastingAbility = false;
+            abilityInCast = null;
             Animer.Play("Idle");
             InGamePanelUI.Instance.HideAbilityCharge();
         }
