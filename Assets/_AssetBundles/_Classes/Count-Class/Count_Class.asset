@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Count
   ClassActor: {fileID: 99787557505466745, guid: cd5f7b3d9de92f343ac56cdfd5268bcf,
     type: 3}
-  BaseHP: 35
+  BaseHP: 25
   HurtAnimations:
   - Hurt1
   - Hurt2

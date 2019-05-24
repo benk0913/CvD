@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Feral
   ClassActor: {fileID: 1261479857797956193, guid: a8fe485174426a34cba102fdae78b4c3,
     type: 3}
-  BaseHP: 35
+  BaseHP: 25
   HurtAnimations:
   - Hurt1
   - Hurt2

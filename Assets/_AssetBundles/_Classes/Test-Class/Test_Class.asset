@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Rogue
   ClassActor: {fileID: 81, guid: fc86fd1b73b5524469e97d42d232d7e0, type: 3}
-  BaseHP: 35
+  BaseHP: 25
   HurtAnimations:
   - Hurt1
   - Hurt2

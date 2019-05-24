@@ -139,6 +139,133 @@ public class MovementController : MonoBehaviour {
     }
 
 
+    public void StartBot()
+    {
+        StartCoroutine(BotRoutine());
+    }
+
+    IEnumerator BotRoutine()
+    {
+        while (true)
+        {
+            yield return 0;
+
+
+            CharacterInfo currentTarget = null;
+
+            while (currentTarget == null)
+            {
+                currentTarget = CORE.Instance.CurrentRoom.Characters[UnityEngine.Random.Range(0, CORE.Instance.CurrentRoom.Characters.Count)];
+                if (currentTarget.ID == this.Character.ID)
+                {
+                    currentTarget = null;
+                }
+
+                yield return 0;
+            }
+
+            while(currentTarget.CInstance != null
+                && currentTarget.CInstance.transform.position.x > transform.position.x && isFacingLeft)
+            {
+                while(Status.MovementAbilityRoutineInstance != null)
+                {
+                    yield return 0;
+                }
+
+                while(isDead)
+                {
+                    yield return 0;
+                }
+
+                while(isStunned)
+                {
+                    yield return 0;
+                }
+
+                while(abilityInCast != null && abilityInCast.ImmobileCasting)
+                {
+                    yield return 0;
+                }
+
+                while(HurtEffectRoutineInstance != null)
+                {
+                    yield return 0;
+                }
+
+                float t = 0f;
+                while (t < 1f)
+                {
+                    t += 6f * Time.deltaTime;
+                    WalkRight();
+
+                    yield return 0;
+                }
+
+                yield return 0;
+            }
+
+            while (currentTarget.CInstance != null 
+                && currentTarget.CInstance.transform.position.x < transform.position.x && !isFacingLeft)
+            {
+                while (Status.MovementAbilityRoutineInstance != null)
+                {
+                    yield return 0;
+                }
+
+                while (isDead)
+                {
+                    yield return 0;
+                }
+
+                while (isStunned)
+                {
+                    yield return 0;
+                }
+
+                while (abilityInCast != null && abilityInCast.ImmobileCasting)
+                {
+                    yield return 0;
+                }
+
+                while (HurtEffectRoutineInstance != null)
+                {
+                    yield return 0;
+                }
+
+                float t = 0f;
+                while (t < 1f)
+                {
+                    t += 6f * Time.deltaTime;
+                    WalkLeft();
+
+                    yield return 0;
+                }
+                yield return 0;
+            }
+
+            Ability ability = null;
+
+            
+            while (ability == null)
+            {
+                ability = Character.Class.Abilities[UnityEngine.Random.Range(0, Character.Class.Abilities.Count)];
+                if (Status.GetAbilityStatus(ability).CooldownSecondsLeft > 0)
+                {
+                    ability = null;
+                }
+
+                yield return 0;
+            }
+
+            StartAbility(ability);
+
+            yield return new WaitForSeconds(ability.Duration);
+
+
+            
+        }
+    }
+
     private void Update()
     {
         if (isPlayer)
@@ -149,6 +276,12 @@ public class MovementController : MonoBehaviour {
 
     void RefreshInput()
     {
+        //TODO Remove later
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            StartBot();
+        }
+
         if(Status.MovementAbilityRoutineInstance != null)
         {
             return;
@@ -177,6 +310,11 @@ public class MovementController : MonoBehaviour {
     void RefreshMovementInput()
     {
         if (abilityInCast != null && abilityInCast.ImmobileCasting)
+        {
+            return;
+        }
+
+        if (HurtEffectRoutineInstance != null)
         {
             return;
         }
@@ -287,7 +425,8 @@ public class MovementController : MonoBehaviour {
         {
             if (AbilityDurationRoutineInstance != null)
             {
-                InterruptAbility();
+                return;
+                //InterruptAbility();
             }
 
             AbilityStatus abilityStatus = Status.GetAbilityStatus(ability);
@@ -345,11 +484,11 @@ public class MovementController : MonoBehaviour {
 
             InGamePanelUI.Instance.SetAbilityCharge(1f-(duration/ability.Duration));
 
-            if (Input.GetKeyUp(InputMap.Map["Ability"+ (abilityIndex+1)]))
-            {
-                InterruptAbility();
-                Animer.Play(Character.Class.HurtAnimations[0]);
-            }
+            //if (Input.GetKeyUp(InputMap.Map["Ability"+ (abilityIndex+1)]))
+            //{
+            //    InterruptAbility();
+            //    Animer.Play(Character.Class.HurtAnimations[0]);
+            //}
 
             yield return 0;
         }
@@ -962,7 +1101,7 @@ public class MovementController : MonoBehaviour {
     {
         isRecentlyHurt = true;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
         isRecentlyHurt = false;
         HurtEffectRoutineInstance = null;

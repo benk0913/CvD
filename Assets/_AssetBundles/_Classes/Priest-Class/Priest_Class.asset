@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Priest
   ClassActor: {fileID: 1931553018630813397, guid: ffd229794bee47548a9d6870b792b480,
     type: 3}
-  BaseHP: 45
+  BaseHP: 35
   HurtAnimations:
   - Hurt1
   - Hurt2

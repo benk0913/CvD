@@ -4977,7 +4977,17 @@ MonoBehaviour:
   DependsOnMovementAbility: 0
   IsContiniousDamage: 0
   Collider: {fileID: 0}
-  Speed: 1.5
+  OnSetInfoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Speed: 3
   Rigid: {fileID: 840}
   DetonationObjects:
   - {fileID: 349, guid: 0eebc46e1332f874bb9bbf5c223d2cdb, type: 3}
