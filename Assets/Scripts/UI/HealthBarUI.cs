@@ -13,6 +13,9 @@ public class HealthBarUI : MonoBehaviour
     Image FillImage;
 
     [SerializeField]
+    public bool HasScaleAnimation = true;
+
+    [SerializeField]
     TextMeshProUGUI PrecentText;
 
     HPChangedEvent OnHPChangedEvent;
@@ -64,6 +67,18 @@ public class HealthBarUI : MonoBehaviour
         float t = 0f;
         while (t<1f)
         {
+            if (HasScaleAnimation)
+            {
+                if (t < 0.333f)
+                {
+                    transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.5f, t * 18f);
+                }
+                else
+                {
+                    transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, (t-0.3f)*3.9f);
+                }
+            }
+            
             if(t<0.05f)
             {
                 FillImage.color = Color.Lerp(FillImage.color, Color.black, t*10f);
@@ -82,6 +97,8 @@ public class HealthBarUI : MonoBehaviour
             yield return 0;
         }
 
-        RefreshRoutineInstance = null;
+        transform.localScale = Vector3.one;
+
+       RefreshRoutineInstance = null;
     }
 }

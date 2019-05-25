@@ -2680,6 +2680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentValue: 0
   FillImage: {fileID: 849819615}
+  HasScaleAnimation: 1
   PrecentText: {fileID: 623889948}
 --- !u!114 &1405097534
 MonoBehaviour:
