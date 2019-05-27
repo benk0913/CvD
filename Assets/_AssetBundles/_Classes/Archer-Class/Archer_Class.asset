@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Archer_Class
   m_EditorClassIdentifier: 
   DisplayName: Archer
-  ClassActor: {fileID: 951190911867378061, guid: 255fa5c053b86b544ad2538c17006e55,
-    type: 3}
+  ClassActor: {fileID: 495, guid: 255fa5c053b86b544ad2538c17006e55, type: 3}
   BaseHP: 25
   HurtAnimations:
   - Hurt1
