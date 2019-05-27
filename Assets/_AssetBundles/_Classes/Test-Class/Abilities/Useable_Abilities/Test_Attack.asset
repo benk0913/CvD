@@ -17,9 +17,10 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: ffc3c947ec9ce024b8f481e8eaca117f, type: 3}
   Duration: 0.2
   ChargesCap: 1
-  Cooldown: 0.2
+  Cooldown: 0.4
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 1
   CooldownRequirements: []
   Animations:
   - Attack1

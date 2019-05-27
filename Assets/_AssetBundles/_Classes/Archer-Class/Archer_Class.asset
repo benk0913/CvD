@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Archer
   ClassActor: {fileID: 951190911867378061, guid: 255fa5c053b86b544ad2538c17006e55,
     type: 3}
-  BaseHP: 35
+  BaseHP: 25
   HurtAnimations:
   - Hurt1
   - Hurt2

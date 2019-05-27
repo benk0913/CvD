@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Smasher
   ClassActor: {fileID: 6757056515279646673, guid: 792fca4fd0174594f9eedee5c86a5713,
     type: 3}
-  BaseHP: 70
+  BaseHP: 60
   HurtAnimations:
   - Hurt1
   - Hurt2

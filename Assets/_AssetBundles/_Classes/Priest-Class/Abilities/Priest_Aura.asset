@@ -20,6 +20,7 @@ MonoBehaviour:
   Cooldown: 12
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 1
   CooldownRequirements: []
   Animations:
   - Aura

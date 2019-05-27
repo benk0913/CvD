@@ -33,9 +33,9 @@ public class MovementController : MonoBehaviour {
     public bool isPlayer;
     public bool isDead;
     public bool isStunned = false;
-    public bool isCastingAbility = false;
     public bool isRecentlyHurt = false;
-    public bool isTryingToMove = false;
+
+    public Ability abilityInCast = null;
 
     public CharacterInfo ClingTarget;
 
@@ -49,7 +49,7 @@ public class MovementController : MonoBehaviour {
         {
             float speedResult = this.Speed;
 
-            if(isCastingAbility)
+            if(abilityInCast != null)
             {
                 speedResult -= this.Speed * 0.3f;
             }
@@ -139,6 +139,133 @@ public class MovementController : MonoBehaviour {
     }
 
 
+    public void StartBot()
+    {
+        StartCoroutine(BotRoutine());
+    }
+
+    IEnumerator BotRoutine()
+    {
+        while (true)
+        {
+            yield return 0;
+
+
+            CharacterInfo currentTarget = null;
+
+            while (currentTarget == null)
+            {
+                currentTarget = CORE.Instance.CurrentRoom.Characters[UnityEngine.Random.Range(0, CORE.Instance.CurrentRoom.Characters.Count)];
+                if (currentTarget.ID == this.Character.ID)
+                {
+                    currentTarget = null;
+                }
+
+                yield return 0;
+            }
+
+            while(currentTarget.CInstance != null
+                && currentTarget.CInstance.transform.position.x > transform.position.x && isFacingLeft)
+            {
+                while(Status.MovementAbilityRoutineInstance != null)
+                {
+                    yield return 0;
+                }
+
+                while(isDead)
+                {
+                    yield return 0;
+                }
+
+                while(isStunned)
+                {
+                    yield return 0;
+                }
+
+                while(abilityInCast != null && abilityInCast.ImmobileCasting)
+                {
+                    yield return 0;
+                }
+
+                while(HurtEffectRoutineInstance != null)
+                {
+                    yield return 0;
+                }
+
+                float t = 0f;
+                while (t < 1f)
+                {
+                    t += 6f * Time.deltaTime;
+                    WalkRight();
+
+                    yield return 0;
+                }
+
+                yield return 0;
+            }
+
+            while (currentTarget.CInstance != null 
+                && currentTarget.CInstance.transform.position.x < transform.position.x && !isFacingLeft)
+            {
+                while (Status.MovementAbilityRoutineInstance != null)
+                {
+                    yield return 0;
+                }
+
+                while (isDead)
+                {
+                    yield return 0;
+                }
+
+                while (isStunned)
+                {
+                    yield return 0;
+                }
+
+                while (abilityInCast != null && abilityInCast.ImmobileCasting)
+                {
+                    yield return 0;
+                }
+
+                while (HurtEffectRoutineInstance != null)
+                {
+                    yield return 0;
+                }
+
+                float t = 0f;
+                while (t < 1f)
+                {
+                    t += 6f * Time.deltaTime;
+                    WalkLeft();
+
+                    yield return 0;
+                }
+                yield return 0;
+            }
+
+            Ability ability = null;
+
+            
+            while (ability == null)
+            {
+                ability = Character.Class.Abilities[UnityEngine.Random.Range(0, Character.Class.Abilities.Count)];
+                if (Status.GetAbilityStatus(ability).CooldownSecondsLeft > 0)
+                {
+                    ability = null;
+                }
+
+                yield return 0;
+            }
+
+            StartAbility(ability);
+
+            yield return new WaitForSeconds(ability.Duration);
+
+
+            
+        }
+    }
+
     private void Update()
     {
         if (isPlayer)
@@ -149,6 +276,12 @@ public class MovementController : MonoBehaviour {
 
     void RefreshInput()
     {
+        //TODO Remove later
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            StartBot();
+        }
+
         if(Status.MovementAbilityRoutineInstance != null)
         {
             return;
@@ -169,26 +302,39 @@ public class MovementController : MonoBehaviour {
             transform.position = ClingTarget.CInstance.transform.position;
         }
 
+        RefreshMovementInput();
+
+        RefreshAbilityInput();
+    }
+
+    void RefreshMovementInput()
+    {
+        if (abilityInCast != null && abilityInCast.ImmobileCasting)
+        {
+            return;
+        }
+
+        if (HurtEffectRoutineInstance != null)
+        {
+            return;
+        }
+
         if (Input.GetKey(InputMap.Map["Walk Left"]))
         {
             WalkLeft();
-            isTryingToMove = true;
         }
         else if (Input.GetKey(InputMap.Map["Walk Right"]))
         {
             WalkRight();
-            isTryingToMove = true;
         }
         else
         {
             StandStill();
-            isTryingToMove = false;
         }
 
         if (Input.GetKeyDown(InputMap.Map["Space Ability"]) && isGrounded)
         {
             Jump();
-            isTryingToMove = true;
         }
 
         if (Input.GetKeyDown(InputMap.Map["Shift Ability"]))
@@ -197,10 +343,13 @@ public class MovementController : MonoBehaviour {
         }
 
         Animer.SetBool("inAir", !isGrounded && isFalling);
+    }
 
-        for(int i=0;i< Character.Class.Abilities.Count;i++)
+    void RefreshAbilityInput()
+    {
+        for (int i = 0; i < Character.Class.Abilities.Count; i++)
         {
-            if (Input.GetKeyDown(InputMap.Map["Ability"+(i+1)]))
+            if (Input.GetKeyDown(InputMap.Map["Ability" + (i + 1)]))
             {
                 StartAbility(Character.Class.Abilities[i]);
             }
@@ -276,8 +425,8 @@ public class MovementController : MonoBehaviour {
         {
             if (AbilityDurationRoutineInstance != null)
             {
-                //TODO - CURRENTLY DOING AN ABILITY ALERT!
                 return;
+                //InterruptAbility();
             }
 
             AbilityStatus abilityStatus = Status.GetAbilityStatus(ability);
@@ -323,24 +472,29 @@ public class MovementController : MonoBehaviour {
             duration = Mathf.Clamp(duration - TimeFromLastEvent ,0f ,Mathf.Infinity);
         }
 
-        isCastingAbility = true;
-        
-        while(duration > 0f)
+        abilityInCast = ability;
+
+        InGamePanelUI.Instance.ShowAbilityCharge();
+
+        int abilityIndex = Character.Class.Abilities.IndexOf(ability);
+
+        while (duration > 0f)
         {
             duration -= 1f * Time.deltaTime;
 
-            Debug.Log(Rigid.velocity); 
+            InGamePanelUI.Instance.SetAbilityCharge(1f-(duration/ability.Duration));
 
-            if(ability.MovementInterrupts && isTryingToMove)
-            {
-                InterruptAbility();
-                Animer.Play(Character.Class.HurtAnimations[0]);
-            }
+            //if (Input.GetKeyUp(InputMap.Map["Ability"+ (abilityIndex+1)]))
+            //{
+            //    InterruptAbility();
+            //    Animer.Play(Character.Class.HurtAnimations[0]);
+            //}
 
             yield return 0;
         }
 
-        isCastingAbility = false;
+        InGamePanelUI.Instance.HideAbilityCharge();
+        abilityInCast = null;
 
         CompleteAbilityDuration(ability);
         AbilityDurationRoutineInstance = null;
@@ -947,7 +1101,7 @@ public class MovementController : MonoBehaviour {
     {
         isRecentlyHurt = true;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
         isRecentlyHurt = false;
         HurtEffectRoutineInstance = null;
@@ -1121,7 +1275,9 @@ public class MovementController : MonoBehaviour {
         {
             StopCoroutine(AbilityDurationRoutineInstance);
             AbilityDurationRoutineInstance = null;
-            isCastingAbility = false;
+            abilityInCast = null;
+            Animer.Play("Idle");
+            InGamePanelUI.Instance.HideAbilityCharge();
         }
     }
 

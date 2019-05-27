@@ -15,16 +15,17 @@ MonoBehaviour:
   DisplayName: Call Orbs
   Description: Detonate your orbs of healing on your allies!
   Icon: {fileID: 21300000, guid: a919fb7f5f62301498741a4f2329c7c4, type: 3}
-  Duration: 0.3
+  Duration: 0.1
   ChargesCap: 1
   Cooldown: 1
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 1
   CooldownRequirements: []
   Animations:
   - Detonate
   Perks: []
-  PerksOnHit: []
+  PerksOnHitTarget: []
   ObjectsToSpawn:
   - {fileID: 3399095561321281814, guid: cf42795eabe157143ab5169b1a230bc7, type: 3}
   ObjectsToSpawnOnTargets: []

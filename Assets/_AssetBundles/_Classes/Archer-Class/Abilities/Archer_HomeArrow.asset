@@ -20,7 +20,7 @@ MonoBehaviour:
   Cooldown: 5
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
-  MovementInterrupts: 0
+  ImmobileCasting: 1
   CooldownRequirements: []
   Animations:
   - Plant

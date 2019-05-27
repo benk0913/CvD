@@ -20,6 +20,7 @@ MonoBehaviour:
   Cooldown: 4
   StartWithCooldown: 1
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 1
   CooldownRequirements:
   - {fileID: 11400000, guid: a1698ff1b727a1144bc436b126dbabb1, type: 2}
   Animations:

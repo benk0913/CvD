@@ -23,7 +23,7 @@ public class Ability : ScriptableObject
 
     public bool CooldownResetsOnRespawn = true;
 
-    public bool MovementInterrupts = false;
+    public bool ImmobileCasting = false;
 
     public List<Requirement> CooldownRequirements = new List<Requirement>();
 
