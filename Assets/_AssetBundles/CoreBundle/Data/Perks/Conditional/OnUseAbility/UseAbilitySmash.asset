@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
+  m_Name: UseAbilitySmash
+  m_EditorClassIdentifier: 
+  DisplayName: Smash
+  Attribute: {fileID: 11400000, guid: d2dce19663a35c949953a07881793b33, type: 2}
+  MinValue: 1
+  MaxValue: 1
+  Perks:
+  - {fileID: 11400000, guid: e1529bfdc29846642a6f861b0349c433, type: 2}
+  - {fileID: 11400000, guid: f0af8f6bcf702e84c96d0892d9a7f3b7, type: 2}
