@@ -108,6 +108,11 @@ public class AbilityStatus
     {
         this.CooldownSecondsLeft = secondsLeft;
         OnCooldownUpdated.Invoke(external);
+
+        if(this.CooldownSecondsLeft <= 0)
+        {
+            CompleteCooldown(null);
+        }
     }
 
     public void CompleteCooldown(Coroutine routineInstance)

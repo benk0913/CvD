@@ -20,6 +20,7 @@ MonoBehaviour:
   Cooldown: 6
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 0
   CooldownRequirements: []
   Animations:
   - HomeOn
@@ -27,7 +28,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 40c31c33d82b8694ab54365b7a275899, type: 2}
   PerksOnHitTarget:
   - {fileID: 11400000, guid: 0a884f7e3cae33e42a7ea2b074efb093, type: 2}
-  ObjectsToSpawn: []
+  ObjectsToSpawn:
+  - {fileID: 3360375277070035921, guid: 010eff15bf804ac4aa08aea99f5b893d, type: 3}
   ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
