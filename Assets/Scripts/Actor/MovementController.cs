@@ -88,7 +88,9 @@ public class MovementController : MonoBehaviour {
     Vector3 lastSentPos;
 
     CharacterInfo lastOffender;
-    List<CharacterInfo> lastTargets;
+
+    [System.NonSerialized]
+    public List<CharacterInfo> LastTargets;
 
 
     public bool isGrounded
@@ -629,11 +631,11 @@ public class MovementController : MonoBehaviour {
     {
         if(targets != null)
         {
-            lastTargets = new List<CharacterInfo>();
+            LastTargets = new List<CharacterInfo>();
 
             for (int i = 0; i < targets.Count; i++)
             {
-                lastTargets.Add(CORE.Instance.CurrentRoom.GetPlayer(targets[i]));
+                LastTargets.Add(CORE.Instance.CurrentRoom.GetPlayer(targets[i]));
             }
         }
 
@@ -959,7 +961,7 @@ public class MovementController : MonoBehaviour {
     {
         yield return 0;
 
-        if (lastTargets == null || lastTargets.Count == 0)
+        if (LastTargets == null || LastTargets.Count == 0)
         {
             Status.MovementAbilityRoutineInstance = null;
             yield break;
@@ -969,7 +971,7 @@ public class MovementController : MonoBehaviour {
         float minHeight = perk.GetPerkValueByType("MinValueModifier", -1f);
         float maxHeight = perk.GetPerkValueByType("MaxValueModifier", 1f);
 
-        Transform targetTransform = lastTargets[0].CInstance.transform;
+        Transform targetTransform = LastTargets[0].CInstance.transform;
         float randomHeight = UnityEngine.Random.Range(minHeight, maxHeight);
 
         float duration = 0f;

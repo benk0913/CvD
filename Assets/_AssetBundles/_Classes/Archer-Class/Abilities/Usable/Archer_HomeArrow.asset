@@ -10,25 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Archer_Disengage
+  m_Name: Archer_HomeArrow
   m_EditorClassIdentifier: 
-  DisplayName: Back Away
-  Description: Move back quickly, may be useful for dodging attacks.
-  Icon: {fileID: 21300000, guid: de24ab3b244d1e648a3f1590df83af47, type: 3}
+  DisplayName: Home Arrow
+  Description: Shoot an arrow at the enemy, this one is sure to hit.
+  Icon: {fileID: 21300000, guid: 7f72c6a7e29836a43bfca223d7bd14ec, type: 3}
   Duration: 0
   ChargesCap: 1
-  Cooldown: 6
+  Cooldown: 5
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 1
   CooldownRequirements: []
-  Animations:
-  - Disengage
-  Perks:
-  - {fileID: 11400000, guid: 8a233d16eb994704994f5215b5a26484, type: 2}
+  Animations: []
+  Perks: []
   PerksOnHitTarget: []
   ObjectsToSpawn:
-  - {fileID: 7381420831024328076, guid: c95fee80c174ba44d9e16f660b52167a, type: 3}
+  - {fileID: 8944481092655097783, guid: e04666b030f83dc4aa32c4279cf66cab, type: 3}
   ObjectsToSpawnOnTargets: []
-  AbilityOnHit: {fileID: 0}
+  AbilityOnHit: {fileID: 11400000, guid: cf7bbd18889002049b4ead42e9809bef, type: 2}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

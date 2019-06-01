@@ -13,7 +13,7 @@ public class HitboxProjectile : HitBoxScript
     [SerializeField]
     public bool ShutOnHitWall = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (ShutOnHitWall && collision.tag == "Ground")
         {
@@ -24,8 +24,13 @@ public class HitboxProjectile : HitBoxScript
 
     protected void LateUpdate()
     {
-        Rigid.position += (Vector2) transform.right * (-transform.localScale.x) * Speed * Time.deltaTime;
-        
+        UpdateMovement();
+    }
+
+    protected virtual void UpdateMovement()
+    {
+        Rigid.position += (Vector2)transform.right * (-transform.localScale.x) * Speed * Time.deltaTime;
+
         if (timeLeftCurrent <= 0f)
         {
             Shut();

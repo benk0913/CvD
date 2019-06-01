@@ -10,28 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Archer_ShootArrow
+  m_Name: Archer_Disengage
   m_EditorClassIdentifier: 
-  DisplayName: Shoot Arrow
-  Description: Shoot an arrow at the enemy, the will be dead before they are upon
-    you.
-  Icon: {fileID: 21300000, guid: fb1e5b653a7918143a3c84dfe21394bc, type: 3}
-  Duration: 0.3
+  DisplayName: Back Away
+  Description: Move back quickly, may be useful for dodging attacks.
+  Icon: {fileID: 21300000, guid: de24ab3b244d1e648a3f1590df83af47, type: 3}
+  Duration: 0
   ChargesCap: 1
-  Cooldown: 0.5
+  Cooldown: 6
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 0
   CooldownRequirements: []
   Animations:
-  - Shoot1
-  - Shoot2
-  Perks: []
-  PerksOnHitTarget:
-  - {fileID: 11400000, guid: 9ce43232cf0184e41b5e63b03eba920b, type: 2}
+  - Disengage
+  Perks:
+  - {fileID: 11400000, guid: 8a233d16eb994704994f5215b5a26484, type: 2}
+  PerksOnHitTarget: []
   ObjectsToSpawn:
-  - {fileID: 7374196983190912051, guid: 3b299e42c99117e479bde3a5c03c6982, type: 3}
-  ObjectsToSpawnOnTargets:
-  - {fileID: 2132814436211664549, guid: d62dd5d3bd8982b4f92c3ad692716247, type: 3}
+  - {fileID: 7381420831024328076, guid: c95fee80c174ba44d9e16f660b52167a, type: 3}
+  ObjectsToSpawnOnTargets: []
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

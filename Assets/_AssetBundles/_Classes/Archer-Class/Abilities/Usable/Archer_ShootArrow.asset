@@ -10,20 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Archer_HomeArrow
+  m_Name: Archer_ShootArrow
   m_EditorClassIdentifier: 
-  DisplayName: Home Arrow
-  Description: Shoot an arrow at the enemy, this one is sure to hit.
-  Icon: {fileID: 21300000, guid: 7f72c6a7e29836a43bfca223d7bd14ec, type: 3}
-  Duration: 0.6
+  DisplayName: Shoot Arrow
+  Description: Shoot an arrow at the enemy, the will be dead before they are upon
+    you.
+  Icon: {fileID: 21300000, guid: fb1e5b653a7918143a3c84dfe21394bc, type: 3}
+  Duration: 0.3
   ChargesCap: 1
-  Cooldown: 5
+  Cooldown: 0.5
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
-  ImmobileCasting: 1
+  ImmobileCasting: 0
   CooldownRequirements: []
   Animations:
-  - Plant
+  - Shoot1
+  - Shoot2
   Perks: []
   PerksOnHitTarget:
   - {fileID: 11400000, guid: 9ce43232cf0184e41b5e63b03eba920b, type: 2}
