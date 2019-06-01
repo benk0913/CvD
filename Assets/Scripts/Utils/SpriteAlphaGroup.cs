@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SpriteAlphaGroup : MonoBehaviour {
 
-    public float Alpha;
+    public float Alpha = 1f;
 
     [SerializeField]
     Color OriginalColor = Color.clear;
+
+    [SerializeField]
+    bool CollectInRuntime = false;
 
     private void Awake()
     {
@@ -15,7 +18,43 @@ public class SpriteAlphaGroup : MonoBehaviour {
         {
             OriginalColor = Color.white;
         }
+
+        if(CollectInRuntime)
+        {
+            CollectRenderers();
+        }
     }
+
+    private void Reset()
+    {
+        CollectRenderers();
+        OriginalColor = Color.white;
+        Alpha = 1f;
+    }
+
+    [SerializeField]
+    List<SpriteRendererInstance> CollectedRenderers = new List<SpriteRendererInstance>();
+    void CollectRenderers()
+    {
+        CollectedRenderers.Clear();
+        CollectSpriteRenderers(transform);
+    }
+
+    void CollectSpriteRenderers(Transform givenTransform)
+    {
+        SpriteRenderer sRenderer = givenTransform.GetComponent<SpriteRenderer>();
+
+        if(sRenderer != null)
+        {
+            CollectedRenderers.Add(new SpriteRendererInstance(sRenderer));
+        }
+
+        for (int i = 0; i < givenTransform.childCount; i++)
+        {
+            CollectSpriteRenderers(givenTransform.GetChild(i));
+        }
+    }
+
 
     public void SetAlpha(float fValue)
     {
@@ -119,4 +158,34 @@ public class SpriteAlphaGroup : MonoBehaviour {
         BlinkRoutineInstance = null;
     }
 
+    public void SetSpritesMaterial(Material givenMaterial)
+    {
+        for(int i=0;i<CollectedRenderers.Count;i++)
+        {
+            CollectedRenderers[i].SRenderer.material = givenMaterial; 
+        }
+    }
+
+    public void ResetSpritesMaterial()
+    {
+        for (int i = 0; i < CollectedRenderers.Count; i++)
+        {
+            CollectedRenderers[i].SRenderer.material = CollectedRenderers[i].initMaterial;
+        }
+    }
+
 }
+
+public class SpriteRendererInstance
+{
+    public SpriteRenderer SRenderer;
+    public Material initMaterial;
+
+    public SpriteRendererInstance(SpriteRenderer renderer)
+    {
+        this.SRenderer = renderer;
+        this.initMaterial = renderer.material;
+
+    }
+}
+

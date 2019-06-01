@@ -41,6 +41,8 @@ public class Buff : ScriptableObject
         node["buff_key"] = this.name;
         node["duration"].AsFloat = GetPerkByType("DurationModifier").MinValue; //TODO REMOVE WHEN IMPLEMENTED IN SERVER.
 
+        //Debug.Log(this.name);
+
         for (int i = 0; i < Perks.Count; i++)
         {
             node["perks"][i] = Perks[i].ToJson();

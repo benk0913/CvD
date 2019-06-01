@@ -4989,6 +4989,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Speed: 3
   Rigid: {fileID: 840}
+  ShutOnHitWall: 1
   DetonationObjects:
   - {fileID: 349, guid: 0eebc46e1332f874bb9bbf5c223d2cdb, type: 3}
   - {fileID: 8850925151454245279, guid: 22d4ed23829a9164dbfb2fb52f3c451d, type: 3}
@@ -5016,7 +5017,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!1 &567
 GameObject:

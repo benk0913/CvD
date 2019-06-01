@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2222252245316228780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7449876, y: 0.7449876, z: 0.7449876}
   m_Children: []
   m_Father: {fileID: 2594495778228629906}
   m_RootOrder: 0
@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.990566, g: 0.9877942, b: 0.82702917, a: 0.8666667}
+      maxColor: {r: 0.990566, g: 0.9877942, b: 0.82702917, a: 0.9647059}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4782,7 +4782,7 @@ Transform:
   m_GameObject: {fileID: 2428659779119169653}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6257, y: 1.6257, z: 1.6257}
+  m_LocalScale: {x: 1.2111263, y: 1.2111263, z: 1.2111263}
   m_Children: []
   m_Father: {fileID: 2594495778228629906}
   m_RootOrder: 3
@@ -4861,7 +4861,7 @@ Transform:
   m_GameObject: {fileID: 6632494235917901614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6866871, y: 1.6866871, z: 1.6866871}
+  m_LocalScale: {x: 1.2565609, y: 1.2565609, z: 1.2565609}
   m_Children: []
   m_Father: {fileID: 2594495778228629906}
   m_RootOrder: 2
@@ -4940,7 +4940,7 @@ Transform:
   m_GameObject: {fileID: 8367751330820652080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3934824, y: 2.3934824, z: 2.3934824}
+  m_LocalScale: {x: 1.7831148, y: 1.7831148, z: 1.7831148}
   m_Children: []
   m_Father: {fileID: 2594495778228629906}
   m_RootOrder: 1
@@ -5055,7 +5055,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
 --- !u!50 &9101767850243721752
 Rigidbody2D:
@@ -5096,6 +5096,16 @@ MonoBehaviour:
   DependsOnMovementAbility: 0
   IsContiniousDamage: 0
   Collider: {fileID: 5717698686245872532}
+  OnSetInfoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!95 &2182631498921552644
 Animator:
   serializedVersion: 3

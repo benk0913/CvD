@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 325588484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.12916654, y: 0.12916654, z: 0.12916654}
+  m_LocalScale: {x: 0.0792702, y: 0.0792702, z: 0.0792702}
   m_Children: []
   m_Father: {fileID: 490643190}
   m_RootOrder: 1
@@ -48,7 +48,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ad4e6437e4f371d4288458d2a21f52da, type: 2}
+  - {fileID: 2100000, guid: c2d62323571e8354abfd614b3b4d339f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67,7 +67,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: bb23074faf620e94d895776955a8a2a1, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.67058825}
   m_FlipX: 0
@@ -4803,7 +4803,7 @@ Transform:
   m_GameObject: {fileID: 7120700562358434290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19993666, y: 0.19993666, z: 0.19993657}
+  m_LocalScale: {x: 0.12270218, y: 0.12270218, z: 0.12270213}
   m_Children: []
   m_Father: {fileID: 490643190}
   m_RootOrder: 2
@@ -4825,7 +4825,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ad4e6437e4f371d4288458d2a21f52da, type: 2}
+  - {fileID: 2100000, guid: 30511546d42945f4db49994e2d20b70b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4939,6 +4939,16 @@ MonoBehaviour:
   DependsOnMovementAbility: 0
   IsContiniousDamage: 0
   Collider: {fileID: 4133640719120957987}
+  OnSetInfoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   Speed: 3
   Rigid: {fileID: 5493175153034948720}
 --- !u!50 &5493175153034948720

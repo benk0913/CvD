@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
+  m_Name: HealAlliesOverTime
+  m_EditorClassIdentifier: 
+  DisplayName: 
+  Attribute: {fileID: 11400000, guid: fe7c779365d26d144a04dae1244d41bb, type: 2}
+  MinValue: 1
+  MaxValue: 1
+  Perks:
+  - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
+  - {fileID: 11400000, guid: ab27c435258b4c143865ddc9085bdcfc, type: 2}
+  - {fileID: 11400000, guid: ecdf99e4e9161fa44b74b402e0bde88a, type: 2}
+  - {fileID: 11400000, guid: 65b00fe1db66b874cae0e119ffd37261, type: 2}
+  - {fileID: 11400000, guid: 91c0ab7b919a1e04faaf9393b8b834b6, type: 2}

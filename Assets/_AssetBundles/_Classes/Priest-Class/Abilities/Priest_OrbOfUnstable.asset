@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
+  m_Name: Priest_OrbOfUnstable
+  m_EditorClassIdentifier: 
+  DisplayName: Unstable Orb
+  Description: Conjure an orb, which on detonation, blasts everyone away!
+  Icon: {fileID: 21300000, guid: ed382371732101541942f591bdac75b5, type: 3}
+  Duration: 0.1
+  ChargesCap: 1
+  Cooldown: 50
+  StartWithCooldown: 0
+  CooldownResetsOnRespawn: 1
+  ImmobileCasting: 0
+  CooldownRequirements: []
+  Animations:
+  - Emissary
+  Perks:
+  - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
+  - {fileID: 11400000, guid: 508574ff82d990e4e925bc1413b330f4, type: 2}
+  PerksOnHitTarget:
+  - {fileID: 11400000, guid: 9c6bc5d4acd827d4a8d163d56a9c5d6d, type: 2}
+  ObjectsToSpawn:
+  - {fileID: 5056976997565857195, guid: b845a504d8f7aea4993131f9dabb2870, type: 3}
+  ObjectsToSpawnOnTargets: []
+  AbilityOnHit: {fileID: 0}
+  AbilityOnLeft: {fileID: 0}
+  AbilityOnFalling: {fileID: 0}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7435ee4a5a8ede84c9dbdd59c597d0ad, type: 3}
+  m_Name: HealingAura
+  m_EditorClassIdentifier: 
+  DisplayName: Stun
+  Perks:
+  - {fileID: 11400000, guid: 9c519675bde47cc4b8d9470018e93c78, type: 2}
+  - {fileID: 11400000, guid: 1e92a0be39dc5424493ca61961520847, type: 2}
+  - {fileID: 11400000, guid: f58d055db549fef41b1d3de1011dab2b, type: 2}
+  BuffPrefab: {fileID: 8838980116513236684, guid: bf42958d74ee4cd40bd776c6b8d96dd9,
+    type: 3}
+  AddBuffAnimation: 
+  RemoveBuffAnimation: 
