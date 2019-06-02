@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89c0f9f67125cb84c894b629cae9bcce, type: 3}
-  m_Name: Duelist_Class
+  m_Name: Paldin_Class
   m_EditorClassIdentifier: 
-  DisplayName: Duelist
-  ClassActor: {fileID: 7011878183545142917, guid: 4371f87b0e14fc94b8a324c76f310183,
+  DisplayName: Paladin
+  ClassActor: {fileID: 3113626804673532206, guid: 9b157b9533fdc384b8acfe16bc60fbff,
     type: 3}
-  BaseHP: 40
+  BaseHP: 60
   HurtAnimations:
   - Hurt1
   - Hurt2
@@ -26,7 +26,3 @@ MonoBehaviour:
   - Stunned
   Abilities:
   - {fileID: 11400000, guid: f8d56407f87ed0b47b74d59d8e1efdab, type: 2}
-  - {fileID: 11400000, guid: 9a16620ee1b5c3843a646bc04175aead, type: 2}
-  - {fileID: 11400000, guid: 70d109fefabb1ab43bc198f6264912f0, type: 2}
-  - {fileID: 11400000, guid: 3cbee5e9aa8a5c44db2e5d0d0ea7f026, type: 2}
-  - {fileID: 11400000, guid: da25c91296982884b9096898551eecf9, type: 2}
