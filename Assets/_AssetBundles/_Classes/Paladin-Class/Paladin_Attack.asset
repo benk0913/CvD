@@ -10,29 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9775abfe82a3d9b4baa7c59a674b668a, type: 3}
-  m_Name: Priest_Heal
+  m_Name: Paladin_Attack
   m_EditorClassIdentifier: 
-  DisplayName: Heal
-  Description: Conjure an orb of healing and launch it over!
-  Icon: {fileID: 21300000, guid: 2d8731578255ea947aefaa2d1b3b2f0e, type: 3}
-  Duration: 0.1
-  ChargesCap: 2
+  DisplayName: Hammer
+  Description: Hammer and smash the enemy!
+  Icon: {fileID: 21300000, guid: cfe7f78ca25f2594eb3551358dfca1ab, type: 3}
+  Duration: 0.25
+  ChargesCap: 1
   Cooldown: 1
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
-  ImmobileCasting: 0
+  ImmobileCasting: 1
   CooldownRequirements: []
   Animations:
   - Attack1
   - Attack2
-  Perks:
-  - {fileID: 11400000, guid: 0650ed94fcc83734383671478d22ffb9, type: 2}
+  Perks: []
   PerksOnHitTarget:
-  - {fileID: 11400000, guid: 508574ff82d990e4e925bc1413b330f4, type: 2}
+  - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
   ObjectsToSpawn:
-  - {fileID: 497, guid: 6f2ca79eaf4e692499eb5d051381dba3, type: 3}
+  - {fileID: 1050513488234562161, guid: 8b45b2ce9bfabf14db9590b8a115c4ba, type: 3}
   ObjectsToSpawnOnTargets:
-  - {fileID: 5767041899201778742, guid: abf8e9528ab0dd04e95207c5c401f046, type: 3}
+  - {fileID: 6097158779406925979, guid: 1a4f387167649ad428498677cab5661a, type: 3}
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}

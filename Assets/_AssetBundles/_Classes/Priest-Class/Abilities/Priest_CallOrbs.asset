@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Call Orbs
   Description: Detonate your orbs of healing on your allies!
-  Icon: {fileID: 21300000, guid: a919fb7f5f62301498741a4f2329c7c4, type: 3}
+  Icon: {fileID: 21300000, guid: b676b76d5a904e24097fff54f10e1702, type: 3}
   Duration: 0.1
   ChargesCap: 1
   Cooldown: 1

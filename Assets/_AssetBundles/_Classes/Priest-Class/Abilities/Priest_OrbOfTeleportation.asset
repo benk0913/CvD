@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Orb Of Teleportation
   Description: Conjure an orb of teleportation, which repositions you on detonation.
-  Icon: {fileID: 21300000, guid: e7423bb81a70f3d4985dcab93a9271e1, type: 3}
+  Icon: {fileID: 21300000, guid: a6ec3d37953d35a438bd9c16a4e18ff3, type: 3}
   Duration: 0.1
   ChargesCap: 1
   Cooldown: 10

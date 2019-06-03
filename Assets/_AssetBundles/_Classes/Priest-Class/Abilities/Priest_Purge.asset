@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Purge
   Description: Purge an ally of his debuffs, or an enemy of his buffs.
-  Icon: {fileID: 21300000, guid: 2c74cecd77576224d9a07c24f8fc4500, type: 3}
+  Icon: {fileID: 21300000, guid: c8e8079c190e6a94897c577078c16207, type: 3}
   Duration: 0.3
   ChargesCap: 1
   Cooldown: 12

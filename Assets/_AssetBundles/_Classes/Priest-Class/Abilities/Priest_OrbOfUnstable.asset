@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Unstable Orb
   Description: Conjure an orb, which on detonation, blasts everyone away!
-  Icon: {fileID: 21300000, guid: ed382371732101541942f591bdac75b5, type: 3}
+  Icon: {fileID: 21300000, guid: 104270c65c284634da90a4bf994bcde3, type: 3}
   Duration: 0.1
   ChargesCap: 1
   Cooldown: 50
