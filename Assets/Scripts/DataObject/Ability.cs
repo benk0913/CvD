@@ -46,6 +46,9 @@ public class Ability : ScriptableObject
     [Tooltip("Is there going to be a different ability when falling? (Used for abilities based on direction / etc...)")]
     public Ability AbilityOnFalling;
 
+    [Tooltip("The ability which is cast when this one's duration is finished.")]
+    public Ability AbilityOnFinishCasting;
+
     public JSONNode ToJson()
     {
         //Debug.Log(this.name);
@@ -87,7 +90,11 @@ public class Ability : ScriptableObject
         {
             node["ability_on_falling"] = this.AbilityOnFalling.ToJson();
         }
-        
+
+        if (AbilityOnFinishCasting != null)
+        {
+            node["ability_on_finish"] = this.AbilityOnFinishCasting.ToJson();
+        }
         return node;
     }
 

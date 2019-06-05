@@ -549,7 +549,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2661858358847937525}
   m_LocalRotation: {x: -0, y: -0, z: -0.0038362723, w: 0.9999927}
-  m_LocalPosition: {x: -0.107, y: 0.085, z: 0}
+  m_LocalPosition: {x: -0.105, y: 0.085, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2188116845540177470}
@@ -639,13 +639,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2896646285305022923}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.05585187, w: 0.99843913}
+  m_LocalPosition: {x: 0.105, y: -0.021, z: 0}
+  m_LocalScale: {x: 0.083648026, y: 0.083648026, z: 0.083648}
   m_Children: []
   m_Father: {fileID: 7526321406773789613}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -6.4030004}
 --- !u!212 &3038298545088901426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -663,7 +663,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ad4e6437e4f371d4288458d2a21f52da, type: 2}
+  - {fileID: 2100000, guid: f671211ee68a2734789d7b7241d41d2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -683,15 +683,15 @@ SpriteRenderer:
   m_SortingLayerID: -1530805477
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c9e15c9ef646b9044a39a30d0841ffb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.25390625, y: 0.453125}
+  m_Size: {x: 6.4, y: 6.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3113626804673532206
@@ -2042,7 +2042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e4d453704e1f144852cc135fad1451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectsToSpawn: []
+  ObjectsToSpawn:
+  - {fileID: 6117660173352478677, guid: 1d39eebeddb1cd6478221a512381026b, type: 3}
   myDirection: 1
 --- !u!114 &711632361665298124
 MonoBehaviour:

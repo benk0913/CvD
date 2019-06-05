@@ -498,8 +498,8 @@ public class MovementController : MonoBehaviour {
         InGamePanelUI.Instance.HideAbilityCharge();
         abilityInCast = null;
 
-        CompleteAbilityDuration(ability);
         AbilityDurationRoutineInstance = null;
+        CompleteAbilityDuration(ability);
     }
 
     public void CompleteAbilityDuration(Ability ability)
@@ -511,6 +511,11 @@ public class MovementController : MonoBehaviour {
             ActivatePerks(ability.Perks);
             
             StartCooldown(ability);
+        }
+
+        if(ability.AbilityOnFinishCasting != null)
+        {
+            StartAbility(ability.AbilityOnFinishCasting);
         }
     }
 
