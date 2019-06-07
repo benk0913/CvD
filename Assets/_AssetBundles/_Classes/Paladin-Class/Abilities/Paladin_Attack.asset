@@ -27,7 +27,7 @@ MonoBehaviour:
   - Attack2
   Perks: []
   PerksOnHitTarget:
-  - {fileID: 11400000, guid: 7f8be3dad227bf84ba86ca9d9d3f079e, type: 2}
+  - {fileID: 11400000, guid: 60d285d328525b549b0f57c24f53b14a, type: 2}
   ObjectsToSpawn:
   - {fileID: 1050513488234562161, guid: 2e6c94fba83271a41a4a4f7c93d30105, type: 3}
   ObjectsToSpawnOnTargets:
