@@ -409,8 +409,8 @@ public class MovementController : MonoBehaviour {
     {
         if (isPlayer)// && (lastSentPos != transform.position))
         {
-            SocketClient.Instance.EmitMovement(transform.position, lastXDir, Rigid.velocity.y);
-            lastSentPos = transform.position;
+            SocketClient.Instance.EmitMovement(Rigid.position, lastXDir, Rigid.velocity.y);
+            lastSentPos = Rigid.position;
         }
 
         if (Rigid.velocity.magnitude > MaxVelocity)
@@ -1380,12 +1380,12 @@ public class MovementController : MonoBehaviour {
             //Clinging State
             if (ClingTarget != null)
             {
-                transform.position = ClingTarget.CInstance.transform.position;
+                Rigid.position = ClingTarget.CInstance.transform.position;
                 return;
             }
 
             //Regular State
-            transform.position = Vector3.Lerp(transform.position, LastGivenPosition, Time.deltaTime * 3f * Mathf.Clamp(TimeFromLastEvent,1f,5f));
+            Rigid.position = Vector3.Lerp(Rigid.position, LastGivenPosition, Time.deltaTime * 3f * Mathf.Clamp(TimeFromLastEvent,1f,5f));
 
 
 
