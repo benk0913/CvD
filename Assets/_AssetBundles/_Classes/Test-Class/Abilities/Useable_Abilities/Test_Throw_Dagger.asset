@@ -20,13 +20,13 @@ MonoBehaviour:
   Cooldown: 3
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
+  ImmobileCasting: 0
   CooldownRequirements: []
   Animations:
   - ThrowDagger
   Perks: []
   PerksOnHitTarget:
   - {fileID: 11400000, guid: faa7194bdfc5a4f4c988bf0b1e27ea87, type: 2}
-  - {fileID: 11400000, guid: ea03b0b7ea63d5b46a8db0bcf44bdf61, type: 2}
   ObjectsToSpawn:
   - {fileID: 7374196983190912051, guid: f402769ea05a59040a384137785b4ff0, type: 3}
   ObjectsToSpawnOnTargets:
@@ -34,3 +34,4 @@ MonoBehaviour:
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}
+  AbilityOnFinishCasting: {fileID: 0}
