@@ -127,14 +127,14 @@ public class SpriteAlphaGroup : MonoBehaviour {
     }
 
     Coroutine BlinkRoutineInstance;
-    public void BlinkColor(Color clr)
+    public void BlinkColor(Color clr, float duration = 0.05f)
     {
         if(BlinkRoutineInstance != null)
         {
             StopCoroutine(BlinkRoutineInstance);
         }
 
-        BlinkRoutineInstance = StartCoroutine(BlinkDamageRoutine(clr));
+        BlinkRoutineInstance = StartCoroutine(BlinkDamageRoutine(clr, duration));
     }
 
     public void BlinkColor()
@@ -147,11 +147,11 @@ public class SpriteAlphaGroup : MonoBehaviour {
         BlinkRoutineInstance = StartCoroutine(BlinkDamageRoutine(Color.black));
     }
 
-    private IEnumerator BlinkDamageRoutine(Color clr)
+    private IEnumerator BlinkDamageRoutine(Color clr, float duration = 0.05f)
     {
         SetChildrenColor(transform, clr);
 
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(duration);
 
         SetChildrenColor(transform, OriginalColor);
 

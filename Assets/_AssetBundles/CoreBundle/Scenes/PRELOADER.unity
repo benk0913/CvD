@@ -2635,6 +2635,9 @@ MonoBehaviour:
   - {fileID: 7355939586199837294, guid: e463620c0f7bd21498706d7645a0213f, type: 3}
   - {fileID: 7355939586199837294, guid: 8b5342358da7da246a39ebb545f83486, type: 3}
   - {fileID: 7355939586199837294, guid: 404b2a82d36228f439282eab49ec110c, type: 3}
+  - {fileID: 7073562201408650837, guid: 4388a29dc55723842bf656ae17ad6af3, type: 3}
+  - {fileID: 5541426169617648254, guid: 8dcd49f0587a8254d95247edb91af4c6, type: 3}
+  CommonSprites: []
 --- !u!114 &1167732154
 MonoBehaviour:
   m_ObjectHideFlags: 0

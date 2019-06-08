@@ -27,6 +27,11 @@ public class CORE : MonoBehaviour {
 
     public Dictionary<string, GameObject> PrefabDatabase = new Dictionary<string, GameObject>();
 
+    [SerializeField]
+    List<Sprite> CommonSprites = new List<Sprite>();
+
+    public Dictionary<string, Sprite> SpritesDatabase = new Dictionary<string, Sprite>();
+
 
     #endregion
 
@@ -51,6 +56,13 @@ public class CORE : MonoBehaviour {
         {
             tempPrefab = CommonPrefabs[i];
             PrefabDatabase.Add(tempPrefab.name, tempPrefab);
+        }
+
+        Sprite tempSprite;
+        for (int i = 0; i < CommonSprites.Count; i++)
+        {
+            tempSprite = CommonSprites[i];
+            SpritesDatabase.Add(tempSprite.name, tempSprite);
         }
     }
 
