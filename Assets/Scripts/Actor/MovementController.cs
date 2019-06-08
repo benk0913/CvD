@@ -407,9 +407,9 @@ public class MovementController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (isPlayer && (lastSentPos != transform.position))
+        if (isPlayer)// && (lastSentPos != transform.position))
         {
-            SocketClient.Instance.EmitMovement(Rigid.position, lastXDir, Rigid.velocity.y);
+            SocketClient.Instance.EmitMovement(transform.position, lastXDir, Rigid.velocity.y);
             lastSentPos = transform.position;
         }
 
@@ -1385,7 +1385,7 @@ public class MovementController : MonoBehaviour {
             }
 
             //Regular State
-            transform.position = Vector3.Lerp(transform.position, LastGivenPosition, Time.deltaTime * 3f);
+            transform.position = Vector3.Lerp(transform.position, LastGivenPosition, Time.deltaTime * 3f * Mathf.Clamp(TimeFromLastEvent,1f,5f));
 
 
 
