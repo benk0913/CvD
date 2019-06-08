@@ -20,7 +20,7 @@ MonoBehaviour:
   Cooldown: 0.4
   StartWithCooldown: 0
   CooldownResetsOnRespawn: 1
-  ImmobileCasting: 1
+  ImmobileCasting: 0
   CooldownRequirements: []
   Animations:
   - Attack1
@@ -35,3 +35,4 @@ MonoBehaviour:
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}
+  AbilityOnFinishCasting: {fileID: 0}

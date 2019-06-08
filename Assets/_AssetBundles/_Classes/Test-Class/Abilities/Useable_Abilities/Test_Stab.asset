@@ -15,7 +15,7 @@ MonoBehaviour:
   DisplayName: Stab
   Description: 
   Icon: {fileID: 21300000, guid: 626dc7623c4b7424794eec12aff88e4d, type: 3}
-  Duration: 0.1
+  Duration: 0.2
   ChargesCap: 1
   Cooldown: 7
   StartWithCooldown: 0
@@ -35,3 +35,4 @@ MonoBehaviour:
   AbilityOnHit: {fileID: 0}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}
+  AbilityOnFinishCasting: {fileID: 0}
