@@ -409,7 +409,7 @@ public class MovementController : MonoBehaviour {
     {
         if (isPlayer && (lastSentPos != transform.position))
         {
-            SocketClient.Instance.EmitMovement(transform.position, lastXDir, Rigid.velocity.y);
+            SocketClient.Instance.EmitMovement(Rigid.position, lastXDir, Rigid.velocity.y);
             lastSentPos = transform.position;
         }
 
@@ -1053,7 +1053,7 @@ public class MovementController : MonoBehaviour {
         }
 
         HurtEffectRoutineInstance = StartCoroutine(HurtEffectRoutine());
-        AlphaGroup.BlinkColor(Color.black);
+        AlphaGroup.BlinkColor(Color.red);
     }
 
     public void Heal(int health)
@@ -1062,13 +1062,13 @@ public class MovementController : MonoBehaviour {
 
         Status.CurrentHP += health;
 
-        AlphaGroup.BlinkColor(Color.green);
+        AlphaGroup.BlinkColor(Color.green, 0.1f);
     }
 
     public void Blocked()
     {
         ShowBlockedText();
-        AlphaGroup.BlinkColor(Color.grey);
+        AlphaGroup.BlinkColor(Color.grey, 0.1f);
 
         Animer.Play("Block");
     }
@@ -1076,6 +1076,8 @@ public class MovementController : MonoBehaviour {
     public void Death()
     {
         Animer.Play(Character.Class.DeathAnimations[UnityEngine.Random.Range(0, Character.Class.DeathAnimations.Count)]);
+        ShowDeathIcon();
+
         isDead = true;
 
         if(DeathRoutineInstance != null)
@@ -1186,6 +1188,31 @@ public class MovementController : MonoBehaviour {
         tempDamageText.GetComponent<FloatingDamageUI>().Activate("BLOCKED");
     }
 
+    public void ShowDeathIcon()
+    {
+        string prefabName;
+
+        if (isPlayer)
+        {
+            prefabName = "FloatingDeathIcon_Friendly";
+        }
+        else
+        {
+            prefabName = "FloatingDeathIcon_Enemy";
+        }
+
+
+        GameObject tempDeathIcon = ResourcesLoader.Instance.GetRecycledObject(CORE.Instance.PrefabDatabase[prefabName]);
+
+        tempDeathIcon.transform.position = StatsCanvas.transform.position
+            + StatsCanvas.transform.TransformDirection(
+                UnityEngine.Random.Range(-0.1f, 0.1f),
+                UnityEngine.Random.Range(-0.1f, 0.1f),
+                0f);
+
+        tempDeathIcon.GetComponent<FloatingImageUI>().Activate();
+    }
+
 
     public void AddBuff(Buff buff, CharacterInfo fromPlayer)
     {
@@ -1291,7 +1318,7 @@ public class MovementController : MonoBehaviour {
     #endregion
 
     #region Server Control
-
+    
     Vector3 LastGivenPosition;
     Coroutine FixPositionRoutineInstance;
     float lastDirectionX;
@@ -1312,13 +1339,10 @@ public class MovementController : MonoBehaviour {
         lastDirectionY = dirY;
 
         lastDirectionX = dirX;//  Lag Compensation
-        LastGivenPosition = new Vector3(position.x + dirX * (ExtrapolationMultiplier * (TimeFromLastEvent < 1.5f? TimeFromLastEvent : 0f)), position.y);
 
-        if (FixPositionRoutineInstance != null)
-        {
-            StopCoroutine(FixPositionRoutineInstance);
-        }
-        FixPositionRoutineInstance = StartCoroutine(FixPositionRoutine());
+        LastGivenPosition = new Vector3(
+            position.x + dirX * (ExtrapolationMultiplier * (TimeFromLastEvent < 1.5f ? TimeFromLastEvent : 0f)),
+            position.y + dirY * (ExtrapolationMultiplier * (TimeFromLastEvent < 1.5f ? TimeFromLastEvent : 0f)));//position.y);
 
         if (dirX > 0f)
         {
@@ -1350,26 +1374,20 @@ public class MovementController : MonoBehaviour {
         Animer.SetBool("inAir", (!isGrounded && isFalling));
 
         TimeFromLastEvent += DeltaMultiplier * Time.deltaTime;
-    }
 
-    private IEnumerator FixPositionRoutine()
-    {
-        float t = 0f;
-        while (t < 1f)
+        if(!isPlayer)
         {
-            t += 3f * Time.deltaTime;
-
-            yield return 0;
-
             //Clinging State
             if (ClingTarget != null)
             {
                 transform.position = ClingTarget.CInstance.transform.position;
-                continue;
+                return;
             }
 
             //Regular State
-            Rigid.position = Vector3.Lerp(Rigid.position, LastGivenPosition, t);
+            transform.position = Vector3.Lerp(transform.position, LastGivenPosition, Time.deltaTime * 3f);
+
+
 
             if (lastDirectionY > 0f)
             {
@@ -1380,8 +1398,6 @@ public class MovementController : MonoBehaviour {
                 Rigid.gravityScale = 1f;
             }
         }
-
-        FixPositionRoutineInstance = null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
