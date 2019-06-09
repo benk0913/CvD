@@ -1264,21 +1264,18 @@ public class MovementController : MonoBehaviour {
     {
         ApplyMovementBuff(buffStatus, fromPlayer);
 
-        switch (buffStatus.Reference.name)
+        if(buffStatus.Reference.name.StartsWith("Stun")) //TODO MOVE TO PERK IMPLEMENTATION
         {
-            case "Stun":
-                {
-                    isStunned = true;
-                    Animer.Play(Character.Class.StunnedAnimations[UnityEngine.Random.Range(0, Character.Class.StunnedAnimations.Count)]);
+            isStunned = true;
+            Animer.Play(Character.Class.StunnedAnimations[UnityEngine.Random.Range(0, Character.Class.StunnedAnimations.Count)]);
 
-                    InterruptAbility();
-                    return;
-                }
-            case "Clinging":
-                {
-                    ClingTarget = fromPlayer;
-                    return;
-                }
+            InterruptAbility();
+            return;
+        }
+        else if(buffStatus.Reference.name == "Clinging")
+        {
+            ClingTarget = fromPlayer;
+            return;
         }
     }
 
