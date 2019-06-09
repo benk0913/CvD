@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 61247604090743934}
   - component: {fileID: 114840255315294292}
   - component: {fileID: 3931349778373257722}
+  - component: {fileID: 6311949184596046772}
   m_Layer: 9
   m_Name: Test_Pounce_Hitbox
   m_TagString: HitBox
@@ -75,7 +76,18 @@ MonoBehaviour:
   ShutOnHit: 1
   StickToOwner: 1
   DependsOnMovementAbility: 1
+  IsContiniousDamage: 0
   Collider: {fileID: 61247604090743934}
+  OnSetInfoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!96 &3931349778373257722
 TrailRenderer:
   serializedVersion: 2
@@ -180,3 +192,17 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &6311949184596046772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886398916049500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a5c8eaa70bdea408fb5f2128bed80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 4227adeb586320041ac9a65e95be6cb7, type: 3}

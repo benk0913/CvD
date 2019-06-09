@@ -31,7 +31,8 @@ MonoBehaviour:
   ObjectsToSpawn:
   - {fileID: 1886398916049500, guid: c01599a6b39b594478996ebfbb8f8069, type: 3}
   ObjectsToSpawnOnTargets:
-  - {fileID: 7567260111314732214, guid: 85fd1e9399602a04f8e1c39294682b6c, type: 3}
+  - {fileID: 7567260111314732214, guid: 25c7997953518c74dae02d2ed731f94c, type: 3}
   AbilityOnHit: {fileID: 11400000, guid: 7f2d352406cbb3d42b6f6ee3096a8148, type: 2}
   AbilityOnLeft: {fileID: 0}
   AbilityOnFalling: {fileID: 0}
+  AbilityOnFinishCasting: {fileID: 0}

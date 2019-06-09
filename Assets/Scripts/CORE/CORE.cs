@@ -24,13 +24,15 @@ public class CORE : MonoBehaviour {
 
     [SerializeField]
     List<GameObject> CommonPrefabs = new List<GameObject>();
-
     public Dictionary<string, GameObject> PrefabDatabase = new Dictionary<string, GameObject>();
 
     [SerializeField]
     List<Sprite> CommonSprites = new List<Sprite>();
-
     public Dictionary<string, Sprite> SpritesDatabase = new Dictionary<string, Sprite>();
+
+    [SerializeField]
+    List<AudioClip> CommonAudio = new List<AudioClip>();
+    public Dictionary<string, AudioClip> AudioDatabase = new Dictionary<string, AudioClip>();
 
 
     #endregion
@@ -63,6 +65,13 @@ public class CORE : MonoBehaviour {
         {
             tempSprite = CommonSprites[i];
             SpritesDatabase.Add(tempSprite.name, tempSprite);
+        }
+
+        AudioClip tempAudio;
+        for (int i = 0; i < CommonAudio.Count; i++)
+        {
+            tempAudio = CommonAudio[i];
+            AudioDatabase.Add(tempAudio.name, tempAudio);
         }
     }
 
