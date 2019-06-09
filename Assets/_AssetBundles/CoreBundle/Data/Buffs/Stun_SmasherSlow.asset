@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7435ee4a5a8ede84c9dbdd59c597d0ad, type: 3}
-  m_Name: ShieldUp
+  m_Name: Stun_SmasherSlow
   m_EditorClassIdentifier: 
-  DisplayName: ShieldUp
+  DisplayName: Stun
   Perks:
-  - {fileID: 11400000, guid: ba4d304986d8c7e428bf0db2610b73f3, type: 2}
-  - {fileID: 11400000, guid: fa49ec856da743a4792d31ab90259faf, type: 2}
-  - {fileID: 11400000, guid: 3dc6cdd3fe5f57349891c243251a3332, type: 2}
-  BuffPrefab: {fileID: 1396191692916948693, guid: a8220a615cd6a0d458b28e58eac1bdf8,
+  - {fileID: 11400000, guid: 8a3e3095c26d5c64eba8bf93f32ed691, type: 2}
+  BuffPrefab: {fileID: 3061387146365979362, guid: 5da2c3c5232bb644da686c7d9a4fbeba,
     type: 3}
   AddBuffAnimation: 
   RemoveBuffAnimation: 

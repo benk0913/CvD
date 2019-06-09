@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b5505930076a4640a10864f0e867216, type: 3}
-  m_Name: ClingingDuration
+  m_Name: RetaliateStun
   m_EditorClassIdentifier: 
   DisplayName: 
-  Attribute: {fileID: 11400000, guid: d8a1b71e48809374784459a6ca21443f, type: 2}
-  MinValue: 10
-  MaxValue: 10
-  Perks: []
+  Attribute: {fileID: 11400000, guid: 5a4a99e26a9494949a77f5d9f4c0f65f, type: 2}
+  MinValue: 1
+  MaxValue: 1
+  Perks:
+  - {fileID: 11400000, guid: 403282b7f42faf341a367380b3c387a6, type: 2}

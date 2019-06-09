@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89c0f9f67125cb84c894b629cae9bcce, type: 3}
-  m_Name: Paldin_Class
+  m_Name: Paladin_Class
   m_EditorClassIdentifier: 
   DisplayName: Paladin
   ClassActor: {fileID: 3113626804673532206, guid: 9b157b9533fdc384b8acfe16bc60fbff,
