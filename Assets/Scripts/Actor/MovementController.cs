@@ -407,7 +407,7 @@ public class MovementController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (isPlayer)// && (lastSentPos != transform.position))
+        if (isPlayer && !isDead)// && (lastSentPos != transform.position))
         {
             SocketClient.Instance.EmitMovement(Rigid.position, lastXDir, Rigid.velocity.y);
             lastSentPos = Rigid.position;
@@ -1264,21 +1264,18 @@ public class MovementController : MonoBehaviour {
     {
         ApplyMovementBuff(buffStatus, fromPlayer);
 
-        switch (buffStatus.Reference.name)
+        if(buffStatus.Reference.name.StartsWith("Stun")) //TODO MOVE TO PERK IMPLEMENTATION
         {
-            case "Stun":
-                {
-                    isStunned = true;
-                    Animer.Play(Character.Class.StunnedAnimations[UnityEngine.Random.Range(0, Character.Class.StunnedAnimations.Count)]);
+            isStunned = true;
+            Animer.Play(Character.Class.StunnedAnimations[UnityEngine.Random.Range(0, Character.Class.StunnedAnimations.Count)]);
 
-                    InterruptAbility();
-                    return;
-                }
-            case "Clinging":
-                {
-                    ClingTarget = fromPlayer;
-                    return;
-                }
+            InterruptAbility();
+            return;
+        }
+        else if(buffStatus.Reference.name == "Clinging")
+        {
+            ClingTarget = fromPlayer;
+            return;
         }
     }
 
