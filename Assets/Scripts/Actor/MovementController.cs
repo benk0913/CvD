@@ -407,7 +407,7 @@ public class MovementController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (isPlayer)// && (lastSentPos != transform.position))
+        if (isPlayer && !isDead)// && (lastSentPos != transform.position))
         {
             SocketClient.Instance.EmitMovement(Rigid.position, lastXDir, Rigid.velocity.y);
             lastSentPos = Rigid.position;
