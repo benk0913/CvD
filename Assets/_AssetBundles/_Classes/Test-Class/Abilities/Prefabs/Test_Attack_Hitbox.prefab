@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.31676406, y: 0.030459642}
+  m_Offset: {x: -0.23212779, y: 0.030459642}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.59539783, y: 0.5200734}
+  m_Size: {x: 0.4261253, y: 0.5200734}
   m_EdgeRadius: 0
 --- !u!114 &114840255315294292
 MonoBehaviour:
@@ -74,4 +74,15 @@ MonoBehaviour:
   ShutOnHit: 1
   StickToOwner: 0
   DependsOnMovementAbility: 0
+  IsContiniousDamage: 0
   Collider: {fileID: 61247604090743934}
+  OnSetInfoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

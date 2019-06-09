@@ -30,7 +30,7 @@ public class MovementController : MonoBehaviour {
 
     public ActorState Status;
 
-    public bool isPlayer;
+    public bool playerid;
     public bool isDead;
     public bool isStunned = false;
     public bool isRecentlyHurt = false;
@@ -270,7 +270,7 @@ public class MovementController : MonoBehaviour {
 
     private void Update()
     {
-        if (isPlayer)
+        if (playerid)
         {
             RefreshInput();
         }
@@ -407,7 +407,7 @@ public class MovementController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (isPlayer)// && (lastSentPos != transform.position))
+        if (playerid)// && (lastSentPos != transform.position))
         {
             SocketClient.Instance.EmitMovement(Rigid.position, lastXDir, Rigid.velocity.y);
             lastSentPos = Rigid.position;
@@ -423,7 +423,7 @@ public class MovementController : MonoBehaviour {
 
     public void StartAbility(Ability ability)
     {
-        if (isPlayer)
+        if (playerid)
         {
             if (AbilityDurationRoutineInstance != null)
             {
@@ -469,7 +469,7 @@ public class MovementController : MonoBehaviour {
     {
         float duration = ability.Duration;
 
-        if(!isPlayer) // Lag compensation
+        if(!playerid) // Lag compensation
         {
             duration = Mathf.Clamp(duration - TimeFromLastEvent ,0f ,Mathf.Infinity);
         }
@@ -506,7 +506,7 @@ public class MovementController : MonoBehaviour {
     {
         SpawnAbilityObjects(ability);
 
-        if (isPlayer)
+        if (playerid)
         {
             ActivatePerks(ability.Perks);
             
@@ -600,7 +600,7 @@ public class MovementController : MonoBehaviour {
                 HitboxEvent HitEvent = new HitboxEvent();
                 HitEvent.AddListener(OnHitboxEvent);
 
-                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent, isPlayer);
+                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent);
             }
         }
     }
@@ -627,7 +627,7 @@ public class MovementController : MonoBehaviour {
                 HitboxEvent HitEvent = new HitboxEvent();
                 HitEvent.AddListener(OnHitboxEvent);
 
-                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent, isPlayer);
+                tempObj.GetComponent<HitBoxScript>().SetInfo(this.Character, ability, HitEvent);
             }
         }
     }
@@ -1012,7 +1012,7 @@ public class MovementController : MonoBehaviour {
 
     public void SetInfo(CharacterInfo info, bool isplayer)
     {
-        this.isPlayer = isplayer;
+        this.playerid = isplayer;
         this.Character = info;
 
         Status.Initialize(this.Character);
@@ -1120,7 +1120,7 @@ public class MovementController : MonoBehaviour {
     {
         string prefabName;
 
-        if(isPlayer)
+        if(playerid)
         {
             prefabName = "FloatingDamage_Self";
         }
@@ -1144,7 +1144,7 @@ public class MovementController : MonoBehaviour {
     {
         string prefabName;
 
-        if (isPlayer)
+        if (playerid)
         {
             prefabName = "FloatingHeal_Self";
         }
@@ -1168,7 +1168,7 @@ public class MovementController : MonoBehaviour {
     {
         string prefabName;
 
-        if (isPlayer)
+        if (playerid)
         {
             prefabName = "FloatingBlocked_Self";
         }
@@ -1192,7 +1192,7 @@ public class MovementController : MonoBehaviour {
     {
         string prefabName;
 
-        if (isPlayer)
+        if (playerid)
         {
             prefabName = "FloatingDeathIcon_Friendly";
         }
@@ -1375,7 +1375,7 @@ public class MovementController : MonoBehaviour {
 
         TimeFromLastEvent += DeltaMultiplier * Time.deltaTime;
 
-        if(!isPlayer)
+        if(!playerid)
         {
             //Clinging State
             if (ClingTarget != null)
@@ -1415,14 +1415,14 @@ public class MovementController : MonoBehaviour {
 
         if (collision.tag == "HitBox" && hitbox.CurrentOwner.ID != Character.ID)
         {
-            if (!isPlayer)
+            if (!playerid)
             {
                 CharacterInfo chara = CORE.Instance.CurrentRoom.GetPlayer(this.gameObject);
 
                 hitbox.Interact(chara.ID);
                 SpawnTargetAbilityObjects(hitbox.CurrentAbility);
             }
-            if (isPlayer)
+            if (playerid)
             {
                 hitbox.Interact(Character.ID);
                 SpawnTargetAbilityObjects(hitbox.CurrentAbility);

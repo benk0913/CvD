@@ -46,13 +46,12 @@ public class HitBoxScript : MonoBehaviour {
 
     protected HitboxEvent CurrentHitEvent;
 
-    protected bool isPlayer;
+    protected string playerID;
 
     protected bool WasHitThisFrame;
 
-    public virtual void SetInfo(CharacterInfo ownerInsance,Ability ability, HitboxEvent onHitEvent, bool isplayer)
+    public virtual void SetInfo(CharacterInfo ownerInsance,Ability ability, HitboxEvent onHitEvent)
     {
-        this.isPlayer = isplayer;
 
         ActorsHit.Clear();
         WasHitThisFrame = false;
@@ -70,13 +69,21 @@ public class HitBoxScript : MonoBehaviour {
 
     public virtual void Interact(string charID)
     {
+        #if !UNITY_SERVER
+                return;
+        #endif
 
-        if(ActorsHit.Contains(charID))
+        //if (this.CurrentOwner.ID != CORE.Instance.CurrentCharacter.ID)//ONLY INTERACT WHEN COLLIDER IS MINE
+        //{
+        //    return;
+        //}
+
+        if (ActorsHit.Contains(charID))
         {
             return;
         }
 
-        if (isPlayer)
+        if (playerID != charID)
         {
             ActorsHit.Add(charID);
         }

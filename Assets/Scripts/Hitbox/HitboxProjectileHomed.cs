@@ -15,9 +15,9 @@ public class HitboxProjectileHomed : HitboxProjectile
     }
 
 
-    public override void SetInfo(CharacterInfo ownerInsance, Ability ability, HitboxEvent onHitEvent, bool isplayer)
+    public override void SetInfo(CharacterInfo ownerInsance, Ability ability, HitboxEvent onHitEvent)
     {
-        base.SetInfo(ownerInsance, ability, onHitEvent, isplayer);
+        base.SetInfo(ownerInsance, ability, onHitEvent);
         homingTarget = ownerInsance.CInstance.GetComponent<MovementController>().LastTargets[0].CInstance.transform;
     }
     

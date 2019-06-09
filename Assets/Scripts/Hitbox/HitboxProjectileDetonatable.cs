@@ -8,9 +8,9 @@ public class HitboxProjectileDetonatable : HitboxProjectile
     [SerializeField]
     List<GameObject> DetonationObjects;
 
-    public override void SetInfo(CharacterInfo ownerInsance, Ability ability, HitboxEvent onHitEvent, bool isplayer)
+    public override void SetInfo(CharacterInfo ownerInsance, Ability ability, HitboxEvent onHitEvent)
     {
-        base.SetInfo(ownerInsance, ability, onHitEvent, isplayer);
+        base.SetInfo(ownerInsance, ability, onHitEvent);
     }
 
     public override void Detonate()
@@ -23,7 +23,7 @@ public class HitboxProjectileDetonatable : HitboxProjectile
             HitBoxScript hitbox = generatedObject.GetComponent<HitBoxScript>();
             if (hitbox != null)
             {
-                hitbox.SetInfo(this.CurrentOwner, this.CurrentAbility, this.CurrentHitEvent, this.isPlayer);
+                hitbox.SetInfo(this.CurrentOwner, this.CurrentAbility, this.CurrentHitEvent);
             }
         }
 
