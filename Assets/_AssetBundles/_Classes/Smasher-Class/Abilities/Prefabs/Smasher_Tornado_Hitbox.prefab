@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 294}
   - component: {fileID: 367}
   - component: {fileID: 660}
+  - component: {fileID: -7221994707993437151}
   m_Layer: 9
   m_Name: Smasher_Tornado_Hitbox
   m_TagString: HitBox
@@ -76,3 +77,27 @@ MonoBehaviour:
   DependsOnMovementAbility: 0
   IsContiniousDamage: 0
   Collider: {fileID: 367}
+  OnSetInfoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &-7221994707993437151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a5c8eaa70bdea408fb5f2128bed80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 328bafd2da9dc474da50e60cf9d8e866, type: 3}

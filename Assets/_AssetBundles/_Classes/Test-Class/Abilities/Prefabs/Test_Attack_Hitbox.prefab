@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4904749863725260}
   - component: {fileID: 61247604090743934}
   - component: {fileID: 114840255315294292}
+  - component: {fileID: 2788720782512634215}
   m_Layer: 9
   m_Name: Test_Attack_Hitbox
   m_TagString: HitBox
@@ -74,4 +75,31 @@ MonoBehaviour:
   ShutOnHit: 1
   StickToOwner: 0
   DependsOnMovementAbility: 0
+  IsContiniousDamage: 0
   Collider: {fileID: 61247604090743934}
+  OnSetInfoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnShutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &2788720782512634215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886398916049500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a5c8eaa70bdea408fb5f2128bed80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 5bc35e27266d49b49b5df90ffcfd0009, type: 3}
+  - {fileID: 8300000, guid: e8afa4d93973ab54ba6b764e750d5cc2, type: 3}
+  - {fileID: 8300000, guid: 8f88d51178a4eca4fb9af421ca396498, type: 3}
