@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3684027255365330430}
   - component: {fileID: 7585549159473022188}
   - component: {fileID: 8937906241031780188}
+  - component: {fileID: -5370201098861590231}
   m_Layer: 11
   m_Name: Priest_Detonate_Hitbox
   m_TagString: Untagged
@@ -93,3 +94,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-5370201098861590231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3399095561321281814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a5c8eaa70bdea408fb5f2128bed80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: cec7191b676e93e44b80fdf4c0fc5d8a, type: 3}

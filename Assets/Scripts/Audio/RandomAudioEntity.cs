@@ -9,6 +9,12 @@ public class RandomAudioEntity : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(LatePlay());
+    }
+
+    IEnumerator LatePlay()
+    {
+        yield return new WaitForEndOfFrame();
 
         AudioControl.Instance.PlayInPosition(AudioClips[Random.Range(0, AudioClips.Count)], transform.position);
     }

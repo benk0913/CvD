@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 4658219666436850979}
   - component: {fileID: 4237167956730771852}
   - component: {fileID: 5243687837576383080}
+  - component: {fileID: -5587156592543082796}
   m_Layer: 11
   m_Name: Priest_UnstableOrb_Detonatable
   m_TagString: Detonatable
@@ -570,6 +571,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
+--- !u!114 &-5587156592543082796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056976997565857195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a5c8eaa70bdea408fb5f2128bed80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 328bafd2da9dc474da50e60cf9d8e866, type: 3}
 --- !u!1 &9189636751213963833
 GameObject:
   m_ObjectHideFlags: 0

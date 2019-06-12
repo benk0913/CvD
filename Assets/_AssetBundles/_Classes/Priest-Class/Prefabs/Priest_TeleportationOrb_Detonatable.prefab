@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6347687260139216990}
   - component: {fileID: 7237080495450326686}
   - component: {fileID: 4424152546941201436}
+  - component: {fileID: 3341736115572526685}
   m_Layer: 11
   m_Name: Priest_TeleportationOrb_Detonatable
   m_TagString: Detonatable
@@ -301,6 +302,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
+--- !u!114 &3341736115572526685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6760285613289157580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a5c8eaa70bdea408fb5f2128bed80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 1fc7f6b6155683f489543793513ad2c7, type: 3}
 --- !u!1 &7592760894239821145
 GameObject:
   m_ObjectHideFlags: 0
